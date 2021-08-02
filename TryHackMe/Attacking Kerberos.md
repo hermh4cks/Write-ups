@@ -28,6 +28,18 @@ This Lab Covers
 - Pass the Ticket
 - Skeleton key attacks using mimikatz
 
+This room is related to real-world applications and is a starting point for learning how to escalate privileges to that of a domain admin by attacking Kerberos and taking control of a network.
+
+It is recommended to have a general knowledge of post-exploitation, active directory, and the windows command line.
+
+## What is Kerberos
+
+Kerberos is the deault authentication service for Microsoft Windows domains. It is meant to be more secure than NTLM by using third part ticket authorization as well as stronger encryption. Even though NTLM has a lot more attack vectors to choose from Kerberos still has a handful of underlying vulnerabilities just like NTLM that we can use to our advantage.
+
+## Common Terminology
+
+  - **TGT** *Ticket Granting Ticket*
+
 Machine Information
 ======================================================================================================
 
