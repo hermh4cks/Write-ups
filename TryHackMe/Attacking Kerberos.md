@@ -28,7 +28,8 @@ This Lab Covers
 - Pass the Ticket
 - Skeleton key attacks using mimikatz
 
-
+Machine Information
+======================================================================================================
 
 
 
