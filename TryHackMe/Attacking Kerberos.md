@@ -4,16 +4,16 @@
 *Learning how to abuse the Kerberos Ticket Granting Service inside of a Windows Domain Controller*
 
 ### Table of Contents
-- [Introduction](##Introduction)
-- [Machine Information](##Machine-Information)
-- [Enumeration with Kerbrute](##Enumeration-with-Kerbrute)
-- [Harvesting and Brute-Forcing Tickets with Rubeus](##Harvesting-and-Brute-Forcing-Tickets-with-Rubeus)
-- [Kerberoasting with Rubeus and Impacket](##Kerberoasting-with-Rubeus-and-Impacket)
-- [AS-REP Roasting with Rubeus](##AS-REP-ROASTING-with-Rubeus)
-- [Pass the Ticket with mimikatz](##Pass-the-Ticket-with-mimikatz)
-- [Golden and Silver Ticket attacks with mimikatz](##Golden-and-Silver-Ticket-Attacks-with-Mimikatz)
-- [Kereros Backdoors with Mimikatz](##Kerberos-Backdoors-with-Mimikatz)
-- [Conclusion](##Conclusion)
+- [Introduction](#Introduction)
+- [Machine Information](#Machine-Information)
+- [Enumeration with Kerbrute](#Enumeration-with-Kerbrute)
+- [Harvesting and Brute-Forcing Tickets with Rubeus](#Harvesting-and-Brute-Forcing-Tickets-with-Rubeus)
+- [Kerberoasting with Rubeus and Impacket](#Kerberoasting-with-Rubeus-and-Impacket)
+- [AS-REP Roasting with Rubeus](#AS-REP-ROASTING-with-Rubeus)
+- [Pass the Ticket with mimikatz](#Pass-the-Ticket-with-mimikatz)
+- [Golden and Silver Ticket attacks with mimikatz](#Golden-and-Silver-Ticket-Attacks-with-Mimikatz)
+- [Kereros Backdoors with Mimikatz](#Kerberos-Backdoors-with-Mimikatz)
+- [Conclusion](#Conclusion)
 
 Introduction
 ======================================================================================================
