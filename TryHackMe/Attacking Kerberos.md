@@ -66,6 +66,43 @@ The AS-REQ step in Kerberos authentication starts when a user requests a TGT fro
 2. The KDC attempts to decrypt the timestamp using the NT hash from the user, 
 3. If successful the KDC will issue a TGT and a session key for the user.
 
+### Ticket Granting Ticket Contents
+
+In order to understand how the service tickets get created and validated, we need to start with where the tickets comes from: the TGT is provided by the user to the KDC, in return, the KDC validates the TGT and returns a service ticket.
+
+Example TGT
+---
+
+***Encrypted using KDC LT Key***
+- Stat/End/Max Renew: 10/31/2021: 1:36; 10/31/2021: 11:36.....
+- Service Name: krbtgt: example.local
+- Target Name: krbtgt: example.local
+- Client Name: user; example.local
+- Flages: ooeoooooo
+- Session key: ooooxooooooo 12ev21212....
+
+Privilege Attribute Certificate
+- Username: example
+- SID: S-o-5-45.......
+
+[x] Signed with Service LT key
+
+[x] Signed with KDC LT key
+
+---
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/26/TGTplay.gif" />
+
+### Service Ticket Contents
+Contains two parts
+
+1. **Service Portion**
+: User Details, Session Key, Encrypts the ticket with the service account NTLM hash
+
+2. **User Portion**
+: Validity Timestamp, Session Key, Encrypts with the TGT session key.
+
+
 
 
 Machine Information
