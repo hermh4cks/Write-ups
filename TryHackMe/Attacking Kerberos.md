@@ -36,7 +36,7 @@ It is recommended to have a general knowledge of post-exploitation, active direc
 
 Kerberos is the deault authentication service for Microsoft Windows domains. It is meant to be more secure than NTLM by using third part ticket authorization as well as stronger encryption. Even though NTLM has a lot more attack vectors to choose from Kerberos still has a handful of underlying vulnerabilities just like NTLM that we can use to our advantage.
 
-## Common Terminology
+### Common Terminology
 
 - **TGT** *Ticket Granting Ticket* : A ticket-granting ticket is an authentication ticket used to request service tickets from the TGS for specific resources from the domain.
 
@@ -46,7 +46,27 @@ Kerberos is the deault authentication service for Microsoft Windows domains. It 
 
 - **TGS** *Ticket Granting Service* : The Ticket Granting Service takes the TGT and returns a ticket to a machine on the domain.
 
-- **SPN** *Service Principal Name* : A Service Principal Name is an identifier    
+- **SPN** *Service Principal Name* : A Service Principal Name is an identifier given to a service instance to associate a service instance with a domain service account. Windows requires that services have a domain service account which is why a service needs an SON set.
+
+- **KDC LT Key** *Key Distribution Center Long Term Key* : The KDC key is based on the KRBTGT service account.  It is used to encrypt the TGT and sign the PAC
+
+- **Client LT Key** *Client Long Term Key* : The client key is based on the computer or service account. It is used to check the encrypted timestamp and encrypt the session key.
+
+- **Service LT Key** *Service Long Term Secret Key* : The service key is based on the service account. It is used to encrypt the service portion of the service ticket and sign the PAC.
+
+- **Session Key** issued by the KDC when a TGT is issued.The user will provide the session key to the KDC along with the TGT when requesting a service ticket
+
+- **PAC** *Privilege Attribute Certificate* The PAC holds all of the user's relevant information, it is sent along with the TGT to the KDC to be signed by the Target LT Key and the KDC LT Key in order to validate the user.
+
+### **AS-REQ** with Pre-Authentication in Detail
+
+The AS-REQ step in Kerberos authentication starts when a user requests a TGT from the KDC. In order to validate the user and create a TGT for the user, the KDC must follow these exact steps.
+
+1. user encrypts a timestamp NT hash and sends it to the AS
+2. The KDC attempts to decrypt the timestamp using the NT hash from the user, 
+3. If successful the KDC will issue a TGT and a session key for the user.
+
+
 
 Machine Information
 ======================================================================================================
