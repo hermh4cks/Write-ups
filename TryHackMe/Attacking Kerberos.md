@@ -284,3 +284,26 @@ Version: v1.0.3 (9dad6e1) - 08/04/21 - Ronnie Flathers @ropnop
 2021/08/04 11:53:55 >  [+] VALID USERNAME:       user1@CONTROLLER.local
 2021/08/04 11:53:55 >  Done! Tested 100 usernames (10 valid) in 0.852 seconds
 ```
+### Questions
+
+
+1. How many total users do we enumerate?
+: 10
+
+2. What is the SQL service account name?
+: sqlservice
+
+3. What is the second "machine" account name?
+: machine2
+
+4. What is the third "user" account name?
+: user3
+
+Harvesting and Brute-Forcing Tickets with Rubeus
+=============================================================================================================================================
+
+Rubeus is a powerful tool for attacking Kerberos. Rubeus is an adaptation of the kekeo tool and developed by HarmJ0y the very well known active directory guru.
+
+Rubeus has a wide variety of attacks and features that allow it to be a very versatile tool for attacking Kerberos. Just some of the many tools and attacks include overpass the hash, ticket requests and renewals, ticket management, ticket extraction, harvesting, pass the ticket, AS-REP Roasting, and Kerberoasting.
+
+The tool has way too many attacks and features for me to cover all of them so I'll be covering only the ones I think are most crucial to understand how to attack Kerberos however I encourage you to research and learn more about Rubeus and its whole host of attacks and features here - https://github.com/GhostPack/Rubeus
