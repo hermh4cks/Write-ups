@@ -312,7 +312,10 @@ The tool has way too many attacks and features for me to cover all of them so I'
 :
 
 Username: `Administrator` 
+
 Password: `P@$$W0rd` 
+
 Domain: `controller.local`
 
 Machine IP is `10.10.53.187`    
+
