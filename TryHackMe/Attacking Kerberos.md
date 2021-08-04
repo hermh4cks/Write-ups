@@ -5,7 +5,7 @@
 
 ### Table of Contents
 - [Introduction](#Introduction)
-- [Machine Information](#Machine-Information)
+- [RECON](#RECON)
 - [Enumeration with Kerbrute](#Enumeration-with-Kerbrute)
 - [Harvesting and Brute-Forcing Tickets with Rubeus](#Harvesting-and-Brute-Forcing-Tickets-with-Rubeus)
 - [Kerberoasting with Rubeus and Impacket](#Kerberoasting-with-Rubeus-and-Impacket)
@@ -102,10 +102,31 @@ Contains two parts
 2. **User Portion**
 : Validity Timestamp, Session Key, Encrypts with the TGT session key.
 
+### Kerberos Authentication Overview
+- AS-REQ*uest*-1. The client requests an Authentication Ticket or Ticket Granting Ticket *TGT*
+- AS-REP*ly*   2. The Key Distribution Center verifies the client and sends back an encrypted TGT
+- TGT-REQ*uest*3. The client send the encrypted TGT to the ticket Granting Server with the SPN or the service the client wants to access
+- TGS-REP*ly*  4. The Key Distribution Center KDC verifies the TGT of the user and that the user has access to the servicem then sends a valid session key for the service to the client
+- AP-REQ*uest* 5. The client requests the service and sends the valid session key to prove the user has access
+- Ap-REP*ly*   6. The service grants access.
+
+### Kerberos Tickest Overview
+
+The main ticket that you will see is a ticket-granting ticket these can come in various forms such as a .kirbi for Rubeus .ccache for Impacket. The main ticket that you will see is a .kirbi ticket. A ticket is typically base64 encoded and can be used for various attacks. The ticket-granting ticket is only used with the KDC in order to get service tickets. Once you give the TGT the server then gets the User details, session key, and then encrypts the ticket with the service account NTLM hash. Your TGT then gives the encrypted timestamp, session key, and the encrypted TGT. The KDC will then authenticate the TGT and give back a service ticket for the requested service. A normal TGT will only work with that given service account that is connected to it however a KRBTGT allows you to get any service ticket that you want allowing you to access anything on the domain that you want.
+
+### Attack Privilege Requirements
+
+- **Kerbrute Enumeration** - No domain access required 
+- **Pass the Ticket** - Access as a user to the domain required
+- **Kerberoasting** - Access as any user required
+- **AS-REP Roasting** - Access as any user required
+- **Golden Ticket** - Full domain compromise (domain admin) required 
+- **Silver Ticket** - Service hash required 
+- **Skeleton Key** - Full domain compromise (domain admin) required
 
 
 
-Machine Information
+RECON
 ======================================================================================================
 
 
