@@ -260,7 +260,7 @@ For this lab you need to add the DNS domain name along with the machine IP to /e
 
 ### Kerbrute Results
 
-```bash
+```
     __             __               __     
    / /_____  _____/ /_  _______  __/ /____ 
   / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
