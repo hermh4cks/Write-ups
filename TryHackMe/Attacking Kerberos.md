@@ -307,3 +307,12 @@ Rubeus is a powerful tool for attacking Kerberos. Rubeus is an adaptation of the
 Rubeus has a wide variety of attacks and features that allow it to be a very versatile tool for attacking Kerberos. Just some of the many tools and attacks include overpass the hash, ticket requests and renewals, ticket management, ticket extraction, harvesting, pass the ticket, AS-REP Roasting, and Kerberoasting.
 
 The tool has way too many attacks and features for me to cover all of them so I'll be covering only the ones I think are most crucial to understand how to attack Kerberos however I encourage you to research and learn more about Rubeus and its whole host of attacks and features here - https://github.com/GhostPack/Rubeus
+
+*To start this task you will need to RDP or SSH into the machine your credentials are*
+:
+
+Username: `Administrator` 
+Password: `P@$$W0rd` 
+Domain: `controller.local`
+
+Machine IP is `10.10.53.187`    
