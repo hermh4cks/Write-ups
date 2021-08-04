@@ -797,3 +797,4 @@ You can run this attack on the given machine however you will be escalating from
 
 ### Pass the Ticket Overview
 
+Works by dumping the Local Security Authority Subsystem Service (LSASS) memort of the machine
