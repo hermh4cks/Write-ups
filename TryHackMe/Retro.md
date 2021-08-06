@@ -77,16 +77,31 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 Checking out /retro I get a pretty sweet retro gaming blog being hosted, I start pulling out some potentially useful info, while throwing the /retro sub domain back into gobuster to keep some scanning going on while I work at poking around the website more.
 
 ![image](https://user-images.githubusercontent.com/83407557/128460426-35865e35-e121-4bb7-8a5b-71cb8fdd8b6e.png)
+
 *Clicking on account Wade I am able to get some potential password leakage in a comment*
 
 ![image](https://user-images.githubusercontent.com/83407557/128460933-e2e8b439-bb26-417c-9df2-a839baadb2f8.png)
+
 *The comment did contain a password, and we login as admin to this wordpress site*
 
 also find Wade's company Email: darkstar@darkstar7471.com
 
-Since you can upload plugins in the form of php code on wordpress, I am going to see if I can get a webshell as a plugin.
+One of the places you can upload php on a wordpress site is in their "Themes" feature, in there I find a theme that is a php file that gets loaded on any 404 error.
 
-I find something to try that used previously: https://github.com/danielmiessler/SecLists/blob/master/Web-Shells/WordPress/plugin-shell.php
+![image](https://user-images.githubusercontent.com/83407557/128466978-781eb853-b5f8-477a-9ef6-8db90e05c8b4.png)
+
+I remove the stuff that isn't usefull to me and add my own spin on the 404.
+
+![image](https://user-images.githubusercontent.com/83407557/128467501-7ab734d8-4ec4-4cf4-9ad9-5f9e459db2f3.png)
+
+Then, by going to a page on /retro's index.php that I know (or am like 99% sure) doesn't exist, I get my much better 404 error:
+
+![image](https://user-images.githubusercontent.com/83407557/128468198-3a6dc292-ef76-4ce1-a67f-28d36edbce10.png)
+
+Then goal is to make the 404 actually return a reverse shell, since I know this is a windows machine let's see if I can get some more info.
+
+
+
 
 
 
