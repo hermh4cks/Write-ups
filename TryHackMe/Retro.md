@@ -1,5 +1,15 @@
 | A write-up on Retro | By Herman Detwiler | 8/6/22
 
+# Overview of Attack Chain
+
+This Box has two different paths you can take to get innitial access. After dicovering two open ports, either can become your door into the system. Either method however (at least from what I could gather) requires finding the username wade on the website being hosted. From there two different attack paths open up:
+
+1. Scanning through the web-site itself you can find login info and get admin access to the wordpress site, and gain a shell from injecting php into the 404 theme wordpress plugin.
+2. Using the found username wade you can bypass having to log into the wp admin and simply rpd into the box using the user name wade.
+
+From there you can find that it is an older version of windows that is vulnerable to a kernal exploit, which you can use to get root.
+
+
 # Recon
 prompt: *here are two distinct paths that can be taken on Retro. One requires significantly less trial and error, however, both will work. Please check writeups if you are curious regarding the two paths. An alternative version of this room is available in it's remixed version Blaster.*
 
@@ -74,6 +84,8 @@ by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
 ===============================================================
 /retro                (Status: 301) [Size: 149] [--> http://10.10.36.164/retro/]
 ```
+## Manually viewing website
+
 Checking out /retro I get a pretty sweet retro gaming blog being hosted, I start pulling out some potentially useful info, while throwing the /retro sub domain back into gobuster to keep some scanning going on while I work at poking around the website more.
 
 ![image](https://user-images.githubusercontent.com/83407557/128460426-35865e35-e121-4bb7-8a5b-71cb8fdd8b6e.png)
@@ -131,6 +143,20 @@ retro 2 File(s) 100,413 bytes 3 Dir(s) 30,425,051,136 bytes free
 nt authority\iusr 
 ```
 
+## Reverse Shell
+
+using msfvenom I am going to create a php rev shell
+
+## RDP
+
+using your rpd client of choice you can rpd with wades creds.
+
+```bash
+xfreerdp /u:wade /v:10.10.6.119
+```
+![image](https://user-images.githubusercontent.com/83407557/128915076-00ebc7a2-5bf7-4aad-8d8a-56a1ec92bf1c.png)
+
+Doing so was can see users.txt on the desktop
 
 
 # Questions
