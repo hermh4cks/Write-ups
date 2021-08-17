@@ -10,6 +10,7 @@ Being Used in this write-up are:
 - MSFVenom
 
 ## Steps
+0. **Settup** Setting up vulnserver and our linux and windows boxes
 1. **Spiking** Trying to determin if a funtion of the program is vulnerable to bof
 2. **Fuzzing** Sending lots of a single character (AAA) to see if we can crash the program
 3. **Finding the Offset** Find where fuzzing caused the crash
@@ -18,6 +19,11 @@ Being Used in this write-up are:
 6.  **Find the Right Module** Need one without memory protection
 7.  **Generating shell code** Using MSFVenom
 
+## Setup
+
+
 ## Spiking
 
+For the purpose of this write-up the spiking program that I will be using is called spike, however there are others that will be used in other write-ups (buffas). 
 
+### 
