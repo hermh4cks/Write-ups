@@ -2,7 +2,7 @@
 
 *The following are notes I have taken from the Cyber Mentor https://www.youtube.com/watch?v=qSnPayW6F7U* 
 
-Being Used in this write-up are:
+## Tools
 - Immunity Debugger https://www.immunityinc.com/products/debugger/index.html
 - VulnServer(thegreycorner)https://github.com/stephenbradshaw/vulnserver
 - mona.py plugin for immunity debugger https://github.com/corelan/mona
