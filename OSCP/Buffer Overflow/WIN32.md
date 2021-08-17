@@ -28,7 +28,7 @@ For the purpose of this write-up the spiking program that I will be using is cal
 
 ### Spike
 
-Pre-installed in kali, spike is invoked via the various functions it provides:
+Pre-installed in kali, spike is invoked from the applications menue->Vulnerability Analysis->Fuzzing Tools. Or via the various functions it provides:
 
 `generic` + *Tab-autocomplete* will show the options for spike:
 
@@ -48,10 +48,12 @@ Usage: ./generic_send_tcp host port spike_script SKIPVAR SKIPSTR
 
 `nano spike.spk` to create our file (make sure you are making this in the same directory that you will run spike)
 
-Most of the commands that spike will read need to be prefaced with an `s_` and **MUST* end in `;`
+Commands that spike will read need to be prefaced with an `s_` and **MUST** end in `;`
 
 `s_readline();` to grab the input (or read the banner)
+
 `s_string("TRUN ");` to input the literal string for the potentially vuln command with an added space
+
 `s_string_variable("SPIKE");` sending a string but stating it is a variable (called anything) that will be dynamic
 
 Save each of the above lines in your file and for use in the next step.
