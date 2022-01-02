@@ -1,8 +1,9 @@
-# TryHackMe's Python Basics Lab
+# 1) Introuction to Python
 
-## Task 1 Introduction to Python
+**In this room, you will get hands-on with and learn about the scripting programming language Python. Although programming isn't required to succeed in security, it's a great skill to have. As the "Scripting for Pentesters" module demonstrates, being able to program allows you to create security tools and create quick scripts that will aid you in hacking (as well as defending and analysing).**
 
-This Lab will cover basic python programing.
+This room will teach you:
+
 - Variables
 - Loops
 - Functions
@@ -10,74 +11,87 @@ This Lab will cover basic python programing.
 - If statements
 - Files
 
-## Task 2 Hello World
 
-**Sample code**
+# 2) Hello World
+
+
+## comments
+```python
+# This is an example of a python comment
+```
+
+
+## print() statements
+```python
+#this example print "Hello World" to the terminal
+print("Hello World")
+```
+
+# 3) Mathematical Operators
+
+| Operator | Syntax | Example |
+| - | - | - |
+| Addition | + | 1+1=2 |
+| Subtraction | - | 5-1=4|
+| Multiplication | * | 10*10=100 |
+| Division | / | 10/2=5 |
+| Modulus | % | 11%2=0 |
+| Exponent | ** | 5**2=25|
+
+## comparison operator
+
+| Symbol | Syntax |
+| - | - |
+| Greater than | > |
+| Less than | < |
+| Equal to | == |
+| Not Equal to | != |
+| Greater than or equal to | >= |
+| Less than or equal | <= |
+
+### Tasks
+
+[+] Print the result of 21+43
 
 ```python
-# This is an Example comment
-print("Hellow World")
+print(21+43)
 ```
-- showing how to comment a line with `#`
-- using a `print()`
-- showing that anything inside `()` is the output
-- and the we use `""` because it is outputting a string
 
-![image](https://user-images.githubusercontent.com/83407557/128368034-8db68f5e-9630-4097-a1c4-57df54badd3f.png)
-
-## Task 6 Shipping Project
+[+] Print the result of 142-52
 
 ```python
-"""
-    In this project, you'll create a program that calculates the total
-    cost of a customers shopping basket, including shipping.
-
-    - If a customer spends over $100, they get free shipping
-    - If a customer spends < $100, the shipping cost is $1.20 per kg of the baskets weight
-
-    Print the customers total basket cost (including shipping) to complete this exercise.
-
-"""
-
-customer_basket_cost = 101
-customer_basket_weight = 44
-
-# Write if statement here to calculate the total cost
-if customer_basket_cost > 100:
-  total_basket_cost = customer_basket_cost
-else:
-  total_basket_cost = customer_basket_cost + (customer_basket_weight * 1.20)
-
-print(total_basket_cost)
-
-
+print(142-52)
 ```
-## Task 8 Bitcoin Project
+
+[+] Print the result of 10 multiplied by 342
 
 ```python
-"""
-    In this project, you'll create a program that that tells
-    you when the value of your Bitcoin falls below $30,000.
-
-    You will need to:
-    - Create a function to convert Bitcoin to USD
-    - If your Bitcoin falls below $30,000 print a message.
-
-    You can assume that 1 Bitcoin is worth $40,000
-
-"""
-
-investment_in_bitcoin = 1.2
-bitcoin_to_usd = 40000
-
-# 1) write a function to calculate bitcoin to usd
-def bitcoinToUSD(bitcoin_amount, bitcoin_value_usd):
-  usd_value = bitcoin_amount * bitcoin_value_usd
-  return usd_value
-
-investment_in_usd = bitcoinToUSD(investment_in_bitcoin, bitcoin_to_usd)
-if investment_in_usd <= 30000:
-  print("Investment below $30,000! SELL!")
-else:
-  print("Investment above $30,000")
+print(342*10)
 ```
+
+[+] Print the result of 5 squared
+
+```python
+print(5**2)
+```
+
+# 4) Variables and Data Types
+
+- **String** - Used for combinations of characters, such as letters or symbols
+
+- **Integer** - Whole numbers
+
+- **Float** - Numbers that contain decimal points or for fractions
+
+- **Boolean** - Used for data that is restricted to True or False options
+
+- **List** - Series of different data types stored in a collection
+
+
+| String | Float | Integer | Boolean | List |
+| - | - | - | - | - |
+| Title | Rating | Times Viewed | Favorite | Seen by |
+| - | - | - | - | - |
+| Star Wars | 9.8 | 13 | True | Alice, Bob | 
+| Matrix | 8.5 | 23 | False | Charlie | 
+| Indiana Jones | 6.1 | 3 | False | Daniel, Evie |
