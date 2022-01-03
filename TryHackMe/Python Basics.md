@@ -114,14 +114,16 @@ print(height)
 
 | Logical Operation | Operator | Example |
 | - | - | - |
-| Equivalence | == | if x == 5 |
-| Less Than | < | if x < 5 |
-| Less than or equal to | > | if x <= 5 |
-| Greater than | > | if x > 5 |
-| Greater than or equal to | >= | if x >= 5 |
+| Equivalence | == | `if x == 5` |
+| Less Than | < | `if x < 5` |
+| Less than or equal to | > | `if x <= 5` |
+| Greater than | > | `if x > 5` |
+| Greater than or equal to | >= | `if x >= 5` |
 
 ## Boolean Operators
 
 | Boolean Operation | Operator | Example |
 | - | - | - |
-| Both conditions must be true for the statement to be true | **AND** |  if x=5 **AND** x<=100 \n Returns TRUE if x is a number between 5 and 100 |
+| Both conditions must be true for the statement to be true | **AND** |  `if x >= 5 **AND** x <= 100` Returns TRUE if x is a number between 5 and 100 |
+| Only one condition of the statement needs to be true | **OR** | `if x == 1 **OR** x == 10` Returns TRUE if x is 1 or 10 |
+| If a condition is the opposite of an argument | **NOT** | `if **NOT**
