@@ -124,4 +124,4 @@ print(height)
 
 | Boolean Operation | Operator | Example |
 | - | - | - |
-| Both conditions must be true for the statement to be true | **AND** |  if x=5 **AND** x<=100 \\ Returns TRUE if x is a number between 5 and 100 |
+| Both conditions must be true for the statement to be true | **AND** |  if x=5 **AND** x<=100 \n Returns TRUE if x is a number between 5 and 100 |
