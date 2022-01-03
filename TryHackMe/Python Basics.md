@@ -147,7 +147,7 @@ else:
 	print("Not sure who this is or if they are hungry")
 ```
 
-# Intro to If statements
+# 6) Intro to If statements
 
 Let's a program to decide based on a condition.
 
@@ -160,7 +160,7 @@ else:
 	print('you are old enough to drive')
 ```
 
-# Loops
+# 7) Loops
 
 in programming loops allow programs to iterate and perform actions a number of times. The two types of loops are `for` and `while` loops.
 
@@ -216,5 +216,101 @@ for i in range(5):
 	print(i)
 ```
 
-# Introduction to Functions
+# 8) Introduction to Functions
 
+*As programs start to get bigger and more complex, some of your code will be repetitive, writing the same code to do the same calculations, and this is where functions come in. A function is a block of code that can be called at different places in your program.*
+
+*You could have a function to work out a calculation such as the distance between two points on a map or output formatted text based on certain conditions. Having functions removes repetitive code, as the function's purpose can be used multiple times throughout a program.*
+
+```python
+
+# Our function
+def sayHello(name):
+	print("Hello" + name + "! Nice to meet you.")
+
+
+# Calling our function
+
+sayHello("Bob") # Output is: Hello Bob! Nice to meet you
+
+sayHello("Alice") # Output is: Hello Alice! Nice to meet you
+
+
+```
+
+## Key Components to a function
+
+- The `def` keyword indicates the start of a function
+
+- This is followed by the `name` that the programmer defines (sayHello) in the above example
+
+- Following the function name is a pair of parenthesis `()` that holds input values; data that we can pass into the function (name in the above example)
+
+- A colon `:` marks the end of a function header
+
+*In the function, notice the indentation. Similar to `if` statements, anything after the colon that is indented is considered part of the function.*
+
+*A function can also return a result, see the code block below*
+
+```python
+def calcCost(item):
+	if(item=="sweets"):
+		return 3.99
+	elif (item == "oranges"):
+		return 1.99
+	else:
+		return 0.99
+
+spent = 10
+spent = spent + calcCost("sweets")
+print("You have spent:" + str(spent))
+```
+
+# 9) Files
+
+
+## Reading a file
+
+*To open the file, we use the built-in open() function, and the "r" parameter stands for "read" and is used as we're reading the contents of the file. The variable has a read() method for reading the contents of the file. You can also use the readlines() method and loop over each line in the file; useful if you have a list where each item is on a new line. In the example above, the file is in the same folder as the Python script; if it were elsewhere, you would need to specify the full path of the file.*
+
+```python
+f = open("file_name", "r")
+print(f.read())
+```
+## Writing/Appending a file
+
+*You can also create and write files. If you're writing to an existing file, you open the file first and use the "a" in the open function after the filename call (which stands for append). If you're writing to a new file, you use "w" (write) instead of "a". See the examples below for clarity:*
+
+```python
+f = open("demofile1.txt", "a") #Append to an existing file
+f.write("The file will include more text...")
+f.close()
+
+f = open("demofile2.txt", "w") # Creating and writing to a new file
+f.write("demofile2 file created, with this content in!")
+f.close()
+```
+
+# 10) Imports
+
+*In Python, we can import libraries, which are a collection of files that contain functions. Think of importing a library as importing functions you can use that have been already written for you. For example, there is a "date" library that gives you access to hundreds of different functions for anything date and time-related.*
+
+```python
+import datetime
+current_time = datetime.datetime.now()
+print(current_time)
+```
+
+*We import other libraries using the `import` keyword. Then in Python, we use that import's library name to reference its functions. In the example above, we `import datetime`, then access the `.now()` method by calling `library_name.method_name().` Copy and paste the example above into the code editor.*
+
+## Useful imports as a pentester
+
+- **requests** - simple HTTP library
+
+- **Scapy** - send, sniff, dissect and forge network packets
+
+- **Pwntools** - a CTF & exploit development library
+
+## pip
+
+Many of these libraries are already built into the programming language; however, libraries written by other programmers not already installed in your machine can be installed using an application called pip, which is Python's package manager. Let's say you want to install the "scapy" library (which allows you to craft your own packets in code and send them to other machines); you install it first by running the command `pip install scapy`, after which in your program you can now import the scapy library.
