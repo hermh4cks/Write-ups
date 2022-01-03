@@ -124,6 +124,97 @@ print(height)
 
 | Boolean Operation | Operator | Example |
 | - | - | - |
-| Both conditions must be true for the statement to be true | **AND** |  `if x >= 5 **AND** x <= 100` Returns TRUE if x is a number between 5 and 100 |
-| Only one condition of the statement needs to be true | **OR** | `if x == 1 **OR** x == 10` Returns TRUE if x is 1 or 10 |
-| If a condition is the opposite of an argument | **NOT** | `if **NOT**
+| Both conditions must be true for the statement to be true | **AND** |  `if x >= 5 AND x <= 100` Returns TRUE if x is a number between 5 and 100 |
+| Only one condition of the statement needs to be true | **OR** | `if x == 1 OR x == 10` Returns TRUE if x is 1 or 10 |
+| If a condition is the opposite of an argument | **NOT** | `if NOT y` Returns TRUE if the y value is False |
+
+## Examples
+
+```python
+
+a = 1
+if a == 1 or a > 10:
+	print("a is either 1 or above 10")
+```
+```python
+name = "bob"
+hungry = True
+if name == "bob" and hungry == True:
+	print("bob is hungry")
+else if name == "bob" and not hungry:
+	print("bob is not hungry")
+else:
+	print("Not sure who this is or if they are hungry")
+```
+
+# Intro to If statements
+
+Let's a program to decide based on a condition.
+
+## Example
+
+```python
+if age < 17:
+	print('you are NOT old enough to drive')
+else:
+	print('you are old enough to drive')
+```
+
+# Loops
+
+in programming loops allow programs to iterate and perform actions a number of times. The two types of loops are `for` and `while` loops.
+
+## While Loops
+
+Can be used to run indefinately or to stop based on a condition
+
+```python
+i = 1
+while i <= 10:
+	print(i)
+	i=i+1
+```
+This while loop will run 10 times, outputting the value of the i variable each time it iterates(loops). These steps can be broken down as follows:
+
+- The i variable is set to 1
+
+- the while statement specifies where the start of the loop should begin
+
+- Every time it loops. it will start at the top(outputting the value of i)
+
+- Then it goes to the next line in the loop, which increases the value of i by 1
+
+- Then (as there is no more code for the program to execute), it goes to the top of the loop, starting the process over again
+
+- The program will keep on looping until the value of the i variable is greater than 10
+
+## For loops
+
+A for loop is used to iterate over a sequence such as a list. Lists are used to store multiple items in a single variable, and are created using square brackets (see below). Let's learn through the following example:
+
+```python
+websites = ["facebook.com", "google.com", "amazon.com"]
+for site in websites:
+	print(site)
+```
+
+This for loop shown in the code block above, will run 3 times, outputting each website in the list. Let's break this down:
+
+ - The list variable called websites is storing 3 elements
+    
+ - The loop iterates through each element, printing out the element
+    
+ - The program stops looping when it's been through each element in the loop
+
+
+## Range function
+
+*In Python, we can also iterate through a range of numbers using the range function. Below is some example Python code that will print the numbers from 0 to 4. In programming, 0 is often the starting number, so counting to 5 is 0 to 4 (but has 5 numbers: 0, 1, 2, 3, and 4)*
+
+```python
+for i in range(5):
+	print(i)
+```
+
+# Introduction to Functions
+
