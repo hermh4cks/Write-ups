@@ -95,3 +95,33 @@ print(5**2)
 | Star Wars | 9.8 | 13 | True | Alice, Bob | 
 | Matrix | 8.5 | 23 | False | Charlie | 
 | Indiana Jones | 6.1 | 3 | False | Daniel, Evie |
+
+### Tasks
+
+[+]  In the code editor, create a variable called height and set its initial value to 200.
+[+] On a new line, add 50 to the height variable.
+[+] On another new line, print out the value of height.
+
+```python
+height=200
+height=height+50
+print(height)
+```
+
+# 5) Logical and Boolean Operators
+
+## Logical Operators
+
+| Logical Operation | Operator | Example |
+| - | - | - |
+| Equivalence | == | if x == 5 |
+| Less Than | < | if x < 5 |
+| Less than or equal to | > | if x <= 5 |
+| Greater than | > | if x > 5 |
+| Greater than or equal to | >= | if x >= 5 |
+
+## Boolean Operators
+
+| Boolean Operation | Operator | Example |
+| - | - | - |
+| Both conditions must be true for the statement to be true | **AND** |  if x=5 **AND** x<=100 \\ Returns TRUE if x is a number between 5 and 100 |
