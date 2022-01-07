@@ -3,8 +3,6 @@
 
 [GET_aHEAD](https://github.com/hermh4cks/Write-ups/tree/main/picoCTF/GET_aHEAD)
 
-["here's a libc"]("https://github.com/hermh4cks/Write-ups/tree/main/picoCTF/here's a libc")
-
 [information](https://github.com/hermh4cks/Write-ups/tree/main/picoCTF/information)
 
 [keygenme-py](https://github.com/hermh4cks/Write-ups/tree/main/picoCTF/keygenme-py)
