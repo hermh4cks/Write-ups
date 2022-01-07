@@ -1,11 +1,10 @@
 # Write-ups
 My publicly disclosed write-ups from labs and CTF events.
+
 ## Hack The Box
 
-coming soon!
---
-## Try Hack Me
+[picoCTF]()
 
-coming soon!
---
+[Try Hack Me](https://github.com/hermh4cks/Write-ups/tree/main/TryHackMe)
+
 ## Portswigger Web Security
