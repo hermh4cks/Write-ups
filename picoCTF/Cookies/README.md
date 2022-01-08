@@ -33,7 +33,7 @@ Seeing what is going on I am able to make a burp intruder attack that changes th
 
 ## Python
 
-Still trying to get my python to work on this one, it crashes due to a redirect issue, however using grep on the output, it does actually solve this lab before crashing. Still something to work on in the future.
+Still trying to get my python to work on this one, it crashes due to a redirect issue, however using grep on the output, it does actually solve this lab before crashing. Still something to work on in the future. Anythin over around 20 requests breaks it.
 
 ```python
 #!/usr/bin/env python3
@@ -42,7 +42,7 @@ import requests
 import re
 
 count = 0
-while (count < 100):   
+while (count < 20):   
     count = count + 1
     cookies = {
     'name': str(count)
@@ -61,7 +61,7 @@ while (count < 100):
     print(response_cookie, res.text)
 ```
 
-Then running it in bash I can grep for the flag....not perfect...
+Then running it in bash I can grep for the flag....not perfect... but functional
 
 ```bash
 ─$ python3 test.py|grep picoCTF                                                                               1 ⨯
