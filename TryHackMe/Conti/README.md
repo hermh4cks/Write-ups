@@ -73,3 +73,14 @@ the origional command is:
 `net  user /add securityninja hardToHack123$`
 
 6) The attacker migrated the process for better persistence. What is the migrated process image (executable), and what is the original process image (executable) when the attacker got on the system?
+
+per the hint we can search for EventCode=8 to check for the migration:
+
+![image](https://user-images.githubusercontent.com/83407557/148629543-c0061b58-631d-460b-8f6b-ba883921202f.png)
+
+7) The attacker also retrieved the system hashes. What is the process image used for getting the system hashes?
+
+![image](https://user-images.githubusercontent.com/83407557/148629636-5ae91a2e-7272-41b7-8e93-d3ed7fb444ba.png)
+
+8) What is the web shell the exploit deployed to the system?
+
