@@ -84,3 +84,16 @@ per the hint we can search for EventCode=8 to check for the migration:
 
 8) What is the web shell the exploit deployed to the system?
 
+By searching the IIS post logs and removing the results that I know aren't what I want I find this:
+
+![image](https://user-images.githubusercontent.com/83407557/148630793-c1ebf504-c4a5-4452-9c19-9183c085bfca.png)
+
+9) What is the command line that executed this web shell?
+
+![image](https://user-images.githubusercontent.com/83407557/148630927-d0e2691b-380f-425a-89c6-757a9019e806.png)
+
+10) What three CVEs did this exploit leverage?
+
+https://support.microsoft.com/en-gb/topic/description-of-the-security-update-for-microsoft-exchange-server-2019-and-2016-october-12-2021-kb5007012-de43d01b-d54f-4b40-91d1-93525a29437c
+
+https://motasem-notes.net/how-to-test-if-your-exchange-server-is-compromised-and-vulnerable/
