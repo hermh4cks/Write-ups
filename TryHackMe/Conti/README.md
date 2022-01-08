@@ -58,3 +58,18 @@ expanding the info I can see that eventcode is 11
 
 `290C7DFB01E50CEA9E19DA81A781AF2C`
  
+4) What file was saved to multiple folder locations?
+
+From my search during question 1 I already saw readme.txt 22 times being saved in various local directories.
+
+5) What was the command the attacker used to add a new user to the compromised system
+
+searching for the add user command I can see the attacker adding accounts and then adding them to different groups on the local machine. 
+
+![image](https://user-images.githubusercontent.com/83407557/148629253-3a6569fd-c7a2-439b-a530-7a84f6a1a2a0.png)
+
+the origional command is:
+
+`net  user /add securityninja hardToHack123$`
+
+6) The attacker migrated the process for better persistence. What is the migrated process image (executable), and what is the original process image (executable) when the attacker got on the system?
