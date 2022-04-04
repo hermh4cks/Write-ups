@@ -139,3 +139,28 @@ hostname command:
 ![image](https://user-images.githubusercontent.com/83407557/161611487-9d5c76d1-8d84-4f36-b8c4-f343f36e64ab.png)
 ![image](https://user-images.githubusercontent.com/83407557/161611582-3fcec2f5-3a51-4a46-b98a-c0b34e7f06d3.png)
 
+## Getting a reverse shell.
+
+Using the script developed in the last section the following additional information was discovered: we are in the www directory, and the only other file in the directory is index.php, which we are now able to flush out and view the source code.
+
+```php
+<?php
+function getUserIp()
+{
+    return $_SERVER['REMOTE_ADDR'];
+}
+
+function runTest($test, $ip_address)
+{
+    if ($test === 'ping')
+    {
+        system("ping -c4 ${ip_address}");
+    }
+    if ($test === 'traceroute')
+    {
+        system("traceroute ${ip_address}");
+    }
+}
+
+?>
+```
