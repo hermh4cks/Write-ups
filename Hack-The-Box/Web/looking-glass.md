@@ -42,3 +42,18 @@ Based on these findings, I can be fairly certain that this is a linux box, runni
 Using my web browser to manually view the webapp I can see that it is desiegned to perform two different network tests, traceroute and ping. It also displays my actual ip address, which has been redacted on the screenshots.
 
 ![image](https://user-images.githubusercontent.com/83407557/161574988-faf3c1c6-6625-47cf-ad47-70933d97f7e2.png)
+
+After manually messing around with functionality I can determine that the webapp is not connected to the internet, as any attempt to ping myself or any other internet facing ip address is met with 100% packet loss:
+
+Just as example trying to ping example.com:
+
+1. Getting ipv4 address of example.com from kali
+![image](https://user-images.githubusercontent.com/83407557/161576640-71832a69-3d2b-433a-8a6f-9b9861a832c4.png)
+
+2. Pinging that ipv4 from kali (to show what a box that is connected looks like)
+
+![image](https://user-images.githubusercontent.com/83407557/161576870-f0d9be61-1f61-47ca-9559-4f86f2d11160.png)
+
+3. Doing the same from looking glass to verify 100% packet loss
+
+![image](https://user-images.githubusercontent.com/83407557/161577155-cc56b1ba-a248-4590-b651-ded46cbdbd26.png)
