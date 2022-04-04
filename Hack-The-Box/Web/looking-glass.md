@@ -48,6 +48,7 @@ After manually messing around with functionality I can determine that the webapp
 Just as example trying to ping example.com:
 
 1. Getting ipv4 address of example.com from kali
+
 ![image](https://user-images.githubusercontent.com/83407557/161576640-71832a69-3d2b-433a-8a6f-9b9861a832c4.png)
 
 2. Pinging that ipv4 from kali (to show what a box that is connected looks like)
@@ -57,3 +58,42 @@ Just as example trying to ping example.com:
 3. Doing the same from looking glass to verify 100% packet loss
 
 ![image](https://user-images.githubusercontent.com/83407557/161577155-cc56b1ba-a248-4590-b651-ded46cbdbd26.png)
+
+## Building an exploit
+
+Seeing as that the server seems to be running system commands, I need to see if I can break out of the intended ping or traceroute commands and run my own.
+
+### POC
+
+Again using kali to show what I am attempting to do, I need to write a one liner that will both ping and then also run another command. I will us the uname command in linux to try and identify the underlying OS. When run by itself it looks like this:
+
+
+![image](https://user-images.githubusercontent.com/83407557/161585460-b734416a-3681-4622-9c93-08943276940b.png)
+
+I can also tell that the server is not just running ping by itself, as it always returns four packets. So even though it just says "ping" the actual command is going to be closer to "ping -c4 -w3" so that is what I am going to use locally to get the output as close to the server's as I can. To make bash run another command after the first I can use a semicolon ";". With this in-mind the entire command to ping 8.8.8.8 four times and then run the uname command on kali:
+
+```bash
+ping -c4 -w3 8.8.8.8;uname
+```
+![image](https://user-images.githubusercontent.com/83407557/161586497-8b21c91b-7ee8-4b8a-99b1-678d2e982dcf.png)
+
+As you can see after running the ping command, at the very end of the output it also says "Linux". Now I can see if I can get the same output on looking glass, by adding a semicolon and the uname command to the ip address just as above:
+
+```
+8.8.8.8;uname
+```
+
+![image](https://user-images.githubusercontent.com/83407557/161587002-cc215b51-2688-4759-91e6-178e85fb4a2e.png)
+
+Even though the ping command returned 100% packet loss, it can be seen the that uname command returned as well. However before I build this into a working exploit, I want to make it a little faster. Each time looking glass trys to ping it takes serveral seconds, which will add up if I am trying to run commands. To counter this, I will try my next manual command against localhost(127.0.0.1) to see if it speeds up the ping command. I want to get all of the OS info using the uname -a command. Using the same method as before:
+
+```
+127.0.0.1;uname -a
+```
+
+![image](https://user-images.githubusercontent.com/83407557/161587809-785d43cd-71f2-429c-a370-4bd454fe6a1b.png)
+
+and Bingo! was able to get it to work marginally faster and also now know the kernel info. With this I can build my actual exploit.
+
+### Making a bash script
+
