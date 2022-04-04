@@ -139,7 +139,7 @@ hostname command:
 ![image](https://user-images.githubusercontent.com/83407557/161611487-9d5c76d1-8d84-4f36-b8c4-f343f36e64ab.png)
 ![image](https://user-images.githubusercontent.com/83407557/161611582-3fcec2f5-3a51-4a46-b98a-c0b34e7f06d3.png)
 
-## Getting a reverse shell.
+## Getting the flag.
 
 Using the script developed in the last section the following additional information was discovered: we are in the www directory, and the only other file in the directory is index.php, which we are now able to flush out and view the source code.
 
@@ -164,3 +164,16 @@ function runTest($test, $ip_address)
 
 ?>
 ```
+
+Normally my next step would be to enumerate the software on the target to see if there is anything I could use to get a reverse shell. However, since I can now see the source code, I am pretty sure that a rev shell will not work as this box doesn't seem to be able to connect back to me. However since I already have a webshell script, I should have all I need to find the flag. First I want to get an idea of the filesystem.
+
+![image](https://user-images.githubusercontent.com/83407557/161617360-4308ea8b-f8b6-4bb1-90ee-e73b9bcf03e7.png)
+
+the following directory sticks out
+![image](https://user-images.githubusercontent.com/83407557/161617095-3bc1a01f-fc51-4342-83f7-36603c1f678a.png)
+
+Using cat to read the contents
+![image](https://user-images.githubusercontent.com/83407557/161617475-dd88f9f5-75d5-4cbd-ac90-ea1918d14f2d.png)
+and I get the flag
+![image](https://user-images.githubusercontent.com/83407557/161617573-af5706d8-2172-48b5-b60e-2d5c0f9b5c27.png)
+
