@@ -42,6 +42,36 @@ PORT      STATE SERVICE VERSION
 
 After finding login and account creation pages, I will start running a dirbusting scan in the background, while manually exploring the functions of the webapp. However while viewing the page I will be using burpsuite to proxy and potentially modify my requests and server responses.
 
+### Dirbust
+
+```bash
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Fri Apr  8 10:33:20 2022
+URL_BASE: http://46.101.61.42:30734/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4613                                                          
+
+---- Scanning URL: http://46.101.61.42:30734/ ----
++ http://46.101.61.42:30734/login (CODE:200|SIZE:4070)                                                                                                                                                                                      
++ http://46.101.61.42:30734/register (CODE:200|SIZE:3882)                                                                                                                                                                                   
+==> DIRECTORY: http://46.101.61.42:30734/static/                                                                                                                                                                                            
+==> DIRECTORY: http://46.101.61.42:30734/views/                                                                                                                                                                                             
+                                                                                                                                                                                                                                            
+---- Entering directory: http://46.101.61.42:30734/static/ ----
+==> DIRECTORY: http://46.101.61.42:30734/static/css/                                                                                                                                                                                        
+==> DIRECTORY: http://46.101.61.42:30734/static/fonts/                                                                                                                                                                                      
+==> DIRECTORY: http://46.101.61.42:30734/static/images/                                                                                                                                                                                     
+==> DIRECTORY: http://46.101.61.42:30734/static/js/                                                                                                                                                                                         
+==> DIRECTORY: http://46.101.61.42:30734/static/vendor/     
+```
+
 ### Creating a user account
 
 ![image](https://user-images.githubusercontent.com/83407557/162458853-89d7517a-f248-4b80-964f-68ee79c6cbae.png)
