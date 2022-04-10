@@ -1,7 +1,11 @@
-# Write-ups
-My publicly disclosed write-ups from labs and CTF events.
+# Write-ups | By Herman Detwiler
+*My publicly disclosed write-ups from labs and CTF events.*
+---
+# Example scripts
 
 ## [Programming](https://github.com/hermh4cks/Write-ups/tree/main/Programing-Examples)
+
+# CTF
 
 ## [picoCTF](https://github.com/hermh4cks/Write-ups/tree/main/picoCTF)
 
