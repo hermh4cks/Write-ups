@@ -4,4 +4,32 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 # Server side Attacks
 ---
-## 1.SQL injection
+## 1. SQL injection
+## 2. Authentication
+## 3. Directory traversal 
+## 4. Command injection
+## 5. Business logic vulnerabilities
+## 6. Information disclosure
+## 7. Access control
+## 8. File upload vulnerabilities
+## 9. Server-side request forgery(SSRF)
+## 10 XXE injection
+
+# Client side attacks
+---
+## 11. Cross-site scripting (XSS)
+## 12. Cross-site request forgery(CSRF)
+## 13. Cross-origin resource sharing(CORS)
+## 14. Clickjacking
+## 15. DOM-based vulnerabilities
+## 16. WebSockets
+
+# Advanced Topics
+---
+## 17. Insecure deserialization
+## 18. Server-side template injection
+## 19. Web cache poisoning
+## 20. HTTP Host header attacks
+## 21. HTTP reuest smuggling
+## 22. OAuth authentication
+
