@@ -6,7 +6,7 @@
 
 # CTF/LABs
 
-## [Portswigger](temp)
+## [Portswigger](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger)
 
 ## [picoCTF](https://github.com/hermh4cks/Write-ups/tree/main/picoCTF)
 
