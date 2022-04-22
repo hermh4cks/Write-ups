@@ -5,7 +5,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 # Server side Attacks
 ---
 ## 1. SQL injection
-[--SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
+[-- SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
 ## 2. Authentication
 ## 3. Directory traversal 
 ## 4. Command injection
