@@ -25,7 +25,7 @@ I can also see that there is a GET request for the specific catagory, in this ca
 
 ![image](https://user-images.githubusercontent.com/83407557/164746079-de7c7fba-d3aa-4b3d-91f9-807fb3c61e60.png)
 
-# Exploiting SQLi
+# Hidden product id
 
 Our end goal is to veiw all products, not just the ones that are being returned to us with the web browser normally. One way to check products that aren't normally displayed, now that the application has been mapped out, is by editing the get requests when viewing product id pages:
 
@@ -33,4 +33,21 @@ Burp intruder can be used in this way to enumerate all products with a sniper at
 ![image](https://user-images.githubusercontent.com/83407557/164749907-b4e8cfd6-9cd1-497c-87e8-628994452a8f.png)
 
 
+For example, even with the view all option before there were no product ids under 6. with this attack it can be seen that while id 5 is indeed missing, 1-4 are infact still on the server:
 
+![image](https://user-images.githubusercontent.com/83407557/164750357-4ff0555c-a42a-4bdc-9a8d-e5b5f6c99115.png)
+
+# Exploiting SQLi
+
+Having verified the existance of hidden products, the next step is to see if an sqli vulnerability exists that can display all of these products on the main page. We are given this hint as to what the source code looks like for this filter function:
+
+
+```sql
+SELECT * FROM products WHERE category = 'Gifts' AND released = 1
+```
+We say also that Gifts is actually submitted as a GET request, something we have control over. So let's try and break the logic using a single quote to make that actual input the server is trying to execute:
+
+
+```sql
+SELECT * FROM products WHERE category = 'Gifts'' AND released = 1
+```
