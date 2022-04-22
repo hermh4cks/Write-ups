@@ -73,3 +73,14 @@ And then with adding a single quote to our request
 
 ![image](https://user-images.githubusercontent.com/83407557/164751825-6df5036f-d931-4c69-b4c4-65494878f2f1.png)
 
+commenting out to see if error goes away
+
+![image](https://user-images.githubusercontent.com/83407557/164752873-5a688161-5100-454a-9de2-9d39264120cc.png)
+
+Sending a conditionally true statement
+
+![image](https://user-images.githubusercontent.com/83407557/164752956-8184b4e6-3a89-40f9-9d89-cc79f6b2cf79.png)
+
+After getting a protocol error from the server, Url encoding the GET request and solving the lab:
+
+![image](https://user-images.githubusercontent.com/83407557/164753150-9466cd5e-f408-4b26-9e2d-e01fff03068e.png)
