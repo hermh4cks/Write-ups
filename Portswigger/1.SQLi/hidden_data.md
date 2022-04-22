@@ -27,3 +27,10 @@ I can also see that there is a GET request for the specific catagory, in this ca
 
 # Exploiting SQLi
 
+Our end goal is to veiw all products, not just the ones that are being returned to us with the web browser normally. One way to check products that aren't normally displayed, now that the application has been mapped out, is by editing the get requests when viewing product id pages:
+
+Burp intruder can be used in this way to enumerate all products with a sniper attack going through numbers 1-25:
+![image](https://user-images.githubusercontent.com/83407557/164749907-b4e8cfd6-9cd1-497c-87e8-628994452a8f.png)
+
+
+
