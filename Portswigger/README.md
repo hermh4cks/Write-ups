@@ -10,6 +10,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [-- SQL injection vulnerability allowing login bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/login_bypass.md)
 
+[-- SQL injection UNION attack, determining the number of columns returned by the query]()
+
 ## 2. Authentication
 ## 3. Directory traversal 
 ## 4. Command injection
