@@ -4,15 +4,18 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 # Server side Attacks
 ---
-## 1. [SQL injection](https://portswigger.net/web-security/sql-injection)
+## 1. [SQL injection]([https://portswigger.net/web-security/sql-injection](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi))
 
-[-- SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
+[Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
 
-[-- SQL injection vulnerability allowing login bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/login_bypass.md)
+[Lab: SQL injection vulnerability allowing login bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/login_bypass.md)
 
-[-- SQL injection UNION attack, determining the number of columns returned by the query](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/num_of_col.md)
+[Lab: SQL injection UNION attack, determining the number of columns returned by the query](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/num_of_col.md)
 
-[--SQL injection UNION attack, finding a column containing text]((https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/column_with_txt.md))
+[Lab: SQL injection UNION attack, finding a column containing text]((https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/column_with_txt.md))
+
+
+[Lab: SQL injection UNION attack, retrieving data from other tables](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/data_from_other_tables.md)
 
 ## 2. Authentication
 ## 3. Directory traversal 
