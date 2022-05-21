@@ -6,6 +6,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ---
 ## 1. [SQL injection](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi)
 
+[Cheatsheat: SQL injection](https://portswigger.net/web-security/sql-injection/cheat-sheet)
+
 [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
 
 [Lab: SQL injection vulnerability allowing login bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/login_bypass.md)
