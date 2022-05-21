@@ -12,7 +12,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: SQL injection UNION attack, determining the number of columns returned by the query](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/num_of_col.md)
 
-[Lab: SQL injection UNION attack, finding a column containing text]((https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/column_with_txt.md))
+[Lab: SQL injection UNION attack, finding a column containing text](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/column_with_txt.md)
 
 
 [Lab: SQL injection UNION attack, retrieving data from other tables](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/data_from_other_tables.md)
