@@ -29,6 +29,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: SQL injection attack, listing the database contents on Oracle](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_content_Oracle.md)
 
+[Lab: Blind SQL injection with conditional responses](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/Blind_with_conditional_responses.md)
+
 ## 2. Authentication
 ## 3. Directory traversal 
 ## 4. Command injection
