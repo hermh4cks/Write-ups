@@ -85,4 +85,21 @@ Now that I know that I want to look at the table users_mwjhvu I can list the col
 
 # STEP 6: Get the rows from the users table
 
-In order to get the information from another table with a union statement I need the table name(users_mwjhvu) and the column names (
+In order to get the information from another table with a union statement I need the table name(users_mwjhvu) and the column names (username_gntgua, password_edgpza). Since I also know that both columns return string data, I can make my SQL query like the following:
+
+```sql
+'UNION SELECT username_gntgua, password_edgpza FROM users_mwjhvu--
+```
+
+Which gives me the username and password of everyone in the database:
+
+![image](https://user-images.githubusercontent.com/83407557/169706144-72a36dcb-d364-40a0-84a5-452b19f0d9a0.png)
+
+---
+
+# STEP 7 Log in as Administrator
+
+since I found the password was oj29mbkl6pd8ff4ddswx i can now use that to login and solve the lab.
+
+![image](https://user-images.githubusercontent.com/83407557/169706200-1205dac1-1ec2-40d9-9be9-abf13740585e.png)
+
