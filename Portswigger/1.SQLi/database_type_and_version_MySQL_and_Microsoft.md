@@ -2,10 +2,10 @@
 
 ## Description
 
-* This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query. *
+* This lab contains an SQL injection vulnerability in the product category filter. You can use a UNION attack to retrieve the results from an injected query. 
 
-* To solve the lab, display the database version string. *
-
+* To solve the lab, display the database version string. 
+* 
 ## HINT
 
 You can find some useful payloads on our [SQL injection cheat sheet.](https://portswigger.net/web-security/sql-injection/cheat-sheet)
