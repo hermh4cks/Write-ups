@@ -23,6 +23,10 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: SQL injection attack, querying the database type and version on Oracle](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_type_and_version_Oracle.md)
 
+[Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_type_and_version_MySQL_and_Microsoft.md)
+
+
+
 ## 2. Authentication
 ## 3. Directory traversal 
 ## 4. Command injection
