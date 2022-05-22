@@ -19,6 +19,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: SQL injection UNION attack, retrieving data from other tables](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/data_from_other_tables.md)
 
+[Lab: SQL injection UNION attack, retrieving multiple values in a single column](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/mult_values_single_column.md)
+
 ## 2. Authentication
 ## 3. Directory traversal 
 ## 4. Command injection
