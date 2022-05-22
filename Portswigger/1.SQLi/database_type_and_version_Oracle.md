@@ -101,4 +101,4 @@ UNION SELECT version, banner FROM v$instance, v$version
 ```
 ![image](https://user-images.githubusercontent.com/83407557/169703411-9bcf2526-3526-4523-a3aa-050bd0ba1325.png)
 
-Wich solves the lab.
+Which solves the lab.
