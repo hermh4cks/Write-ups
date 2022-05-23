@@ -67,7 +67,7 @@ until
 
 ![image](https://user-images.githubusercontent.com/83407557/169718920-b66bd139-2021-47ec-a95a-0466775a0b48.png)
 
-Letting me know that the administrator's password is 19 character's long
+Letting me know that the administrator's password is 20 character's long
 
 # STEP 4: Using subsrings to build the password
 
