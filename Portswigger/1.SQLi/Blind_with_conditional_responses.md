@@ -81,22 +81,40 @@ So to see if the first letter is an a:
 ' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='a
 ```
 
-I can create this attack using burp intruder with a cluster bomb payload:
+and to see if the second letter is an a
 
-![image](https://user-images.githubusercontent.com/83407557/169719608-ae2e5acf-584f-42a2-a8e7-565c77fbefce.png)
-
-I also use grep extract on the response message to look for the Welcome back! response
-
-![image](https://user-images.githubusercontent.com/83407557/169719671-513fdf25-54ad-4264-8a20-c3638b14dbf3.png)
-
-My first payload will be numbers 1-19 for each character in the password
-
-![image](https://user-images.githubusercontent.com/83407557/169719735-a307fb74-4aa4-4620-9925-326932ab7c36.png)
-
-For the character payload, I add all letter and numbers in a single list
-
-![image](https://user-images.githubusercontent.com/83407557/169719925-84370e25-1c3a-4562-9a24-a6d3da15ca1c.png)
-
-I then let the payload run, and wait a few minutes(this attack can take a very long time, if like me you are using the community addition) for it to complete:
+```sql
+' AND (SELECT SUBSTRING(password,2,1) FROM users WHERE username='administrator')='a
+```
 
 
+
+
+if the first letter is not an a, no error message will show up. With burp intruder I can iterate through all letters and numbers until I get the welcome back message:
+
+![image](https://user-images.githubusercontent.com/83407557/169726974-e9a22d24-4e04-4f88-9212-e20b937967f3.png)
+
+![image](https://user-images.githubusercontent.com/83407557/169727014-af681e32-ae18-452c-bbc3-3186d8579c10.png)
+
+and flagging the message:
+
+![image](https://user-images.githubusercontent.com/83407557/169727041-58dfc1bf-575b-436f-a01c-6840db745f42.png)
+
+I can see that the first letter is a d:
+
+![image](https://user-images.githubusercontent.com/83407557/169727108-9a8bc96f-c2bf-47c5-8761-97e6d6dc1e45.png)
+
+the second letter is an s:
+
+![image](https://user-images.githubusercontent.com/83407557/169727227-4d8a19e9-4088-4c08-87b9-4ceeecbbf313.png)
+
+
+until I build out all 20 characters by running this attack for all 19 characters in the password:
+
+![image](https://user-images.githubusercontent.com/83407557/169728646-250de74d-3962-40fc-8d7b-670da0e8a730.png)
+
+ds42d4fv8kw58ddpoq70
+
+which allows me to log in
+
+![image](https://user-images.githubusercontent.com/83407557/169729271-e9c4c0e9-e1a8-4056-94e8-dd1bdd20787b.png)
