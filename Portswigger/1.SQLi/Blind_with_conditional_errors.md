@@ -66,7 +66,7 @@ So with that mind, I will need to concatonate this onto my payload like the foll
 
 and it acts as expected.
 
-## STEP 3 building an attack payload
+## STEP 3 Crafting a True select statement that causes an error
 
 since the goal is to guess each character of the administrators password, we need to make it so that if our select statement is true, the server will throw an error:
 
@@ -88,3 +88,15 @@ However with the following because 1 does not equal 2, the sever will select any
 ![image](https://user-images.githubusercontent.com/83407557/169855765-b282598e-32da-4d1e-9325-dac145575ca6.png)
 
 
+# STEP 4 Creating string for burp-intruder payload to determine password length
+
+
+Since we know the table name is users and the username column will be administrator, we need to dig out the password column for that entry:
+
+I want to test if the password is greater than a given number, if it is: the server should error. If the password is smaller than the given number, the server should not error. I will know how long the password is based on the highest given number that still errors.
+
+The initial string will just test if the password is more that 1 character long. I will then send it to burp intruder
+
+```sql
+'||(SELECT CASE WHEN LENGTH(password)>1 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')--
+```
