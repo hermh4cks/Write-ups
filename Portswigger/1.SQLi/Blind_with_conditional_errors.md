@@ -148,4 +148,14 @@ the second is a brute force with all lowercase letters and the numbers 0-9.
 As you can see this will create a lot of requests, so go get a coffee at the farther place that is a little more fancy (if you are on burp community like me). However we just are interested in the 20 responses that are errors, so after a nap, we should have the password.
 
 
+![image](https://user-images.githubusercontent.com/83407557/169945907-d5a14be1-0a77-4cd4-a2db-209fc6c8a9a7.png)
 
+with this I can see the password is llp16sqnu3uzoftvkg5r
+
+# STEP 6 Login as administrator user with password llp16sqnu3uzoftvkg5r
+
+![image](https://user-images.githubusercontent.com/83407557/169946340-d104b093-c7d0-4725-82cd-4e3c87e0076b.png)
+
+
+redirecting to:
+![image](https://user-images.githubusercontent.com/83407557/169946300-ab2091d6-9185-4d09-bb22-6ea06cd8a496.png)
