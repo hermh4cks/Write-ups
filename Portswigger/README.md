@@ -46,6 +46,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 # Client side attacks
 ---
 ## 11. Cross-site scripting (XSS)
+[Lab: Reflected XSS into HTML context with nothing encoded]()
 ## 12. Cross-site request forgery(CSRF)
 ## 13. Cross-origin resource sharing(CORS)
 ## 14. Clickjacking
