@@ -35,7 +35,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 ## 2. Authentication
 
-### 2.1 Password-based login
+### 2.1 Authentication: Password-based login
 
 [Lab: Username enumeration via different responses](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger/2.authentication)
 
