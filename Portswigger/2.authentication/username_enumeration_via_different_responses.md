@@ -11,6 +11,5 @@
 
 To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page.
 
-===
+---
 # Step 1 Gather a normal login attempt using burp
-
