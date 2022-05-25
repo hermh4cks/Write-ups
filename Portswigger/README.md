@@ -34,6 +34,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 [Lab: Blind SQL injection with conditional errors](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/Blind_with_conditional_errors.md)
 
 ## 2. Authentication
+
+[Lab: Username enumeration via different responses](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger/2.authentication)
+
 ## 3. Directory traversal 
 ## 4. Command injection
 ## 5. Business logic vulnerabilities
@@ -46,7 +49,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 # Client side attacks
 ---
 ## 11. Cross-site scripting (XSS)
+
 [Lab: Reflected XSS into HTML context with nothing encoded](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Reflected_XSS_no_encoding.md)
+
 ## 12. Cross-site request forgery(CSRF)
 ## 13. Cross-origin resource sharing(CORS)
 ## 14. Clickjacking
