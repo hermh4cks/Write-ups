@@ -18,6 +18,7 @@ To add to the challenge, the lab also implements a form of IP-based brute-force 
 ## Background info I found usefull
 
 From [Portswigger](https://portswigger.net/web-security/authentication/password-based) on timing attacks:
+
 *Response times: If most of the requests were handled with a similar response time, any that deviate from this suggest that something different was happening behind the scenes. This is another indication that the guessed username might be correct. For example, a website might only check whether the password is correct if the username is valid. This extra step might cause a slight increase in the response time. This may be subtle, but an attacker can make this delay more obvious by entering an excessively long password that the website takes noticeably longer to handle.*
 
 From Sjoerd Langkemper's [web application security blog](https://www.sjoerdlangkemper.nl/2017/03/01/bypass-ip-block-with-x-forwarded-for-header/)
