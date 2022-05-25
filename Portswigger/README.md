@@ -39,6 +39,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: Username enumeration via different responses](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger/2.authentication)
 
+[Lab: Username enumeration via subtly different responses](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/username_enumeration_via_subtly_different_responses.md)
+
 ## 3. Directory traversal 
 ## 4. Command injection
 ## 5. Business logic vulnerabilities
