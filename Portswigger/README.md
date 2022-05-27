@@ -45,6 +45,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 ### 2.2 Authentication: Multi-factor
 
+[Lab: 2FA simple bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/2FA_simple_bypass.md)
 
 ## 3. Directory traversal 
 ## 4. Command injection
