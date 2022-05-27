@@ -99,6 +99,7 @@ One of these requests returns a redirect, letting me know I have found the usern
 # Step 4: login as found user
 
 
+![image](https://user-images.githubusercontent.com/83407557/170727974-f6a0dd57-a8db-4414-a490-a956402666cb.png)
 
 
 
