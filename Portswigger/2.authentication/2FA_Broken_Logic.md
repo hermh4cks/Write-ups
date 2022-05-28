@@ -33,7 +33,7 @@ I then get sent to my account.
 
 # Step 3: Plan the attack
 
-Whereas the last lab I was able to skip the pin step, this time because of the verify cookie being sent to /login2 perhaps /login1 can be bypassed. I can get a code to generate for carlos, it should be easy to then brute force as it is only 4 characters long.
+Whereas the last lab I was able to skip the pin step, this time because of the verify cookie being sent to /login2 perhaps /login1 can be bypassed. I can get a code to generate for carlos, it should be easy to then brute force as it is only 4 characters long. The other thing to keep in mind is the HINT, I think it is telling us that even if our attack takes a long time, the session cookie that we get should remain valid. Just a thought though.
 
 # Step 4 Create a mfa code for the carlos user
 
