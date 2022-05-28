@@ -52,3 +52,12 @@ before setting up payload positions, I change the wiener and session cookies to 
 Then to create the payload we will create a brute-force with all possible 4 digit numbers.
 
 ![image](https://user-images.githubusercontent.com/83407557/170806790-a6e4cf54-246c-4d27-98f1-d6f2a61dc6d9.png)
+
+Of the 10,000 requests, one response is the right 4 digit mfa code:
+
+![image](https://user-images.githubusercontent.com/83407557/170834591-71cc6f3e-57af-469d-9ddf-260d7aecff16.png)
+
+Right clicking and sending that response to my browser, I am now logged in as carlos and solve the lab.
+
+![image](https://user-images.githubusercontent.com/83407557/170834619-8be4a708-6659-4a1f-8a02-0bd916dc0f18.png)
+
