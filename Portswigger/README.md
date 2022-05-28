@@ -1,6 +1,28 @@
 https://portswigger.net/
 
 Portswigger Academy is split into three sections. Server side attacks, Client side attacks, and advanced attacks. The entire course is focused on webapp hacking. It is designed to be completed using burp suite web proxy, however as at the time of writing this I am also preparing for my OSCP exam, I am going to be trying to do the labs using python after each completion as an appended section of the write-up. Each of those write-ups can be found linked within this readme file. 
+
+# INDEX
+
++ [Server Side Attacks](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#server-side-attacks)
+  
+  + [1. SQL injection](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#1-sql-injection)
+  + [2. Authentication](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#2-authentication)
+  + [3. Directory traversal](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#3-directory-traversal)
+  + [4. Command injection](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#4-command-injection)
+  + [5. Business logic vulnerabilities](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#5-business-logic-vulnerabilities)
+  + [6. Information disclosure](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#6-information-disclosure)
+  + [7. Access control](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#7-access-control)
+  + [8. File upload vulnerabilities](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#8--file-upload-vulnerabilities)
+  + [9. Server-side request forgery(SSRF)](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#9-server-side-request-forgeryssrf)
+  + [10. XXE injection](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#10-xxe-injection)
+
++ [Client Side Attacks](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#client-side-attacks)
+
+
++ [Advanced Topics](https://github.com/hermh4cks/Write-ups/edit/main/Portswigger/README.md#advanced-topics)
+
+
 # Server side Attacks
 ---
 ## 1. [SQL injection](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi)
