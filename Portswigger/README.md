@@ -25,13 +25,17 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 # Server side Attacks
 ---
-## 1. [SQL injection](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi)
+## 1. SQL injection
+
+### 1.1 SQLi
 
 [Cheatsheat: SQL injection](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
 [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
 
 [Lab: SQL injection vulnerability allowing login bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/login_bypass.md)
+
+### 1.2 Union Attacks
 
 [Lab: SQL injection UNION attack, determining the number of columns returned by the query](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/num_of_col.md)
 
@@ -42,6 +46,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: SQL injection UNION attack, retrieving multiple values in a single column](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/mult_values_single_column.md)
 
+### 1.3 Examining the Database
+
 [Lab: SQL injection attack, querying the database type and version on Oracle](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_type_and_version_Oracle.md)
 
 [Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_type_and_version_MySQL_and_Microsoft.md)
@@ -49,6 +55,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 [Lab: SQL injection attack, listing the database contents on non-Oracle databases](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/list_tables_non_Oracle.md)
 
 [Lab: SQL injection attack, listing the database contents on Oracle](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_content_Oracle.md)
+
+### 1.4 Blind SQLi
 
 [Lab: Blind SQL injection with conditional responses](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/Blind_with_conditional_responses.md)
 
