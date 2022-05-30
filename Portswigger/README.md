@@ -13,7 +13,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [5. Business logic vulnerabilities](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#5-business-logic-vulnerabilities)
   + [6. Information disclosure](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#6-information-disclosure)
   + [7. Access control](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#7-access-control)
-  + [8. File upload vulnerabilities](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#8--file-upload-vulnerabilities)
+  + [8. File upload vulnerabilities](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#8-file-upload-vulnerabilities)
   + [9. Server-side request forgery(SSRF)](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#9-server-side-request-forgeryssrf)
   + [10. XXE injection](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#10-xxe-injection)
 
@@ -86,6 +86,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 6. Information disclosure
 ## 7. Access control
 ## 8. File upload vulnerabilities
+
+[Lab: Remote code execution via web shell upload](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger/8.File_Upload_Vulns)
+
 ## 9. Server-side request forgery(SSRF)
 ## 10 XXE injection
 
