@@ -35,3 +35,5 @@ A web shell is a malicious script that enables an attacker to execute arbitrary 
  ```
 GET /example/exploit.php?command=id HTTP/1.1
 ```
+
+# Step 1: Map file upload functionality
