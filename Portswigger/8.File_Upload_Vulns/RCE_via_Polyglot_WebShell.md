@@ -30,3 +30,7 @@ On outputting to a new file
 
 ![image](https://user-images.githubusercontent.com/83407557/171235390-3415000e-5037-491e-8608-3ee7c7e6d07d.png)
 
+# Step 1 Map out the normal functionality of the image upload
+
+
+
