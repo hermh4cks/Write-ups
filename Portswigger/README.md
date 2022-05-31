@@ -87,7 +87,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 7. Access control
 ## 8. File upload vulnerabilities
 
-[Lab: Remote code execution via web shell upload](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger/8.File_Upload_Vulns)
+[Lab: Remote code execution via web shell upload](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/RCE_via_webshell.md)
 
 ## 9. Server-side request forgery(SSRF)
 ## 10 XXE injection
