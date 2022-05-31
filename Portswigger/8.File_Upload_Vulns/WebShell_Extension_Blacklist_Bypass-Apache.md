@@ -36,6 +36,8 @@ Similarly, developers can make directory-specific configuration on IIS servers u
 
 Web servers use these kinds of configuration files when present, but you're not normally allowed to access them using HTTP requests. However, you may occasionally find servers that fail to stop you from uploading your own malicious configuration file. In this case, even if the file extension you need is blacklisted, you may be able to trick the server into mapping an arbitrary, custom file extension to an executable MIME type. 
 
+---
+
 # 1 Map out image upload functionality
 
 I can upload an image without a server error (I take note that is an apache server running on ubuntu)
@@ -46,15 +48,13 @@ However I get the following error when trying to upload my php file:
 
 ![image](https://user-images.githubusercontent.com/83407557/171209460-d0231dd8-071a-4f8c-985e-479e3f463f8b.png)
 
-# 2 upload a new .htaccess file to load a directory-specific configuration for /files/avatars/
+# Step 2 upload a new .htaccess file to load a directory-specific configuration for /files/avatars/
 
 I will create a new file on the server and call it .htaccess and it will contain the following directive to execute any .hacked file exetensions as PHP files.
 
 ```
 AddType application/x-httpd-php .hacked
 ```
-
-![image](https://user-images.githubusercontent.com/83407557/171210402-d115c52f-cadc-416d-aba3-99b5ec95bff4.png)
 
 I then use the upload image funtion to upload my php webshell again, but this time changing the values
 
