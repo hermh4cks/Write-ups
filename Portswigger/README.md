@@ -91,6 +91,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: Web shell upload via Content-Type restriction bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_Content-Type_Restriction_Bypass.md)
 
+[Lab: Web shell upload via path traversal](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_Upload_Directory_Traversal.md)
+
 ## 9. Server-side request forgery(SSRF)
 ## 10 XXE injection
 
