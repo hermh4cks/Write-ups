@@ -85,6 +85,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 5. Business logic vulnerabilities
 ## 6. Information disclosure
 ## 7. Access control
+
+[Lab: Unprotected admin functionality](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/7.Access_Control/unprotected_admin_functionality.md)
+
 ## 8. File upload vulnerabilities
 
 [Lab: Remote code execution via web shell upload](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/RCE_via_webshell.md)
