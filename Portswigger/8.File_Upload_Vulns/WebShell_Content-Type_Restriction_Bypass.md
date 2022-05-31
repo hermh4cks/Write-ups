@@ -42,3 +42,54 @@ With this in mind, I should keep an eye out for a post request like this while m
 
 # Step 1 Mapping the image upload functionality.
 
+I see that I can post an image to the server much like I could in the last lab. And I can see where the server is saving my file.
+
+![image](https://user-images.githubusercontent.com/83407557/171187206-bff8ff4e-aa00-41da-a774-b26c42134adf.png)
+
+Also the post request looks much like the one in the portswigger tip example. With the multipart/form-data and content-type headers.
+
+![image](https://user-images.githubusercontent.com/83407557/171187078-de64a9f0-cb3a-4001-ad65-e51b83945640.png)
+
+# Step 2 Attempt to upload the same webshell as last lab
+get_secret.php
+```php
+<?php echo file_get_contents('/home/carlos/secret'); ?>
+```
+
+
+Trying to upload my get_secret.php, I get the following error:
+
+![image](https://user-images.githubusercontent.com/83407557/171187609-2ef13ac6-9b3b-46c7-bbc0-ef40f0bbf4bd.png)
+
+I can see the content-type in my request is indeed changed.
+
+![image](https://user-images.githubusercontent.com/83407557/171188150-96b685b0-f755-43b2-bb04-946feadaec95.png)
+
+
+# Step 3 intercept request and change value before sending to sever.
+
+I am going to re-attempt to submit my get_secret.php, however this time I will turn burp's intercept on first.
+
+![image](https://user-images.githubusercontent.com/83407557/171188509-405fd3af-6d6a-4c40-abed-4607b81abf97.png)
+
+I get the request and change the content-type to image/jpeg
+
+![image](https://user-images.githubusercontent.com/83407557/171188841-591e0189-d75c-4c31-a8e2-d62c0afb7c5d.png)
+
+
+And do not get the same error
+
+![image](https://user-images.githubusercontent.com/83407557/171188918-1c2ea0f9-100b-4804-8901-6c30ab5f3487.png)
+
+# Step 4 Execute websell on server
+
+I already know the directory structure from step 1, so now I just have to turn intercept back off, and go to /files/avatars/get_secret.php
+
+![image](https://user-images.githubusercontent.com/83407557/171189194-7a016b33-d77a-4073-aa67-efd0b7466dfe.png)
+
+# Step 5 Submit secret
+
+![image](https://user-images.githubusercontent.com/83407557/171189356-bda44624-db58-4490-83a9-71a458479b22.png)
+
+![image](https://user-images.githubusercontent.com/83407557/171189433-f581759f-3599-43f6-bafb-d6d379731fa1.png)
+
