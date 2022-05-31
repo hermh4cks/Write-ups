@@ -27,3 +27,13 @@ Other defenses involve stripping or replacing dangerous extensions to prevent th
 exploit.p.phphp
 ```
 This is just a small selection of the many ways it's possible to obfuscate file extensions. 
+
+---
+
+# Step 1 Map image upload funtionality
+
+When trying to upload my sample nana.jpeg avatar image I get the following error
+
+![image](https://user-images.githubusercontent.com/83407557/171216273-1a18d5d1-cd42-4706-a4dc-40d2f394f224.png)
+
+
