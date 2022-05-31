@@ -64,6 +64,20 @@ content from my php code to the above line
 
 ![image](https://user-images.githubusercontent.com/83407557/171211721-c68e7077-3138-49d9-a419-98cdc0f4e509.png)
 
+![image](https://user-images.githubusercontent.com/83407557/171211857-f6831e39-47c5-450f-a679-b9f77e0ffad9.png)
 
-![image](https://user-images.githubusercontent.com/83407557/171211469-679f9197-59ef-420d-8b45-a7f0b24dcb9b.png)
+# Step 3 upload getsecret.php but change the extension to .hacked
 
+get this response
+
+![image](https://user-images.githubusercontent.com/83407557/171212322-0dfac8cc-8274-4cd7-a6aa-a248931ae2bc.png)
+
+# Step 4 Execute PHP code at /files/avatars/get_secret.hacked
+
+![image](https://user-images.githubusercontent.com/83407557/171212554-e7c992fb-c7bb-423b-9868-0f58b41dcfb8.png)
+
+# Step 5 Submit secret
+
+![image](https://user-images.githubusercontent.com/83407557/171212658-f27db8d4-d86d-4ea6-b4a1-f3729cbf5397.png)
+
+![image](https://user-images.githubusercontent.com/83407557/171212726-aafe97c1-bb7b-4472-b425-eaa51945eaa2.png)
