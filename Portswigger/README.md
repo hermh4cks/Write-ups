@@ -102,6 +102,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: Remote code execution via polyglot web shell upload](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/RCE_via_Polyglot_WebShell.md)
 
+[Lab: Web shell upload via race condition](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_upload_via_race_condition.md)
+
 ## 9. Server-side request forgery(SSRF)
 ## 10 XXE injection
 
