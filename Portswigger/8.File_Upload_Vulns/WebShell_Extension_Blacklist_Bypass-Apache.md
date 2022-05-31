@@ -48,7 +48,7 @@ However I get the following error when trying to upload my php file:
 
 # 2 upload a new .htaccess file to load a directory-specific configuration for /files/avatars/
 
-I will create a new file on my computer and call it .htaccess and it will contain the following directive to execute any .hacked file exetensions as PHP files.
+I will create a new file on the server and call it .htaccess and it will contain the following directive to execute any .hacked file exetensions as PHP files.
 
 ```
 AddType application/x-httpd-php .hacked
@@ -56,4 +56,14 @@ AddType application/x-httpd-php .hacked
 
 ![image](https://user-images.githubusercontent.com/83407557/171210402-d115c52f-cadc-416d-aba3-99b5ec95bff4.png)
 
-I then use the upload image funtion to upload it
+I then use the upload image funtion to upload my php webshell again, but this time changing the values
+
+filename to .htaccess
+content-type to text/plain
+content from my php code to the above line
+
+![image](https://user-images.githubusercontent.com/83407557/171211721-c68e7077-3138-49d9-a419-98cdc0f4e509.png)
+
+
+![image](https://user-images.githubusercontent.com/83407557/171211469-679f9197-59ef-420d-8b45-a7f0b24dcb9b.png)
+
