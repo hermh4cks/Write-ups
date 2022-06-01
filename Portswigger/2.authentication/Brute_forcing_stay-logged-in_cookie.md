@@ -105,3 +105,33 @@ I then make sure to log-out of the wiener account to free up the session cookie 
 Opening the 200 response in my browser, I confirm that I have brute forced carlos' stay-logged-in cookie and solve the lab:
 
 ![image](https://user-images.githubusercontent.com/83407557/171439592-c1c07191-5c28-4cc3-a128-48a3b3c5c85e.png)
+
+
+# Alt to python using intruder.
+
+Okay, we are all learning here...I was more comfortable with the python method...however, after reading the solution that portswigger has I want to explain how intruder alone can be used to do this attack. I now am thinking that in the future I may just use burp because it now seems a little faster. That being said, I think knowing both ways is better than just knowing one.
+
+Knowing that structure of the cookie, I can log into my account and send the request to intruder. I then log out in my browser and go set up the attack.
+
+I set the stay-logged-in cookie as that payload possition
+
+![image](https://user-images.githubusercontent.com/83407557/171442219-4ae1d7ad-652d-4790-ab7a-0cec181846ab.png)
+
+But this time, for the payload I just add the passwords
+
+![image](https://user-images.githubusercontent.com/83407557/171442606-356fcdee-7bfc-4c4b-83dc-a784b7ff34fc.png)
+
+But then the magic is in the payload processing
+
+1. hash the password
+2. add the string 'carlos:'
+3. base64 encode the whole thing
+
+![image](https://user-images.githubusercontent.com/83407557/171442912-0d40df4e-5aa5-465c-8cf7-d90decac6e7d.png)
+
+As can be seen, the results are exactly the same as the original attack, but settup is muuuch faster (imo)
+
+![image](https://user-images.githubusercontent.com/83407557/171443329-166dae94-efb0-4327-ae5b-ec9362ade19b.png)
+
+
+
