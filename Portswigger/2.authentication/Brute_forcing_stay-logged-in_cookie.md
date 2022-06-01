@@ -55,5 +55,9 @@ This script, along with a file in the same directory called "passwords.txt" cont
 
 ![image](https://user-images.githubusercontent.com/83407557/171424308-3fcafff6-a955-4431-8a27-cee8cb623622.png)
 
+Just to verify it is working as intended I run the first through crackstation and see if I get back the original input:
+
+![image](https://user-images.githubusercontent.com/83407557/171424858-acd9cbde-035d-45c7-a826-118e38416899.png)
+
 
 # Step 4 add carlos username and base64 encode the entire thing
