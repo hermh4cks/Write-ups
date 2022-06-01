@@ -84,15 +84,15 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
   + [Lab: Brute-forcing a stay-logged-in cookie](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/Brute_forcing_stay-logged-in_cookie.md)
 
-+ ## 3. Directory traversal 
-+ ## 4. Command injection
-+ ## 5. Business logic vulnerabilities
-+ ## 6. Information disclosure
-+ ## 7. Access control
+## 3. Directory traversal 
+## 4. Command injection
+## 5. Business logic vulnerabilities
+## 6. Information disclosure
+## 7. Access control
 
   + [Lab: Unprotected admin functionality](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/7.Access_Control/unprotected_admin_functionality.md)
 
-+ ## 8. File upload vulnerabilities
+## 8. File upload vulnerabilities
 
   + [Lab: Remote code execution via web shell upload](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/RCE_via_webshell.md)
 
@@ -108,12 +108,12 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
   + [Lab: Web shell upload via race condition](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_upload_via_race_condition.md)
 
-+ ## 9. Server-side request forgery(SSRF)
-+ ## 10 XXE injection
+## 9. Server-side request forgery(SSRF)
+## 10 XXE injection
 
 # Client side attacks
 ---
-+ ## 11. Cross-site scripting (XSS)
+## 11. Cross-site scripting (XSS)
 
   + [Lab: Reflected XSS into HTML context with nothing encoded](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Reflected_XSS_no_encoding.md)
 
@@ -121,18 +121,18 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + [Lab: DOM XSS in document.write sink using source location.search](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
 
-+ ## 12. Cross-site request forgery(CSRF)
-+ ## 13. Cross-origin resource sharing(CORS)
-+ ## 14. Clickjacking
-+ ## 15. DOM-based vulnerabilities
-+ ## 16. WebSockets
+## 12. Cross-site request forgery(CSRF)
+## 13. Cross-origin resource sharing(CORS)
+## 14. Clickjacking
+## 15. DOM-based vulnerabilities
+## 16. WebSockets
 
 # Advanced Topics
 ---
-+ ## 17. Insecure deserialization
-+ ## 18. Server-side template injection
-+ ## 19. Web cache poisoning
-+ ## 20. HTTP Host header attacks
-+ ## 21. HTTP reuest smuggling
-+ ## 22. OAuth authentication
+## 17. Insecure deserialization
+## 18. Server-side template injection
+## 19. Web cache poisoning
+## 20. HTTP Host header attacks
+## 21. HTTP reuest smuggling
+## 22. OAuth authentication
 
