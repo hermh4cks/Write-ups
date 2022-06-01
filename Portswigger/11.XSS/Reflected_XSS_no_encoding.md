@@ -27,3 +27,7 @@ sending that as my search parameter I get a pop-up containing the domain of the 
 clicking okay on my pop-up I solve the lab
 
 ![image](https://user-images.githubusercontent.com/83407557/171457686-52d17eb4-fbd6-4f39-b243-78e5ae8f4a62.png)
+
+viewing the request and response in burp, it is easy to see why the XSS happened by looking at the response source
+
+![image](https://user-images.githubusercontent.com/83407557/171458012-e0db6a84-f00a-4e29-83ee-e50d79b1186a.png)
