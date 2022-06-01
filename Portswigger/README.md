@@ -80,6 +80,10 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Lab: 2FA bypass using a brute-force attack](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/Lab:%202FA_bypass_brute-force.md)
 
+### 2.3 Authentication: Other Mechanisms
+
+[Lab: Brute-forcing a stay-logged-in cookie](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/Brute_forcing_stay-logged-in_cookie.md)
+
 ## 3. Directory traversal 
 ## 4. Command injection
 ## 5. Business logic vulnerabilities
