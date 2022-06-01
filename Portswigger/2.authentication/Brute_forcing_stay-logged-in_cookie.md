@@ -89,4 +89,19 @@ The simplest way I found to transfer this list to burp is to use xclip in linux,
 
 ![image](https://user-images.githubusercontent.com/83407557/171432948-de910c68-18f0-436d-a61c-924f9476ff80.png)
 
+I then send the GET request for /my-account to intruder with the stay-logged-in cookie as the position and change the paramiter to carlos
 
+![image](https://user-images.githubusercontent.com/83407557/171439119-2d4f047e-41e5-4cc0-8765-715cc9914696.png)
+
+
+I then paste the cookies I made using the xclip method 
+
+![image](https://user-images.githubusercontent.com/83407557/171437971-1eef02a0-d181-4de0-a9fc-203f5a28fd70.png)
+
+I then make sure to log-out of the wiener account to free up the session cookie I will be using and launch the attack. One result stands out:
+
+![image](https://user-images.githubusercontent.com/83407557/171439378-c1cd21a9-10c7-4118-b2ff-a4b56d9565e3.png)
+
+Opening the 200 response in my browser, I confirm that I have brute forced carlos' stay-logged-in cookie and solve the lab:
+
+![image](https://user-images.githubusercontent.com/83407557/171439592-c1c07191-5c28-4cc3-a128-48a3b3c5c85e.png)
