@@ -115,6 +115,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ---
 ## 11. Cross-site scripting (XSS)
 
+[Portswigger XSS Cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
+
   + [Lab: Reflected XSS into HTML context with nothing encoded](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Reflected_XSS_no_encoding.md)
 
   + [Lab: Stored XSS into HTML context with nothing encoded](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Stored_XSS_into_html_no_encoding.md)
