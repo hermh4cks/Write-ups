@@ -1,6 +1,9 @@
 # Methodologies
+
+By Herman Detwiler 2022
+
 [back to write-ups](/Write-ups#write-ups--by-herman-detwiler)
-By Herman Detwiler
+
 
 A large part of this was taken from [Hacktricks](https://book.hacktricks.xyz/welcome/readme), I have combined the information I found the most useful on that site with my own OSCP notes. As well as any notes that I gather from doing CTFs. The intention of posting this up, is that writing it helps me learn, and in the hopes that reading it helps someone else. If it peaks your interest, reading only helps so much. Go out and try these on systems you own or on servers you have permission to.
 
