@@ -18,7 +18,12 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [10. XXE injection](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#10-xxe-injection)
 
 + [Client Side Attacks](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#client-side-attacks)
-
+	+ [11. Cross-site scripting (XSS)](#11-cross-site-scripting-xss)
+	+ [12. Cross-site request forgery(CSRF)]()
+	+ [13. Cross-origin resource sharing(CORS)]()
+	+ [14. Clickjacking]()
+	+ [15. DOM-based vulnerabilities]()
+	+ [16. WebSockets]()
 
 + [Advanced Topics](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#advanced-topics)
 
