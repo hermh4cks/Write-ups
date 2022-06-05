@@ -97,14 +97,20 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Brute-forcing a stay-logged-in cookie](2.authentication/Brute_forcing_stay-logged-in_cookie.md)
 
 ## 3. Directory traversal 
+[Back to Index](#index)
 ## 4. Command injection
+[Back to Index](#index)
 ## 5. Business logic vulnerabilities
+[Back to Index](#index)
 ## 6. Information disclosure
+[Back to Index](#index)
 ## 7. Access control
+[Back to Index](#index)
 
   + [Lab: Unprotected admin functionality](7.Access_Control/unprotected_admin_functionality.md)
 
 ## 8. File upload vulnerabilities
+[Back to Index](#index)
 
   + [Lab: Remote code execution via web shell upload](8.File_Upload_Vulns/RCE_via_webshell.md)
 
@@ -121,11 +127,13 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Web shell upload via race condition](8.File_Upload_Vulns/WebShell_upload_via_race_condition.md)
 
 ## 9. Server-side request forgery(SSRF)
+[Back to Index](#index)
 ## 10 XXE injection
-
+[Back to Index](#index)
 # Client side attacks
 ---
 ## 11. Cross-site scripting (XSS)
+[Back to Index](#index)
 
 [Portswigger XSS Cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 
@@ -140,17 +148,26 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: DOM XSS in jQuery anchor href attribute sink using location.search source](11.XSS/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
 
 ## 12. Cross-site request forgery(CSRF)
+[Back to Index](#index)
 ## 13. Cross-origin resource sharing(CORS)
+[Back to Index](#index)
 ## 14. Clickjacking
+[Back to Index](#index)
 ## 15. DOM-based vulnerabilities
+[Back to Index](#index)
 ## 16. WebSockets
-
+[Back to Index](#index)
 # Advanced Topics
 ---
 ## 17. Insecure deserialization
+[Back to Index](#index)
 ## 18. Server-side template injection
+[Back to Index](#index)
 ## 19. Web cache poisoning
+[Back to Index](#index)
 ## 20. HTTP Host header attacks
+[Back to Index](#index)
 ## 21. HTTP reuest smuggling
+[Back to Index](#index)
 ## 22. OAuth authentication
 
