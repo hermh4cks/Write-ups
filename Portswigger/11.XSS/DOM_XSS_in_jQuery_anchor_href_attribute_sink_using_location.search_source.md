@@ -37,7 +37,14 @@ Looking at feedback code, I see it looks like the portswigger example.
                      
 ```
 
-# Step 2 inject XSS into backLink
+# Step 2 inject unique string into attr via return path parameter, and see if it is reflected on page
+
+![image](https://user-images.githubusercontent.com/83407557/172050312-e9a85e66-b616-46b3-905c-5e2f50841131.png)
+
+![image](https://user-images.githubusercontent.com/83407557/172050344-f400804a-b370-4f62-b3e5-3122a8ae02f8.png)
+
+
+# Step 3 inject XSS into backLink
 
 As in the example I can do this via the url of my browser, replacing document.domain to document.cookie
 
