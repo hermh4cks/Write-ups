@@ -23,7 +23,7 @@ Finding Hosts and Assets
 	
 + ### [Host Discovery from inside a network](/Methodology/External/README.md#external-recon)
 
-+ ### [Asset Discovery from the internet](/External/README.md#external-recon)
++ ### [Asset Discovery from the internet](/Methodology/External/README.md#external-recon)
 
 ## 2. Network
 Getting a lay of the land
