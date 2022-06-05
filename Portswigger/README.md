@@ -26,7 +26,12 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 	+ [16. WebSockets]()
 
 + [Advanced Topics](#advanced-topics)
-
+	+ [17. Insecure deserialization](#17-insecure-deserialization)
+	+ [18. Server-side template injection](#18-server-side-template-injection)
+	+ [19. Web cache poisoning](#19-web-cache-poisoning)
+	+ [20. HTTP Host header attacks](#20-http-host-header-attacks)
+	+ [21. HTTP reuest smuggling](#21-http-request-smuggling)
+	+ [22. OAuth authentication](#22-oauth-authentication)
 
 # Server side Attacks
 ---
