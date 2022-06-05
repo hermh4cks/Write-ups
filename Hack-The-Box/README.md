@@ -1,5 +1,6 @@
-# Hack The Box Write-ups
+# [Hack The Box](https://app.hackthebox.com/home) Write-ups
 
+[back to write-ups](/README.md#write-ups--by-herman-detwiler)
 
 # Starting Point Labs
 *Learning the basics of pentesting*
