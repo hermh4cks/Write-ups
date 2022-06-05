@@ -36,7 +36,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 # Server side Attacks
 ---
 ## 1. SQL injection
-
+[Back to Index](#index)
 + ### 1.1 SQLi
 
   + [Cheatsheat: SQL injection](https://portswigger.net/web-security/sql-injection/cheat-sheet)
@@ -73,6 +73,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Blind SQL injection with conditional errors](1.SQLi/Blind_with_conditional_errors.md)
 
 ## 2. Authentication
+
+[Back to Index](#index)
 
 + ### 2.1 Authentication: Password-based login
 
