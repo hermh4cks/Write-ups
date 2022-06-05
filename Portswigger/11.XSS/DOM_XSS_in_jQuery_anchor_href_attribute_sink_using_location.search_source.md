@@ -28,14 +28,9 @@ Note that jQuery is used
 
 ![image](https://user-images.githubusercontent.com/83407557/172033088-2caf4e95-122c-4139-ab65-3f79eb6bfde6.png)
 
-Looking at feedback code, I see it looks like the portswigger example.
+Looking at feedback code, I see there is an attr sink going to an element on the page called BackLink
 
-```js
- $(function() {
-                                $('#backLink').attr("href", (new URLSearchParams(window.location.search)).get('returnPath'));
-                            });
-                     
-```
+![image](https://user-images.githubusercontent.com/83407557/172050398-289e45e6-5a70-4241-b64d-9a03bc396893.png)
 
 # Step 2 inject unique string into attr via return path parameter, and see if it is reflected on page
 
