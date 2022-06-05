@@ -1,7 +1,7 @@
 # Write-ups | By Herman Detwiler
 *My publicly disclosed write-ups from labs and CTF events.*
 ---
-## [Pentesting Methodologies](/Methodology/README.md)
+## [Pentesting Methodologies](/Methodology/README.md#methodologies)
 
 ## [Programming](/Programing-Examples)
 
