@@ -38,56 +38,56 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
   + [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](1.SQLi/hidden_data.md)
 
-  + [Lab: SQL injection vulnerability allowing login bypass](/1.SQLi/login_bypass.md)
+  + [Lab: SQL injection vulnerability allowing login bypass](1.SQLi/login_bypass.md)
 
 + ### 1.2 Union Attacks
 
-  + [Lab: SQL injection UNION attack, determining the number of columns returned by the query](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/num_of_col.md)
+  + [Lab: SQL injection UNION attack, determining the number of columns returned by the query](1.SQLi/num_of_col.md)
 
-  + [Lab: SQL injection UNION attack, finding a column containing text](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/column_with_txt.md)
+  + [Lab: SQL injection UNION attack, finding a column containing text](1.SQLi/column_with_txt.md)
 
 
-  + [Lab: SQL injection UNION attack, retrieving data from other tables](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/data_from_other_tables.md)
+  + [Lab: SQL injection UNION attack, retrieving data from other tables](1.SQLi/data_from_other_tables.md)
 
-  + [Lab: SQL injection UNION attack, retrieving multiple values in a single column](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/mult_values_single_column.md)
+  + [Lab: SQL injection UNION attack, retrieving multiple values in a single column](1.SQLi/mult_values_single_column.md)
 
 + ### 1.3 Examining the Database
 
-  + [Lab: SQL injection attack, querying the database type and version on Oracle](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_type_and_version_Oracle.md)
+  + [Lab: SQL injection attack, querying the database type and version on Oracle](1.SQLi/database_type_and_version_Oracle.md)
 
-  + [Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_type_and_version_MySQL_and_Microsoft.md)
+  + [Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft](1.SQLi/database_type_and_version_MySQL_and_Microsoft.md)
 
-  + [Lab: SQL injection attack, listing the database contents on non-Oracle databases](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/list_tables_non_Oracle.md)
+  + [Lab: SQL injection attack, listing the database contents on non-Oracle databases](1.SQLi/list_tables_non_Oracle.md)
 
-  + [Lab: SQL injection attack, listing the database contents on Oracle](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/database_content_Oracle.md)
+  + [Lab: SQL injection attack, listing the database contents on Oracle](1.SQLi/database_content_Oracle.md)
 
 + ### 1.4 Blind SQLi
 
-  + [Lab: Blind SQL injection with conditional responses](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/Blind_with_conditional_responses.md)
+  + [Lab: Blind SQL injection with conditional responses](1.SQLi/Blind_with_conditional_responses.md)
 
-  + [Lab: Blind SQL injection with conditional errors](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/Blind_with_conditional_errors.md)
+  + [Lab: Blind SQL injection with conditional errors](1.SQLi/Blind_with_conditional_errors.md)
 
 ## 2. Authentication
 
 + ### 2.1 Authentication: Password-based login
 
-  + [Lab: Username enumeration via different responses](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger/2.authentication)
+  + [Lab: Username enumeration via different responses](2.authentication/username_enumeration_via_different_responses.md)
 
-  + [Lab: Username enumeration via subtly different responses](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/username_enumeration_via_subtly_different_responses.md)
+  + [Lab: Username enumeration via subtly different responses](2.authentication/username_enumeration_via_subtly_different_responses.md)
 
-  + [Lab: Username enumeration via response timing](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/username_enumeration_via_response_timing.md)
+  + [Lab: Username enumeration via response timing](2.authentication/username_enumeration_via_response_timing.md)
 
 + ### 2.2 Authentication: Multi-factor
 
-  + [Lab: 2FA simple bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/2FA_simple_bypass.md)
+  + [Lab: 2FA simple bypass](2.authentication/2FA_simple_bypass.md)
 
-  + [Lab: 2FA broken logic](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/2FA_Broken_Logic.md)
+  + [Lab: 2FA broken logic](2.authentication/2FA_Broken_Logic.md)
 
-  + [Lab: 2FA bypass using a brute-force attack](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/Lab:%202FA_bypass_brute-force.md)
+  + [Lab: 2FA bypass using a brute-force attack](2.authentication/Lab:%202FA_bypass_brute-force.md)
 
 + ### 2.3 Authentication: Other Mechanisms
 
-  + [Lab: Brute-forcing a stay-logged-in cookie](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/2.authentication/Brute_forcing_stay-logged-in_cookie.md)
+  + [Lab: Brute-forcing a stay-logged-in cookie](2.authentication/Brute_forcing_stay-logged-in_cookie.md)
 
 ## 3. Directory traversal 
 ## 4. Command injection
@@ -95,23 +95,23 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 6. Information disclosure
 ## 7. Access control
 
-  + [Lab: Unprotected admin functionality](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/7.Access_Control/unprotected_admin_functionality.md)
+  + [Lab: Unprotected admin functionality](7.Access_Control/unprotected_admin_functionality.md)
 
 ## 8. File upload vulnerabilities
 
-  + [Lab: Remote code execution via web shell upload](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/RCE_via_webshell.md)
+  + [Lab: Remote code execution via web shell upload](8.File_Upload_Vulns/RCE_via_webshell.md)
 
-  + [Lab: Web shell upload via Content-Type restriction bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_Content-Type_Restriction_Bypass.md)
+  + [Lab: Web shell upload via Content-Type restriction bypass](8.File_Upload_Vulns/WebShell_Content-Type_Restriction_Bypass.md)
 
-  + [Lab: Web shell upload via path traversal](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_Upload_Directory_Traversal.md)
+  + [Lab: Web shell upload via path traversal](8.File_Upload_Vulns/WebShell_Upload_Directory_Traversal.md)
 
-  + [Lab: Web shell upload via extension blacklist bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_Extension_Blacklist_Bypass-Apache.md)
+  + [Lab: Web shell upload via extension blacklist bypass](8.File_Upload_Vulns/WebShell_Extension_Blacklist_Bypass-Apache.md)
 
-  + [Lab: Web shell upload via obfuscated file extension](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/Webshell_via_obfuscated_file_extension.md)
+  + [Lab: Web shell upload via obfuscated file extension](8.File_Upload_Vulns/Webshell_via_obfuscated_file_extension.md)
 
-  + [Lab: Remote code execution via polyglot web shell upload](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/RCE_via_Polyglot_WebShell.md)
+  + [Lab: Remote code execution via polyglot web shell upload](8.File_Upload_Vulns/RCE_via_Polyglot_WebShell.md)
 
-  + [Lab: Web shell upload via race condition](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/8.File_Upload_Vulns/WebShell_upload_via_race_condition.md)
+  + [Lab: Web shell upload via race condition](8.File_Upload_Vulns/WebShell_upload_via_race_condition.md)
 
 ## 9. Server-side request forgery(SSRF)
 ## 10 XXE injection
@@ -122,15 +122,15 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Portswigger XSS Cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 
-  + [Lab: Reflected XSS into HTML context with nothing encoded](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Reflected_XSS_no_encoding.md)
+  + [Lab: Reflected XSS into HTML context with nothing encoded](11.XSS/Reflected_XSS_no_encoding.md)
 
-  + [Lab: Stored XSS into HTML context with nothing encoded](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Stored_XSS_into_html_no_encoding.md)
+  + [Lab: Stored XSS into HTML context with nothing encoded](11.XSS/Stored_XSS_into_html_no_encoding.md)
   
-  + [Lab: DOM XSS in document.write sink using source location.search](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
+  + [Lab: DOM XSS in document.write sink using source location.search](11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
   
-  + [Lab: DOM XSS in innerHTML sink using source location.search](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/DOM_XSS_in_innerHTML_sink_using_source_location.search.md) 
+  + [Lab: DOM XSS in innerHTML sink using source location.search](11.XSS/DOM_XSS_in_innerHTML_sink_using_source_location.search.md) 
 
-  + [Lab: DOM XSS in jQuery anchor href attribute sink using location.search source](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
+  + [Lab: DOM XSS in jQuery anchor href attribute sink using location.search source](11.XSS/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
 
 ## 12. Cross-site request forgery(CSRF)
 ## 13. Cross-origin resource sharing(CORS)
