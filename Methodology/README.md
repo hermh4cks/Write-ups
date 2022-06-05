@@ -2,27 +2,29 @@
 
 ## Pre-attack
 
-	+ ### Defining Scope
++ ### Defining Scope
 
-	+ ### Defining Objective
++ ### Defining Objective
 
 ## 0. Pysical - Hardware and Hacking
 	
-	+ ### Setting up your attack machine
++ ### Setting up your attack machine
 
-	+ ### Hardware Hacking
++ ### Hardware Hacking
 
 ## 1. Discovery - Finding Hosts and Assets
 	
-	+ ### Host Discovery from inside a network
++ ### Host Discovery from inside a network
 
-	+ ### Asset Discovery from the internet
++ ### Asset Discovery from the internet
 
 ## 2. Network - Getting a lay of the land
 
-	+ ### Pentesting the Network
++ ### Pentesting the Network
 
 ## 3. Service Discovery - Port scanning specific services
+
+
 
 ## 4. Service Version Exploits - A service may have a known vulnerabilty
 
