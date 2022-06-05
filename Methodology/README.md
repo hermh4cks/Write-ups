@@ -14,6 +14,8 @@ Hardware and Hacking
 	
 + ### Setting up your attack machine
 
++ ### Setting up a home lab
+
 + ### Hardware Hacking
 
 ## 1. Discovery
