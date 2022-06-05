@@ -13,5 +13,5 @@
 
 ## [Try Hack Me](/TryHackMe)
 
-## [Hack The Box](/Hack-The-Box)
+## [Hack The Box](/Hack-The-Box#hack-the-box-write-ups)
 
