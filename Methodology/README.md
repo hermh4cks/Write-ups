@@ -21,9 +21,9 @@ Hardware and Hacking
 ## 1. Discovery
 Finding Hosts and Assets
 	
-+ ### [Host Discovery from inside a network](/network/readme.md#network-hacking)
++ ### [Host Discovery from inside a network](/Network/README.md#network-hacking)
 
-+ ### [Asset Discovery from the internet](/External/readme.md#external-recon)
++ ### [Asset Discovery from the internet](/External/README.md#external-recon)
 
 ## 2. Network
 Getting a lay of the land
