@@ -1,17 +1,17 @@
 # Write-ups | By Herman Detwiler
 *My publicly disclosed write-ups from labs and CTF events.*
 ---
-## [Pentesting Methodologies](https://github.com/hermh4cks/Write-ups/edit/main/Methodology/README.md)
+## [Pentesting Methodologies](/Methodology/README.md)
 
-## [Programming](https://github.com/hermh4cks/Write-ups/tree/main/Programing-Examples)
+## [Programming](/Programing-Examples)
 
 # CTF/LABs
 
-## [Portswigger](https://github.com/hermh4cks/Write-ups/tree/main/Portswigger)
+## [Portswigger](/Portswigger)
 
-## [picoCTF](https://github.com/hermh4cks/Write-ups/tree/main/picoCTF)
+## [picoCTF](/picoCTF)
 
-## [Try Hack Me](https://github.com/hermh4cks/Write-ups/tree/main/TryHackMe)
+## [Try Hack Me](/TryHackMe)
 
-## [Hack The Box](https://github.com/hermh4cks/Write-ups/tree/main/Hack-The-Box)
+## [Hack The Box](/Hack-The-Box)
 
