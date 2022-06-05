@@ -9,7 +9,7 @@
 
 ## [Portswigger](/Portswigger#portswigger-academy)
 
-## [picoCTF](/picoCTF)
+## [picoCTF](/picoCTF/README.md#picoctf)
 
 ## [Try Hack Me](/TryHackMe)
 
