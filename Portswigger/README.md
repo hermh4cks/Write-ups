@@ -1,5 +1,4 @@
-# Portswigger Academy
-https://portswigger.net/
+# [Portswigger Academy](https://portswigger.net/)
 
 [back to write-ups](/README.md#write-ups--by-herman-detwiler)
 
