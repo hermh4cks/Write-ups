@@ -28,7 +28,7 @@
   + ## [Web](Challenges/Web/)
 
 # Fortresses
-* Fully customizable vulnerable labs that any company can host in Hack The Box. *
+*Fully customizable vulnerable labs that any company can host in Hack The Box.*
   + ## [Jet](/Fortresses/Jet/)
   + ## [Akerva](/Fortresses/Akerva/)
   + ## [Context](/Fortresses/Context/)
