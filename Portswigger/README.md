@@ -25,7 +25,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 	+ [15. DOM-based vulnerabilities]()
 	+ [16. WebSockets]()
 
-+ [Advanced Topics](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/README.md#advanced-topics)
++ [Advanced Topics](#advanced-topics)
 
 
 # Server side Attacks
@@ -36,9 +36,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
   + [Cheatsheat: SQL injection](https://portswigger.net/web-security/sql-injection/cheat-sheet)
 
-  + [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/hidden_data.md)
+  + [Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data](/1.SQLi/hidden_data.md)
 
-  + [Lab: SQL injection vulnerability allowing login bypass](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/1.SQLi/login_bypass.md)
+  + [Lab: SQL injection vulnerability allowing login bypass](/1.SQLi/login_bypass.md)
 
 + ### 1.2 Union Attacks
 
