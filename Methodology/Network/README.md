@@ -177,4 +177,26 @@ net.probe.throttle 10
 
 Same things that can be done from outside the network, but from within we can use ICMP packets to do some new things using nmap and the built in ping command.
 
+```bash
+# broadcast address(255) ping of a subnet, where each host in subnet should respond
+ping -b 10.10.5.255
+
+# broadcast adddress(255) ping of a network to find hosts in another subnet
+ping -b 255.255.255.255
+
+# nmap doing ICMPv4 echo, timestamp and subnet mask requests
+nmap -PEPM -sP –vvv -n 10.12.5.0/24
+```
+
 ## Wake on LAN
+
+Turns on computers via a network message containing a "magic packet". This magic packet is the **MAC Dst** repeated 16 times. These packest are normally sent over ethernet 0x0842 or UDP on port 9. If no MAC is given the packet is sent to broadcast ethernet, with the broadcast MAC then being the one repeated.
+
+
+Can be done with bettercap 2
+```bash
+#WOL (without MAC is used ff:...:ff)
+wol.eth [MAC] #Send a WOL as a raw ethernet packet of type 0x0847
+wol.udp [MAC] #Send a WOL as an IPv4 broadcast packet to UDP port 9
+
+```
