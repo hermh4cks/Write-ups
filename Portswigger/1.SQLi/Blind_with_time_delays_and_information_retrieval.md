@@ -44,3 +44,11 @@ None of these were working for me until I decided to reread the cheat sheet, per
 ```
 
 I send each of these as an intruder payload:
+
+
+![image](https://user-images.githubusercontent.com/83407557/172088987-064fe8f2-8957-42f4-84e5-d67cbe1efae5.png)
+
+This response takes much longer than the others, telling me there is a blind conditional time-based vulnerability and that it is a PostgreSQL database
+
+# Step 2 Verify there is an "Administrator" user in a "users" table
+
