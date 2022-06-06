@@ -1,6 +1,10 @@
 # Network Hacking 
 [**Back** to Methodologies](/Methodology#methodologies)
 
+
+[Outside the Network](#discovering-hosts-while-outside-the-network)
+  + [ICMP](#ICMP)
+
 # Discovering Hosts while outside the network
 
 The Following protocols and commands can be used to discover hosts from outside the network.
