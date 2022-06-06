@@ -1,9 +1,15 @@
 # Network Hacking 
 [**Back** to Methodologies](/Methodology#methodologies)
 
+## Index
 
-[Outside the Network](#discovering-hosts-while-outside-the-network)
+[From Outside the Network](#discovering-hosts-while-outside-the-network)
   + [ICMP](#ICMP)
+  + [TCP](#tcp-port-discovery)
+  + [UPD](#udp-port-discovery)
+  + [SCTP](#sctp-port-discovery)
+  + [WiFi](#wifi-hacking)
+ [From Inside the Network](#discovering-hosts-from-inside-the-network)
 
 # Discovering Hosts while outside the network
 
@@ -80,3 +86,8 @@ Hard to tell if they are filtered or open, and can be a little slow. However, fr
 # "--version-intensity 0" will make nmap only test the most probable
 nmap -sU -sV --version-intensity 0 -F -n 199.66.11.53/24
 ```
+
+## SCTP Port Discovery
+
+
+# Discovering Hosts from inside the network
