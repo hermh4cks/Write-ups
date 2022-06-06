@@ -7,11 +7,15 @@ The Following protocols and commands can be used to discover hosts from outside 
 
 ## ICMP
 
+### Tools
+
 **ping**: simple echo request
 
 **fping**: echo request to a range
 
 **nmap**: echo requests that can avoid common filters
+
+### Commands
 
 ```bash
 # Single echo request to a host
@@ -30,9 +34,13 @@ nmap -PEPM -sP -n 199.66.11.0/24
 
 Often **ICMP** packets will be filtered by the host, in that case a port scan is needed. There are **65,535 ports** on each host. This could make scanning every port on every host within the time constraints of an engagement near impossible if you have many hosts. In this case, scanning the most common "x" number of ports
 
+### Tools
+
 **nmap**: many features, slow when casting a wide net
 
 **masscan**: Very fast, designed for casting a wide net
+
+### Commands
 
 *Using both tools can often get the best results*
 ```bash
@@ -54,9 +62,13 @@ Hard to tell if they are filtered or open, and can be a little slow. However, fr
 
 ![image](https://user-images.githubusercontent.com/83407557/172182886-169f063d-b7f0-473e-8e56-25ffdf4ea9d0.png)
 
+### Tools
+
 [**udp-proto-scanner**](https://github.com/CiscoCXSecurity/udp-proto-scanner): Sends UPD probes to a list of targets
 
 **nmap** Venerable port scanner
+
+### Commands
 
 *Testing the top 1000 UDP ports inside /24 range. Will take over 20 minutes.
 ```bash
