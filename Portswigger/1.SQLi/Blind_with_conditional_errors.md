@@ -16,7 +16,7 @@ This lab uses an Oracle database. For more information, see the SQL injection ch
 
 # Step 1: Verify blind, conditional-error-based SQLi
 
-## STEP 1 Finding injection point
+## Finding injection point
 
 I will be using burpsuite for this lab. To start, I start with intercept off and visit the target page in the browser. I also pull up the browser dev tools, in order to view and modify my cookie values.
 
@@ -31,7 +31,7 @@ If I then add a comment -- the error goes away:
 ![image](https://user-images.githubusercontent.com/83407557/169846508-c3987f72-d92d-467a-9082-729621022ca5.png)
 
 
-## STEP 2 Using true and false Select statement to cause an error
+# Step 2: Using true and false Select statement to cause an error
 
 In oracle I need to select from something, which I will use the always valid table *dual*. 
 
@@ -67,7 +67,7 @@ SHOULD error
 
 and it acts as expected.
 
-## STEP 3 Crafting a True select statement that causes an error
+# STEP 3 Crafting a True select statement that causes an error
 
 since the goal is to guess each character of the administrators password, we need to make it so that if our select statement is true, the server will throw an error:
 
