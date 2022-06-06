@@ -9,7 +9,8 @@
   + [UPD](#udp-port-discovery)
   + [SCTP](#sctp-port-discovery)
   + [WiFi](#wifi-hacking)
- [From Inside the Network](#discovering-hosts-from-inside-the-network)
+ 
+[From Inside the Network](#discovering-hosts-from-inside-the-network)
 
 # Discovering Hosts while outside the network
 
