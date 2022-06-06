@@ -11,6 +11,10 @@
   + [WiFi](#wifi-hacking)
  
 [From Inside the Network](#discovering-hosts-from-inside-the-network)
+  + [Passive](#passive)
+  + [Active](#active)
+  + [Active ICMP](#active-icmp)
+  + [Wake On Lan](#wake-on-lan)
 
 # Discovering Hosts while outside the network
 
@@ -101,3 +105,11 @@ nmap -T4 -sY -n --open -Pn 199.66.11.0/24
 # ADD WIFI SECTION
 
 # Discovering Hosts from inside the network
+
+## Passive
+
+## Active
+
+## Active ICMP
+
+## Wake on LAN
