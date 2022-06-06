@@ -1,4 +1,4 @@
-# Network Hacking 
+# Host Discovery 
 [**Back** to Methodologies](/Methodology#methodologies)
 
 ## Index
@@ -106,10 +106,75 @@ nmap -T4 -sY -n --open -Pn 199.66.11.0/24
 
 # Discovering Hosts from inside the network
 
+The above examples also work from inside the network, however once inside a network more options open up. The scanning performed here depends how visible you are trying to be on the network. If you are trying to evade detection, creating large ammounts of network traffic is not ideal.
+
 ## Passive
+
+Passive host discovery is possible because of our possition in the network. We can listen to network traffic without dirrectly interacting with the target hosts. Seeing a host's traffic in transit on the network verifies their existance.
+
+### Tools
+
+**netdiscover** ARP reconnaissance tool
+
+[**bettercap**](https://www.bettercap.org/): The Swiss Army knife for WiFi, Bluetooth Low Energy, wireless HID hijacking and IPv4 and IPv6 networks reconnaissance and MITM attacks.
+
+**p0f** Performs passive OS detection based on SYN packets. Unlike nmap and queso, p0f does recognition without sending any data.
+
+### Basic Commands
+
+```bash
+# netdiscover passive detection mode
+netdiscover -p
+
+# p0f outputting to file p0f.log
+p0f -i eth0 -p -o /tmp/p0f.log
+
+# Bettercap2
+## Turning passive recon on or off
+net.recon on/off
+## Showing results
+net.show
+## Showing more info
+set net.show.meta true
+```
 
 ## Active
 
+Active host discovery involves directly interacting with the target, all of these methods **Will create network traffic**.
+
+### Tools
+
+**nbtscan** scan networks for NetBIOS name information
+
+**netdiscover** ARP reconnaissance tool
+
+[**bettercap2**](https://www.bettercap.org/): The Swiss Army knife for WiFi, Bluetooth Low Energy, wireless HID hijacking and IPv4 and IPv6 networks reconnaissance and MITM attacks.
+
+```bash
+#ARP discovery
+nmap -sn <Network> #ARP Requests (Discover IPs)
+netdiscover -r <Network> #ARP requests (Discover IPs)
+
+#NBT discovery
+nbtscan -r 192.168.0.1/24 #Search in Domain
+
+# Bettercap2 (By default ARP requests are sent) 
+##Activate all service discover and ARP
+net.probe on/off
+##Search local mDNS services (Discover local)
+net.probe.mdns
+##Ask for NetBios name (Discover local)
+net.probe.nbns
+## Search services (Discover local)
+net.probe.upnp
+## Search Web Services Discovery (Discover local)
+net.probe.wsd
+##10ms between requests sent (Discover local)
+net.probe.throttle 10 
+```
+
 ## Active ICMP
+
+Same things that can be done from outside the network, but from within we can use ICMP packets to do some new things using nmap and the built in ping command.
 
 ## Wake on LAN
