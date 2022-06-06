@@ -81,7 +81,7 @@ Hard to tell if they are filtered or open, and can be a little slow. However, fr
 
 ### Commands
 
-*Testing the top 1000 UDP ports inside /24 range. Will take over 20 minutes.
+*Testing the top 1000 UDP ports inside /24 range. Will take over 20 minutes.*
 ```bash
 # -sV will make nmap test each possible known UDP service packet
 # "--version-intensity 0" will make nmap only test the most probable
@@ -90,5 +90,14 @@ nmap -sU -sV --version-intensity 0 -F -n 199.66.11.53/24
 
 ## SCTP Port Discovery
 
+Another transport layer protocol, not as widely used but still scannable with **Nmap**
+
+```bash
+nmap -T4 -sY -n --open -Pn 199.66.11.0/24
+```
+
+## Wifi
+
+# ADD WIFI SECTION
 
 # Discovering Hosts from inside the network
