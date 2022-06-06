@@ -30,9 +30,9 @@ Finding Hosts and Assets
 + ### [Asset Discovery from the internet](/Methodology/External/README.md#external-recon)
 
 ## 2. Network
-Getting a lay of the land
+Scanning the Hosts of a Network
 
-+ ### Pentesting the Network
++ ### [Pentesting the Network](/Methodology/Network/Scanning_Hosts.md#scanning-discovered-hosts-on-a-network)
 
 ## 3. Service Discovery
 Port scanning specific services
