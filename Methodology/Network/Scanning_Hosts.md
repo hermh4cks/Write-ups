@@ -2,15 +2,17 @@
 
 [**Back** to Methodologies](/Methodology#methodologies) | [**Next** to Service Scanning](/Methodology/Network/Services.md#service-scanning)
 
+---
+
 [Scanning](#scanning)
 
-[IDS/IPS evasion](#isd-and-ips-evasion)
+[IDS/IPS evasion](#ids-and-ips-evasion)
 
 [Sniffing](#sniffing)
 
 [Spoofing](#spoofing)
 
-
+---
 # Scanning
 
 With a list of **IP's** of the **Hosts** collected from the [previous](/Methodology/Network/README.md#host-discovery) phase of the engagement, it is time to perform a more in-depth scan of the target(s).
