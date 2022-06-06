@@ -1,5 +1,5 @@
 # Host Discovery 
-[**Back** to Methodologies](/Methodology#methodologies)
+[**Back** to Methodologies](/Methodology#methodologies)[**Next** to Host Scanning](/Methodology/Network/Scanning_Hosts.md#scanning-discovered-hosts-on-a-network)
 
 ## Index
 
