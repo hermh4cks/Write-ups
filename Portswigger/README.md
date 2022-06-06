@@ -73,6 +73,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Blind SQL injection with conditional responses](1.SQLi/Blind_with_conditional_responses.md)
 
   + [Lab: Blind SQL injection with conditional errors](1.SQLi/Blind_with_conditional_errors.md)
+  
+  + [Lab: Blind SQL injection with time delays and information retrieval](1.SQLi/Blind_with_time_delays_and_information_retrieval.md)
 
 ## 2. Authentication
 
