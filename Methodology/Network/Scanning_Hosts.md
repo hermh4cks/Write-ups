@@ -4,6 +4,8 @@
 
 [Scanning](#scanning)
 
+[IDS/IPS evasion](#isd-and-ips-evasion)
+
 [Sniffing](#sniffing)
 
 [Spoofing](#spoofing)
@@ -91,7 +93,7 @@ nmap -T4 -sY -n -oA SCTFastScan <IP>
 nmap -T4 -p- -sY -sV -sC -F -n -oA SCTAllScan <IP>
 ```
 
-## IDS and IPS evasion
+# IDS and IPS evasion
 
 Intrusion detection and provention system evasion
 
@@ -125,6 +127,23 @@ If ids/ips cant put the fragments back together it can be bypassed
 ### Invalid checksum
 
 From hacktricks:
+
 *Sensors usually don't calculate checksum for performance reasons. __ So an attacker can send a packet that **will be interpreted by the sensor but rejected by the final host.** Example:*
 
 *Send a packet with the flag RST and a invalid checksum, so then, the IPS/IDS may thing that this packet is going to close the connection, but the final host will discard the packet as the checksum is invalid.*
+
+### Uncommon IP and TCP headers
+
+Might be dropped by IDS/IPS but still accepted by target
+
+### Overlapping
+
+From Hacktricks
+
+*It is possible that when you fragment a packet, some kind of overlapping exists between packets (maybe first 8 bytes of packet 2 overlaps with last 8 bytes of packet 1, and 8 last bytes of packet 2 overlaps with first 8 bytes of packet 3). Then, if the IDS/IPS reassembles them in a different way than the final host, a different packet will be interpreted.*
+*Or maybe, 2 packets with the same offset comes and the host has to decide which one it takes.*
+
++ **BSD**: It has preference for packets with smaller offset. For packets with same offset, it will choose the first one.
++ **Linux**: Like BSD, but it prefers the last packet with the same offset.
++ **Windows**: First value that comes, value that stays.
++ **cisco**: Last value that comes, value that stays.
