@@ -37,6 +37,8 @@ Scanning the Hosts of a Network
 ## 3. Service Discovery
 Port scanning specific services
 
++ ### [Scanning Services](/Methodology/Network/Services.md#service-scanning)
+
 
 ## 4. Service Version Exploits
 A service may have a known vulnerabilty
