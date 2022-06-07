@@ -3,7 +3,7 @@ While a service can have a custom port number, these are the common or default p
 
 | Common Port Number | Service Name | Enumeration Command via Nmap or NC |
 | :-: | :-: | - |
-| 7 | Echo | `placeholder` |
+| 7 | Echo | `nc -uvn <IP> 7` |
 | 21 | FTP | `placeholder` |
 | 22 | SSH/SFTP| `placeholder` |
 | 23 | Telnet| `placeholder` |
