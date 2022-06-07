@@ -10,6 +10,8 @@
 
 [Sniffing](#sniffing)
 
+[LAN Attacks](#lan-attacks)
+
 [Spoofing](#spoofing)
 
 ---
@@ -149,3 +151,51 @@ From Hacktricks
 + **Linux**: Like BSD, but it prefers the last packet with the same offset.
 + **Windows**: First value that comes, value that stays.
 + **cisco**: Last value that comes, value that stays.
+
+## Sniffing 
+
+From Hacktricks:
+
+*Sniffing you can learn details of IP ranges, subnet sizes, MAC addresses, and hostnames by reviewing captured frames and packets. If the network is misconfigured or switching fabric under stress, attackers can capture sensitive material via passive network sniffing.*
+
+*If a switched Ethernet network is configured properly, you will only see broadcast frames and material destined for your MAC address.*
+
+For a GUI program Wireshark with capture filters is the way to go, but for command line tools sniffing comes down to TCPDump or Bettercap2. For the pcap files that are created by these programs, [PCredz](https://github.com/lgandx/PCredz) can be used to parse out the desired infomation.
+
+### TCPDump
+
+```bash
+#Listen to DNS request to discover what is searching the host
+sudo tcpdump -i <INTERFACE> udp port 53
+
+#Listen to icmp packets
+tcpdump -i <IFACE> icmp
+
+sudo bash -c "sudo nohup tcpdump -i eth0 -G 300 -w \"/tmp/dump-%m-%d-%H-%M-%S-%s.pcap\" -W 50 'tcp and (port 80 or port 443)' &"
+```
+
+### Bettercap2
+
+```bash
+net.sniff on
+net.sniff stats
+net.sniff.output #Output file
+net.sniff.local #Accept packets from this machine
+net.sniff.filter
+net.sniff.regexp
+```
+### PCredz
+[link to PCredz on github](https://github.com/lgandx/PCredz)
+
+```bash
+# extract credentials from a pcap file
+python3 ./Pcredz -f file-to-parse.pcap
+
+# extract credentials from all pcap files in a folder
+python3 ./Pcredz -d /tmp/pcap-directory-to-parse/
+
+# extract credentials from a live packet capture on a network interface (need root privileges)
+python3 ./Pcredz -i eth0 -v
+```
+
+# LAN Attacks
