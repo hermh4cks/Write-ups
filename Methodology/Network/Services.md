@@ -4,11 +4,14 @@ While a service can have a **custom** port number, these are the common or **def
 *Note, all commands are run using the env variable **$IP** this can be set in linux using the following bash command to set that variable an example ipv4 address of 10.10.10.5:
 
 ```bash
-# Setting the IP variable
+# Setting variable
 export IP=10.10.10.5
-# After export, variables in bash can be called wtih a $ like so:
-echo $IP
-10.10.10.5
+export DOMAIN=example.com
+export USERLIST=/usr/share/wordlist/usernames.txt
+export
+# After export, variables in bash can be called wtih a $:
+echo $IP $DOMAIN $USERLIST
+10.10.10.5 example.com /usr/share/wordlist/usernames.txt
 ```
 
 | Common Port Number | Service Name | Banner Grabbing | Basic enumeration |
