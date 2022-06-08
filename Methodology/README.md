@@ -18,7 +18,7 @@ Hardware and Hacking
 	
 + ### Setting up your attack machine
 
-+ ### [Setting up a home lab](/Home_Lab.md#building-a-hacking-lab-at-home-in-order-to-sharpen-your-skills)
++ ### [Setting up a home lab](/Methodology/Home_Lab.md#building-a-hacking-lab-at-home-in-order-to-sharpen-your-skills)
 
 + ### Hardware Hacking
 
