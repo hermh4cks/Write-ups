@@ -1,4 +1,5 @@
 # Your Hacking Computer
+[**Back** to Methodologies](/Methodology#methodologies)
 
 While you can truly start hacking on anything, certain settups will provide you with a more user friendly experience, and more features due to a large community of support. Personally, I like to do most of my hacking a mid-spec'd laptop running some flavor of linux. From a performance perspective, sometimes I need a little more bang, and also run a gaming PC. With this PC I often segment my activities through a series of VMs depending on my needs, but the underlying OS is Windows. Regardless of what you are the most comfortable using yourself, being well versed in multiple OS's is an requirement when pentesting. With that said, whatever you use, understanding how to more quickly inside a non-GUI shell will pay off greatly. Practice not using a desktop and watch your speed (and ability) increase.
 
