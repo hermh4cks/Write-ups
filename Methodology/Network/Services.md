@@ -1,7 +1,7 @@
 # Service Scanning
 While a service can have a **custom** port number, these are the common or **default** port numbers for the listed services.
 
-*Note, all commands are run using the env variable **$IP** this can be set in linux using the following bash command to set that variable an example ip of 10.10.10.5:
+*Note, all commands are run using the env variable **$IP** this can be set in linux using the following bash command to set that variable an example ipv4 address of 10.10.10.5:
 
 ```bash
 # Setting the IP variable
@@ -19,5 +19,5 @@ echo $IP
 | 23 | Telnet| `nc -vn $IP 23` | `nmap -n -sV -Pn --script "*telnet* and safe" -p 23 $IP` |
 | 25/465/587 | SMTP| `nc -vn $IP 25` | `nmap -p25 --script smtp-commands $IP` |
 | 43 | WHOIS| `nc -vn $IP 43` | `whois -h $IP -p 43 "domain"` |
-| 53 | DNS| `dig version.bind CHAOS TXT @$IP` | `nmap -n --script "(default and *dns*) or fcrdns or dns-srv-enum or dns-random-txid or dns-random-srcport" <IP>` |
+| 53 | DNS| `dig version.bind CHAOS TXT @$IP` | `nmap -n --script "(default and *dns*) or fcrdns or dns-srv-enum or dns-random-txid or dns-random-srcport" $IP` |
 | 69 | TFTP/Bittorrent-tracker| NA | `nmap -n -Pn -sU -p69 -sV --script tftp-enum $IP` |
