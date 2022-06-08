@@ -14,11 +14,33 @@ Software Running VMs: Oracle's [VirtualBox](https://www.virtualbox.org/)
 OS of VM: Microsoft's [Windows Server 2019 ISO](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019)
 
 Empty Windows VM config, with shared clipboard and second network adapter set. (Add more cores or more RAM depending on your hardware limits)
+
 ![image](https://user-images.githubusercontent.com/83407557/172644562-b00ff0e9-7172-4781-923f-e612d6f6180d.png)
 
 Selecting the option with a GUI
+
 ![image](https://user-images.githubusercontent.com/83407557/172645020-c86acadf-d99c-4b50-ab3b-0bfa66500679.png)
 
 And Doing a custom install to format a new virtual disk with 50 Gigs of space
+
 ![image](https://user-images.githubusercontent.com/83407557/172645168-6d96956c-83e4-4700-a731-228f44af8bd0.png)
+
+Since this lab is not going to be about password cracking, I will make all the passwords for the lab the same `Password123` 
+
+![image](https://user-images.githubusercontent.com/83407557/172647498-ffef87f1-ca0b-4572-8dd4-23e2ad77f11e.png)
+
+Quality of life, add a guest CD image. Virtualbox->Devices->Inseter guest CD image, then inside the VM:
+
+![image](https://user-images.githubusercontent.com/83407557/172648832-6aa3f122-0b56-4b5d-8258-f43db1ae5a0b.png)
+
+Intall from virtual D drive, then shutdown via windows start menu (not the virtualbox install prompt)
+
+![image](https://user-images.githubusercontent.com/83407557/172649190-6a7ff43e-171a-4ba6-966c-5103517bb2f5.png)
+
+Now the window will auto resize.
+
+## IP settup
+
+
+
 
