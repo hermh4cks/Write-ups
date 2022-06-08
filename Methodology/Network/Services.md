@@ -1,5 +1,5 @@
 # Service Scanning
-While a service can have a custom port number, these are the common or default port numbers for the listed services.
+While a service can have a **custom** port number, these are the common or **default** port numbers for the listed services.
 
 *Note, all commands are run using the env variable **$IP** this can be set in linux using the following bash command to set that variable an example ip of 10.10.10.5:
 
