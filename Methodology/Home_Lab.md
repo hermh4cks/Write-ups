@@ -3,11 +3,22 @@
 
 Reading up on topics, and even doing practical exercises on other people's servers can be great for learning. However, building a home lab and practicing in an environment you control can lead to an even deeper understanding of the topic. In all honesty the main purpose of my lab is to create an **Active Directory** environment in-which I can better prepare for my **OSCP** exam. However once set up, I am planning to use it in a similar fasion to learn about various other topics as my carreer progresses. With that being said let me go over the basic settup of my lab.
 
-All machines will be running on **1 HOST machine** as virtual computers. There will be 1 Windows Server 2019 [Domain controller VM](#the-domain-controller), and 1 Windows 10 [Client VM](#the-client) for the Active Directory environment, and then the option to add any number of additional vulnerable VMs in the future. Atm I am capped locally at **16 Gigs** of **RAM** on the **HOST computer**, so I am going to try and not spin up too many boxes at one time. I am also planning on attacking this lab from a laptop running kali linux. I am going to treat my home network as a mock internet, so as that any machine on that network will still be *External* from the NAT'd lab domain. The stucture may change over time, but I wanted to make my notes public for completeness to these methodologies as being a *brain dump* of what I have learned about Pentesting and ethical hacking in general.
+All machines will be running on **1 HOST machine** as virtual computers. There will be 1 Windows Server 2019 [Domain controller VM](#the-domain-controller), and 1 Windows 10 [Client VM](#the-client) for the Active Directory environment, and then the option to add any number of additional vulnerable VMs in the future. Atm I am capped locally at **16 Gigs** of **RAM** on the **HOST computer**, so I am going to try and not spin up too many boxes at one time. I am also planning on attacking this lab from a laptop running kali linux. I am going to treat my NAT'd home network as a mock internet, so as that any machine on that network will still be *External* from the *Internal* "lab" network. The stucture may change over time, but I wanted to make my notes public for completeness to these methodologies as being a *brain dump* of what I have learned about Pentesting and ethical hacking in general.
 
 # The Domain controller
+
+## VM Settup
 
 Software Running VMs: Oracle's [VirtualBox](https://www.virtualbox.org/)
 
 OS of VM: Microsoft's [Windows Server 2019 ISO](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019)
+
+Empty Windows VM config, with shared clipboard and second network adapter set. (Add more cores or more RAM depending on your hardware limits)
+![image](https://user-images.githubusercontent.com/83407557/172644562-b00ff0e9-7172-4781-923f-e612d6f6180d.png)
+
+Selecting the option with a GUI
+![image](https://user-images.githubusercontent.com/83407557/172645020-c86acadf-d99c-4b50-ab3b-0bfa66500679.png)
+
+And Doing a custom install to format a new virtual disk with 50 Gigs of space
+![image](https://user-images.githubusercontent.com/83407557/172645168-6d96956c-83e4-4700-a731-228f44af8bd0.png)
 
