@@ -1,6 +1,8 @@
 # Building a Hacking Lab at home in order to sharpen your skills
 [**Back** to Methodologies](/Methodology#methodologies)
 
+Much of this is based originally from a guide by [Josh Madakor](https://www.youtube.com/c/JoshMadakor), so please do him a solid an go send him some love on his channels if any of this helps you. 
+
 Reading up on topics, and even doing practical exercises on other people's servers can be great for learning. However, building a home lab and practicing in an environment you control can lead to an even deeper understanding of the topic. In all honesty the main purpose of my lab is to create an **Active Directory** environment in-which I can better prepare for my **OSCP** exam. However once set up, I am planning to use it in a similar fasion to learn about various other topics as my carreer progresses. With that being said let me go over the basic settup of my lab.
 
 All machines will be running on **1 HOST machine** as virtual computers. There will be 1 Windows Server 2019 [Domain controller VM](#the-domain-controller), and 1 Windows 10 [Client VM](#the-client) for the Active Directory environment, and then the option to add any number of additional vulnerable VMs in the future. Atm I am capped locally at **16 Gigs** of **RAM** on the **HOST computer**, so I am going to try and not spin up too many boxes at one time. I am also planning on attacking this lab from a laptop running kali linux. I am going to treat my NAT'd home network as a mock internet, so as that any machine on that network will still be *External* from the *Internal* "lab" network. The stucture may change over time, but I wanted to make my notes public for completeness to these methodologies as being a *brain dump* of what I have learned about Pentesting and ethical hacking in general.
@@ -40,6 +42,11 @@ Intall from virtual D drive, then shutdown via windows start menu (not the virtu
 Now the window will auto resize.
 
 ## IP settup
+
+Visual diagram of lab network from Josh Madakor:
+
+![image](https://user-images.githubusercontent.com/83407557/172651021-a986e902-0976-45a5-aa41-2ec4d80b1db5.png)
+
 
 
 
