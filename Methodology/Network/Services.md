@@ -34,3 +34,5 @@ echo $IP $DOMAIN $USERLIST
 | 113 | Ident | `nc -vn $IP 113` | `nmap -sC -sV -p 113 $IP` |
 | 123 | NTP | `ntpdc -n -c monlist $IP` | `nmap -sU -sV --script "ntp* and (discovery or vuln) and not (dos or brute)" -p 123 $IP` |
 | 135/593 | MSRPC | `nc -vn $IP $PORT` | `rpcdump.py -p $PORT $IP`(from impacket) |
+| 137/138/139 | NetBios | `nmblookup -A $IP` | `nbtscan $IP/30` `nmap -sU -sV -T4 --script nbstat.nse -p 137 -Pn -n $IP` |
+| 139/445 | SMB | `enum4linux -a $IP` | `nbtscan $IP` Huge attack surface, too many commands to list here |
