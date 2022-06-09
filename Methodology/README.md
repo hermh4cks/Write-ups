@@ -13,8 +13,8 @@ A large part of this was taken from [Hacktricks](https://book.hacktricks.xyz/wel
 
 + ### Defining Objective
 
-## 0. Pysical
-Hardware and Hacking
+## 0. Base of Operations 
+Setup/use of attack machines, and testing environments
 	
 + ### [your attack maching](/Methodology/Attack_Machine.md#your-hacking-computer)
 
@@ -22,8 +22,10 @@ Hardware and Hacking
 
 + ### Hardware Hacking
 
++ ### Reverse Engineering
+
 ## 1. Discovery
-Finding Hosts and Assets
+Finding Hosts on a network and/or Assets of a Company
 	
 + ### [Host Discovery from inside a network](/Methodology/Network/README.md#network-hacking)
 
@@ -35,13 +37,13 @@ Scanning the Hosts of a Network
 + ### [Pentesting the Network](/Methodology/Network/Scanning_Hosts.md#scanning-discovered-hosts-on-a-network)
 
 ## 3. Service Discovery
-Port scanning specific services
+Port scanning specific services, and how to enumerate them
 
 + ### [Scanning Services](/Methodology/Network/Services.md#service-scanning)
 
 
 ## 4. Service Version Exploits
-A service may have a known vulnerabilty
+A service may have a known vulnerabilty, how to look for them
 
 ## 5. Pentesting Services
 Each service has a unique methodogy when it comes to attack
