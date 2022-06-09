@@ -146,7 +146,7 @@ diff file1 file2
 | `split -b 9k \file $prefix` | Split file into 9k chunks |
 | `awk 'sub("$"."\r")' unix.txt > win.txt` | Make Win compatible txt file |
 | `find -i -name file -type *.pdf` | Find pdf named file |
-| `find / -perm -4000 -o -perm -2000 -exec ls -ldb {}\;` | Search for setuid files |
+| `find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;` | Search for setuid files |
 | `dos2unix file` | convert to *nix* format |
 | `file file` | Determine file type/info about file |
 | `chattr (+/-)i file` | Set/Unset immutable bit |
