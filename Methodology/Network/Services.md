@@ -33,3 +33,4 @@ echo $IP $DOMAIN $USERLIST
 | 111 | Portmapper | `nc -uvn $IP 111` | `rpcinfo $IP` `nmap -sSUC -p 111 $IP` |
 | 113 | Ident | `nc -vn $IP 113` | `nmap -sC -sV -p 113 $IP` |
 | 123 | NTP | `ntpdc -n -c monlist $IP` | `nmap -sU -sV --script "ntp* and (discovery or vuln) and not (dos or brute)" -p 123 $IP` |
+| 135/593 | MSRPC | `nc -vn $IP $PORT` | `rpcdump.py -p $PORT $IP`(from impacket) |
