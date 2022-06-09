@@ -116,5 +116,6 @@ While you can truly start hacking on anything, certain settups will provide you 
 
 | Command | Description |
 | :-: | --- |
-| `diff file1 file2` | Compare files |
+| `diff file1 file2`{:.bash} | Compare files |
+| `rm -rf $dir` | Force delete of $dir |
   
