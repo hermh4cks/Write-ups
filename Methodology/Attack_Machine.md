@@ -114,6 +114,8 @@ While you can truly start hacking on anything, certain settups will provide you 
 # Linux File Commands
 [Index](#index)
 
+`(inline code)`{:.language-clojure .highlihgt}
+
 | Command | Description |
 | :-: | --- |
 | `diff file1 file2`{:.ruby} | Compare files |
