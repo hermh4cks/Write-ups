@@ -1,5 +1,6 @@
 # Service Scanning
 [**Back** to Methodologies](/Methodology#methodologies) | [**Next** to Service Version Exploits](/Methodology/Network/Service_Version_Exploits.md#service-version-exploits)
+
 While a service can have a **custom** port number, these are the common or **default** port numbers for the listed services.
 
 *Note, all commands are run using the env variable (likst **$IP**) this can be set in linux using the following bash command to set that variable:*
