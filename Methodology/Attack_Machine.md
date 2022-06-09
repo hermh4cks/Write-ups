@@ -15,10 +15,10 @@ While you can truly start hacking on anything, certain settups will provide you 
   + [Cover your Tracks](#linux-cover-your-treacks)
   + [Misc Commands](#linux-misc-commands)
   + [Scripting](#linux-scripting)
-[Windows](#windows)
-[Networking]()
-[Programing]()
-[Tool Syntax]()
++ [Windows](#windows)
++ [Networking]()
++ [Programing]()
++ [Tool Syntax]()
 
 
 # Linux
