@@ -76,3 +76,45 @@ While you can truly start hacking on anything, certain settups will provide you 
 | `/etc/resolv.conf` | Nameserver configuration |
 | `/home/<user>/.bash_history` | Bash history (also /root/) |
 | `/usr/share/wireshark/manuf` | Vendor-MAC lookup |
+| `~/.ssh/` | SSH keystore |
+| `/var/log` | System log files (most linux) |
+| `/var/adm` | System log files (Unix) |
+| `/var/spool/cron` | List cron files |
+| `/var/log/apache/access.log` | Apache connection log |
+| `/etc/fstab` | Static file system info |
+
+# Linux System Info
+[Index](#index)
+
+| Command | Description |
+| :-: | --- | 
+| `nbstat -A $IP` | Get hostname for $IP |
+| `id` | Current username |
+| `w` | Logged on users |
+| `who -a` | User information |
+| `last -a` | Last users logged on |
+| `ps -ef` | Process listing (top) |
+| `df -h` | Disk usage (free) |
+| `uname -a` | Kernel version/CPU info |
+| `mount` | Mounted file systems |
+| `getent passwd` | Show list of users |
+| `PATH=$PATH:/home/mypath` | Add to PATH variable |
+| `kill <pid>` | Kills process with `<pid>` |
+| `cat /etc/issue` | Show OS info |
+| `cat /etc/*release*` | Show OS version info |
+| `cat /proc/version` | Show kernel info |
+| `rpm --query -all` | Installed pkgs (Redhat) |
+| `rpm -ivh *.rpm` | Install RPM (Redhat)(`-e`=remove) |
+| `dpkg -get-selections` | Installed pkgs (Ubuntu) |
+| `dpkg -I *.deb` | Install DEB (Ubuntu) (`-r`=remove) |
+| `pkginfo` | Installed pkgs (Solaris) |
+| `which $executable` | Show the location of `$executable` |
+| `chmod 750 <tcsh/csh/ksh>` | Disable `<shell>`, force bash |
+
+# Linux File Commands
+[Index](#index)
+
+| Command | Description |
+| :-: | --- |
+| `diff file1 file2` | Compare files |
+  
