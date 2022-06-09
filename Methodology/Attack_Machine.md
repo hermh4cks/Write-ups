@@ -114,10 +114,40 @@ While you can truly start hacking on anything, certain settups will provide you 
 # Linux File Commands
 [Index](#index)
 
-`(inline code)`{:.language-clojure .highlihgt}
+```bash
+diff file1 file2
+```
 
 | Command | Description |
 | :-: | --- |
 | `diff file1 file2`{:.ruby} | Compare files |
 | `rm -rf $dir` | Force delete of $dir |
+| `shred -f -u file1` | Overwrites/deletes file1 |
+| `touch -r file1 file2` | Create file with matching timestamp |
+| `touch -t YYYYMMDDHHSS file` | Create file with given timestamp |
+| `sudo fdisk -l` | List connected drives |
+| `mount /dev/sda# /mnt/usbkey` | Mount usb key |
+| `md5sum -t file` | Compute md5 hash of file |
+| `echo -n "str"` | Generate md5 hash of string |
+| `sha1sum file` | Compute sha1 hash of file |
+| `sort -u` | Sort and show unique lines |
+| `grep -c "str" file` | Count lines in file with string |
+| `tar cf file.tar files` | Create a .tar from files |
+| `tar xf file.tar` | Extract .tar |
+| `tar czf file.tar.gz files` | Create a .tar.gz |
+| `tar xzf file.tar.gz` | Extract .tar.gz |
+| `tar cjf file.tar.bz2 files` | Create a .tar.bz2 |
+| `tar xjz file.tar.bz2` | Extract .tar.bz2 |
+| `gzip file` | Compress/rename file |
+| `gzip -d file.gz` | Decompress file.gz |
+| `upx -9 -o packed.exe orig.exe` | upx packs orig.exe |
+| `zip -r zipname.zip \Directory\*` | Create .zip |
+| `dd skip=1000 count=2000 bs=8 if=file of=file` | Cut block 1k-3k from file |
+| `split -b 9k \file $prefix` | Split file into 9k chunks |
+| `awk 'sub("$"."\r")' unix.txt > win.txt` | Make Win compatible txt file |
+| `find -i -name file -type *.pdf` | Find pdf named file |
+| `find / -perm -4000 -o -perm -2000 -exec ls -ldb {}\;` | Search for setuid files |
+| `dos2unix file` | convert to *nix* format |
+| `file file` | Determine file type/info about file |
+| `chattr (+/-)i file` | Set/Unset immutable bit |
   
