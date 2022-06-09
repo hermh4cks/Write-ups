@@ -28,4 +28,6 @@ echo $IP $DOMAIN $USERLIST
 | 80/443 | Web | `nc -zv $IP 80` | Large Attack Surface, read Web section |
 | 88 | Kerberos | `nc -nv $IP 88` | `nmap -p 88 --script=krb5-enum-users --script-args krb5-enum-users.realm="$Domain",userdb=$Userlist $IP` |
 | 110/995 | `nc -nv $IP 110` `openssl s_client -connect $IP:995 -crlf -quiet` | `nmap --script "pop* -sV -p $PORT $IP` |
-| 111 | Portmapper | `nc -uvn $IP 111` | `rpcinfo $IP` `nmap -sSUC -p 111 $IP |
+| 111 | Portmapper | `nc -uvn $IP 111` | `rpcinfo $IP` `nmap -sSUC -p 111 $IP` |
+| 113 | Ident | `nc -vn $IP 113` | `nmap -sC -sV -p 113 $IP` |
+| 123 | NTP | `ntpdc -n -c monlist $IP` | `nmap -sU -sV --script "ntp* and (discovery or vuln) and not (dos or brute)" -p 123 $IP` |
