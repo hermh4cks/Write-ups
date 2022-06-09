@@ -36,3 +36,6 @@ echo $IP $DOMAIN $USERLIST
 | 135/593 | MSRPC | `nc -vn $IP $PORT` | `rpcdump.py -p $PORT $IP`(from impacket) |
 | 137/138/139 | NetBios | `nmblookup -A $IP` | `nbtscan $IP/30` `nmap -sU -sV -T4 --script nbstat.nse -p 137 -Pn -n $IP` |
 | 139/445 | SMB | `enum4linux -a $IP` | `nbtscan $IP` Huge attack surface, too many commands to list here |
+| 143/993 | IMAP | `nc -nv $IP 143` / `openssl s_client -connect $IP:993 -quiet` | `msfconsole -q -x 'use auxiliary/scanner/imap/imap_version; set RHOSTS $IP; set RPORT 143; run; exit'` |
+| 161/162/10161/10162 | SNMP | `nc -uvn $IP $PORT` | `nmap --script "snmp* and not snmp-brute" $IP` |
+| 194/6667/6660-7000 | IRC | `nc -vn $IP $PORT` / `openssl s_client -connect $IP:$PORT -quiet` | `nmap -sV --script irc* -p $PORT $IP` |
