@@ -8,7 +8,7 @@ While a service can have a **custom** port number, these are the common or **def
 export IP=10.10.10.5
 export DOMAIN=example.com
 export USERLIST=/usr/share/wordlist/usernames.txt
-export
+
 # After export, variables in bash can be called wtih a $:
 echo $IP $DOMAIN $USERLIST
 10.10.10.5 example.com /usr/share/wordlist/usernames.txt
@@ -27,3 +27,5 @@ echo $IP $DOMAIN $USERLIST
 | 79 | Finger | `nc -vn $IP 79` | `finger @$IP` |
 | 80/443 | Web | `nc -zv $IP 80` | Large Attack Surface, read Web section |
 | 88 | Kerberos | `nc -nv $IP 88` | `nmap -p 88 --script=krb5-enum-users --script-args krb5-enum-users.realm="$Domain",userdb=$Userlist $IP` |
+| 110/995 | `nc -nv $IP 110` `openssl s_client -connect $IP:995 -crlf -quiet` | `nmap --script "pop* -sV -p $PORT $IP` |
+| 111 | Portmapper | `nc -uvn $IP 111` | `rpcinfo $IP` `nmap -sSUC -p 111 $IP |
