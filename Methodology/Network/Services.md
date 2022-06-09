@@ -1,7 +1,7 @@
 # Service Scanning
 While a service can have a **custom** port number, these are the common or **default** port numbers for the listed services.
 
-*Note, all commands are run using the env variable **$IP** this can be set in linux using the following bash command to set that variable an example ipv4 address of 10.10.10.5:
+*Note, all commands are run using the env variable (likst **$IP**) this can be set in linux using the following bash command to set that variable:*
 
 ```bash
 # Setting variable
@@ -13,6 +13,8 @@ export USERLIST=/usr/share/wordlist/usernames.txt
 echo $IP $DOMAIN $USERLIST
 10.10.10.5 example.com /usr/share/wordlist/usernames.txt
 ```
+
+*Many of the commands will require root(sudo) privs to run.*
 
 | Common Port Number | Service Name | Banner Grabbing | Basic enumeration |
 | :-: | :-: | - | - |
