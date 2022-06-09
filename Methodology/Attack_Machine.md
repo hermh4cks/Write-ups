@@ -120,7 +120,7 @@ diff file1 file2
 
 | Command | Description |
 | :-: | --- |
-| `diff file1 file2`{:.ruby} | Compare files |
+| `diff file1 file2` | Compare files |
 | `rm -rf $dir` | Force delete of $dir |
 | `shred -f -u file1` | Overwrites/deletes file1 |
 | `touch -r file1 file2` | Create file with matching timestamp |
@@ -151,3 +151,8 @@ diff file1 file2
 | `file file` | Determine file type/info about file |
 | `chattr (+/-)i file` | Set/Unset immutable bit |
   
+# Linux Network Commands
+
+| Command | Description |
+| :-: | --- |
+| `watch ss -tp` | Monitor Network Connections |
