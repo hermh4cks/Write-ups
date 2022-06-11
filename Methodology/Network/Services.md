@@ -41,7 +41,7 @@ echo $IP $DOMAIN $USERLIST
 | 143/993 | IMAP | `nc -nv $IP 143` / `openssl s_client -connect $IP:993 -quiet` | `msfconsole -q -x 'use auxiliary/scanner/imap/imap_version; set RHOSTS $IP; set RPORT 143; run; exit'` |
 | 161/162/10161/10162 | SNMP | `nc -uvn $IP $PORT` | `nmap --script "snmp* and not snmp-brute" $IP` |
 | 194/6667/6660-7000 | IRC | `nc -vn $IP $PORT` / `openssl s_client -connect $IP:$PORT -quiet` | `nmap -sV --script irc* -p $PORT $IP` |
-| 264 | Check Point FireWall-1 | `nc -nv $IP 264` | `printf '\x51\x00\x00\x00\x00\x00\x00\x21\x00\x00\x00\x0bsecuremote\x00' | nc -q 1 x.x.x.x 264 | grep -a CN | cut -c 2-` |
+| 264 | Check Point FireWall-1 | `nc -nv $IP 264` | ` printf '\x51\x00\x00\x00\x00\x00\x00\x21\x00\x00\x00\x0bsecuremote\x00'` | `nc -q 1 x.x.x.x 264 | grep -a CN | cut -c 2-` |
 | 389/636/3268/3269 | LDAP | `nmap -p 389 --script ldap-search -Pn $IP` | `nmap -n -sV --script "ldap* and not brute" $IP` |
 | 500 | IPsec/IKE VPN | `nmap -sU -p 500 $IP` | `ike-scan -M $IP` |
 | 502 | Modbus | `nc -nv $IP 502` | `nmap --script modbus-discover -p 502 $IP` |
