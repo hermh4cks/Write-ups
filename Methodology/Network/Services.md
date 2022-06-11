@@ -51,3 +51,12 @@ echo $IP $DOMAIN $USERLIST
 | 515 | LPD | `nc -nv $IP 515` | `lpdprint.py $hostname $command` |
 | 548 | AFP | `nc -nv $IP 548` | `nmap -sV --script "afp-* and not dos and not brute" -p 548 $IP` |
 | 554/8554 | RTSP | `DESCRIBE rtsp://$IP:$PORT RTSP/1.0\r\nCSeq: 2` | `nmap -sV --script "rtsp-*" -p $PORT $IP` |
+| 623 | IPMI | `nmap -n (-sU) -p 623 $ip/24` | `msfconsole;use auxiliary/scanner/ipmi/ipmi_version` |
+| 631 | IPP | `nc -vn $IP 631` | `nmap -sC -sV -p 631 $IP` |
+| 873 | Rsync | `nc -vn $IP 873` | `nmap -sV --script "rsync-list-modules" -p 873 $IP` |
+| 1026 | Ruserd | `nmap -sU -p 1026 $IP` | `rusers -l $IP` |
+| 1080 | Socks | `nc -vn $IP 1080` | `nmap -p 1080 --script socks-auth-info $IP` |
+| 1098/1099/1050 | Java RMI-RMI-IIOP | `nc -vn $IP $PORT` | `rmg enum $IP $PORT` |
+| 1433 | Microsoft MsSQL | `nc -vn $IP 1098` | `nmap --script ms-sql* -sV -p 1433 $IP` |
+| 1521/1522/1529 | Oracle TNS listener | `nmap --script "oracle-tns-version" -p 1521 -T4 -sV $IP` | `tnscmd10g version -p 1521 -h $IP` |
+| 1723 | PPTP | `nc -vn $IP 1723` | `nmap –Pn -sSV -p 1723 $IP` |
