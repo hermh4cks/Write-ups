@@ -59,4 +59,11 @@ echo $IP $DOMAIN $USERLIST
 | 1098/1099/1050 | Java RMI-RMI-IIOP | `nc -vn $IP $PORT` | `rmg enum $IP $PORT` |
 | 1433 | Microsoft MsSQL | `nc -vn $IP 1098` | `nmap --script ms-sql* -sV -p 1433 $IP` |
 | 1521/1522/1529 | Oracle TNS listener | `nmap --script "oracle-tns-version" -p 1521 -T4 -sV $IP` | `tnscmd10g version -p 1521 -h $IP` |
-| 1723 | PPTP | `nc -vn $IP 1723` | `nmap –Pn -sSV -p 1723 $IP` |
+| 1723 | PPTP | `nc -vn $IP 1723` | `nmap –Pn -sSV -p1723 $IP` |
+| 1883 | MQTT | `nc -vn $IP 1883` | `nmap -sC -sV -p1883 $IP` |
+| 2049 | NFS | `nc -vn $IP 2049` | `nmap --script=nfs-ls.nse,nfs-showmount.nse,nfs-statfs.nse -p 2049 $IP` |
+| 2301/2381 | Compaq/HP Insight Manager | `nc -vn $IP $PORT` | `nmap -sC -sV -p$PORT $IP` |
+| 2375/2376 | Docker | `nc -vn $IP $PORT` | `nmap -sV --script "docker-*" -p $PORT $IP` |
+| 3128 | Squid | `nc -vn $IP $PORT` | `proxychains nmap -sT -n -p- localhost` |
+| 3260 | ISCSI | `nc -vn $IP $PORT` | `nmap -sV --script=iscsi-info -p 3260 $IP` |
+| 3299 | SAPRouter | `nc -vn $IP $PORT` | `msf> use auxiliary/scanner/sap/sap_service_discovery`|
