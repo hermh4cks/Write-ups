@@ -156,3 +156,35 @@ diff file1 file2
 | Command | Description |
 | :-: | --- |
 | `watch ss -tp` | Monitor Network Connections |
+| `netstat -ant` | TCP connections (`-anu`=UDP) |
+| `netstat -tulpn` | Connections with PIDs |
+| `lsof -i` | Established connections |
+| `smb://$IP/share` | Access windows smb share |
+| `share user $IP c$` | Mount windows share |
+| `cmbclient -U $USER \\\\$IP\\$SHARE` | SMB connect |
+| `ifconfig eth# $IP/$CIDR` | Set IP and netmask |
+| `ifconfig eth0:1 $IP/$CIDR` | Set virtual interface |
+| `route add default gw $GW_IP` | Set GateWay |
+| `ifconfig eth# mtu $SIZE` | Change MTU size |
+| `export MAC=xx.xx.xx.xx.xx.xx` | Change MAC |
+| `ifcong $INTERFACE hw either $MAC` | Change MAC |
+| `macchanger -m $MAC $INTERFACE` | Backtrack(kali) MAC changer |
+| `iwlist $INTERFACE scan` | Built-in wifi scanner |
+| `dig -x $IP` | Domain lookup for IP |
+| `host $IP` | Domain lookup for IP |
+| `host -t SRV _$service_tcp.url.com` | Domain SRV lookup |
+| `dig @$IP domain -t AXFR` | DNS zone transfer |
+| `host -l $DOMAIN $NAMESERVER` | DNS zone transfer |
+| `ip xfrm state list` | Print existing VPN keys |
+| `ip addr add $IP/$CIDR dev eth0` | Adds 'hidden' interface |
+| `/var/log/messages | grep DHCP` | List DHCP assignments |
+| `tpckill host $IP and port $PORT` | Block ip:port |
+| `echo "1" > /proc/sys/net/ipv4/ip_forward` | Turn on IP forwarding |
+| `echo "namserver $IP" > /etc/resolv.conf` | Add DNS server |
+
+# Linux Utility Commands
+
+| Command | Description |
+| :-: | --- |
+| `wget http://$URL -O url.txt -o /dev/null` | Grab url |
+|
