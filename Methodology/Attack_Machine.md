@@ -177,7 +177,7 @@ diff file1 file2
 | `host -l $DOMAIN $NAMESERVER` | DNS zone transfer |
 | `ip xfrm state list` | Print existing VPN keys |
 | `ip addr add $IP/$CIDR dev eth0` | Adds 'hidden' interface |
-| `/var/log/messages | grep DHCP` | List DHCP assignments |
+| `/var/log/messages \| grep DHCP` | List DHCP assignments |
 | `tpckill host $IP and port $PORT` | Block ip:port |
 | `echo "1" > /proc/sys/net/ipv4/ip_forward` | Turn on IP forwarding |
 | `echo "namserver $IP" > /etc/resolv.conf` | Add DNS server |
