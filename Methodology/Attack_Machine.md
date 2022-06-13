@@ -198,3 +198,29 @@ diff file1 file2
 | `apropos $topic` | Find related command |
 | `history` | View users command history |
 | `!$line` | Executes line number in history |
+
+# Linux Cover Your Tracks Commands
+
+| Command | Description |
+| :-: | --- |
+| `echo "" > /var/log/auth.log` | Clear auth.log file |
+| `echo "" > ~/.bash_history` | Clear current user's bash history |
+| `rm ~/.bash_history -rf` | Delete .bash_history file |
+| `history -c` | Clear current session history |
+| `export HISTFILESIZE=0` | Set history max lines to 0 |
+| `export HISTSIZE=0` | Set history max commands to 0 |
+| `unset HISTFILE` | Disable history logging (Need logout to take effect) |
+| `kill -9 $$` | Kills current session |
+| `in /dev/null ~/.bash_history -sf` | Permanently send all bash history commands to /dev/null |
+
+# Linux Misc Commands
+
+| Command | Description |
+| :-: | --- |
+| `ssh user@$ip arecord - \| aplay -` | Record remote mic |
+| `gcc -o outfile myfile.c` | compile C,C++ |
+| `init 6` | Reboot |
+| `init 0` | Shutdown |
+| `cat /etc/*syslog*.conf \| grep -v "^#"` | List of log files |
+| `grep 'href=' $file \|cut -d"/" -f3 \| grep <url> \| sort -u` | Stip links in url.com |
+| `dd if=/dev/urandom of=$file bs 3145728 count=100` | Make random 3MB file |
