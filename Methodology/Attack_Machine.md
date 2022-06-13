@@ -357,6 +357,39 @@ printf '1 2 3' | awk 'BEGIN {OFS=":"}; {print $1,$2,$3}'
 | `echo "1" > /proc/sys/net/ipv4/ip_forward` | Turn on IP forwarding |
 | `echo "namserver $IP" > /etc/resolv.conf` | Add DNS server |
 
+# IPtables
+```bash
+#Delete curent rules and chains
+iptables --flush
+iptables --delete-chain
+
+#allow loopback
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+#drop ICMP
+iptables -A INPUT -p icmp -m icmp --icmp-type any -j DROP
+iptables -A OUTPUT -p icmp -j DROP
+
+#allow established connections
+iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
+#allow ssh, http, https, dns
+iptables -A INPUT -s 10.10.10.10/24 -p tcp -m tcp --dport 22 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 80 -j ACCEPT
+iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 443 -j ACCEPT
+iptables -A INPUT -p udp -m udp --sport 53 -j ACCEPT
+iptables -A INPUT -p tcp -m tcp --sport 53 -j ACCEPT
+iptables -A OUTPUT -p udp -m udp --dport 53 -j ACCEPT
+iptables -A OUTPUT -p tcp -m tcp --dport 53 -j ACCEPT
+
+#default policies
+iptables -P INPUT DROP
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+```
+
+
 # Linux Utility Commands
 
 | Command | Description |
