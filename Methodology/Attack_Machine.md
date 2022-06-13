@@ -358,6 +358,8 @@ printf '1 2 3' | awk 'BEGIN {OFS=":"}; {print $1,$2,$3}'
 | `echo "namserver $IP" > /etc/resolv.conf` | Add DNS server |
 
 # IPtables
+[Index](#index)
+
 ```bash
 #Delete curent rules and chains
 iptables --flush
@@ -391,6 +393,7 @@ iptables -P OUTPUT ACCEPT
 
 
 # Linux Utility Commands
+[Index](#index)
 
 | Command | Description |
 | :-: | --- |
@@ -408,6 +411,7 @@ iptables -P OUTPUT ACCEPT
 | `!$line` | Executes line number in history |
 
 # Linux Cover Your Tracks
+[Index](#index)
 
 | Command | Description |
 | :-: | --- |
@@ -434,6 +438,7 @@ iptables -P OUTPUT ACCEPT
 | `dd if=/dev/urandom of=$file bs 3145728 count=100` | Make random 3MB file |
 
 # Linux Scripting
+[Index](#index)
 
 ### Ping Sweep
 
