@@ -10,9 +10,11 @@ While you can truly start hacking on anything, certain settups will provide you 
   + [Files](#linux-files)
   + [System info](#linux-system-info)
   + [File Commands](#linux-file-commands)
+  + [Searching and Manipulating Text](#Linux-searching-and-manipulating-text)
   + [Network Commands](#linux-network-commands)
+  + [iptables](#iptables)
   + [Utility Commands](#linux-utility-commands)
-  + [Cover your Tracks](#linux-cover-your-treacks)
+  + [Cover your Tracks](#linux-cover-your-tracks)
   + [Misc Commands](#linux-misc-commands)
   + [Scripting](#linux-scripting)
 + [Windows](#windows)
@@ -114,9 +116,6 @@ While you can truly start hacking on anything, certain settups will provide you 
 # Linux File Commands
 [Index](#index)
 
-```bash
-diff file1 file2
-```
 
 | Command | Description |
 | :-: | --- |
@@ -151,7 +150,183 @@ diff file1 file2
 | `file file` | Determine file type/info about file |
 | `chattr (+/-)i file` | Set/Unset immutable bit |
   
+# Linux Searching and Manipulating Text 
+[Index](#index)
+
+## Greps
+
+```bash
+#Extract emails from file
+grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" file.txt
+
+#Extract valid IP addresses
+grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" file.txt
+
+#Extract passwords
+grep -i "pwd\|passw" file.txt
+
+#Extract users
+grep -i "user\|invalid\|authentication\|login" file.txt
+
+# Extract hashes
+#Extract md5 hashes ({32}), sha1 ({40}), sha256({64}), sha512({128})
+egrep -oE '(^|[^a-fA-F0-9])[a-fA-F0-9]{32}([^a-fA-F0-9]|$)' *.txt | egrep -o '[a-fA-F0-9]{32}' > md5-hashes.txt
+#Extract valid MySQL-Old hashes
+grep -e "[0-7][0-9a-f]{7}[0-7][0-9a-f]{7}" *.txt > mysql-old-hashes.txt
+#Extract blowfish hashes
+grep -e "$2a\$\08\$(.){75}" *.txt > blowfish-hashes.txt
+#Extract Joomla hashes
+egrep -o "([0-9a-zA-Z]{32}):(w{16,32})" *.txt > joomla.txt
+#Extract VBulletin hashes
+egrep -o "([0-9a-zA-Z]{32}):(S{3,32})" *.txt > vbulletin.txt
+#Extraxt phpBB3-MD5
+egrep -o '$H$S{31}' *.txt > phpBB3-md5.txt
+#Extract Wordpress-MD5
+egrep -o '$P$S{31}' *.txt > wordpress-md5.txt
+#Extract Drupal 7
+egrep -o '$S$S{52}' *.txt > drupal-7.txt
+#Extract old Unix-md5
+egrep -o '$1$w{8}S{22}' *.txt > md5-unix-old.txt
+#Extract md5-apr1
+egrep -o '$apr1$w{8}S{22}' *.txt > md5-apr1.txt
+#Extract sha512crypt, SHA512(Unix)
+egrep -o '$6$w{8}S{86}' *.txt > sha512crypt.txt
+
+#Extract e-mails from text files
+grep -E -o "\b[a-zA-Z0-9.#?$*_-]+@[a-zA-Z0-9.#?$*_-]+.[a-zA-Z0-9.-]+\b" *.txt > e-mails.txt
+
+#Extract HTTP URLs from text files
+grep http | grep -shoP 'http.*?[" >]' *.txt > http-urls.txt
+#For extracting HTTPS, FTP and other URL format use
+grep -E '(((https|ftp|gopher)|mailto)[.:][^ >"	]*|www.[-a-z0-9.]+)[^ .,;	>">):]' *.txt > urls.txt
+#Note: if grep returns "Binary file (standard input) matches" use the following approaches # tr '[\000-\011\013-\037177-377]' '.' < *.log | grep -E "Your_Regex" OR # cat -v *.log | egrep -o "Your_Regex"
+
+#Extract Floating point numbers
+grep -E -o "^[-+]?[0-9]*.?[0-9]+([eE][-+]?[0-9]+)?$" *.txt > floats.txt
+
+# Extract credit card data
+#Visa
+grep -E -o "4[0-9]{3}[ -]?[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}" *.txt > visa.txt
+#MasterCard
+grep -E -o "5[0-9]{3}[ -]?[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}" *.txt > mastercard.txt
+#American Express
+grep -E -o "\b3[47][0-9]{13}\b" *.txt > american-express.txt
+#Diners Club
+grep -E -o "\b3(?:0[0-5]|[68][0-9])[0-9]{11}\b" *.txt > diners.txt
+#Discover
+grep -E -o "6011[ -]?[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}" *.txt > discover.txt
+#JCB
+grep -E -o "\b(?:2131|1800|35d{3})d{11}\b" *.txt > jcb.txt
+#AMEX
+grep -E -o "3[47][0-9]{2}[ -]?[0-9]{6}[ -]?[0-9]{5}" *.txt > amex.txt
+
+# Extract IDs
+#Extract Social Security Number (SSN)
+grep -E -o "[0-9]{3}[ -]?[0-9]{2}[ -]?[0-9]{4}" *.txt > ssn.txt
+#Extract Indiana Driver License Number
+grep -E -o "[0-9]{4}[ -]?[0-9]{2}[ -]?[0-9]{4}" *.txt > indiana-dln.txt
+#Extract US Passport Cards
+grep -E -o "C0[0-9]{7}" *.txt > us-pass-card.txt
+#Extract US Passport Number
+grep -E -o "[23][0-9]{8}" *.txt > us-pass-num.txt
+#Extract US Phone Numberss
+grep -Po 'd{3}[s-_]?d{3}[s-_]?d{4}' *.txt > us-phones.txt
+#Extract ISBN Numbers
+egrep -a -o "\bISBN(?:-1[03])?:? (?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]\b" *.txt > isbn.txt
+```
+## Sed
+```bash
+# sed
+# A stream editor. Used to perform basic text transformations
+
+# Preview a file edit, via substitution.
+sudo sed 's/Name=Xfce Session/Name=Xfce_Session/' FILE
+
+# Replace the same string more than once per line (g flag)
+sudo sed 's/Name=Xfce Session/Name=Xfce_Session/g' FILE
+
+# Edit a file (adding -i flag), in-place; changes are made to the file(s).
+sudo sed -i 's/Name=Xfce Session/Name=Xfce_Session/' FILE
+
+# It can become necessary to escape special characters in your string.
+sed -i 's/\/path\/to\/somewhere\//\/path\/to\/anotherplace\//' FILE
+
+# Change your sed delimiter to a pipe to avoid escaping slashes.
+sed -i 's|/path/to/somewhere/|/path/to/anotherplace/|' FILE
+
+# Apply multiple find-replace expressions to a file:
+sed -e 's/find/replace/' -e 's/find/replace/' filename
+
+# Replace separator `/` by any other character not used in the find or replace patterns, e.g. `#`:
+sed 's#find#replace#' filename
+
+```
+## Cut
+```bash
+# Cut out the first sixteen characters of each line of stdin:
+cut -c 1-16
+
+# Cut out the first sixteen characters of each line of the given files:
+cut -c 1-16 file
+
+# Cut out everything from the 3rd character to the end of each line:
+cut -c 3-
+
+# Cut out the fifth field of each line, using a colon as a field delimiter (default delimiter is tab):
+cut -d':' -f5
+
+# Cut out the 2nd and 10th fields of each line, using a semicolon as a delimiter:
+cut -d';' -f2,10
+
+# Cut out the fields 3 through to the end of each line, using a space as a delimiter:
+cut -d' ' -f3-
+                                                              
+```
+
+## Awk
+```bash
+# A versatile programming language for working on files.
+# More information: <https://github.com/onetrueawk/awk>.
+
+# Print the fifth column (a.k.a. field) in a space-separated file:
+awk '{print $5}' filename
+
+# Print the second column of the lines containing "foo" in a space-separated file:
+awk '/foo/ {print $2}' filename
+
+# Print the last column of each line in a file, using a comma (instead of space) as a field separator:
+awk -F ',' '{print $NF}' filename
+
+# Sum the values in the first column of a file and print the total:
+awk '{s+=$1} END {print s}' filename
+
+# Print every third line starting from the first line:
+awk 'NR%3==1' filename
+
+# Print different values based on conditions:
+awk '{if ($1 == "foo") print "Exact match foo"; else if ($1 ~ "bar") print "Partial match bar"; else print "Baz"}' filename
+
+# Print all lines where the 10th column value equals the specified value:
+awk '($10 == value)'
+
+# Print all the lines which the 10th column value is between a min and a max:
+awk '($10 >= min_value && $10 <= max_value)'
+
+# To sum integers from a file or stdin, one integer per line:
+printf '1\n2\n3\n' | awk '{ sum += $1} END {print sum}'
+
+# To use a specific character as separator to sum integers from a file or stdin:
+printf '1:2:3' | awk -F ":" '{print $1+$2+$3}'
+
+# To print a multiplication table:
+seq 9 | sed 'H;g' | awk -v RS='' '{for(i=1;i<=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")}'
+
+# To specify an output separator character:
+printf '1 2 3' | awk 'BEGIN {OFS=":"}; {print $1,$2,$3}'
+```
+
 # Linux Network Commands
+[Index](#index)
 
 | Command | Description |
 | :-: | --- |
@@ -199,7 +374,7 @@ diff file1 file2
 | `history` | View users command history |
 | `!$line` | Executes line number in history |
 
-# Linux Cover Your Tracks Commands
+# Linux Cover Your Tracks
 
 | Command | Description |
 | :-: | --- |
@@ -224,3 +399,55 @@ diff file1 file2
 | `cat /etc/*syslog*.conf \| grep -v "^#"` | List of log files |
 | `grep 'href=' $file \|cut -d"/" -f3 \| grep <url> \| sort -u` | Stip links in url.com |
 | `dd if=/dev/urandom of=$file bs 3145728 count=100` | Make random 3MB file |
+
+# Linux Scripting
+
+### Ping Sweep
+
+```bash
+for x in {1..254..1}; do ping -c 1 1.1.1.$x |grep "64 b" |cut -d" " -f4 >> ips.txt;done
+```
+
+### Automated Domain name Resolve Bash Script
+
+```bash
+#!/bin/bash
+echo "Enter Class C Range: i.e. 192.168.3"
+read range
+for ip in {1..254..1};do
+host $range.$ip |grep "name pointer" |cut -d" " -f5
+done
+```
+
+### Fork BOMB (Creates Processes Until System "Crashes")
+
+```bash
+:(){:|:&};:
+```
+
+### DNS Reverse Lookup
+
+```bash
+for ip in {1..254..1}; do dig -x 1.1.1.$ip | grep $ip >> dns.txt;done;
+```
+
+### IP Banning Script
+
+```bash
+#!/bin/bash
+# Bans any IP in the /24 subnet for 192.168.1.0 starting at 2
+# Assumes 1 is the router and does not ban IPs .20, .21, .22
+i=2
+while [ $i -le 253 ]
+do
+	if [ $i -ne 20 -a $i -ne 21 -a $i -ne 22 ]; then
+		echo "BANNED: arp -s 192.168.1.$i"
+		arp -s 192.168.1.$i 00.00.00.00.00.0a
+	else
+		echo "IP NOT BANNED: 192.168.1.$i************"
+		echo "***************************************"
+	fi
+	i-`expr $i +1`
+done
+```
+
