@@ -16,11 +16,11 @@ A large part of this was taken from [Hacktricks](https://book.hacktricks.xyz/wel
 ## 0. Base of Operations 
 Setup/use of attack machines, and testing environments
 	
-+ ### [your attack maching](/Methodology/Attack_Machine.md#your-hacking-computer)
++ ### [Your Attack Machine](/Methodology/Attack_Machine.md#your-hacking-computer)
 
 + ### [Comand & Control (C2)](/Methodology/C2.md#command-and-control)
 
-+ ### [Setting up a home lab](/Methodology/Home_Lab.md#building-a-hacking-lab-at-home-in-order-to-sharpen-your-skills)
++ ### [Setting up a Home Lab](/Methodology/Home_Lab.md#building-a-hacking-lab-at-home-in-order-to-sharpen-your-skills)
 
 + ### Hardware Hacking
 
