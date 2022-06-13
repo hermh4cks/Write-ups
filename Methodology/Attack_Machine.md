@@ -18,8 +18,22 @@ While you can truly start hacking on anything, certain settups will provide you 
   + [Utility Commands](#linux-utility-commands)
   + [Cover your Tracks](#linux-cover-your-tracks)
   + [Misc Commands](#linux-misc-commands)
+  + [Linux for Windows](#linux-for-windows)
   + [Scripting](#linux-scripting)
 + [Windows](#windows)
+  + [Versions](#windows-versions)
+  + [Windows Registry](#windows-registry)
+  + [Startup Directories](#windows-startup-directories)
+  + [Files](#windows-files)
+  + [System info](#windows-system-info-commands)
+  + [NET/Domain](#windows-net/domain-commands)
+  + [Remote](#windows-remote-commands)
+  + [Network](#windows-network-commands)
+  + [Utility Commands](#windows-utility-commands)
+  + [Misc Commands](#windows-misc-commands)
+  + [WMIC](#WMIC)
+  + [PowerShell](#powershell)
+  + [Scripting](#windows-scripting)
 + [Networking]()
 + [Programing]()
 + [Tool Syntax]()
@@ -742,4 +756,24 @@ do
 	i-`expr $i +1`
 done
 ```
+---
+# Windows
 
+# Windows Versions
+# Windows Registry
+# Windows Startup Directories
+# Windows Files
+# Windows System Info Commands
+# Windows Net/Domain Commands
+# Windows Remote Commands
+# Windows Network Commands
+# Windows Utility Commands
+# Windows Misc Commands
+# WMIC
+# powershell
+# Windows Scripting
+# Networking
+
+# Programing
+
+# Tool Syntax
