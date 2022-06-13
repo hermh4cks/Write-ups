@@ -33,9 +33,31 @@ While you can truly start hacking on anything, certain settups will provide you 
 
 talk about terminal, zsh bash ect... and talk about multiplexers like screen and tmux(show config and commands with some screenshots)
 
+A shell a program that allows humans and other programs to interact with the underlying Operating System on the computer. Whereas a kernel is like the central seed program from which the OS can grow, the shell is named as such due to it being the outter most part of the OS. That is, like with a seed, the shell is the only part that you see from the outside. 
+
+## GUI
+In modern computers we have grown used to mostly using a GUI (Graphical User Interface). It is the classic computer Desktop or mobile home screen. However, not all systems are set up to run with GUIs. Furthermore when needing to perform more complex operations on a device, GUIs are very lacking unless you already have a program or script already set up to do the desired task within a GUI.  
+
+## CLI
+Because of the limits of a GUI, use of a CLI (Command line interface) is pretty much required when hacking. This is why getting comfortable on a terminal using a CLI will make you a better hacker. CLIs will take string input with a series of arguments, and can have the input and output redirected into other commands, arguments or even files. 
+
+## Terminal
+The is the another word that Linux systems use for the native CLI. Being entirely text based, there are some tricks when it comes to orginization of the data you are inputting and outputting via the terminal
+
+## Multiplexers
+
+One such way of oranizing this data is the use of a multiplexer. A program that manipulates the terminal window. It can create splits on the screen, make named tabs, and even have entire scripting languages built around them. They also contain keyboard-shortcuts that allow you to perform the tasks quickly, and with practice, the muscle memory makes CLI multiplexing the most effective way to use a computer. My personal favorite multiplexer is tmux, ippsec has done some really good youtube videos on how he uses it. I only customized my tmux config slighty from his. 
+
 # Linux Command Line Text-Editors
 
-talk about nano vi and vim
+Even With a command line multiplexer sometimes you want to edit text without having to perform complex scripting commands in a terminal. For this you can use a text editor that is build for a CLI. Certain systems will have one or the other of these usually installed by default. Because of this, learning all of the ones listed here will help in the long run. Honestly I use both locally just based on how complex the tast is that I want to do. The main editors are
+
+## nano
+
+## vim
+
+## vi
+
 
 # Linux File System structure
 [Index](#index)
