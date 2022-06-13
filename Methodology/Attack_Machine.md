@@ -187,4 +187,14 @@ diff file1 file2
 | Command | Description |
 | :-: | --- |
 | `wget http://$URL -O url.txt -o /dev/null` | Grab url |
-|
+| `rdesktop $IP` | Remote desktop to ip |
+| `xfreerdp /v:$IP /u:$username /p:$password` | Better remote desktop, with credentials |
+| `scp /tmp/file user@$IP:/tmp/file` | Put File |
+| `scp user@$RemoteIP:/tmp/file /tmp/file` | Get File |
+| `useradd -m $username` | Add user |
+| `passwd $username` | Change user password |
+| `rmuser $username` | Remove user |
+| `script -a $outfile` | Record shell: Ctrl-D stops |
+| `apropos $topic` | Find related command |
+| `history` | View users command history |
+| `!$line` | Executes line number in history |
