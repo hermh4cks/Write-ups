@@ -18,6 +18,8 @@ Setup/use of attack machines, and testing environments
 	
 + ### [your attack maching](/Methodology/Attack_Machine.md#your-hacking-computer)
 
++ ### Comand And Control (C2)
+
 + ### [Setting up a home lab](/Methodology/Home_Lab.md#building-a-hacking-lab-at-home-in-order-to-sharpen-your-skills)
 
 + ### Hardware Hacking
