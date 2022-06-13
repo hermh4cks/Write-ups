@@ -359,8 +359,20 @@ printf '1 2 3' | awk 'BEGIN {OFS=":"}; {print $1,$2,$3}'
 
 # IPtables
 [Index](#index)
-
+*use **ip6tables** for IPv6 rules*
 ```bash
+#List all iptables rules with affected line numbers
+iptables -L -v --line-numbers
+
+#Flust all iptables rules
+iptables -F
+
+#Dump iptables with counters, rules to STOUT
+iptables-save -c > file
+
+#Restore iptables rules
+iptables-restore file
+
 #Delete curent rules and chains
 iptables --flush
 iptables --delete-chain
@@ -372,6 +384,10 @@ iptables -A OUTPUT -o lo -j ACCEPT
 #drop ICMP
 iptables -A INPUT -p icmp -m icmp --icmp-type any -j DROP
 iptables -A OUTPUT -p icmp -j DROP
+
+#allow ICMP outbound
+iptales -A OUTPUT -i $interface -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A INPUT -o $interface -p icmp --icmp-type echo-reply -j ACCEPT
 
 #allow established connections
 iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
@@ -385,10 +401,39 @@ iptables -A INPUT -p tcp -m tcp --sport 53 -j ACCEPT
 iptables -A OUTPUT -p udp -m udp --dport 53 -j ACCEPT
 iptables -A OUTPUT -p tcp -m tcp --dport 53 -j ACCEPT
 
+#allow ssh on Port 22 Outbound
+iptables -A OUTPUT -o $interface -p tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -i $interface -p tcp --sport 22 -m state --state ESTABLISHED -j ACCEPT
+
+#allow only 10.10.10.0/24, ports 80,443 and log DROPs to /var/log/messages
+iptables -A INPUT -s 10.10.10.0/24 -m state --state RELATED,ESTABLISHED,NEW -p tcp -m multiport --dports 80,443 -j ACCEPT
+iptables -A INPUT -i eth0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -P INPUT DROP
+iptables -A OUTPUT -o eth0 -j ACCEPT
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+iptables -N LOGGING
+iptables -A INPUT -j LOGGING
+iptables -A LOGGING -m limit --limit 4/min 0j LOG --log-prefix "DROPPED "
+iptables -A LOGGING -j DROP
+
 #default policies
 iptables -P INPUT DROP
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
+
+#changing policies
+iptables -P INPUT/FORAWRD/OUTPUT DROP/ACCEPT/REJECT
+
+#Port Forward
+##Turning on
+echo "1" > /proc/sys/net/ipv4/ip_forward
+####Can also be done using:#####
+sysctl net.ipv4.ip_forward=1
+##iptables rules
+iptables -t nat -A PREROUTING -p tcp -i eth0 -j DNAT -d $pivot_IP --dport 443 -to-destination $attack_IP:443
+iptables -t nat -A POSTROUTING -p tcp -i eth0 -j SNAT -s $target_subnet_CIDR -d $attack_IP --dport 443 -to-source $pivot_IP
+iptables -t filter -I FORWARD 1 -j ACCEPT
 ```
 
 
