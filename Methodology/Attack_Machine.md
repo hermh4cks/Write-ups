@@ -6,6 +6,8 @@ While you can truly start hacking on anything, certain settups will provide you 
 ### Index
 
 + [Linux](#linux)
+  + [Shells](#linux-shells)
+  + [Command line Text-editors](#linux-command-line-text-editors)
   + [File System structure](#linux-file-system-structure)
   + [Files](#linux-files)
   + [System info](#linux-system-info)
@@ -23,8 +25,18 @@ While you can truly start hacking on anything, certain settups will provide you 
 + [Tool Syntax]()
 
 
+
+
 # Linux
 ---
+# Linux Shells
+
+talk about terminal, zsh bash ect... and talk about multiplexers like screen and tmux(show config and commands with some screenshots)
+
+# Linux Command Line Text-Editors
+
+talk about nano vi and vim
+
 # Linux File System structure
 [Index](#index)
 
@@ -59,6 +71,7 @@ While you can truly start hacking on anything, certain settups will provide you 
 | /spool | Spool directory. Contains print jobs, mail spools and other queued tasks.| 
 | /src | The place where the uncompiled source code of some programs is. | 
 | /tmp | The /var/tmp directory is a place for temporary files which should be preserved between system reboots. |
+
 
 # Linux Files
 [Index](#index)
