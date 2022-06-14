@@ -14,7 +14,7 @@ A large part of this was taken from [Hacktricks](https://book.hacktricks.xyz/wel
 + ### Defining Objective
 
 ## 0. Base of Operations 
-Setup/use of attack machines, and testing environments
+Settup of attack machines, testing environments, and their use
 	
 + ### [Your Attack Machine](/Methodology/Attack_Machine.md#your-hacking-computer)
 
