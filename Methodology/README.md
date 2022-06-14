@@ -56,8 +56,17 @@ People make mistakes, learn to exploit them
 ## 7. Getting a Shell
 Found a way to execute code? Turn it into a shell
 
++ ### [Linux Shells}
++ ### [Windows Shells]
++ ### [msfvenom]
++ ### [Making Dumb-Shells Full TTYs]
++ ### [Rev-Shell Gens]
+
 ## 8. Living off the land
 Using target's built in functionality to attack it
+
++ ### [Linux Systems](/Methodology/Attack_Machine.md#linux)
++ ### [Windows Systems](/Methodology/Attack_Machine.md#windows)
 
 ## 9. Exfiltration
 You snuck in, now sneak some data out
