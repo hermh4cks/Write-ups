@@ -20,7 +20,7 @@ echo $IP $DOMAIN $USERLIST
 
 | Common Port Number | Service Name | Banner Grabbing | Basic enumeration |
 | :-: | :-: | - | - |
-| 7 | Echo | `nc -uvn $IP 7` | NA |
+| 7 | [Echo](/Methodology/Services/echo.md#hacking-echo) | `nc -uvn $IP 7` | NA |
 | 21 | FTP | `nc -vn $IP 21` | `nmap --script ftp-* -p 21 $IP` |
 | 22 | SSH/SFTP| `nc -vn $IP 22` | `nmap -sC -sV --script ssh* -p 22 $IP` |
 | 23 | Telnet| `nc -vn $IP 23` | `nmap -n -sV -Pn --script "*telnet* and safe" -p 23 $IP` |
