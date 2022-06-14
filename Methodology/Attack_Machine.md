@@ -760,6 +760,22 @@ done
 # Windows
 
 # Windows Versions
+
+| New Technology ID | Version | Release Date |
+| :-: | :-: | :-: |
+| NT 3.1 | `Windows NT 3.1` | July 27, 1993 |
+| NT 3.5 | `Windows NT 3.5` | Sept 21, 1994 |
+| NT 3.51 | `Windows NT 3.51` | May 30, 1995 |
+| NT 4.0 | `Windows NT 4.0` | Aug 24, 1996 |
+| NT 5.0 | `Windows 2000` | Feb 17, 2000 |
+| NT 5.1 | `Windows XP` | Oct 25, 2001 |
+| NT 5.2 | `Windows XP 64-bit` `Windows Server 2003` `Windows Server 2003 R2` `Windows Home Server` | March 28, 2003 |
+| NT 6.0 | `Windows Vista` `Windows Server 2008` | Nov 30, 2006 |
+| NT 6.1 | `Windows 7` `Windows Server 2008 R2` `Windows Home Server 2011` `Windows Thin PC` | Oct 22, 2009 |
+| NT 6.2 | `Windows 8` `Windows Server 2012` | Oct 18, 2013 |
+| NT 6.3 | `Windows 8.1` `Windows Server 2012 R2` | Oct 18, 2013 |
+| NT 10 | `Windows 10` `Windows Server 2016` `Windows Server 2019` `Windows Server 2022` `Windows 11` | July 29, 2015-Oct 5, 2021 |
+
 # Windows Registry
 # Windows Startup Directories
 # Windows Files
