@@ -777,6 +777,23 @@ done
 | NT 10 | `Windows 10` `Windows Server 2016` `Windows Server 2019` `Windows Server 2022` `Windows 11` | July 29, 2015-Oct 5, 2021 |
 
 # Windows Registry
+
+Database for low level system settings and user actions. Personally, I compare it to the registers on a processor but in a software sense, instead of hardware.
+The Registry can be used to get information as well as change it, here are some usefull locations. For more in-depth usage check the [Docs](https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users). To view in windows, I always just use the built in GUI reg editor. In the terminal(needs admin privs) type:
+
+```cmd
+regedit
+```
+
+| Reg Location | Description |
+| :-: | --- |
+| `HKLM\Software\Microsoft\Windows NT\CurrentVersion` | Os information, Product Name, Date of Install, Reigstered Owner, System Root |
+| `HKLM\System\CurrentControlSet\Control\TimeZoneInformation` | Time Zone info |
+| `HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Map Network Drive MRU` | Mapped Network Drives |
+| `HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR` | USB devices |
+| `HKLM\Security\Policy\Secrets` `HKCU\Software\Microsoft\Windows NT\CUreentVersion\Winlogon\autoadminlogon` | Password Keys |
+
+
 # Windows Startup Directories
 # Windows Files
 # Windows System Info Commands
