@@ -798,10 +798,16 @@ regedit
 # Windows Startup Directories
 
 ## NT 6.0-10
+
+
 All users
+
 `%SystemDrive%"\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"`
+
 Specific User
+
 `%SystemDrive%"\Users\%UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"`
+
 ## NT 5.0-5.2
 `%SystemDrive%"Documents and Settings\All Users\Start MenuPrograms\Startup"`
 ## Win9x
