@@ -858,7 +858,7 @@ echo %ip%
 | `fsutil fsinfo drives` | List drives as Admin |
 | `dir /a /s /b c:\*.pdf*` | Search for all PDFs |
 | `dir /a /b c:\windows\kb*` | Seartch for Patches |
-| `findstr /si password *.txt| *.xml| *.xls` | Search files for password |
+| `findstr /si password *.txt\| *.xml\| *.xls` | Search files for password |
 | `tree /F /A c:\ > tree.txt` | Directory listing of C: to saved to disk |
 | `reg save HKLM\Security security.hive` | Save security hive to file |
 | `echo %USERNAME%` | Display current User |
