@@ -26,7 +26,7 @@ While you can truly start hacking on anything, certain settups will provide you 
   + [Startup Directories](#windows-startup-directories)
   + [Files](#windows-files)
   + [System info](#windows-system-info-commands)
-  + [NET/Domain](#windows-net/domain-commands)
+  + [NET/Domain](#windows-netdomain-commands)
   + [Remote](#windows-remote-commands)
   + [Network](#windows-network-commands)
   + [Utility Commands](#windows-utility-commands)
@@ -37,8 +37,6 @@ While you can truly start hacking on anything, certain settups will provide you 
 + [Networking]()
 + [Programing]()
 + [Tool Syntax]()
-
-
 
 
 # Linux
