@@ -694,6 +694,7 @@ iptables -t filter -I FORWARD 1 -j ACCEPT
 | `in /dev/null ~/.bash_history -sf` | Permanently send all bash history commands to /dev/null |
 
 # Linux Misc Commands
+[Index](#index)
 
 | Command | Description |
 | :-: | --- |
@@ -760,6 +761,7 @@ done
 # Windows
 
 # Windows Versions
+[Index](#index)
 
 | New Technology ID | Version | Release Date |
 | :-: | :-: | :-: |
@@ -777,6 +779,7 @@ done
 | NT 10 | `Windows 10` `Windows Server 2016` `Windows Server 2019` `Windows Server 2022` `Windows 11` | July 29, 2015-Oct 5, 2021 |
 
 # Windows Registry
+[Index](#index)
 
 Database for low level system settings and user actions. Personally, I compare it to the registers on a processor but in a software sense, instead of hardware.
 The Registry can be used to get information as well as change it, here are some usefull locations. For more in-depth usage check the [Docs](https://docs.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users). To view in windows, I always just use the built in GUI reg editor. In the terminal(needs admin privs) type:
@@ -796,6 +799,7 @@ regedit
 
 ---
 # Windows Startup Directories
+[Index](#index)
 
 ## NT 6.0-10
 
@@ -816,6 +820,7 @@ Specific User
 `%SystemDrive%"\WINNT\Profiles\All Users\Start Menu\Programs\Startup"`
 
 # Windows Files
+[Index](#index)
 
 | Location | Description |
 | :-: | --- |
@@ -832,6 +837,7 @@ Specific User
 | `%SYSTEMROOT%\Prefetch` | Prefetch directory (exe logs) |
 
 # Windows System Info Commands
+[Index](#index)
 
 * If you see an environment variable like %ip% in the command, you need to use set to declare the variable first. Example below for ip 192.168.1.5:
 
@@ -871,6 +877,7 @@ echo %ip%
 | `net configure workstation` | Workstation configuration information |
 
 # Windows Net/Domain Commands
+[Index](#index)
 
 | Command | Description |
 | :-: | --- | 
@@ -890,6 +897,7 @@ echo %ip%
 | `net share %share% c:\share /GRANT:Everyone,FULL` | Share folder with everyone |
 
 # Windows Remote Commands
+[Index](#index)
 
 | Command | Description |
 | :-: | --- |
@@ -897,11 +905,23 @@ echo %ip%
 | ` ` |  |
 
 # Windows Network Commands
+[Index](#index)
+
 # Windows Utility Commands
+[Index](#index)
+
 # Windows Misc Commands
+[Index](#index)
+
 # WMIC
+[Index](#index)
+
 # powershell
+[Index](#index)
+
 # Windows Scripting
+[Index](#index)
+
 # Networking
 
 # Programing
