@@ -862,15 +862,40 @@ echo %ip%
 | `tree /F /A c:\ > tree.txt` | Directory listing of C: to saved to disk |
 | `reg save HKLM\Security security.hive` | Save security hive to file |
 | `echo %USERNAME%` | Display current User |
+| `net users` | Local users |
+| `net localgroups` | Local Groups |
+| `net accounts` | password policy |
+| `net sessions` | Sessions |
+| `net share` | SMB Shares |
+| `net configure server` | Server configuration information |
+| `net configure workstation` | Workstation configuration information |
 
 # Windows Net/Domain Commands
 
 | Command | Description |
 | :-: | --- | 
-| ||
-
+| `net view /domain`| Hosts in current Domain |
+| `net view /domain:%target_domain%` | Hosts in target Domain |
+| `net user /domain` | All users in current domain |
+| `net user %username% %password% /add` | Add user with password |
+| `net localgroup "Administrators" %username% /add` | Add user to Administrators group |
+| `net accounts /domain` | Domain's password policy |
+| `net localgroup "Administrators"` | List local admins |
+| `net group /domain` | List Domain groups |
+| `net group "Domain Admins" /donain` | List Domain admins |
+| `net group "Domain Controllers" /domain` | List of DCs in current Domain |
+| `net session \| find / "\\"` | Active SMB sessions |
+| `net user %username% /ACTIVE:yes /domain` | Unlock Domain user account |
+| `net user %username% %newpassword% /domain` | Change Domain user password |
+| `net share %share% c:\share /GRANT:Everyone,FULL` | Share folder with everyone |
 
 # Windows Remote Commands
+
+| Command | Description |
+| :-: | --- |
+| `tasklist /S %ip% /v` | Remote process listing |
+| ` ` |  |
+
 # Windows Network Commands
 # Windows Utility Commands
 # Windows Misc Commands
