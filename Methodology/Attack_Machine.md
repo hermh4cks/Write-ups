@@ -832,6 +832,37 @@ Specific User
 | `%SYSTEMROOT%\Prefetch` | Prefetch directory (exe logs) |
 
 # Windows System Info Commands
+
+* If you see an environment variable like %ip% in the command, you need to use set to declare the variable first. Example below for ip 192.168.1.5:
+
+```cmd
+#setting a variable
+set ip=192.168.1.5
+
+#calling a variable (wrap it in %s)
+echo %ip%
+192.168.1.5
+```
+
+| Command | Description |
+| :-: | --- |
+| `ver` | OS Version info |
+| `sc query state=all` | Show services |
+| `tasklist /svc` | Processes and Services |
+| `tasklist /m` | Processes and DLLs |
+| `tasklist /S %ip% /v` | Remote process listing |
+| `taskkill /PID %PID% /F` | Force process to terminate |
+| `systeminfo /S %ip% /U domain\user /P Pwd` | Remote system info |
+| `reg query \\%ip%\%Regdomain%\%key% /v %value%` | Query Remote registry (/s=all) |
+| `reg query HKLM /f password /t REG_SZ /s` | Search registry for password |
+| `fsutil fsinfo drives` | List drives as Admin |
+| `dir /a /s /b c:\*.pdf*` | Search for all PDFs |
+| `dir /a /b c:\windows\kb*` | Seartch for Patches |
+| `findstr /si password *.txt| *.xml| *.xls` | Search files for password |
+| `tree /F /A c:\ > tree.txt` | Directory listing of C: to saved to disk |
+| `reg save HKLM\Security security.hive` | Save security hive to file |
+| `echo %USERNAME%` | Display current User |
+
 # Windows Net/Domain Commands
 # Windows Remote Commands
 # Windows Network Commands
