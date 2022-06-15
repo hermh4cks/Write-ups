@@ -864,6 +864,12 @@ echo %ip%
 | `echo %USERNAME%` | Display current User |
 
 # Windows Net/Domain Commands
+
+| Command | Description |
+| :-: | --- | 
+| ||
+
+
 # Windows Remote Commands
 # Windows Network Commands
 # Windows Utility Commands
