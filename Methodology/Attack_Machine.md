@@ -804,18 +804,28 @@ regedit
 
 All users
 
-`%SystemDrive%"\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"`
+```shell
+%SystemDrive%"\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"
+```
 
 Specific User
 
-`%SystemDrive%"\Users\%UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"`
+```shell
+%SystemDrive%"\Users\%UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+```
 
 ## NT 5.0-5.2
-`%SystemDrive%"Documents and Settings\All Users\Start MenuPrograms\Startup"`
+```shell
+%SystemDrive%"Documents and Settings\All Users\Start MenuPrograms\Startup"
+```
 ## Win9x
-`%SystemDrive%"\wmiOWS\Start Menu\Programs\Startup"`
+```shell
+%SystemDrive%"\wmiOWS\Start Menu\Programs\Startup"
+```
 ## NT 3.5-4.0
-`%SystemDrive%"\WINNT\Profiles\All Users\Start Menu\Programs\Startup"`
+```shell
+%SystemDrive%"\WINNT\Profiles\All Users\Start Menu\Programs\Startup"
+```
 
 # Windows Files
 [Index](#index)
@@ -830,8 +840,8 @@ Specific User
 | `type %SYSTEMROOT%\System32\config\RegBack\SAM` | Backup copy of SAM |
 | `type %WINDIR%\system32\config\AppEvent.Evt` | Application Log |
 | `type %WINDIR%\system32\config\SecEvent.Evt` | Security Log |
-| `%AllUSERSPROFILE%"\Start Menu\Programs\Startup\` | Startup Location (all) |
-| `%USERPROFILE%"\Start Menu\Programs\Startup\` | Startup Location (user) |
+| `%AllUSERSPROFILE%"\Start Menu\Programs\Startup\"` | Startup Location (all) |
+| `%USERPROFILE%"\Start Menu\Programs\Startup\"` | Startup Location (user) |
 | `%SYSTEMROOT%\Prefetch` | Prefetch directory (exe logs) |
 
 # Windows System Info Commands
