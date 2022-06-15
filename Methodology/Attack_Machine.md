@@ -794,8 +794,24 @@ regedit
 | `HKLM\Security\Policy\Secrets` `HKCU\Software\Microsoft\Windows NT\CUreentVersion\Winlogon\autoadminlogon` | Password Keys |
 
 
+---
 # Windows Startup Directories
+
+## NT 6.0-10
+All users
+`%SystemDrive%"\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup"`
+Specific User
+`%SystemDrive%"\Users\%UserName%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"`
+## NT 5.0-5.2
+`%SystemDrive%"Documents and Settings\All Users\Start MenuPrograms\Startup"`
+## Win9x
+`%SystemDrive%"\wmiOWS\Start Menu\Programs\Startup"`
+## NT 3.5-4.0
+`%SystemDrive%"\WINNT\Profiles\All Users\Start Menu\Programs\Startup"`
+
 # Windows Files
+
+
 # Windows System Info Commands
 # Windows Net/Domain Commands
 # Windows Remote Commands
