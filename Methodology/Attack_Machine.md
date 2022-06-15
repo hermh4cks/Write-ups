@@ -817,6 +817,19 @@ Specific User
 
 # Windows Files
 
+| Location | Description |
+| :-: | --- |
+| `%SYSTEMROOT%` | Usually C:\Windows |
+| `type %SYSTEMROOT%\System32\drivers\etc\hosts` | Windows version of /etc/hosts |
+| `type %SYSTEMROOT%\System32\drivers\etc\networks` | Network Settings |
+| `%SYSTEMROOT%\System32\config\SAM` | location of User & Password Hashes |
+| `type %SYSTEMROOT%\System32\repair\SAM` | Backup copy of SAM |
+| `type %SYSTEMROOT%\System32\config\RegBack\SAM` | Backup copy of SAM |
+| `type %WINDIR%\system32\config\AppEvent.Evt` | Application Log |
+| `type %WINDIR%\system32\config\SecEvent.Evt` | Security Log |
+| `%AllUSERSPROFILE%"\Start Menu\Programs\Startup\` | Startup Location (all) |
+| `%USERPROFILE%"\Start Menu\Programs\Startup\` | Startup Location (user) |
+| `%SYSTEMROOT%\Prefetch` | Prefetch directory (exe logs) |
 
 # Windows System Info Commands
 # Windows Net/Domain Commands
