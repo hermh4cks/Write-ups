@@ -176,7 +176,7 @@ This makes the green checks appear
 
 Josh Madakors powershell script
 
-```psh
+```powershell
 # ----- Edit these Variables for your own Use Case ----- #
 $PASSWORD_FOR_USERS   = "Password123"
 $USER_FIRST_LAST_LIST = Get-Content .\names.txt
