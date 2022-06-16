@@ -172,6 +172,13 @@ This makes the green checks appear
 
 ![image](https://user-images.githubusercontent.com/83407557/174124741-672383b2-0eae-4efe-9cac-db37f282beb4.png)
 
+Then set the server as a router
+
+![image](https://user-images.githubusercontent.com/83407557/174144181-edb36c49-0465-4a61-9189-05e650d74d6e.png)
+
+then restart
+
+
 # PowerShell Script to add X number of users
 
 Josh Madakors powershell script
@@ -226,6 +233,8 @@ After completion I can see the users added in the USERS OU
 
 
 # Creating CLIENT01
+
+Create very much the same as the DC, but under network change from NAT to internal: lab
 
 
 
