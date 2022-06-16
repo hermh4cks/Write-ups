@@ -68,6 +68,144 @@ Going to system settings (right-click start menu) *Doing so will reset the DC*
 ![image](https://user-images.githubusercontent.com/83407557/173961673-f72b462b-e851-4c6b-bb16-017fa33caa5d.png)
 
 
+# Installing Active Directory Domain Services
+
+Within the Server Manager Dashboard on the DC, select Add Roles and Features. Select the DC as an install destination, and check the box for AD DS:
+
+![image](https://user-images.githubusercontent.com/83407557/174076728-c17f0324-4a9d-454a-ab71-9e7d7eab414a.png)
+
+![image](https://user-images.githubusercontent.com/83407557/174076791-945892e3-16b7-4a47-af27-8a5f94d47982.png)
+
+Installation will take some time
+
+![image](https://user-images.githubusercontent.com/83407557/174077011-21df8a94-56eb-4139-9168-cc3bd41e0cb2.png)
+
+## Promote DC(deploy AD)
+In alerts now there is a link to promote the DC
+![image](https://user-images.githubusercontent.com/83407557/174077725-46574108-3a0f-4bb2-a312-4bf6ea8f429b.png)
+
+## Create a new forest (name domain)
+
+Calling the Domain home.lab (name it whatever you wish), and creating a new forest.
+![image](https://user-images.githubusercontent.com/83407557/174078171-1fd3c153-3290-4436-ab9b-95c1fa036000.png)
+
+Setting the same password as for admin: Password123. Then click next until install is highlighted(ignore DNS warning)
+![image](https://user-images.githubusercontent.com/83407557/174078354-22bf03c5-a304-4213-affc-3a2593a712d2.png)
+Once done Computer will restart
+
+# Making a new Domain Admin account.
+
+As can be seen, now the login has the netbois name CONTROLLER\Administrator
+![image](https://user-images.githubusercontent.com/83407557/174081410-fe1ebd78-970b-4599-bec6-98aa1f6c5bdb.png)
+
+
+Once logged in, go to start->Active Directory Users and Computers
+
+![image](https://user-images.githubusercontent.com/83407557/174081565-78433c73-5877-49ab-a842-227beb12a8f4.png)
+
+Then Add a new Orginazational Unite to create an ADMINS OU, inside this OU create a new user and prefix the name with a- to signify an admin. I will use my own name just to remember it.
+
+![image](https://user-images.githubusercontent.com/83407557/174082547-2aca731f-eab7-4d5a-8cf0-4861480dbd35.png)
+![image](https://user-images.githubusercontent.com/83407557/174082721-b6b022af-b35c-4728-9d76-c2efb9521502.png)
+![image](https://user-images.githubusercontent.com/83407557/174082841-cab9ac26-0ad0-4266-9ad2-04bee805ccbd.png)
+I uncheck the change password on login option, and I make the password the same as the other's `Password123`
+![image](https://user-images.githubusercontent.com/83407557/174083029-b14c5a8b-995a-4dd7-ac1d-713552f934af.png)
+Then after creating in prop.(right click user) go to the member of tab, and add "domain admins" and hit check, then ok.
+![image](https://user-images.githubusercontent.com/83407557/174083623-187dcfe0-a699-4006-b19f-97e494654693.png)
+
+#### Logging in as new domain admin account 
+
+sign out and then sign in as other user and enter a-hdetwiler and pass Password123
+
+![image](https://user-images.githubusercontent.com/83407557/174084545-fa64ec02-d550-4f47-b0d1-100c2cd6e36e.png)
+
+
+# Create RAS/NAT
+
+This will let the Client computers get to the internet via the DC. In server Manager go to add roles and features and add remote access
+
+![image](https://user-images.githubusercontent.com/83407557/174086290-9b89ab3d-3d07-4d12-a4bb-393065bb00a7.png)
+
+Select top two options then hit next until install
+
+![image](https://user-images.githubusercontent.com/83407557/174086489-a7ec80a8-c417-465d-bf40-99e3b3e0bf19.png)
+
+Close when finished then go tools-> Routing and Remote Access
+
+![image](https://user-images.githubusercontent.com/83407557/174087141-82058666-9dd4-4dd4-99d9-4c1aa1d8b8f0.png)
+
+![image](https://user-images.githubusercontent.com/83407557/174087215-2ef62f10-b508-434b-81d5-e1aa65b0174f.png)
+
+![image](https://user-images.githubusercontent.com/83407557/174087255-5a11d79f-78fd-43f7-8a85-1978298f601e.png)
+
+![image](https://user-images.githubusercontent.com/83407557/174087333-33807175-500f-40c3-953d-edad0a9a84ec.png)
+
+If configured correctly, the server status should now have a green up-arrow
+
+![image](https://user-images.githubusercontent.com/83407557/174087875-50b3b4b2-6afe-43bb-9b94-cd3821bd8fd7.png)
+
+# Setting up DHCP server
+
+allows the clients to get an ip address on the internal network but still have an IP on the internet (Much like how our home computer's are NAT'd behind our routers)
+
+add another feature, this time a DHCP server:
+
+![image](https://user-images.githubusercontent.com/83407557/174088380-7f8e381e-91e4-455e-924b-0633a27d8d07.png)
+
+Then click next until install, then install. When Done there should now be a DHCP pannel on the left of the server manager. Go to tools, DHCP. Right Click on IPv4 and add Scope, and name it descriptively. (We want our clients to get IPv4 addresses in range 172.16.0.100-172.16.0.200)
+
+![image](https://user-images.githubusercontent.com/83407557/174123127-703f3ae1-9c89-4f53-8743-4a5b37dceb74.png)
+
+make sure to set the net mask to length 24 and 255.255.255.0 because it wont be by default.
+
+![image](https://user-images.githubusercontent.com/83407557/174123549-fa18f3fd-b0b2-4b05-9e0e-9fc579921b56.png)
+
+Then keep hitting next until we can select yes, i want to configure DHCP options now. For Default Gateway use the router IP
+
+![image](https://user-images.githubusercontent.com/83407557/174124157-2ebfdb4c-a178-4a9b-aae1-5caa7f6949fb.png)
+
+After going through to finish, you need to authorize the DHCP by right clicking on the dc01.home.lab and then refresh the same way.
+
+![image](https://user-images.githubusercontent.com/83407557/174124576-e0b14377-1fa1-4abb-8a76-c6a1276b09bb.png)
+
+This makes the green checks appear
+
+![image](https://user-images.githubusercontent.com/83407557/174124741-672383b2-0eae-4efe-9cac-db37f282beb4.png)
+
+# PowerShell Script to add X number of users
+
+Josh Madakors powershell script
+
+```psh
+# ----- Edit these Variables for your own Use Case ----- #
+$PASSWORD_FOR_USERS   = "Password123"
+$USER_FIRST_LAST_LIST = Get-Content .\names.txt
+# ------------------------------------------------------ #
+
+$password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
+New-ADOrganizationalUnit -Name _USERS -ProtectedFromAccidentalDeletion $false
+
+foreach ($n in $USER_FIRST_LAST_LIST) {
+    $first = $n.Split(" ")[0].ToLower()
+    $last = $n.Split(" ")[1].ToLower()
+    $username = "$($first.Substring(0,1))$($last)".ToLower()
+    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    
+    New-AdUser -AccountPassword $password `
+               -GivenName $first `
+               -Surname $last `
+               -DisplayName $username `
+               -Name $username `
+               -EmployeeID $username `
+               -PasswordNeverExpires $true `
+               -Path "ou=_USERS,$(([ADSI]`"").distinguishedName)" `
+               -Enabled $true
+}
+```
+To use, you also need to create a names.txt with a space between the first and last name. I changed his hardcoded password to my own as per the comment.
+Feel free to make your own name.txt....but [here](https://github.com/joshmadakor1/AD_PS/blob/master/names.txt) is the one from Josh Madakor
+
+
 
 
 
