@@ -203,9 +203,29 @@ foreach ($n in $USER_FIRST_LAST_LIST) {
 }
 ```
 To use, you also need to create a names.txt with a space between the first and last name. I changed his hardcoded password to my own as per the comment.
-Feel free to make your own name.txt....but [here](https://github.com/joshmadakor1/AD_PS/blob/master/names.txt) is the one from Josh Madakor
+Feel free to make your own name.txt....but [here](https://github.com/joshmadakor1/AD_PS/blob/master/names.txt) is the one from Josh Madakor. Save this powershell script as user_add.ps1 and then names as names.txt within a folder on the DC desktop.
+
+![image](https://user-images.githubusercontent.com/83407557/174135461-6c75663b-4de3-4b80-aa4b-fbfac2f7d815.png)
+
+I add my own name, so I can also be a normal, non-admin user
+
+![image](https://user-images.githubusercontent.com/83407557/174135765-a7920a45-0395-497f-adec-ea3e4a1110b0.png)
+
+Before we can execute the script we need to change the execution policy within PowerShell. I plan to set this back to restricted, to harden the Lab's security after.
+
+I then execute it with .\add_AD_users.ps1
+
+![image](https://user-images.githubusercontent.com/83407557/174136338-7a130b9f-ba50-4633-9a28-0a009e56a9b1.png)
+(i mislabeled names.txt as names.txt.txt(sorry used to linux), changed before executing)
+
+![image](https://user-images.githubusercontent.com/83407557/174136679-a433a9c5-a2e1-4334-bc5a-4800dd45bcf6.png)
+
+After completion I can see the users added in the USERS OU
+
+![image](https://user-images.githubusercontent.com/83407557/174136986-70907244-dca5-4749-bdfc-2fe662425115.png)
 
 
+# Creating CLIENT01
 
 
 
