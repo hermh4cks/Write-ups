@@ -48,6 +48,26 @@ Visual diagram of lab network from Josh Madakor:
 ![image](https://user-images.githubusercontent.com/83407557/172651021-a986e902-0976-45a5-aa41-2ec4d80b1db5.png)
 
 
+## Configuring the internal network for the lab
+
+In network settings on the DC, I can see one adapter is connected to the outside internet. I will rename this one INTERNET and the other one INTERNAL_NETWORK just to be able to easily tell them apart
+![image](https://user-images.githubusercontent.com/83407557/173960880-74e3036f-b21b-428c-83ae-ad841737ef78.png)
+
+Changed
+
+![image](https://user-images.githubusercontent.com/83407557/173961062-66bcf56d-82ee-4f8a-ac4a-1ab2e045e54c.png)
+
+### Making a static ipv4 address, and making it so the DC uses itself as a DNS server.
+
+![image](https://user-images.githubusercontent.com/83407557/173961457-79299b83-458b-49e6-a066-93a3691da3f0.png)
+
+## Renaming the PC to DC01
+
+Going to system settings (right-click start menu) *Doing so will reset the DC*
+
+![image](https://user-images.githubusercontent.com/83407557/173961673-f72b462b-e851-4c6b-bb16-017fa33caa5d.png)
+
+
 
 
 
