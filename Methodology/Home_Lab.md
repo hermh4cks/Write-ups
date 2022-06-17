@@ -234,7 +234,14 @@ After completion I can see the users added in the USERS OU
 
 # Creating CLIENT01
 
-Create very much the same as the DC, but under network change from NAT to internal: lab
+Create very much the same as the DC, but with the win 10 Enterprise ISO and under network setting in Virtualbox change from NAT to internal: lab
+
+Then under rename pc(advanced) join the lab domain. (will be prompted for credentials)
+
+![image](https://user-images.githubusercontent.com/83407557/174213053-6f350dbd-0d9e-46f7-b18b-03e0ca630be5.png)
+
+after restarting you can see there is now the domain listed on the login screen and I can login with my domain admin.
+
 
 
 
