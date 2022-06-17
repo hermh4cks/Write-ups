@@ -27,7 +27,8 @@ echo $IP $DOMAIN $USERLIST
 | 25/465/587 | SMTP| `nc -vn $IP $PORT` | `nmap -p25 --script smtp-commands $IP` |
 | 43 | WHOIS| `nc -vn $IP 43` | `whois -h $IP -p 43 "domain"` |
 | 53 | DNS| `dig version.bind CHAOS TXT @$IP` | `nmap -n --script "(default and *dns*) or fcrdns or dns-srv-enum or dns-random-txid or dns-random-srcport" $IP` |
-| 69 | TFTP/Bittorrent-tracker| NA | `nmap -n -Pn -sU -p69 -sV --script tftp-enum $IP` |
+| 68 | DHCP | `nc -uvn $IP 68` | `nmap --script broadcast-dhcp-discover` |
+| 69 | TFTP/Bittorrent-tracker| `nc -uvn $IP 69` | `nmap -n -Pn -sU -p69 -sV --script tftp-enum $IP` |
 | 79 | Finger | `nc -vn $IP 79` | `finger @$IP` |
 | 80/443 | Web | `nc -zv $IP $PORT` | Large Attack Surface, read Web section |
 | 88 | Kerberos | `nc -nv $IP 88` | `nmap -p 88 --script=krb5-enum-users --script-args krb5-enum-users.realm="$Domain",userdb=$Userlist $IP` |
