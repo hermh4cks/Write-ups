@@ -757,6 +757,20 @@ done
 ```
 ---
 # Windows
++ [Windows](#windows)
+  + [Versions](#windows-versions)
+  + [Windows Registry](#windows-registry)
+  + [Startup Directories](#windows-startup-directories)
+  + [Files](#windows-files)
+  + [System info](#windows-system-info-commands)
+  + [NET/Domain](#windows-netdomain-commands)
+  + [Remote](#windows-remote-commands)
+  + [Network](#windows-network-commands)
+  + [Utility Commands](#windows-utility-commands)
+  + [Misc Commands](#windows-misc-commands)
+  + [WMIC](#WMIC)
+  + [PowerShell](#powershell)
+  + [Scripting](#windows-scripting)
 
 # Windows Versions
 [Index](#index)
