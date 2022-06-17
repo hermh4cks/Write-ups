@@ -40,6 +40,21 @@ While you can truly start hacking on anything, certain settups will provide you 
 
 
 # Linux
++ [Linux](#linux)
+  + [Shells](#linux-shells)
+  + [Command line Text-editors](#linux-command-line-text-editors)
+  + [File System structure](#linux-file-system-structure)
+  + [Files](#linux-files)
+  + [System info](#linux-system-info)
+  + [File Commands](#linux-file-commands)
+  + [Searching and Manipulating Text](#Linux-searching-and-manipulating-text)
+  + [Network Commands](#linux-network-commands)
+  + [iptables](#iptables)
+  + [Utility Commands](#linux-utility-commands)
+  + [Cover your Tracks](#linux-cover-your-tracks)
+  + [Misc Commands](#linux-misc-commands)
+  + [Linux for Windows](#linux-for-windows)
+  + [Scripting](#linux-scripting)
 ---
 # Linux Shells
 
