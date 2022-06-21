@@ -250,3 +250,16 @@ echo 0 > /proc/sys/net/ipv4/ip_forward
 ```
 
 ## MAC Flooding - CAM overflow
+
+Filling up the CAM table of a switch with unique MAC's will make it start to act like a hub (which will broadcast all traffic). This is fixed in modern switches.
+
+```bash
+macof -i $interface
+```
+
+## VLAN - 802.1Q
+
+TODO
+
+# Spoofing
+
