@@ -1,5 +1,8 @@
 # Redeemer from Hack The Box
 
+By Herman Detwiler
+
+[Back](/Hack-The-Box#hack-the-box-write-ups)
 ## tags:
 Linux, Redis, Enumeration, Penatration Tester level 1, Attacks/Anonymous/Guest access.
 
