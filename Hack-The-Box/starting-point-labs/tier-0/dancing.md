@@ -1,5 +1,8 @@
 # Dancing From Hack The Box
 
+By Herman Detwiler
+
+[Back](/Hack-The-Box#hack-the-box-write-ups)
 ## Tags
 
 - Windows
