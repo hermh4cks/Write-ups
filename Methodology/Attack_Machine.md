@@ -939,10 +939,23 @@ echo %ip%
 | Command | Description |
 | :-: | --- |
 | `tasklist /S %ip% /v` | Remote process listing |
-| ` ` |  |
+| `systeminfo /S %ip% /U domain\user /P Pwd` | Remote systeminfo |
+| `net share \\%ip%` | Shares of a remote computer |
+| `net use \\%ip%` | Remote filesystem (IPC$) |
+| `net use z: \\%ip%\share %password%` | Map drive, specific |
+| `/user:DOMAIN\%user%` | Creds |
+| `reg add \\%ip%\%regkey%\%value%` | Add registry key remotely |
+| `sc \\%ip% create %service% binpath=C:\Windows\System32\x.exe start= auto` | Create a remote service |
+| `shutdown /m \\%ip% /r /t 0 /f` | Remotely reboot machine |
+
 
 # Windows Network Commands
 [Index](#index)
+
+| Command | Description |
+| :-: | --- |
+| `ipconfig /all` | IP configuration |
+| `ipconfig /displaydns` | Local DNS cache |
 
 # Windows Utility Commands
 [Index](#index)
