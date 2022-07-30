@@ -75,9 +75,19 @@ To test that it worked, start a netcat listener on port 53 and test the binary.
 
 ### Transfering reverse.exe Via HTTP
 
+Using python3 on kali and powershell on the target machine, here is how we would download the binary via HTTP
 
+![image](https://user-images.githubusercontent.com/83407557/181866418-6ef48e31-5c6c-49dd-ab8a-5a8512a4f5b4.png)
 
+Again, we want to test that the transfer worked, but trying to get another nc callback.
 
+![image](https://user-images.githubusercontent.com/83407557/181866474-d5093db4-908c-4fe9-b412-5199ca136c88.png)
+
+### Transfering via FTP
+
+Using a program like pure-ftp on kali, you can spin up a ftp server like we were able to do with ftp.
+
+![image](https://user-images.githubusercontent.com/83407557/181866593-d7fa5bd6-f9d1-4881-89bc-1ad7ddba2948.png)
 
 
 ## Service Exploits - Insecure Service Permissions
