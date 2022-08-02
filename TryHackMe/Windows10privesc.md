@@ -89,6 +89,21 @@ Using a program like pure-ftp on kali, you can spin up a ftp server like we were
 
 ![image](https://user-images.githubusercontent.com/83407557/181866593-d7fa5bd6-f9d1-4881-89bc-1ad7ddba2948.png)
 
+### Transfering via Exe2hex
+
+Sometimes you only have access to a dumb-shell with no interactivity. Making certain methods (like ones where we are prompted for a password) impossible. There is however a program called exe2hex, that will turn a windows binary into a seqence of echo commands that can use a the windows clipboard to build out the binary on a target system:
+
+First use exe2hex on our rev shell, then use xclip to copy the entire file to our clipboard.
+
+![image](https://user-images.githubusercontent.com/83407557/182493651-c667adaa-8d6f-438a-b7f6-dce2126a44b5.png)
+
+Then pasting it into a cmd prompt on windows, will create the binary in our current directory
+
+![image](https://user-images.githubusercontent.com/83407557/182493955-7a3d8acb-8d04-44b9-9371-356b85abeb78.png)
+
+
+
+
 
 ## Service Exploits - Insecure Service Permissions
 ## Service Exploits - Unquoted Service Path
