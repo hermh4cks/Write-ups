@@ -23,10 +23,6 @@ nmap -d -p6667 --script=irc-unrealircd-backdoor.nse --script-args=irc-unrealircd
 
 
   
-Metasploit backdoor
-
-![image](https://user-images.githubusercontent.com/83407557/182648064-e38d9e08-db8d-4f7a-b8f0-185c49eedd2d.png)
-
   
   
   
@@ -34,4 +30,28 @@ Metasploit backdoor
   
  ![image](https://user-images.githubusercontent.com/83407557/182650425-b8191898-51d5-4b8c-a985-a2bc8107ad3b.png)
 
+  proof
   
+  ![image](https://user-images.githubusercontent.com/83407557/182651131-90a0eda5-61f2-48dd-b311-b15ab0609233.png)
+
+  
+  priv esc
+  
+  Found in current user's home folder
+  
+  ![image](https://user-images.githubusercontent.com/83407557/182654840-cb733925-0c28-4950-a91d-6cc291c30d6b.png)
+
+  ![image](https://user-images.githubusercontent.com/83407557/182655731-26110974-b6a2-445b-8310-a15885526888.png)
+  
+  still writeable...ect and owned by root
+  
+  ![image](https://user-images.githubusercontent.com/83407557/182655853-b3952255-3cf5-426c-a8a8-721798c5c33f.png)
+
+
+making the exploit
+  
+  just need to switch to root:
+  
+  
+  
+  ran out of time.
