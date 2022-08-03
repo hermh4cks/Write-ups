@@ -15,3 +15,4 @@
 
 ## [Hack The Box](/Hack-The-Box#hack-the-box-write-ups)
 
+## [Offensive Security Proving Grounds](/OSPG/README.md)
