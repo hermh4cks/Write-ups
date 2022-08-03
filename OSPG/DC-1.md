@@ -42,5 +42,26 @@ With admin creds we can get code execution
 
 turn on php filter and then make a php rev shell
 
+![image](https://user-images.githubusercontent.com/83407557/182636819-bd2aa5ee-e26a-412e-88df-f2d24a3b8d74.png)
+
+
+![image](https://user-images.githubusercontent.com/83407557/182636574-383c8d06-5143-42e0-ace2-cb46516f20a5.png)
+
+
 ![image](https://user-images.githubusercontent.com/83407557/182627129-1d949c55-e831-407a-8f25-e7b844e3e478.png)
+
+
+
+Start a listener on 4444 and try and get a callback
+
+![image](https://user-images.githubusercontent.com/83407557/182637948-96a31568-3022-4056-9863-d05166353f5c.png)
+
+priv esc
+
+![image](https://user-images.githubusercontent.com/83407557/182638865-83979a9e-66a2-4679-a3c9-48b655026d96.png)
+
+from gtfobins
+![image](https://user-images.githubusercontent.com/83407557/182639149-1745c0f2-1112-44fe-add5-fa4ff81d86dc.png)
+
+![image](https://user-images.githubusercontent.com/83407557/182639643-eb5ff6b4-1d41-4c2a-9efe-46991ad8aa33.png)
 
