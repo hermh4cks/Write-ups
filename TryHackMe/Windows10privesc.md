@@ -102,10 +102,42 @@ Then pasting it into a cmd prompt on windows, will create the binary in our curr
 ![image](https://user-images.githubusercontent.com/83407557/182493955-7a3d8acb-8d04-44b9-9371-356b85abeb78.png)
 
 
+### Transfering additional binaries
 
+If we are already transfering binaries with no attempt to hide them or encrypt our traffic, we might as well transfer post exploitation tools as well. These (for me at least) will include a memory dumping tool such as mimikatz, an enumeration and priv-esc scanning tool such as WinPEAs, and pivoting tools such as chisel.
+
+The first tool I will ususally run on a system will be WinPeas or LinPeas, especially if I am not nt system/root. Each of the methods of priv esc can be discovered using winpeas.
+![image](https://user-images.githubusercontent.com/83407557/183122432-57de879e-8829-4e89-a293-0cc6a10aca63.png)
+
+It can help spot things like system misconfigurations, kernel vulns, and stored passwords.
+
+![image](https://user-images.githubusercontent.com/83407557/183122696-ff484129-1608-4597-98e3-46142938ca4e.png)
 
 
 ## Service Exploits - Insecure Service Permissions
+As can be seen from winpeas, there is a service with insecure permissions in that we can modify it
+
+![image](https://user-images.githubusercontent.com/83407557/183123129-7c92dec0-262c-4bfa-a581-648f6214916c.png)
+
+I can use accesschk.exe from systinternals to show this as well as showing that SERVICE_CHANGE_CONFIG means I can modify this service. And sc query <servicename> shows that SERVICE_START_NAME = system.
+
+![image](https://user-images.githubusercontent.com/83407557/183123579-71b7c08a-ac86-4d24-b9f9-69dcf681e20d.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183124232-33523d44-4405-4671-98f4-575f0cb28c9f.png)
+
+
+To exploit this i can use sc configure to set the binary path to that of my own reverse shell
+  
+`sc config daclsvc binpath= "\"C:\Users\user\Desktop\reverse.exe""`
+
+![image](https://user-images.githubusercontent.com/83407557/183125029-401a99f1-7f38-4a45-b638-747eecb2bfed.png)
+
+After starting a netcat listener on kali, I can use **net start** to start the exploited daclsvc service. I will then get a system-shell callback on my nc listener.
+  
+  `net start daclsvc`
+  
+![image](https://user-images.githubusercontent.com/83407557/183125386-010dfafd-1cf5-4539-8f22-4699bd3d5e6d.png)
+
 ## Service Exploits - Unquoted Service Path
 ## Service Exploits - Weak Registry Permissions
 ## Service Exploits - Insecure Service Executables
