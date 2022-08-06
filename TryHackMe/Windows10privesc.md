@@ -331,7 +331,26 @@ These can be used with the various methods such as RDP, SMB, PSexec, ect... or b
 
   
 ## Scheduled Tasks
+
+To check for scheduled tasks on a windows system I can use the following CLI command:
+  `schtasks /query /fo LIST /v`
   
+  ![image](https://user-images.githubusercontent.com/83407557/183256230-5394f9f3-0185-44f1-96ae-a51bc6555c6b.png)
+
+ Checking as scheduled task that runs as system, but that we have write access too:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183256369-1b9eb823-4a8e-4d54-8e1c-9836e4df5503.png)
+
+  ![image](https://user-images.githubusercontent.com/83407557/183256407-7ced4f11-071f-4268-b0b2-2b14a9364059.png)
+
+  I can then use echo to add a line to the script from the CLI `echo C:\users\user\desktop\reverse.exe >> C:\DevTools\CleanUp.ps1`
+
+![image](https://user-images.githubusercontent.com/83407557/183256448-b14dd6ee-b8d0-4d4c-ac60-4a587bf6d82c.png)
+
+  Start a netcat listener an wait for the next time the task runs to get back reverse shell
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183256493-3b4ffd5a-f67c-4fa3-b7d3-97215e41f40e.png)
+
   
 ## Insecure GUI Apps
 ## Startup Apps
