@@ -395,7 +395,10 @@ I can then run this vbs with cscript on the windows target:
 
   
 ## Token Impersonation - Rogue Potato
+  From: [FoxGlovesecurity](https://foxglovesecurity.com/2016/09/26/rotten-potato-privilege-escalation-from-service-accounts-to-system/)
   
+  ![image](https://user-images.githubusercontent.com/83407557/183274322-18e3f132-fe34-4494-bdb3-97f6bf700a6a.png)
+
   
 ## Token Impersonation - PrintSpoofer
 ## Privilege Escalation Scripts
