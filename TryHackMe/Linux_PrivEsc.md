@@ -30,9 +30,23 @@
 
 [15. SUID/SGID Executables - Abusing Shell Features 1](suidsgid-executables---abusing-shell-features-2)
 
-[16. Passwords & Keys - History Files](#passwords
+[16. Passwords & Keys - History Files](#passwords--keys---history-files)
+
+[17. Passwords & Keys - Config Files](#passwords--keys---config-files)
+
+[18. Password & Keys - SSH Keys](#passwords--keys---ssh-keys)
+
+[19. NFS](#nfs)
+
+[20. Kernel Exploits](#kernel-exploits)
+
+[21. Privilege Escalation Scripts](#privilege-escalation-scripts)
+
 
 ## Intro
+
+![image](https://user-images.githubusercontent.com/83407557/183507502-83e1552c-3506-41c3-a521-78ce3ab0764b.png)
+
 
 ## Service Exploits
 
