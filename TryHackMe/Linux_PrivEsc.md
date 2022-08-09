@@ -69,6 +69,8 @@ With this script from carlospolop, I can easily spot low hanging fruit, as well 
 
 mysql is found to be running as root, and the root "user" has no password set
 
+![image](https://user-images.githubusercontent.com/83407557/183640155-c03f3a9f-2d5b-46ff-aa19-8bfc5e0d1ef9.png)
+
 ![image](https://user-images.githubusercontent.com/83407557/183534783-306f8b45-9031-4660-aa30-ecf1dc58aaa4.png)
 
 
@@ -96,9 +98,74 @@ Then compile it on target and use MySQL to create UDF "do_system" then use the f
 
 ## Weak File Permissions - Readable /etc/shadow
 
+![image](https://user-images.githubusercontent.com/83407557/183643562-91a4787a-eae7-44de-9b5e-d0c8911e3c3b.png)
+
+
+The /etc/shadow file is where linux stores user's password hashes. If readable, it is possible to extract the hashes and crack them.
+
+![image](https://user-images.githubusercontent.com/83407557/183640988-96e68159-991b-47d8-b9e4-ed8e2b158e69.png)
+
+Using the rockyou.txt wordlist and hashcat, both extracted hashes are crackable 
+
+![image](https://user-images.githubusercontent.com/83407557/183641879-31adcf4c-349d-4865-a012-478dfedb6d80.png)
+
+Now on the target system I can use the su command to become the root user
+
+![image](https://user-images.githubusercontent.com/83407557/183642307-7d715767-5883-403c-82dd-ab030e15d7f9.png)
+
+
 ## Weak File Permissions - Writeable /etc/shadow
 
+As can be seen by the yellow, /etc/shadow being world-writeable is a low hanging fruit privilege escalation. 
+
+![image](https://user-images.githubusercontent.com/83407557/183643893-9be50e0e-7668-4ccf-a7a8-912352d6aa6b.png)
+
+For this privesc cracking the hashes is not required, and you lock the actual root user out of their own account. Simply create a hash of a password you know and replace the hash you dont know. Then su to root:
+
+![image](https://user-images.githubusercontent.com/83407557/183647823-6d26b77a-7387-4a88-9f5b-5fa565215a17.png)
+
+Checking that I can write to the file, and making a copy (always make a copy)
+
+![image](https://user-images.githubusercontent.com/83407557/183648088-7fafe26d-a2be-43cc-8a89-10efe9b9459a.png)
+
+Making my own hash with `mkpasswd -m sha-512 mypassword`
+
+![image](https://user-images.githubusercontent.com/83407557/183648523-e01e6f9f-a8f7-498a-a925-d5a3b3c6808e.png)
+
+Using sed to edit the file
+
+`sed -i 's#find#replace#g file'`
+
+`sed -i 's#$6$Tb/euwmK$OXA.dwMeOAcopwBl68boTG5zi65wIHsc84OWAIye5VITLLtVlaXvRDJXET..it8r.jbrlpfZeMdwD3B0fGxJI0#$6$QGZ7v32ukVS6Y$3cx2VP4LESpvEBto4jj2evGx1uOb.ghTU2Y8PTmsIMLeIZpTogPa09rkBDCxOs8lUyDTvLg/qzX276syveGNV0#g' /tmp/shadow`
+
+![image](https://user-images.githubusercontent.com/83407557/183652382-dad34534-983b-477f-a69b-d2c67618c84d.png)
+
+
+
+I then switch it back to continue on with the lab
+
+![image](https://user-images.githubusercontent.com/83407557/183652623-4190198b-6186-4bf6-82c4-5016200ba42e.png)
+
 ## Weak File Permissions - Writeable /etc/passwd
+
+![image](https://user-images.githubusercontent.com/83407557/183643893-9be50e0e-7668-4ccf-a7a8-912352d6aa6b.png)
+
+Before there was a shadow file the system hashes were stored on the passwd file. If this is writeable, the shadow file can be bypassed altogether. The attack works in almost the same way as a writeable shadow file, but with this we can also add a new root user.
+
+As can be seen the X indicates that linux check the shadow file for the password hash.
+
+![image](https://user-images.githubusercontent.com/83407557/183653444-cb813421-a7f9-4f80-b184-fc96ba3065fe.png)
+
+Changing the root password
+
+![image](https://user-images.githubusercontent.com/83407557/183655779-6ffc90f8-4f36-4674-bebe-3684c1bdf21f.png)
+
+alternatively I can take that same password that I made, and create my own new root user with echo
+
+
+
+![image](https://user-images.githubusercontent.com/83407557/183656753-fe9ace82-00ad-4ed9-9844-c0a568038482.png)
+
 
 ## Sudo - Shell Escape Sequences
 
