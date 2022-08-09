@@ -480,6 +480,20 @@ creating on target and executing
 
 ## SUID/SGID Executables - Shared Object Injection
 
+Finding SUID/SGID executables:
+
+```bash
+find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null
+```
+Checking for open/access calls and for "no such file" errors
+
+```bash
+strace path-to-file 2>&1 | grep -iE "open|access|no such file"
+```
+One of the executables stands out
+
+
+
 ## SUID/SGID Executables - Environment Variables
 
 ## SUID/SGID Executables - Abusing Shell Features 1
