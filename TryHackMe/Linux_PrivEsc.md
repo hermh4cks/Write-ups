@@ -1,6 +1,6 @@
 # Linux Privilege Escalation room
 
-[1. Intro](#Intro)
+[1. Intro](#intro)
 
 [2. Service Exploits](#service-exploits)
 
@@ -44,6 +44,7 @@
 
 
 ## Intro
+[Top](#linux-privilege-escalation-room)
 
 ![image](https://user-images.githubusercontent.com/83407557/183507502-83e1552c-3506-41c3-a521-78ce3ab0764b.png)
 
@@ -66,6 +67,7 @@ I am going to load in LinPEAs at the onset, just to get an idea of what will get
 With this script from carlospolop, I can easily spot low hanging fruit, as well as scan for things I may have overlooked with just manual enumeration. 
 
 ## Service Exploits
+[Top](#linux-privilege-escalation-room)
 
 mysql is found to be running as root, and the root "user" has no password set
 
@@ -97,6 +99,7 @@ Then compile it on target and use MySQL to create UDF "do_system" then use the f
 
 
 ## Weak File Permissions - Readable /etc/shadow
+[Top](#linux-privilege-escalation-room)
 
 ![image](https://user-images.githubusercontent.com/83407557/183643562-91a4787a-eae7-44de-9b5e-d0c8911e3c3b.png)
 
@@ -115,6 +118,7 @@ Now on the target system I can use the su command to become the root user
 
 
 ## Weak File Permissions - Writeable /etc/shadow
+[Top](#linux-privilege-escalation-room)
 
 As can be seen by the yellow, /etc/shadow being world-writeable is a low hanging fruit privilege escalation. 
 
@@ -147,6 +151,7 @@ I then switch it back to continue on with the lab
 ![image](https://user-images.githubusercontent.com/83407557/183652623-4190198b-6186-4bf6-82c4-5016200ba42e.png)
 
 ## Weak File Permissions - Writeable /etc/passwd
+[Top](#linux-privilege-escalation-room)
 
 ![image](https://user-images.githubusercontent.com/83407557/183643893-9be50e0e-7668-4ccf-a7a8-912352d6aa6b.png)
 
@@ -168,6 +173,7 @@ alternatively I can take that same password that I made, and create my own new r
 
 
 ## Sudo - Shell Escape Sequences
+[Top](#linux-privilege-escalation-room)
 
 Certain programs run with sudo offer a path to privesc. To find locally what the current user can run as root use `sudo -l`
 
@@ -184,7 +190,7 @@ Linpeas will also show which of these binaries are definite paths to privesc
 
 With this info I can perform shell escapes with each of the binaries marked in yellow by linpeas
 
-iftop
+## iftop
 
 ![image](https://user-images.githubusercontent.com/83407557/183664899-befb95ab-3d3e-49c5-a432-1a2bb655ab2c.png)
 
@@ -193,12 +199,12 @@ iftop
 ![image](https://user-images.githubusercontent.com/83407557/183664944-25d50310-6b40-4ac8-8589-14f2e26f7911.png)
 
 
-find
+## find
 ![image](https://user-images.githubusercontent.com/83407557/183665212-907b18bb-672d-4372-9eaa-9f8d815f9195.png)
 
 ![image](https://user-images.githubusercontent.com/83407557/183665377-79da2d96-15d0-4723-b506-8f997bd9c9ea.png)
 
-nano
+## nano
 
 ![image](https://user-images.githubusercontent.com/83407557/183665495-750426a6-332e-42d5-a87e-5327a1910212.png)
 
@@ -211,14 +217,14 @@ found this method lets you run commands, but you cannot see typing: example of w
 
 
 
-vim
+## vim
 
 ![image](https://user-images.githubusercontent.com/83407557/183667526-585944d7-f4c1-432c-81b0-063399835b42.png)
 
 ![image](https://user-images.githubusercontent.com/83407557/183667596-8e824aff-fec9-4ded-919b-1d14d9033ec0.png)
 
 
-man
+## man
 
 ![image](https://user-images.githubusercontent.com/83407557/183667684-b3fe2391-0c21-44ca-a06d-b4f29e3d8c2d.png)
 
@@ -229,28 +235,28 @@ man
 ![image](https://user-images.githubusercontent.com/83407557/183668204-e05537d3-f8db-4a20-a7da-637571154d83.png)
 
 
-awk
+## awk
 
 ![image](https://user-images.githubusercontent.com/83407557/183668350-e34f9c89-3af5-4eae-beca-876390d61e14.png)
 
 ![image](https://user-images.githubusercontent.com/83407557/183668454-2a60204a-0652-4b4a-a86d-087fcc6fe0bc.png)
 
 
-less
+## less
 
 ![image](https://user-images.githubusercontent.com/83407557/183668596-93b2de52-115c-4318-876b-65e4a6b15684.png)
 
 ![image](https://user-images.githubusercontent.com/83407557/183668788-5243d3bd-3811-4298-be49-94b5c51341a0.png)
 
 
-ftp
+## ftp
 
 ![image](https://user-images.githubusercontent.com/83407557/183668878-0547f007-a40d-4104-88c5-3ff794342be2.png)
 
 ![image](https://user-images.githubusercontent.com/83407557/183669115-6d9c4373-cb99-4b81-b637-3a11cd9b724e.png)
 
 
-nmap
+## nmap
 
 ![image](https://user-images.githubusercontent.com/83407557/183669458-375f1d78-c55b-4016-8405-9b21da8ebe72.png)
 
@@ -262,7 +268,7 @@ or
 ![image](https://user-images.githubusercontent.com/83407557/183669640-2c50dccf-d8c0-4a6e-b243-243c9f6cb7a7.png)
 
 
-more
+## more
 
 ![image](https://user-images.githubusercontent.com/83407557/183669747-b1555a0d-1bed-4079-bb85-8933df2b7305.png)
 
@@ -271,6 +277,7 @@ more
 
 
 ## Sudo - Environment Variables
+[Top](#linux-privilege-escalation-room)
 
 The following attack is akin to DLL injection on Windows targets. What is required is a user that has sudo permissions to any binary, and that the LD_PRELOAD or LD_LIBRARY_PATH have the ability to persist(as env variables reset by default).
 
@@ -291,6 +298,7 @@ since I have vim on the list I can also see this in the /etc/sudoers file
 ![image](https://user-images.githubusercontent.com/83407557/183683920-3a14b01a-e022-4c51-879d-1e8061f6f368.png)
 
 ### LD_LIBRARY_PATH
+[Top](#linux-privilege-escalation-room)
 
 To abuse this I can use the following C code
 Note that the code contains a single function that will unset the LD_LIBRARY_PATH variable, and spawn a root bash shell
@@ -372,6 +380,7 @@ various other sudo programs will also work, each time I get a root shell before 
 ![image](https://user-images.githubusercontent.com/83407557/183695078-2065f98d-9afa-4060-b216-692d5e378423.png)
 
 ## Cron Jobs - File Permissions
+[Top](#linux-privilege-escalation-room)
 
 Checking cron jobs with cat /etc/crontab I see that root is running two
 
@@ -399,6 +408,7 @@ then after a minute or so I get a callback
 
 
 ## Cron Jobs - PATH Environment Variables
+[Top](#linux-privilege-escalation-room)
 
 Taking another look at the crontab I see that the first part of path is a directory I control (/home/user)
 
@@ -429,6 +439,7 @@ executing
 
 
 ## Cron Jobs - Wildcards
+[Top](#linux-privilege-escalation-room)
 
 Looking at the contents of the other cron job being run as root I see a wildcare character "*"
 
@@ -457,6 +468,8 @@ After a minute, tar executes my elf as root and I get a callback
 ![image](https://user-images.githubusercontent.com/83407557/183716709-e5171857-7fd6-47b6-bc68-3ed64a8fc7ac.png)
 
 ## SUID/SGID Executables - Know Exploits
+[Top](#linux-privilege-escalation-room)
+
 The CLI command in bash to find SUID/SGID executables
 
 `find / -type f -a \( -perm -u+s -o -perm -g+s \) -exec ls -l {} \; 2> /dev/null`
@@ -479,6 +492,7 @@ creating on target and executing
 
 
 ## SUID/SGID Executables - Shared Object Injection
+[Top](#linux-privilege-escalation-room)
 
 Finding SUID/SGID executables:
 
@@ -495,19 +509,30 @@ One of the executables stands out
 
 
 ## SUID/SGID Executables - Environment Variables
+[Top](#linux-privilege-escalation-room)
 
 ## SUID/SGID Executables - Abusing Shell Features 1
+[Top](#linux-privilege-escalation-room)
+
 
 ## SUID/SGID Executables - Abusing Shell Features 2
+[Top](#linux-privilege-escalation-room)
+
 
 ## Passwords & Keys - History Files
+[Top](#linux-privilege-escalation-room)
 
 ## Passwords & Keys - Config Files
+[Top](#linux-privilege-escalation-room)
 
 ## Password & Keys - SSH Keys
+[Top](#linux-privilege-escalation-room)
 
 ## NFS
+[Top](#linux-privilege-escalation-room)
 
 ## Kernel Exploits
+[Top](#linux-privilege-escalation-room)
 
 ## Privilege Escalation Scripts
+[Top](#linux-privilege-escalation-room)
