@@ -6,6 +6,8 @@ Following the guide from [Tib3rius](https://github.com/Tib3rius/Pentest-Cheatshe
 
 This write-up containts the following machines, as well as a template for exploitation written bellow.
 
+# Vulnerable Applications
+
 - [The SLMail installer](/TryHackMe/Buffer_Overflow_Prep/slmail.md)
 
 - [The brainpan binary](/TryHackMe/Buffer_Overflow_Prep/brainpan.md)
@@ -33,9 +35,6 @@ This write-up containts the following machines, as well as a template for exploi
 - [custom written "oscp" binary 9](/TryHackMe/Buffer_Overflow_Prep/9.md)
 
 - [custom written "oscp" binary 10](/TryHackMe/Buffer_Overflow_Prep/10.md)
-
-
-===
 
 # BUFFER OVERFLOW METHODOLOGY.
 
