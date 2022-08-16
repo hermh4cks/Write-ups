@@ -39,9 +39,25 @@ This write-up containts the following machines, as well as a template for exploi
 
 # BUFFER OVERFLOW METHODOLOGY.
 
+[Tools](#tools-being-used)
+
+[Fuzzing](#fuzzing)
+
+[Crash Replication & Controlling EIP](#eip)
+
+[Finding Bad Characters](#finding-bad-characters)
+
+[Finding A Jump Point](#finding-a-jump-point)
+
+[Generating a Payload](#generating-a-payload)
+
+[Prepend NOP sled](#prepend-nop-sled)
+
+[Final Buffer](#final-buffer)
+
 A buffer overflow happens when the amount of data being placed into memory is greater than the buffer(or area) that was provided, causing the extra data to "overflow" into neighboring memory-space. This can allow an attacker to craft target specific data that can end up controlling the execution flow of the program, once they have broken free of the buffer prison. This is a template for discovering and exploiting buffer overflows on windows 32 bit systems.
 
-### Tools being used
+## Tools being used
 
 On the target system we will be using a debugger to view and pause the execution flow of the vulnerable applications, as well as search through system memory in order to craft our attack. The debugger being used in these examples is immunity debugger.
 
@@ -61,3 +77,15 @@ On the target system we will be using a debugger to view and pause the execution
 
 - `F9` Runns the program (starts paused)
 
+### MONA Configuration.
+
+Mona is a powerful plugin for Immunity Debugger, written in python, that makes exploiting buffer overflows much easier.
+
+- The latest version can be downloaded here: https://github.com/corelan/mona
+- The manual can be found here: https://www.corelan.be/index.php/2011/07/14/mona-py-the-manual/
+- Copy the mona.py file into the PyCommands directory of Immunity Debugger (usually located at C:\Program Files\Immunity Inc\Immunity Debugger\PyCommands).
+- In Immunity Debugger, type the following to set a working directory for mona.
+
+```
+!mona config -set workingfolder c:\mona\%p
+```
