@@ -6,11 +6,11 @@ Following the guide from [Tib3rius](https://github.com/Tib3rius/Pentest-Cheatshe
 
 This write-up containts the following machines, as well as a template for exploitation written bellow.
 
-- [The SLMail installer](/slmail.md)
+- [The SLMail installer](/TryHackMe/Buffer_Overflow_Prep/slmail.md)
 
-- [The brainpan binary](/brainpan.md)
+- [The brainpan binary](/TryHackMe/Buffer_Overflow_Prep/brainpan.md)
 
-- [The dostackbufferoverflowgood binary](dostackbufferoverflowgood.md)
+- [The dostackbufferoverflowgood binary](/TryHackMe/Buffer_Overflow_Prep/dostackbufferoverflowgood.md)
 
 - The vulnserver binary.
 
