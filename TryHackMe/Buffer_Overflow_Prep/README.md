@@ -89,6 +89,36 @@ Mona is a powerful plugin for Immunity Debugger, written in python, that makes e
 ```
 !mona config -set workingfolder c:\mona\%p
 ```
+## Commands Cheatsheat
+
+Using metasploit (one of the modules allowed for OSCP) to create a pattern
+
+`/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l <length>|xclip -selection clipboard`
+
+Create a pattern in working dir
+
+```
+!mona pc <length>
+```
+
+Find pattern
+
+```
+!mona findmsp -distance <length>
+```
+
+Create bytearray in working dir, omit badchars(only null byte in example) 
+
+```
+!mona bytearray -b "\x00"
+```
+
+Compare byte arrays, using the address of current ESP value
+
+```
+!mona compare -f C:\mona\appname\bytearray.bin -a <address>
+```
+
 ## FUZZING
 
 Fuzzing is the process of sending increasing lengths of data in order to crash the application, and then using a debugger to verify that EIP has been overwritten.
