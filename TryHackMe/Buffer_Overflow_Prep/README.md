@@ -119,6 +119,16 @@ Compare byte arrays, using the address of current ESP value
 !mona compare -f C:\mona\appname\bytearray.bin -a <address>
 ```
 
+Finding jump poits once badchars are known
+
+```
+!mona jmp -r esp -cpb "badchars"
+```
+or
+```
+!mona find -s 'jmp esp' -type instr -cm aslr=false,rebase=false,nx=false -cpb "badchars"
+```
+
 ## FUZZING
 
 Fuzzing is the process of sending increasing lengths of data in order to crash the application, and then using a debugger to verify that EIP has been overwritten.
