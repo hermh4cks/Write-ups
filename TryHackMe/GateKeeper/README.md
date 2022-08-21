@@ -663,3 +663,20 @@ peas.exe > pea.log
 
 I do this so that even if my shell dies, I can get the pea.log via the smb share (also I have write access there...so)
 
+
+I can just wait until I see the pea.log file get data in it:
+
+```
+smb: \share\> dir
+  .                                   D        0  Sun Aug 21 17:49:31 2022
+  ..                                  D        0  Sun Aug 21 17:49:31 2022
+  gatekeeper.exe                      A    13312  Mon Apr 20 01:27:17 2020
+  pea.log                             A        0  Sun Aug 21 17:49:31 2022
+  peas.exe                            A  1965056  Sun Aug 21 00:35:34 2022
+
+                7863807 blocks of size 4096. 3845835 blocks available
+smb: \share\> 
+
+```
+
+
