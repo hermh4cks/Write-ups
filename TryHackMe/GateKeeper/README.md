@@ -256,3 +256,8 @@ print "Received: {0}".format(data)
 
 ```
 
+## Finding bad Characters
+
+Before I am able to locate a good jump point or generate shellcode, I need to know the badchars that the application with miff up.
+
+To do this I will need to create two matching byte arrays and then compare them after I send one as a payload, and see which chars get corrupted.
