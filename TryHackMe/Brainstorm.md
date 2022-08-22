@@ -165,5 +165,79 @@ Unknown error
 _matherr(): %s in %s(%g, %g)  (retval=%g) 
 
 ...
+..
+```
 
+Further investigation finds a "[dangerous](https://www.geeksforgeeks.org/why-strcpy-and-strncpy-are-not-safe-to-use/)" function in C strcpt and puts
+
+From Google:
+
+*strcpy sets a bunch of bytes starting at where you told it to. puts reads a bunch of bytes starting at where you told it to. Neither strcpy nor puts knows whether that area actually belongs to you or someone else.*
+
+```
+└─$ strings chatserver.exe|grep -B 5 -A 5 strcpy
+memset
+printf
+puts
+signal
+sprintf
+strcpy
+strlen
+strncat
+strncmp
+strncpy
+_unlock
+```
+
+I now belive that I have found the app that is running on this machine's port 9999, and that it will be vulnerable to a buffer overflow. First I want to finish enumerating the system, to verify my findings and plan the next step.
+
+
+## Port 3389
+
+I find that RPD is running, but that I need credentials to get in
+
+```
+└─$ xfreerdp /v:10.10.52.192                                                                           1 ⨯
+[11:13:29:510] [11932:11933] [INFO][com.freerdp.client.x11] - No user name set. - Using login name: kali
+[11:13:30:154] [11932:11933] [WARN][com.freerdp.crypto] - Certificate verification failure 'self signed certificate (18)' at stack position 0
+[11:13:30:154] [11932:11933] [WARN][com.freerdp.crypto] - CN = brainstorm
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - @           WARNING: CERTIFICATE NAME MISMATCH!           @
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - The hostname used for this connection (10.10.52.192:3389) 
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - does not match the name given in the certificate:
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - Common Name (CN):
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] -      brainstorm
+[11:13:30:154] [11932:11933] [ERROR][com.freerdp.crypto] - A valid certificate for the wrong name should NOT be trusted!
+Certificate details for 10.10.52.192:3389 (RDP-Server):
+        Common Name: brainstorm
+        Subject:     CN = brainstorm
+        Issuer:      CN = brainstorm
+        Thumbprint:  dd:d7:9a:08:44:fa:15:15:9c:ed:49:64:d5:cb:82:55:ca:81:42:a8:20:d4:b3:e0:ac:34:b1:72:12:a5:7a:49
+The above X.509 certificate could not be verified, possibly because you do not have
+the CA certificate in your certificate store, or the certificate has expired.
+Please look at the OpenSSL documentation on how to add a private CA to the store.
+Do you trust the above certificate? (Y/T/N) Y
+Domain:   
+Password: 
+[11:13:35:838] [11932:11933] [ERROR][com.freerdp.core.transport] - transport_ssl_cb: ACCESS DENIED
+[11:13:35:838] [11932:11933] [ERROR][com.freerdp.core] - transport_ssl_cb:freerdp_set_last_error_ex ERRCONNECT_AUTHENTICATION_FAILED [0x00020009]
+[11:13:35:838] [11932:11933] [ERROR][com.freerdp.core.transport] - BIO_read returned an error: error:14094419:SSL routines:ssl3_read_bytes:tlsv1 alert access denied
+```
+
+## port 9999
+
+Again using netcat I want to see if this program matches what I found in my strings search of the .exe binary.
+
+It apears to match many of the strings
+
+```
+└─$ nc 10.10.52.192 9999                                                                               1 ⨯
+Welcome to Brainstorm chat (beta)
+Please enter your username (max 20 characters): Hacker
+Write a message: Test
+
+
+Mon Aug 22 08:18:32 2022
+Hacker said: Test
 ```
