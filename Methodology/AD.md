@@ -856,6 +856,11 @@ $cred = new-object system.management.automation.PSCredential "Domain\Target_Acco
 Description: GenericAll allows an attacker to modify the object in question. In this example, we change the password of a Domain Administrator. GenericWrite allows the modification of certain things (More on this in Object from Hackthebox).
 Environment: Search from HacktheBox
 
+More detailed info at :https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces
+
+![image](https://user-images.githubusercontent.com/83407557/186254375-d5c7046f-676b-4158-9253-00ea192e2bf5.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186254542-ea25c2fd-b420-48a6-a68b-78c130ef2d85.png)
 
 
 
@@ -864,10 +869,36 @@ Description: ForceChangePassword allows an attacker to change the password of th
 Environment: Object from Hackthebox
 Timestamp: 16:31
 
+Oliver has forcechangepassword on smith:
+
+![image](https://user-images.githubusercontent.com/83407557/186254989-c4cc71de-abf9-47a9-8d83-89f5fd28c376.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186255174-27fc42f5-f76e-467c-b3b7-18ae4bc94935.png)
+
+
 7. PowerView 
 Description: Allows for additional manipulation of Active Directory. Many of the commands presented by BloodHound require PowerView.
 Environment: Object from Hackthebox
 Timestamp: 17:00
+
+![image](https://user-images.githubusercontent.com/83407557/186255998-ef9a4d3b-329a-42a5-adb8-5f07dd71c7ab.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186256123-3bd06733-2ceb-46cf-b115-e072fa9e72d5.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186256175-1036e91c-a1a8-4121-b3e3-33da04c1214d.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186256291-cbc40551-00ab-41c4-b8b4-65422f25ed01.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186256352-acb6d2e5-955b-4d37-8713-1832d137c25c.png)
+
+Open in google sheets and view passwords
+
+![image](https://user-images.githubusercontent.com/83407557/186256469-6ac5c04d-d594-45cb-a2f6-233f41576161.png)
+
+Save passwords to a maria-pass file and spray with cme
+
+![image](https://user-images.githubusercontent.com/83407557/186256643-c5edaf2a-89dc-4cdf-963f-828a746ac3f6.png)
+
 
 6. WriteOwner
 Description: WriteOwner permissions allows an attacker to set the owner of the object and make him/herself a member of the object.
