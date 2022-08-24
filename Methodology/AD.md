@@ -825,7 +825,7 @@ notes from https://www.youtube.com/watch?v=xowytiyooBk (great youtube vid)
 
 Ten attacks you should master for the OSCP using Bloodhound and powerview:
 
-10. ReadGMSAPassword 
+## 10. ReadGMSAPassword 
 Description: ReadGMSAPassword allows an attacker to use the password of a Group Managed Service Account which usually has elevated privileges. 
 Environment: Search from HacktheBox
 
@@ -854,7 +854,7 @@ ConvertFrom-ADManagedPasswordBlob $mp
 $cred = new-object system.management.automation.PSCredential "Domain\Target_Account",(ConvertFrom-ADManagedPasswordBlob $mp).SecureCurrentPassword
 ```
 
-9. GenericWrite/GenericAll/AllExtendedRights 
+## 9. GenericWrite/GenericAll/AllExtendedRights 
 Description: GenericAll allows an attacker to modify the object in question. In this example, we change the password of a Domain Administrator. GenericWrite allows the modification of certain things (More on this in Object from Hackthebox).
 Environment: Search from HacktheBox
 
@@ -866,7 +866,7 @@ More detailed info at :https://www.ired.team/offensive-security-experiments/acti
 
 
 
-8. ForceChangePassword 
+## 8. ForceChangePassword 
 Description: ForceChangePassword allows an attacker to change the password of the object in question.
 Environment: Object from Hackthebox
 Timestamp: 16:31
@@ -878,7 +878,7 @@ Oliver has forcechangepassword on smith:
 ![image](https://user-images.githubusercontent.com/83407557/186255174-27fc42f5-f76e-467c-b3b7-18ae4bc94935.png)
 
 
-7. PowerView 
+## 7. PowerView 
 Description: Allows for additional manipulation of Active Directory. Many of the commands presented by BloodHound require PowerView.
 Environment: Object from Hackthebox
 Timestamp: 17:00
@@ -901,7 +901,7 @@ Save passwords to a maria-pass file and spray with cme
 
 ![image](https://user-images.githubusercontent.com/83407557/186256643-c5edaf2a-89dc-4cdf-963f-828a746ac3f6.png)
 
-6.WriteOwner
+## 6. WriteOwner
 Description: WriteOwner permissions allows an attacker to set the owner of the object and make him/herself a member of the object.
 Environment: Object from HackTheBox
 Timestamp: 23:48
@@ -911,7 +911,7 @@ Timestamp: 23:48
 ![image](https://user-images.githubusercontent.com/83407557/186444551-c2af784f-b31b-4c28-8ceb-cf9af8c3ccdc.png)
 
 
-5.SeBackupPrivilege and SeRestorePrivilege
+## 5. SeBackupPrivilege and SeRestorePrivilege
 
 Description: SeBackupPrivilege and SeRestorePrivilege allows the attacker access to any file on the machine given he/her takes the appropriate steps. In this example, we acquire NTDS.dit and System.hive
 Environment: Blackfield from Hackthebox
@@ -920,7 +920,7 @@ Environment: Blackfield from Hackthebox
 
 (note he just used this to copy root.txt, conda however shows this in two ways: one on a workstation type machine and another on a DC, going to resplace his steps here.)
 
-5.1 **Workstation**  SeBackupPrivilege
+### 5.1 **Workstation**  SeBackupPrivilege
 
 make temp dir in C if none exists
 ![image](https://user-images.githubusercontent.com/83407557/186449550-96ec7122-b5c4-434b-878e-1abcc736e508.png)
@@ -939,7 +939,7 @@ extract with pypykatz
 
 profit
 
-5. **DC** SeBackupPrivilege and SeRestorePrivilege
+### 5.2 **DC** SeBackupPrivilege and SeRestorePrivilege
 
 Get these DLLS:(https://github.com/giuliano108/SeBackupPrivilege)
 Use evil-winrm upload on them. Then import with powershell:
@@ -989,22 +989,22 @@ Profit
 ![image](https://user-images.githubusercontent.com/83407557/186459476-c360fa7d-7b5b-4be6-9130-2f4b0e3485e6.png)
 
 
-4.NTDS.dit and System.hive
+## 4. NTDS.dit and System.hive
 Description: With these files and the appropriate permissions, an attacker can dump hashes from the Domain Controller using DCSync.
 Environment: Blackfield from Hackthebox
 Timestamp: 34:38
 
-3.Account Operators/WriteDACL
+## 3.Account Operators/WriteDACL
 Description: In the account operators group, an attacker can create users and place them in non-protected groups. Placing a new user in a group with WriteDACL, enables an attacker to modify the new user's DACL. In this example, we give our new user DCSync rights.
 Environment: Forest from Hackthebox 
 Timestamp: 42:24
 
-2.ByPassing AMSI 
+## 2. ByPassing AMSI 
 Description: It may be necessary to bypass the anti-virus in Active Directory. Attackers can attempt to bypass AMSI with the Bypass-4MSI command in Evil-WinRM. Always run this command before introducing a malicious script to the environment. 
 Environment: Forest from Hackthebox
 Timestamp: 48:11
 
-1.DCSYNC/GetChangesAll/Replication
+## 1. DCSYNC/GetChangesAll/Replication
 Description: This is number one because its the most fun. DCSync allows an attacker to impersonate a Failover Domain Controller. In that context, the production Domain Controller shares all user hashes upon request, ergo DCSYNC. GetChangesAll, Replication and AllowedToDelegate all point toward the possibility of DCSYNC.
 Environment: Forest/Sizzle 
 Timestamp: 53:14
