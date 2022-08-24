@@ -928,9 +928,66 @@ make temp dir in C if none exists
 copy sam.hive into dir
 ![image](https://user-images.githubusercontent.com/83407557/186449723-4e61f93b-348f-45cd-a2f5-0255e7af65a7.png)
 
+copy system.hive into dir
+![image](https://user-images.githubusercontent.com/83407557/186450324-2265aa91-75ee-4960-bfb5-bdefa074d808.png)
 
+download with Evil-winRM(big files, takes a bit)
+![image](https://user-images.githubusercontent.com/83407557/186450547-b2c3f968-5732-4888-80e1-af3f5e999d46.png)
+
+extract with pypykatz
+![image](https://user-images.githubusercontent.com/83407557/186451248-d2298e86-2931-4470-99a8-aa0105c108e2.png)
+
+profit
 
 5. **DC** SeBackupPrivilege and SeRestorePrivilege
+
+Get these DLLS:(https://github.com/giuliano108/SeBackupPrivilege)
+Use evil-winrm upload on them. Then import with powershell:
+(note to self! these files are all saved locally and have been converted to dos)
+```ps
+Import-Module .\SeBackupPrivilegeCmdLets.dll
+Import-Module .\SeBackupPrivilegeUtils.dll
+```
+
+Then can use the command `Copy-FileSeBackupPrivilege path-to-target-file path-copy` in this case to copy ntds.dit (the domain database that will have the creds for the entire domain)
+
+But we can't because it is being used by another process. So we shadow copy:
+
+Save commands to perform shadowcopy
+
+![image](https://user-images.githubusercontent.com/83407557/186457698-1078bc14-8a0e-42a9-aa36-bda2a56fa64f.png)
+
+convert to dos format
+![image](https://user-images.githubusercontent.com/83407557/186457782-4df90581-9e54-4529-b3b7-599ef96fb407.png)
+
+upload copy.txt
+![image](https://user-images.githubusercontent.com/83407557/186457863-6c4fc3a1-e4a6-42f0-b380-2aef54330909.png)
+
+Use the diskshadow util with copy.txt as a script arguemnet:
+
+`diskshadow /s copy.txt`
+
+![image](https://user-images.githubusercontent.com/83407557/186458483-77899e1f-cddd-4a64-8e95-84b6bb1a2fe0.png)
+
+This will "shadow copy" c drive into a newly created x drive (since it isn't running it can be copied)
+
+copying ntds.dit
+
+![image](https://user-images.githubusercontent.com/83407557/186458780-5bb76fde-a07c-4822-be56-8859e25231a9.png)
+
+copying system.back
+
+![image](https://user-images.githubusercontent.com/83407557/186459034-7a1ccf47-db9c-4b0b-a4ac-7f1819391735.png)
+
+Pull hashes with secretsdump.py after downloading
+
+![image](https://user-images.githubusercontent.com/83407557/186459354-40ebad03-2ad8-4faf-992b-5824209ee218.png)
+
+Profit
+
+
+![image](https://user-images.githubusercontent.com/83407557/186459476-c360fa7d-7b5b-4be6-9130-2f4b0e3485e6.png)
+
 
 4.NTDS.dit and System.hive
 Description: With these files and the appropriate permissions, an attacker can dump hashes from the Domain Controller using DCSync.
