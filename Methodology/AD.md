@@ -901,16 +901,36 @@ Save passwords to a maria-pass file and spray with cme
 
 ![image](https://user-images.githubusercontent.com/83407557/186256643-c5edaf2a-89dc-4cdf-963f-828a746ac3f6.png)
 
-
-6. WriteOwner
+6.WriteOwner
 Description: WriteOwner permissions allows an attacker to set the owner of the object and make him/herself a member of the object.
 Environment: Object from HackTheBox
 Timestamp: 23:48
 
+![image](https://user-images.githubusercontent.com/83407557/186444355-0dafaebc-5bb6-4cfb-831e-74e53b111cb1.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186444551-c2af784f-b31b-4c28-8ceb-cf9af8c3ccdc.png)
+
+
 5.SeBackupPrivilege and SeRestorePrivilege
+
 Description: SeBackupPrivilege and SeRestorePrivilege allows the attacker access to any file on the machine given he/her takes the appropriate steps. In this example, we acquire NTDS.dit and System.hive
 Environment: Blackfield from Hackthebox
-Timestamp: 28:12
+
+![image](https://user-images.githubusercontent.com/83407557/186445207-1174b0c2-5c95-4ab6-a86d-9e69a74e34cb.png)
+
+(note he just used this to copy root.txt, conda however shows this in two ways: one on a workstation type machine and another on a DC, going to resplace his steps here.)
+
+5.1 **Workstation**  SeBackupPrivilege
+
+make temp dir in C if none exists
+![image](https://user-images.githubusercontent.com/83407557/186449550-96ec7122-b5c4-434b-878e-1abcc736e508.png)
+
+copy sam.hive into dir
+![image](https://user-images.githubusercontent.com/83407557/186449723-4e61f93b-348f-45cd-a2f5-0255e7af65a7.png)
+
+
+
+5. **DC** SeBackupPrivilege and SeRestorePrivilege
 
 4.NTDS.dit and System.hive
 Description: With these files and the appropriate permissions, an attacker can dump hashes from the Domain Controller using DCSync.
