@@ -1,5 +1,5 @@
 # Pentesting Active Directory
-[Back to Methodology](#/Write-ups/tree/main/Methodology/README.md#methodologies)
+[Back to Methodology](/Methodology/README.md#methodologies)
 
 ### Cheatsheets
 
