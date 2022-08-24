@@ -159,10 +159,53 @@ xfreerdp /u:wade /v:10.10.6.119
 Doing so was can see users.txt on the desktop
 
 
-# Questions
+Clicking on the shortcut on the desktop I see there is a bookmark for
 
-1. A web server is running on the target. What is the hidden directory which the website lives on?
+https://nvd.nist.gov/vuln/detail/CVE-2019-1388
 
-2. what is the user.txt
+Also find a file in the recycle bin that may work for this UAC bypass technique
 
-3. what is the root.txt
+![image](https://user-images.githubusercontent.com/83407557/186303336-5575848a-cf42-4d8d-bef1-c59dafea9299.png)
+
+To exploit this I first need to get it out of the trash, and have the UAC prompt come up when I try and run it. I then click the "Show information about the publisher" and a new window with an issued by link
+
+![image](https://user-images.githubusercontent.com/83407557/186303582-be293819-3921-4468-ab12-e4ff1d345574.png)
+
+However when I click it I see that no default browser has been set
+
+![image](https://user-images.githubusercontent.com/83407557/186303877-7aea5e52-1b0d-4b62-9976-cbf6d6349e9a.png)
+
+
+I can set one in system settings  
+
+![image](https://user-images.githubusercontent.com/83407557/186304307-c9141ed0-63be-4807-9190-60e7129b2ff7.png)
+
+
+After setting this, it still wasn't working...until I was able to get to the same menu via properties
+
+![image](https://user-images.githubusercontent.com/83407557/186308756-b07e025b-0047-4d98-8582-b1b93dedb413.png)
+
+
+It doesn't matter that this site can't be reached, what matters is that it spawned a browser running as system.
+
+![image](https://user-images.githubusercontent.com/83407557/186309195-3392666b-ca6b-4c2c-b14b-a7810a9b249d.png)
+
+And I can save the page
+
+![image](https://user-images.githubusercontent.com/83407557/186309411-0f6991e4-90b5-4c30-8f7f-cd757f6af901.png)
+
+Instead of saving I go to:
+
+C:\Windows\System32\cmd.exe
+
+And it seems like this vuln was maybe a rabithole.
+
+Peas.exe had suggested this box was vulnerable to a variety of CVE's including CVE-2017-0213  
+
+https://github.com/WindowsExploits/Exploits/tree/master/CVE-2017-0213
+
+Simply running the binary will grant a system shell
+
+![image](https://user-images.githubusercontent.com/83407557/186320647-23bbf625-5cf0-415f-9c55-e9aba9b69ff1.png)
+
+
