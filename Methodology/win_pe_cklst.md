@@ -3,49 +3,7 @@
 ## System Info
 
 - [ ] Obtain **System information**
-<details>
-<summary>cmd</summary>
-<br>
-<code>
-systeminfo
-
-systeminfo | findstr /B /C:"OS Name" /C:"OS Version" #Get only that information
-
-wmic qfe get Caption,Description,HotFixID,InstalledOn #Patches
-
-wmic os get osarchitecture || echo %PROCESSOR_ARCHITECTURE% #Get system architecture
-  </code>
-</details>
-
-<details>
-<summary>powershel</summary>
-<br>
-<code>
-
-[System.Environment]::OSVersion.Version #Current OS version
-
-Get-WmiObject -query 'select * from win32_quickfixengineering' | foreach {$_.hotfixid} #List all patches
-
-Get-Hotfix -description "Security update" #List only "Security Update" patches
-
-</code>
-</details>
-
 - [ ] Search for **kernel version exploits using scripts**
-<details>
-<summary>powershel</summary>
-<br>
-<code>
-
-[System.Environment]::OSVersion.Version #Current OS version
-
-Get-WmiObject -query 'select * from win32_quickfixengineering' | foreach {$_.hotfixid} #List all patches
-
-Get-Hotfix -description "Security update" #List only "Security Update" patches
-
-</code>
-</details>
-
 - [ ] Use **Google** to search for **kernel exploits**
 - [ ] Use **searchsploit** to search for **kernel exploits**
 - [ ] Interesting info in **env vars**?
@@ -57,57 +15,56 @@ Get-Hotfix -description "Security update" #List only "Security Update" patches
 
 ## Logging/AV enumeration
 
-- [ ] Check [**Audit*- windows-local-privilege-escalation/#audit-settings)and [**WEF*- windows-local-privilege-escalation/#wef)settings
-- [ ] Check [**LAPS**windows-local-privilege-escalation/#laps)
-- [ ] Check if [**WDigest*- windows-local-privilege-escalation/#wdigest)is active
-- [ ] [**LSA Protection**windows-local-privilege-escalation/#lsa-protection)?
-- [ ] [**Credentials Guard**windows-local-privilege-escalation/#credentials-guard)[?windows-local-privilege-escalation/#cached-credentials)
-- [ ] [**Cached Credentials**windows-local-privilege-escalation/#cached-credentials)?
-- [ ] Check if any [**AV**windows-local-privilege-escalation/#av)
-- [ ] [**AppLocker Policy**windows-local-privilege-escalation/#applocker-policy)?
-- [ ] [**UA**windows-local-privilege-escalation/#uac)[**User Privileges**windows-local-privilege-escalation/#users-and-groups)
-- [ ] Check [**current*- user **privileges**windows-local-privilege-escalation/#users-and-groups)
-- [ ] Are you [**member of any privileged group**windows-local-privilege-escalation/#privileged-groups)?
-- [ ] Check if you have [any of these tokens enabledwindows-local-privilege-escalation/#token-manipulation): **SeImpersonatePrivilege, SeAssignPrimaryPrivilege, SeTcbPrivilege, SeBackupPrivilege, SeRestorePrivilege, SeCreateTokenPrivilege, SeLoadDriverPrivilege, SeTakeOwnershipPrivilege, SeDebugPrivilege*- ?
-- [ ] [**Users Sessions**windows-local-privilege-escalation/#logged-users-sessions)?
-- [ ] Check[ **users homes**windows-local-privilege-escalation/#home-folders) (access?)
-- [ ] Check [**Password Policy**windows-local-privilege-escalation/#password-policy)
-- [ ] What is[ **inside the Clipboard**windows-local-privilege-escalation/#get-the-content-of-the-clipboard)?
+- [ ] Check **Audit* and **WEF** settings
+- [ ] Check **LAPS**
+- [ ] Check if **WDigest** is active
+- [ ] **LSA Protection**?
+- [ ] **Credentials Guard**?
+- [ ] **Cached Credentials**?
+- [ ] Check if any **AV**
+- [ ] **AppLocker Policy**?
+- [ ] **UA** **User Privileges**
+- [ ] Check **current user privileges**
+- [ ] Are you **member of any privileged group**?
+- [ ] Check if you have any of these tokens enabled:**SeImpersonatePrivilege, SeAssignPrimaryPrivilege, SeTcbPrivilege, SeBackupPrivilege, SeRestorePrivilege, SeCreateTokenPrivilege, SeLoadDriverPrivilege, SeTakeOwnershipPrivilege, SeDebugPrivilege**
+- [ ] **Users Sessions**?
+- [ ] Check **users homes** (access?)
+- [ ] Check **Password Policy**
+- [ ] What is **inside the Clipboard**?
 
-### [Networkwindows-local-privilege-escalation/#network)
+## Network
 
-- [ ] Check **current*- [**network*- **information**windows-local-privilege-escalation/#network)
-- [ ] Check **hidden local services*- restricted to the outside
+- [ ] Check current **network information**
+- [ ] Check **hidden local services** that had been restricted from the outside
+- [ ] Enumerate the network(shares, interfaces, routes, neighbours...)
+- [ ] Take a special look to network services listing on local (127.0.0.1)
 
-### [Running Processeswindows-local-privilege-escalation/#running-processes)
 
-- [ ] Processes binaries [**file and folders permissions**windows-local-privilege-escalation/#file-and-folder-permissions)
-- [ ] [**Memory Password mining**windows-local-privilege-escalation/#memory-password-mining)
-- [ ] [**Insecure GUI apps**windows-local-privilege-escalation/#insecure-gui-apps)
 
-### [Serviceswindows-local-privilege-escalation/#services)
+## Running Processes
 
-- [ ] [Can you **modify any service**?windows-local-privilege-escalation/#permissions)
-- [ ] [Can you **modify*- the **binary*- that is **executed*- by any **service**?windows-local-privilege-escalation/#modify-service-binary-path)
-- [ ] [Can you **modify*- the **registry*- of any **service**?windows-local-privilege-escalation/#services-registry-permissions)
-- [ ] [Can you take advantage of any **unquoted service*- binary **path**?windows-local-privilege-escalation/#unquoted-service-paths)
+- [ ] Processes binaries **file and folders permissions**
+- [ ] **Memory Password mining**
+- [ ] **Insecure GUI apps**
 
-### [**Applications**windows-local-privilege-escalation/#applications)
+## Services
 
-- [ ] **Write*- [**permissions on installed applications**windows-local-privilege-escalation/#write-permissions)
-- [ ] [**Startup Applications**windows-local-privilege-escalation/#run-at-startup)
-- [ ] **Vulnerable*- [**Drivers**windows-local-privilege-escalation/#drivers)
+- [ ] Can you **modify any service**?
+- [ ] Can you **modify** the **binary** that is **executed** by any **service**?
+- [ ] Can you **modify** the **registry*- of any **service**?windows-local-privilege-escalation/#services-registry-permissions)
+- [ ] Can you take advantage of any **unquoted service** binary **path**?
 
-### [DLL Hijackingwindows-local-privilege-escalation/#path-dll-hijacking)
+## Applications
 
+- [ ] **Write** permissions on **installed applications**
+- [ ] **Startup Applications**
+- [ ] **Vulnerable Drivers**
+
+
+## DLL Hijacking
 - [ ] Can you **write in any folder inside PATH**?
 - [ ] Is there any known service binary that **tries to load any non-existant DLL**?
 - [ ] Can you **write*- in any **binaries folder**?
-
-### [Networkwindows-local-privilege-escalation/#network)
-
-- [ ] Enumerate the network(shares, interfaces, routes, neighbours...)
-- [ ] Take a special look to network services listing on local (127.0.0.1)
 
 ### [Windows Credentialswindows-local-privilege-escalation/#windows-credentials)
 
@@ -146,19 +103,3 @@ Get-Hotfix -description "Security update" #List only "Security Update" patches
 ### [Pipe Client Impersonationwindows-local-privilege-escalation/#named-pipe-client-impersonation)
 
 - [ ] Check if you can abuse it
-
-<details>
-
-<summary><strong>Support HackTricks and get benefits!</strong></summary>
-
-Do you work in a **cybersecurity company**? Do you want to see your **company advertised in HackTricks**? or do you want to have access the **latest version of the PEASS or download HackTricks in PDF**? Check the [**SUBSCRIPTION PLANS**https://github.com/sponsors/carlospolop)!
-
-Discover [**The PEASS Family**https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**https://opensea.io/collection/the-peass-family)
-
-Get the [**official PEASS & HackTricks swag**https://peass.creator-spring.com)
-
-**Join the*- [**💬**https://emojipedia.org/speech-balloon/) [**Discord group**https://discord.gg/hRep4RUj7f) or the [**telegram group**https://t.me/peass) or **follow*- me on **Twitter*- [**🐦**https://github.com/carlospolop/hacktricks/tree/7af18b62b3bdc423e11444677a6a73d4043511e9/\[https:/emojipedia.org/bird/README.md)[**@carlospolopm**https://twitter.com/carlospolopm)**.**
-
-**Share your hacking tricks submitting PRs to the*- [**hacktricks github repo**https://github.com/carlospolop/hacktricks)**.**
-
-</details>
