@@ -176,6 +176,9 @@ Nmap -p 88 --script=krb5-enum-users --script-args krb5-enum-users.realm='<domain
 msf> use auxiliary/gather/kerberos_enumusers
 
 crackmapexec smb dominio.es  -u '' -p '' --users | awk '{print $4}' | uniq
+
+rpcclient <ip> - U ' '
+>enumdomusers
 ```
 
 #### OWA (Outlook Web Access) server
