@@ -75,6 +75,13 @@ You snuck in, now sneak some data out
 ## 10. Privilege Escalation
 If you not root/Administrator you should find a way to escalate privileges
 
++ ### [Windows Priv Esc](/Methodology/win_priv_esc.md)
++ ### [Linux Priv Esc](/Methodology/lin_priv_esc.md)
+
+Checklists
+
++ #### [win](/Methodology/win_pe_cklst.md)
++ #### [nux](/Methodology/lin_pe_cklst.md)
 ## 11. POST
 Loot all the data you can with root access, and find a way to persist within the system
 
