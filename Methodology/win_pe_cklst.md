@@ -66,40 +66,40 @@
 - [ ] Is there any known service binary that **tries to load any non-existant DLL**?
 - [ ] Can you **write*- in any **binaries folder**?
 
-### [Windows Credentialswindows-local-privilege-escalation/#windows-credentials)
+## Windows Credentials
 
-- [ ] [**Winlogon*- windows-local-privilege-escalation/#winlogon-credentials)credentials
-- [ ] [**Windows Vault**windows-local-privilege-escalation/#windows-vault) credentials that you could use?
-- [ ] Interesting [**DPAPI credentials**windows-local-privilege-escalation/#dpapi)?
-- [ ] Passwords of saved [**Wifi networks**windows-local-privilege-escalation/#wifi)?
-- [ ] Interesting info in [**saved RDP Connections**windows-local-privilege-escalation/#saved-rdp-connections)?
-- [ ] Passwords in [**recently run commands**windows-local-privilege-escalation/#recently-run-commands)?
-- [ ] [**Remote Desktop Credentials Manager**windows-local-privilege-escalation/#remote-desktop-credential-manager) passwords?
-- [ ] [**AppCmd.exe*- existswindows-local-privilege-escalation/#appcmd-exe)? Credentials?
-- [ ] [**SCClient.exe**windows-local-privilege-escalation/#scclient-sccm)? DLL Side Loading?
+- [ ] **Winlogon** credentials
+- [ ] **Windows Vault** credentials that you could use?
+- [ ] Interesting **DPAPI credentials**?
+- [ ] Passwords of saved **Wifi networks**?
+- [ ] Interesting info in **saved RDP Connections**?
+- [ ] Passwords in **recently run commands**?
+- [ ] **Remote Desktop Credentials Manager** passwords?
+- [ ] **AppCmd.exe** exists? Credentials?
+- [ ] **SCClient.exe**? DLL Side Loading?
 
-### [Files and Registry (Credentials)windows-local-privilege-escalation/#files-and-registry-credentials)
+## Files and Registry (Credentials)
 
-- [ ] **Putty:*- [**Creds**windows-local-privilege-escalation/#putty-creds) **and*- [**SSH host keys**windows-local-privilege-escalation/#putty-ssh-host-keys)
-- [ ] [**SSH keys in registry**windows-local-privilege-escalation/#ssh-keys-in-registry)?
-- [ ] Passwords in [**unattended files**windows-local-privilege-escalation/#unattended-files)?
-- [ ] Any [**SAM & SYSTEM**windows-local-privilege-escalation/#sam-and-system-backups) backup?
-- [ ] [**Cloud credentials**windows-local-privilege-escalation/#cloud-credentials)?
-- [ ] [**McAfee SiteList.xml**windows-local-privilege-escalation/#mcafee-sitelist-xml) file?
-- [ ] [**Cached GPP Password**windows-local-privilege-escalation/#cached-gpp-pasword)?
-- [ ] Password in [**IIS Web config file**windows-local-privilege-escalation/#iis-web-config)?
-- [ ] Interesting info in [**web*- **logs**windows-local-privilege-escalation/#logs)?
-- [ ] Do you want to [**ask for credentials**windows-local-privilege-escalation/#ask-for-credentials) to the user?
-- [ ] Interesting [**files inside the Recycle Bin**windows-local-privilege-escalation/#credentials-in-the-recyclebin)?
-- [ ] Other [**registry containing credentials**windows-local-privilege-escalation/#inside-the-registry)?
-- [ ] Inside [**Browser data**windows-local-privilege-escalation/#browsers-history) (dbs, history, bookmarks....)?
-- [ ] [**Generic password search**windows-local-privilege-escalation/#generic-password-search-in-files-and-registry) in files and registry
-- [ ] [**Tools**windows-local-privilege-escalation/#tools-that-search-for-passwords) to automatically search for passwords
+- [ ] **Putty Creds** and **SSH host keys**
+- [ ] **SSH keys in registry**?
+- [ ] Passwords in **unattended files**?
+- [ ] Any **SAM & SYSTEM** backup?
+- [ ] **Cloud credentials**?
+- [ ] **McAfee SiteList.xml** file?
+- [ ] **Cached GPP Password**?
+- [ ] Password in **IIS Web config file**?
+- [ ] Interesting info in **web logs**?
+- [ ] Do you want to **ask for credentials** to the user?
+- [ ] Interesting **files inside the Recycle Bin**?
+- [ ] Other **registry containing credentials**?
+- [ ] Inside **Browser data** (dbs, history, bookmarks....)?
+- [ ] **Generic password search** in files and registry
+- [ ] **Tools** to automatically search for passwords
 
-### [Leaked Handlerswindows-local-privilege-escalation/#leaked-handlers)
+## Leaked Handlers
 
 - [ ] Have you access to any handler of a process run by administrator?
 
-### [Pipe Client Impersonationwindows-local-privilege-escalation/#named-pipe-client-impersonation)
+## Pipe Client Impersonation
 
 - [ ] Check if you can abuse it
