@@ -105,7 +105,7 @@ smbclient -U '%' -L //<DC IP> && smbclient -U 'guest%' -L //
 
 - Auto-enumerate with nmap:
 ```bash
-
+nmap -p 88 --script=krb5-enum-users --script-args krb5-enum-users.realm='test.local',userdb=usernames.txt 10.10.10.1
 ```
 
 - Manual-enumeration with ldapsearch (can also use python to interact with api)
@@ -178,6 +178,7 @@ msf> use auxiliary/gather/kerberos_enumusers
 crackmapexec smb dominio.es  -u '' -p '' --users | awk '{print $4}' | uniq
 
 rpcclient <ip> - U ' '
+# Hit enter at prompt for blank password
 >enumdomusers
 ```
 
