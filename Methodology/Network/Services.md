@@ -65,6 +65,6 @@ echo $IP $DOMAIN $USERLIST
 | 2049 | NFS | `nc -vn $IP 2049` | `nmap --script=nfs-ls.nse,nfs-showmount.nse,nfs-statfs.nse -p 2049 $IP` |
 | 2301/2381 | Compaq/HP Insight Manager | `nc -vn $IP $PORT` | `nmap -sC -sV -p$PORT $IP` |
 | 2375/2376 | Docker | `nc -vn $IP $PORT` | `nmap -sV --script "docker-*" -p $PORT $IP` |
-| 3128 | Squid | `nc -vn $IP $PORT` | `proxychains nmap -sT -n -p- localhost` |
+| 3128 | [Squid](/Methodology/Services/squid#pentesting-squidproxy) | `nc -vn $IP $PORT` | `proxychains nmap -sT -n -p- localhost` |
 | 3260 | ISCSI | `nc -vn $IP $PORT` | `nmap -sV --script=iscsi-info -p 3260 $IP` |
 | 3299 | SAPRouter | `nc -vn $IP $PORT` | `msf> use auxiliary/scanner/sap/sap_service_discovery`|
