@@ -4,4 +4,4 @@
 
 ## Stand-alone Challenges
 
-[Wonderland}(/wonderland.md)
+[Wonderland](/wonderland.md)
