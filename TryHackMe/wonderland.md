@@ -1,4 +1,5 @@
 # Wonderland Write-up 
+https://tryhackme.com/room/wonderland
 by Herman Detwiler
 
 [Overview](#overview)
@@ -207,7 +208,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-12-02 14:45:
 [DATA] attacking ssh://10.10.16.97:22/
 
 [STATUS] 164.00 tries/min, 164 tries in 00:01h, 1308 to do in 00:08h, 14 active
-[22][ssh] host: 10.10.16.97   login: alice   password: HowDothTheLittleCrocodileImproveHisShiningTail
+[22][ssh] host: 10.10.16.97   login: alice   password: <removed find it yourself : P>
 [STATUS] 157.00 tries/min, 471 tries in 00:03h, 1001 to do in 00:07h, 14 active
 
 ```
@@ -221,7 +222,7 @@ From there I create a quick bash script to let me ssh in without having to remeb
 
 
 # copy password to clipboard
-echo HowDothTheLittleCrocodileImproveHisShiningTail | xclip -selection clipboard
+echo <removed find it yourself : P> | xclip -selection clipboard
 
 # ssh as alice
 ssh alice@10.10.16.97
@@ -497,7 +498,7 @@ $ cd hatter
 $ dir
 password.txt
 $ cat password.txt
-WhyIsARavenLikeAWritingDesk?
+<removed find it yourself : P>
 ```
 
 This allows me to switch to the hatter user, and therefore have the ability to run perl
@@ -546,7 +547,7 @@ uid=0(root) gid=1003(hatter) groups=1003(hatter)
        valid_lft forever preferred_lft forever
 
 # cat /root/user.txt
-thm{"Curiouser and curiouser!"}
+thm{<removed find it yourself : P>}
 
 # hostname
 wonderland
@@ -575,7 +576,7 @@ wonderland
     inet6 fe80::44:b0ff:fe81:c6d7/64 scope link 
        valid_lft forever preferred_lft forever
 
-thm{Twinkle, twinkle, little bat! How I wonder what you’re at!}
+thm{<removed find it yourself : P>}
 ```
 
 
