@@ -17,4 +17,4 @@
 
 ## [Offensive Security Proving Grounds](/OSPG/README.md)
 
-## [Hacking in the Cloud][/CLOUD/README.md)
+## [Hacking in the Cloud](/CLOUD/README.md)
