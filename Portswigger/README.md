@@ -94,6 +94,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Username enumeration via subtly different responses](2.authentication/username_enumeration_via_subtly_different_responses.md)
 
   + [Lab: Username enumeration via response timing](2.authentication/username_enumeration_via_response_timing.md)
+  
+  + [Lab: Broken brute-force protection, IP block](2.authentication/Broken_brute-force_protection_with_IP_block.md#lab-broken-brute-force-protection-ip-block)
 
 + ### 2.2 Authentication: Multi-factor
 
