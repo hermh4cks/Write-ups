@@ -80,6 +80,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + [Lab: Blind SQL injection with out-of-band data exfiltration](1.SQLi/Blind_SQL_injection_with_out-of-band_data_exfiltration.md#blind-sql-injection-with-out-of-band-data-exfiltration)
   
+  + [Lab: SQL injection with filter bypass via XML encoding](1.SQLi/SQL_injection_with_filter_bypass_via_XML_encoding.md#lab-sql-injection-with-filter-bypass-via-xml-encoding)
+  
 
 ## 2. Authentication
 
