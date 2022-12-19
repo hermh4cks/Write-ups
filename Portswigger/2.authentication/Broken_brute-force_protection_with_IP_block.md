@@ -5,3 +5,4 @@
     Your credentials: wiener:peter
     Victim's username: carlos 
     
+We are also given a list of possible [passwords](Candidate_passowrds)
