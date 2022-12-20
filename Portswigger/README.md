@@ -104,6 +104,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: 2FA broken logic](2.authentication/2FA_Broken_Logic.md)
 
   + [Lab: 2FA bypass using a brute-force attack](2.authentication/Lab:%202FA_bypass_brute-force.md)
+  
+  + [Lab: Username enumeration via account lock](2.authentication/Username_enumeration_via_account_lock.md#lab-username-enumeration-via-account-lock)
 
 + ### 2.3 Authentication: Other Mechanisms
 
