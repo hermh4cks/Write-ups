@@ -119,6 +119,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Password reset broken logic](2.authentication/Password_reset_broken_logic.md#lab-password-reset-broken-logic)
   
   + [Lab: Password reset poisoning via middleware](2.authentication/Password_reset_poisoning_via_middleware.md#lab-password-reset-poisoning-via-middleware)
+  
+  + [Lab: Password brute-force via password change](2.authentication/Password_brute-force_via_password_change.md#lab-password-brute-force-via-password-change)
 
 ## 3. Directory traversal 
 [Back to Index](#index)
