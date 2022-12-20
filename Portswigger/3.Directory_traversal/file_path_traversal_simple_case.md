@@ -19,6 +19,8 @@ I See that there is a filename parameter used to get the image file from the ser
 
 ![image](https://user-images.githubusercontent.com/83407557/208782016-a1f22cc7-358f-4e09-89b7-e593aa02d527.png)
 
+![image](https://user-images.githubusercontent.com/83407557/208784124-afb30724-e464-4b45-9371-661450e8df23.png)
+
 
 Which solves the lab:
 
