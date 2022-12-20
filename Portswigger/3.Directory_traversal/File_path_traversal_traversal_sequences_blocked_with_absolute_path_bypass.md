@@ -17,6 +17,9 @@ To solve the lab, retrieve the contents of the /etc/passwd file.
 
 ![image](https://user-images.githubusercontent.com/83407557/208783565-927aa78f-89df-45e0-9a67-ba767356053a.png)
 
+![image](https://user-images.githubusercontent.com/83407557/208784289-fabc6238-f194-49ff-ab13-5b22c50659b7.png)
+
+
 which solves the lab
 
 ![image](https://user-images.githubusercontent.com/83407557/208783614-e536e681-2e57-457f-bca3-e6f6f13390c6.png)
