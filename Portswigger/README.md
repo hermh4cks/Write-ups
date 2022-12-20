@@ -125,7 +125,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 3. Directory traversal 
 [Back to Index](#index)
 
-  + [Lab: File path traversal, simple case](3.Directory_traversal/file_path_traversal_simple_case.md#lab-file-path-traversal-simple-case) 
+  + [Lab: File path traversal, simple case](3.Directory_traversal/file_path_traversal_simple_case.md#lab-file-path-traversal-simple-case)
+  
+  + [Lab: File path traversal, traversal sequences blocked with absolute path bypass](3.Directory_traversal/File_path_traversal_traversal_sequences_blocked_with_absolute_path_bypass.md#lab-file-path-traversal-traversal-sequences-blocked-with-absolute-path-bypass)
 
 ## 4. Command injection
 [Back to Index](#index)
