@@ -124,6 +124,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 ## 3. Directory traversal 
 [Back to Index](#index)
+
+  + [Lab: File path traversal, simple case](3.Directory_traversal/file_path_traversal_simple_case.md#lab-file-path-traversal-simple-case) 
+
 ## 4. Command injection
 [Back to Index](#index)
 ## 5. Business logic vulnerabilities
