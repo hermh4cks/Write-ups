@@ -113,6 +113,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 + ### 2.3 Authentication: Other Mechanisms
 
   + [Lab: Brute-forcing a stay-logged-in cookie](2.authentication/Brute_forcing_stay-logged-in_cookie.md)
+  
+  + [Lab: Offline password cracking](2.authentication/offline_password_cracking.md#lab-offline-password-cracking)
 
 ## 3. Directory traversal 
 [Back to Index](#index)
