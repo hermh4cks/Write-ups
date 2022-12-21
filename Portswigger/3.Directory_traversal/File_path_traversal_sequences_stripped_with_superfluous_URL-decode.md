@@ -35,7 +35,7 @@ position:
 
 ![image](https://user-images.githubusercontent.com/83407557/208805166-7fb9e542-9b78-4c25-bfd1-f93eb847afe3.png)
 
-Payload
+Payload (directory traversal for single file)
 
 ![image](https://user-images.githubusercontent.com/83407557/208806790-40a0a5c9-0e0c-4c50-ab40-e88e6f2a0247.png)
 
