@@ -132,7 +132,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: File path traversal, traversal sequences stripped with superfluous URL-decode](3.Directory_traversal/File_path_traversal_sequences_stripped_with_superfluous_URL-decode.md#lab-file-path-traversal-traversal-sequences-stripped-with-superfluous-url-decode)
   
   + [Lab: File path traversal, validation of start of path](3.Directory_traversal/validation_of_start_of_path.md#lab-file-path-traversal-validation-of-start-of-path)
-
+  
+  + [Lab: File path traversal, validation of file extension with null byte bypass](3.Directory_traversal/validation_of_file_extension_with_null_byte_bypass.md#lab-file-path-traversal-validation-of-file-extension-with-null-byte-bypass)
+  
 ## 4. Command injection
 [Back to Index](#index)
 ## 5. Business logic vulnerabilities
