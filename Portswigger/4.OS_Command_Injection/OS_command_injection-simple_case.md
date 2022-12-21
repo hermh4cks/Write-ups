@@ -52,7 +52,7 @@ Sending this to repeater we can form a POC to write hello world onto the page
 
 ![image](https://user-images.githubusercontent.com/83407557/209017809-b3115a6d-a3e7-4adc-94b2-76deba9d89b2.png)
 
-# Step 4 exucte whoami
+# Step 4 execute whoami on the server
 
 I also exucte some other usefull commands to get some background on the target:
 
