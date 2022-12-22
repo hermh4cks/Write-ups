@@ -7,24 +7,6 @@ To solve the lab, exploit the blind OS command injection vulnerability to issue 
 **Note**
 *To prevent the Academy platform being used to attack third parties, our firewall blocks interactions between the labs and arbitrary external systems. To solve the lab, you must use Burp Collaborator's default public server. *
 
-## Different ways of injecting commands
-
-Just as an example, notice how the date command can be used with echo
-
-```bash
-# With nothing echo just sends the word date
-└─$ echo date    
-date
-
-# with a $(command) the date command is executed
-└─$ echo $(date)                                                                                             130 ⨯
-Thu Dec 22 02:10:43 PM EST 2022
-
-# backticks can do the same thing
-└─$ echo `date` 
-Thu Dec 22 02:10:44 PM EST 2022
-```
-
 # Step 1 Get attack server address
 
 Get the attack server address from burp collaborator, by clicking on the `copy to clipboard` link
