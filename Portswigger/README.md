@@ -169,6 +169,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Remote code execution via polyglot web shell upload](8.File_Upload_Vulns/RCE_via_Polyglot_WebShell.md)
 
   + [Lab: Web shell upload via race condition](8.File_Upload_Vulns/WebShell_upload_via_race_condition.md)
+  
+  + [Lab: Blind OS command injection with out-of-band interaction](4.OS_Command_Injection/Blind_OS_command_injection_with_out-of-band_interaction.md#lab-blind-os-command-injection-with-out-of-band-interaction)
 
 ## 9. Server-side request forgery(SSRF)
 [Back to Index](#index)
