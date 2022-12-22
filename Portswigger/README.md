@@ -141,6 +141,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: OS command injection, simple case](4.OS_Command_Injection/OS_command_injection-simple_case.md#lab-os-command-injection-simple-case)
   
   + [Lab: Blind OS command injection with time delays](4.OS_Command_Injection/Blind_OS_command_injection_with_time_delays.md#lab-blind-os-command-injection-with-time-delays)
+  
+  + [Lab: Blind OS command injection with output redirection](4.OS_Command_Injection/Blind_OS_command_injection_with_output_redirection.md#lab-blind-os-command-injection-with-output-redirection)
 
 ## 5. Business logic vulnerabilities
 [Back to Index](#index)
