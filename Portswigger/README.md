@@ -155,9 +155,12 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     
     + [Lab: 2FA broken logic](2.authentication/2FA_Broken_Logic.md)
     
-    + [Lab: Excessive trust in client-side controls]()
+    + [Lab: Excessive trust in client-side controls](5.Business_logic_vulnerabilities/excessive_trust_in_client-side_controls.md#lab-excessive-trust-in-client-side-controls)
   
   + 5.2 Failing to handle unconventional input
+  
+    + [Lab: High-level logic vulnerability]()
+  
   + 5.3 Making flawed assumptions about user behavior
   + 5.4 Domain-specific flaws
   + 5.5 Providing an encryption Oracle
