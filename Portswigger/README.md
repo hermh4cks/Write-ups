@@ -159,7 +159,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + 5.2 Failing to handle unconventional input
   
-    + [Lab: High-level logic vulnerability]()
+    + [Lab: High-level logic vulnerability](5.Business_logic_vulnerabilities/High-levl_logic_vulnerability.md#lab-high-level-logic-vulnerability)
   
   + 5.3 Making flawed assumptions about user behavior
   + 5.4 Domain-specific flaws
