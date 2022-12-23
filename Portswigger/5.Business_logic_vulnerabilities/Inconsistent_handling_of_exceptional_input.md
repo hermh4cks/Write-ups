@@ -55,7 +55,7 @@ However if I find the admin directory, I find that I cannot access it:
 
 # Step 4 Create a new account with a very long email address
 
-I want to see if I can get my email to read adim@dontwannacry.com, so I will see if the server truncates the email
+I want to see if I can get my email to read anything@dontwannacry.com, so I will see if the server truncates the email
 
 First I will make a wordlist of "A" increasing 5 at a time from 0-500, I do this with bash and python:
 
