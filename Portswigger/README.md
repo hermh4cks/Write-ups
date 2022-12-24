@@ -167,7 +167,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + 5.3 Making flawed assumptions about user behavior
   
-    + [Lab: Inconsistent security controls]()
+    + [Lab: Inconsistent security controls](5.Business_logic_vulnerabilities/Inconsistent_security_controls.md#lab-inconsistent-security-controls)
   
   + 5.4 Domain-specific flaws
   + 5.5 Providing an encryption Oracle
