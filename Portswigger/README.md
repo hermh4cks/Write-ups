@@ -168,6 +168,12 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + ### 5.3 Making flawed assumptions about user behavior
   
     + [Lab: Inconsistent security controls](5.Business_logic_vulnerabilities/Inconsistent_security_controls.md#lab-inconsistent-security-controls)
+    
+    + [Lab: Weak isolation on dual-use endpoint](5.Business_logic_vulnerabilities/Weak_isolation_on_dual-use_endpoint.md#lab-weak-isolation-on-dual-use-endpoint)
+    
+    + [Lab: Password reset broken logic](2.authentication/Password_reset_broken_logic.md#lab-password-reset-broken-logic)
+    
+    + [Lab: 2FA simple bypass](2.authentication/2FA_simple_bypass.md#lab-2fa-simple-bypass)
   
   + ### 5.4 Domain-specific flaws
   + ### 5.5 Providing an encryption Oracle
