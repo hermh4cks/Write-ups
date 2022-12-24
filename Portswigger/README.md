@@ -180,6 +180,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: Authentication bypass via flawed state machine](5.Business_logic_vulnerabilities/Authentication_bypass_via_flawed_state_machine.md#lab-authentication-bypass-via-flawed-state-machine)
   
   + ### 5.4 Domain-specific flaws
+  
+    + [Lab: Flawed enforcement of business rules](5.Business_logic_vulnerabilities/Flawed_enforcement_of_business_rules.md#lab-flawed-enforcement-of-business-rules)
+  
   + ### 5.5 Providing an encryption Oracle
 
 ## 6. Information disclosure
