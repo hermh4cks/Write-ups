@@ -151,13 +151,13 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 5. Business logic vulnerabilities
 [Back to Index](#index)
 
-  + 5.1 Excessive trust in client-side controls
+  + ### 5.1 Excessive trust in client-side controls
     
     + [Lab: 2FA broken logic](2.authentication/2FA_Broken_Logic.md)
     
     + [Lab: Excessive trust in client-side controls](5.Business_logic_vulnerabilities/excessive_trust_in_client-side_controls.md#lab-excessive-trust-in-client-side-controls)
   
-  + 5.2 Failing to handle unconventional input
+  + ### 5.2 Failing to handle unconventional input
   
     + [Lab: High-level logic vulnerability](5.Business_logic_vulnerabilities/High-levl_logic_vulnerability.md#lab-high-level-logic-vulnerability)
     
@@ -165,12 +165,12 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     
     + [Lab: Inconsistent handling of exceptional input](5.Business_logic_vulnerabilities/Inconsistent_handling_of_exceptional_input.md#lab-inconsistent-handling-of-exceptional-input)
   
-  + 5.3 Making flawed assumptions about user behavior
+  + ### 5.3 Making flawed assumptions about user behavior
   
     + [Lab: Inconsistent security controls](5.Business_logic_vulnerabilities/Inconsistent_security_controls.md#lab-inconsistent-security-controls)
   
-  + 5.4 Domain-specific flaws
-  + 5.5 Providing an encryption Oracle
+  + ### 5.4 Domain-specific flaws
+  + ### 5.5 Providing an encryption Oracle
 
 ## 6. Information disclosure
 [Back to Index](#index)
