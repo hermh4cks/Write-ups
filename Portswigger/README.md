@@ -176,6 +176,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: 2FA simple bypass](2.authentication/2FA_simple_bypass.md#lab-2fa-simple-bypass)
     
     + [Lab: Insufficient workflow validation](5.Business_logic_vulnerabilities/Insufficient_workflow_validation.md#lab-insufficient-workflow-validation)
+    
+    + [Lab: Authentication bypass via flawed state machine](5.Business_logic_vulnerabilities/Authentication_bypass_via_flawed_state_machine.md#lab-authentication-bypass-via-flawed-state-machine)
   
   + ### 5.4 Domain-specific flaws
   + ### 5.5 Providing an encryption Oracle
