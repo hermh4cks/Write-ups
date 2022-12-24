@@ -34,7 +34,7 @@ First I capture the login page to create a session cookie:
 
 ![image](https://user-images.githubusercontent.com/83407557/209447665-5100688e-f12b-4036-a21c-17c5cb89505c.png)
 
-Then I go to the HTTP history and send my previous request for /role-selector to reater
+Then I go to the HTTP history and send my previous request for /role-selector to repeater
 
 ![image](https://user-images.githubusercontent.com/83407557/209447703-08b3960b-3d6b-4f61-950d-bd811af4ab63.png)
 
@@ -85,7 +85,7 @@ And I am now in the admin pannel
 ![image](https://user-images.githubusercontent.com/83407557/209447959-1e50f6f0-5a45-42fd-ac62-91f9a07693e8.png)
 
 
-# Step 5 delte carlos
+# Step 5 delete carlos
 
 I delete the carlos account using the admin pannel, and solve the lab:
 
