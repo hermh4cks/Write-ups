@@ -182,6 +182,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + ### 5.4 Domain-specific flaws
   
     + [Lab: Flawed enforcement of business rules](5.Business_logic_vulnerabilities/Flawed_enforcement_of_business_rules.md#lab-flawed-enforcement-of-business-rules)
+    
+    + [Lab: Infinite money logic flaw](5.Business_logic_vulnerabilities/Infinite_money_logic_flaw.md#lab-infinite-money-logic-flaw)
   
   + ### 5.5 Providing an encryption Oracle
 
