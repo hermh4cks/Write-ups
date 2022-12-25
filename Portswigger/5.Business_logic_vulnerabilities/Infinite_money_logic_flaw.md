@@ -62,3 +62,57 @@ I hit add to start recording a macro:
 
 ![image](https://user-images.githubusercontent.com/83407557/209450645-92b8a26c-1e29-4e29-a516-cd9e97003fb8.png)
 
+I add the following five requests from my history:
+
+![image](https://user-images.githubusercontent.com/83407557/209472819-6931168d-6a88-4d2c-b3e5-e2bc5308eee1.png)
+
+
+Next I need to configure a parameter that grabs the coupon code from the /cart/order-confirmation GET request:
+
+![image](https://user-images.githubusercontent.com/83407557/209472911-3c7a42a4-a7f9-4b50-857d-1ac0622dddb7.png)
+
+![image](https://user-images.githubusercontent.com/83407557/209472927-fc2cf588-4dd3-4be1-9e5b-54882d96e1f9.png)
+
+I name the new custom parameter coupon-code and select the code from the request:
+
+![image](https://user-images.githubusercontent.com/83407557/209472977-cf6a4340-9663-46c1-b60c-6c3d27c5d97f.png)
+
+Then I configure the /gift-card POST request and add the parameter I just made:
+
+![image](https://user-images.githubusercontent.com/83407557/209473060-f3ff5461-ae96-4313-936f-c32d02372c4b.png)
+
+![image](https://user-images.githubusercontent.com/83407557/209473094-c2a2d478-b37c-482a-bb14-bd10838c5419.png)
+
+Then I test the macro:
+
+![image](https://user-images.githubusercontent.com/83407557/209473719-e30e6765-9c0b-45f7-ab51-044b6a4f852d.png)
+
+After the test I see that I have $106 now in store credit.
+
+# Make an intruder attack with the macro I just made:
+
+I send the get request for /my-account to intruder and select a sniper attack with now payload positions
+
+![image](https://user-images.githubusercontent.com/83407557/209473821-cb3bef38-991c-48f5-abb4-cb9a6bd3bc1e.png)
+
+I select null payloads, and set it to generate 500 payloads:
+
+![image](https://user-images.githubusercontent.com/83407557/209473837-9a2f2260-d17b-4dff-b5d4-11cc26f0d1fb.png)
+
+I also set it to only send 1 request at a time:
+
+![image](https://user-images.githubusercontent.com/83407557/209474000-c4529787-ea3f-4344-8fc8-ab2cc1fe903a.png)
+
+Due to this the attack will take some time to complete, but checking my account while it is running, I can see that I am getting infinite money:
+
+![image](https://user-images.githubusercontent.com/83407557/209474019-aea10f33-cf67-4e06-9cbe-3f6243b5d742.png)
+
+Once finished, I have more than enough money to buy the jacket:
+
+![image](https://user-images.githubusercontent.com/83407557/209474614-da0a2dd4-b39f-4889-94c6-5e4399e3f275.png)
+
+![image](https://user-images.githubusercontent.com/83407557/209474625-0ed93ccd-cfbb-4b6c-8828-b8730e52f8d6.png)
+
+Buying it solves the lab:
+
+![image](https://user-images.githubusercontent.com/83407557/209474638-8afb3def-29c3-46af-94a2-f0b2655711c2.png)
