@@ -193,6 +193,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Information disclosure in error messages](6.Information_Disclosure/Information_disclosure_in_error_messages.md#lab-information-disclosure-in-error-messages)
   
   + [Lab: Information disclosure on debug page](6.Information_Disclosure/Information_disclosure_on_debug_page.md#lab-information-disclosure-on-debug-page)
+  
+  + [Lab: Source code disclosure via backup files](6.Information_Disclosure/Source_code_disclosure_via_backup_files.md#lab-source-code-disclosure-via-backup-files)
 
 ## 7. Access control
 [Back to Index](#index)
