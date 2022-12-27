@@ -202,6 +202,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 [Back to Index](#index)
 
   + [Lab: Unprotected admin functionality](7.Access_Control/unprotected_admin_functionality.md)
+  
+  + [Lab: Unprotected admin functionality with unpredictable URL](7.Access_Control/Unprotected_admin_functionality_with_unpredictable_URL.md#lab-unprotected-admin-functionality-with-unpredictable-url)
 
 ## 8. File upload vulnerabilities
 [Back to Index](#index)
