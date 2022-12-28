@@ -40,9 +40,16 @@ But I get the following error:
 
 ![image](https://user-images.githubusercontent.com/83407557/209719085-ad99532e-871b-4ef0-a0b7-3c3640095185.png)
 
-So I repeat the process but URL encode the header:
+(Had to restart the lab to take a break, URL changes here)
 
-![image](https://user-images.githubusercontent.com/83407557/209719148-d0968b7f-123a-433e-8823-f91b0a4ff325.png)
+I restart and send the root directory to burp
 
-![image](https://user-images.githubusercontent.com/83407557/209719213-129c0097-d4aa-4301-91f7-f548a33943df.png)
+![image](https://user-images.githubusercontent.com/83407557/209840869-afbdd473-b430-4e8b-820e-f19b26cd9fe4.png)
 
+I use the X-Origional-URL to point at /admin/delete, and pass the ?username=carlos to the webroot:
+
+![image](https://user-images.githubusercontent.com/83407557/209842183-9d264af6-a4c9-4b9e-b98c-744661fb5063.png)
+
+Doing so deletes carlos and solves the lab:
+
+![image](https://user-images.githubusercontent.com/83407557/209842378-14a9776f-4952-4efd-9714-2a0b6afe6a91.png)
