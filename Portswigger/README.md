@@ -208,6 +208,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: User role controlled by request parameter](7.Access_Control/User_role_controlled_by_request_parameter.md#lab-user-role-controlled-by-request-parameter)
   
   + [Lab: User role can be modified in user profile](7.Access_Control/User_role_can_be_modified_in_user_profile.md#lab-user-role-can-be-modified-in-user-profile)
+  
+  + [Lab: URL-based access control can be circumvented](7.Access_Control/URL-based_access_control_can_be_circumvented.md#lab-url-based-access-control-can-be-circumvented)
+  
 
 ## 8. File upload vulnerabilities
 [Back to Index](#index)
