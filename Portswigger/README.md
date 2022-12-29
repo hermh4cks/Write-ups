@@ -253,7 +253,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
   + ### 9.1 Common SSRF
   
-  
+    + [Lab: Basic SSRF against the local server](9.SSRF/Basic_SSRF_against_the_local_server.md#lab-basic-ssrf-against-the-local-server)
   
   + ### 9.2 Circumventing common SSRF defenses
   
