@@ -224,6 +224,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: User ID controlled by request parameter with password disclosure](7.Access_Control/User_ID_controlled_by_request_parameter_with_password_disclosure.md#lab-user-id-controlled-by-request-parameter-with-password-disclosure)
     
     + [Lab: Insecure direct object references](7.Access_Control/Insecure_direct_object_references.md#lab-insecure-direct-object-references)
+    
+    + [Lab: Multi-step process with no access control on one step](7.Access_Control/Multi-step_process_with_no_access_control_on_one_step.md#lab-multi-step-process-with-no-access-control-on-one-step)
 
 
 ## 8. File upload vulnerabilities
