@@ -201,16 +201,23 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 7. Access control
 [Back to Index](#index)
 
-  + [Lab: Unprotected admin functionality](7.Access_Control/unprotected_admin_functionality.md)
-  
-  + [Lab: Unprotected admin functionality with unpredictable URL](7.Access_Control/Unprotected_admin_functionality_with_unpredictable_URL.md#lab-unprotected-admin-functionality-with-unpredictable-url)
+  + ### 7.1 Vertical Privilege Escalation 
 
-  + [Lab: User role controlled by request parameter](7.Access_Control/User_role_controlled_by_request_parameter.md#lab-user-role-controlled-by-request-parameter)
+    + [Lab: Unprotected admin functionality](7.Access_Control/unprotected_admin_functionality.md)
   
-  + [Lab: User role can be modified in user profile](7.Access_Control/User_role_can_be_modified_in_user_profile.md#lab-user-role-can-be-modified-in-user-profile)
+    + [Lab: Unprotected admin functionality with unpredictable URL](7.Access_Control/Unprotected_admin_functionality_with_unpredictable_URL.md#lab-unprotected-admin-functionality-with-unpredictable-url)
+
+    + [Lab: User role controlled by request parameter](7.Access_Control/User_role_controlled_by_request_parameter.md#lab-user-role-controlled-by-request-parameter)
   
-  + [Lab: URL-based access control can be circumvented](7.Access_Control/URL-based_access_control_can_be_circumvented.md#lab-url-based-access-control-can-be-circumvented)
+    + [Lab: User role can be modified in user profile](7.Access_Control/User_role_can_be_modified_in_user_profile.md#lab-user-role-can-be-modified-in-user-profile)
   
+    + [Lab: URL-based access control can be circumvented](7.Access_Control/URL-based_access_control_can_be_circumvented.md#lab-url-based-access-control-can-be-circumvented)
+  
+  + ### 7.2 Horizontal Privilege Escalation
+  
+    + [Lab: User ID controlled by request parameter ]()
+  
+  + ### 7.3 Horizontal to Vertical Privilege Escalation
 
 ## 8. File upload vulnerabilities
 [Back to Index](#index)
