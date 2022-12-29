@@ -215,7 +215,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + ### 7.2 Horizontal Privilege Escalation
   
-    + [Lab: User ID controlled by request parameter ]()
+    + [Lab: User ID controlled by request parameter ](7.Access_Control/User_ID_controlled_by_request_parameter.md#lab-user-id-controlled-by-request-parameter)
   
   + ### 7.3 Horizontal to Vertical Privilege Escalation
 
