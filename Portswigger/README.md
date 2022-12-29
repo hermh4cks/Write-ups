@@ -222,6 +222,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + ### 7.3 Horizontal to Vertical Privilege Escalation
     
     + [Lab: User ID controlled by request parameter with password disclosure](7.Access_Control/User_ID_controlled_by_request_parameter_with_password_disclosure.md#lab-user-id-controlled-by-request-parameter-with-password-disclosure)
+    
+    + [Lab: Insecure direct object references](7.Access_Control/Insecure_direct_object_references.md#lab-insecure-direct-object-references)
 
 
 ## 8. File upload vulnerabilities
