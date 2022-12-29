@@ -250,6 +250,15 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 ## 9. Server-side request forgery(SSRF)
 [Back to Index](#index)
+
+  + ### 9.1 Common SSRF
+  
+  
+  
+  + ### 9.2 Circumventing common SSRF defenses
+  
+  + ### 9.3 Blind SSRF
+
 ## 10 XXE injection
 [Back to Index](#index)
 # Client side attacks
