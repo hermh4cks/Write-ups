@@ -262,6 +262,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: SSRF with blacklist-based input filter](9.SSRF/SSRF_with_blacklist-based_input_filter.md#lab-ssrf-with-blacklist-based-input-filter)
     
     + [Lab: SSRF with whitelist-based input filter](9.SSRF/SSRF_with_whitelist-based_input_filter.md#lab-ssrf-with-whitelist-based-input-filter)
+    
+    + [Lab: SSRF with filter bypass via open redirection vulnerability](9.SSRF/SSRF_with_filter_bypass_via_open_redirection_vulnerability.md#lab-ssrf-with-filter-bypass-via-open-redirection-vulnerability)
   
   + ### 9.3 Blind SSRF
 
