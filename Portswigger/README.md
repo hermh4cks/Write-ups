@@ -260,6 +260,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + ### 9.2 Circumventing common SSRF defenses
   
     + [Lab: SSRF with blacklist-based input filter](9.SSRF/SSRF_with_blacklist-based_input_filter.md#lab-ssrf-with-blacklist-based-input-filter)
+    
+    + [Lab: SSRF with whitelist-based input filter](9.SSRF/SSRF_with_whitelist-based_input_filter.md#lab-ssrf-with-whitelist-based-input-filter)
   
   + ### 9.3 Blind SSRF
 
