@@ -269,7 +269,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
     + [Lab: Blind SSRF with out-of-band detection](9.SSRF/Blind_SSRF_with_out-of-band_detection.md#lab-blind-ssrf-with-out-of-band-detection)
     
-    
+    + [Lab: Blind SSRF with Shellshock exploitation](9.SSRF/Blind_SSRF_with_Shellshock_exploitation.md#lab-blind-ssrf-with-shellshock-exploitation)
 
 ## 10 XXE injection
 [Back to Index](#index)
