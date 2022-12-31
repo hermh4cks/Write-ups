@@ -266,6 +266,10 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: SSRF with filter bypass via open redirection vulnerability](9.SSRF/SSRF_with_filter_bypass_via_open_redirection_vulnerability.md#lab-ssrf-with-filter-bypass-via-open-redirection-vulnerability)
   
   + ### 9.3 Blind SSRF
+  
+    + [Lab: Blind SSRF with out-of-band detection](9.SSRF/Blind_SSRF_with_out-of-band_detection.md#lab-blind-ssrf-with-out-of-band-detection)
+    
+    
 
 ## 10 XXE injection
 [Back to Index](#index)
