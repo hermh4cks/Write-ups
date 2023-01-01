@@ -273,6 +273,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 ## 10 XXE injection
 [Back to Index](#index)
+
+  + [Lab: Exploiting XXE using external entities to retrieve files](10.XXE/Exploiting_XXE_using_external_entities_to_retrieve_files.md#lab-exploiting-xxe-using-external-entities-to-retrieve-files)
+
 # Client side attacks
 ---
 ## 11. Cross-site scripting (XSS)
