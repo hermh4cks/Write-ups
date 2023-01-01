@@ -279,6 +279,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Exploiting XXE to perform SSRF attacks](10.XXE/Exploiting_XXE_to_perform_SSRF_attacks.md#lab-exploiting-xxe-to-perform-ssrf-attacks)
   
   + [Lab: Blind XXE with out-of-band interaction](10.XXE/Blind%20XXE_with_out-of-band_interaction.md#lab-blind-xxe-with-out-of-band-interaction)
+  
+  + [Lab: Blind XXE with out-of-band interaction via XML parameter entities](10.XXE/Blind_XXE_with_out-of-band_interaction_via_XML_parameter_entities.md#lab-blind-xxe-with-out-of-band-interaction-via-xml-parameter-entities)
 
 # Client side attacks
 ---
