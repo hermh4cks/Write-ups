@@ -277,6 +277,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Exploiting XXE using external entities to retrieve files](10.XXE/Exploiting_XXE_using_external_entities_to_retrieve_files.md#lab-exploiting-xxe-using-external-entities-to-retrieve-files)
   
   + [Lab: Exploiting XXE to perform SSRF attacks](10.XXE/Exploiting_XXE_to_perform_SSRF_attacks.md#lab-exploiting-xxe-to-perform-ssrf-attacks)
+  
+  + [Lab: Blind XXE with out-of-band interaction](10.XXE/Blind%20XXE_with_out-of-band_interaction.md#lab-blind-xxe-with-out-of-band-interaction)
 
 # Client side attacks
 ---
