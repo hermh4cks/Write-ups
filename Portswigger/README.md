@@ -281,6 +281,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Blind XXE with out-of-band interaction](10.XXE/Blind%20XXE_with_out-of-band_interaction.md#lab-blind-xxe-with-out-of-band-interaction)
   
   + [Lab: Blind XXE with out-of-band interaction via XML parameter entities](10.XXE/Blind_XXE_with_out-of-band_interaction_via_XML_parameter_entities.md#lab-blind-xxe-with-out-of-band-interaction-via-xml-parameter-entities)
+  
+  + [Lab: Exploiting blind XXE to exfiltrate data using a malicious external DTD](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/10.XXE/Exploiting%20blind%20XXE%20to%20exfiltrate%20data%20using%20a%20malicious%20external%20DTD.md#lab-exploiting-blind-xxe-to-exfiltrate-data-using-a-malicious-external-dtd)
 
 # Client side attacks
 ---
