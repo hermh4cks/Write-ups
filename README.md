@@ -7,7 +7,7 @@
 
 # CTF/LABs
 
-## [Portswigger](/Portswigger#portswigger-academy)
+## [Portswigger](Portswigger#portswigger-academy)
 
 ## [picoCTF](/picoCTF/README.md#picoctf)
 
