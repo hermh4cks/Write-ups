@@ -289,6 +289,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Exploiting XXE to retrieve data by repurposing a local DTD](10.XXE/Exploiting%20XXE%20to%20retrieve%20data%20by%20repurposing%20a%20local%20DTD.md#lab-exploiting-xxe-to-retrieve-data-by-repurposing-a-local-dtd)
   
   + [Lab: Exploiting XInclude to retrieve files](10.XXE/Exploiting%20XInclude%20to%20retrieve%20files.md#lab-exploiting-xinclude-to-retrieve-files)
+  
+  + [Lab: Exploiting XXE via image file upload](10.XXE/Exploiting%20XXE%20via%20image%20file%20upload.md#lab-exploiting-xxe-via-image-file-upload)
 
 # Client side attacks
 ---
