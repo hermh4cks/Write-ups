@@ -286,7 +286,7 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + [Lab: Exploiting blind XXE to retrieve data via error messages](10.XXE/Exploiting%20blind%20XXE%20to%20retrieve%20data%20via%20error%20messages.md#lab-exploiting-blind-xxe-to-retrieve-data-via-error-messages)
   
-  +[Lab: Exploiting XXE to retrieve data by repurposing a local DTD](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/10.XXE/Exploiting%20XXE%20to%20retrieve%20data%20by%20repurposing%20a%20local%20DTD.md#lab-exploiting-xxe-to-retrieve-data-by-repurposing-a-local-dtd)
+  + [Lab: Exploiting XXE to retrieve data by repurposing a local DTD](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/10.XXE/Exploiting%20XXE%20to%20retrieve%20data%20by%20repurposing%20a%20local%20DTD.md#lab-exploiting-xxe-to-retrieve-data-by-repurposing-a-local-dtd)
 
 # Client side attacks
 ---
