@@ -302,6 +302,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Reflected XSS into HTML context with nothing encoded](11.XSS/Reflected_XSS_no_encoding.md)
 
   + [Lab: Stored XSS into HTML context with nothing encoded](11.XSS/Stored_XSS_into_html_no_encoding.md)
+
+  + [Lab: Exploiting cross-site scripting to steal cookies](11.XSS/Exploiting%20cross-site%20scripting%20to%20steal%20cookies.md#lab-exploiting-cross-site-scripting-to-steal-cookies)
   
   + [Lab: DOM XSS in document.write sink using source location.search](11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
   
