@@ -321,6 +321,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + 12.2 Bypassing CSRF Token Validation
   
     + [Lab: CSRF where token validation depends on request method](12.CSRF/CSRF%20where%20token%20validation%20depends%20on%20request%20method.md#lab-csrf-where-token-validation-depends-on-request-method)
+    
+    + [Lab: CSRF where token validation depends on token being present](12.CSRF/CSRF%20where%20token%20validation%20depends%20on%20token%20being%20present.md#lab-csrf-where-token-validation-depends-on-token-being-present)
   
   + 12.3 Bypassing CSRF SameSite Cookie 
   
