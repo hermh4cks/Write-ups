@@ -314,7 +314,15 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ## 12. Cross-site request forgery(CSRF)
 [Back to Index](#index)
 
-  + [Lab: CSRF vulnerability with no defenses](12.CSRF/CSRF%20vulnerability%20with%20no%20defenses.md#lab-csrf-vulnerability-with-no-defenses)
+  + 12.1 CSRF with no Defenses
+
+    + [Lab: CSRF vulnerability with no defenses](12.CSRF/CSRF%20vulnerability%20with%20no%20defenses.md#lab-csrf-vulnerability-with-no-defenses)
+
+  + 12.2 Bypassing CSRF Token Validation
+  
+  + 12.3 Bypassing CSRF SameSite Cookie 
+  
+  + 12.4 Bypassing CSRF Referer-based defenses
 
 ## 13. Cross-origin resource sharing(CORS)
 [Back to Index](#index)
