@@ -302,6 +302,10 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + ### 11.1 Reflected XSS
   
     + [Lab: Reflected XSS into HTML context with nothing encoded](11.XSS/Reflected_XSS_no_encoding.md)
+    
+    + [Lab: Reflected XSS into HTML context with most tags and attributes blocked](11.XSS/Reflected%20XSS%20into%20HTML%20context%20with%20most%20tags%20and%20attributes%20blocked.md#lab-reflected-xss-into-html-context-with-most-tags-and-attributes-blocked)
+    
+    
 
   + ### 11.2 Stored XSS
   
