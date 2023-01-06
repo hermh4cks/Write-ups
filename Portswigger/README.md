@@ -305,6 +305,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
   + [Lab: Exploiting cross-site scripting to steal cookies](11.XSS/Exploiting%20cross-site%20scripting%20to%20steal%20cookies.md#lab-exploiting-cross-site-scripting-to-steal-cookies)
   
+  + [Lab: Exploiting cross-site scripting to capture passwords](11.XSS/Exploiting%20cross-site%20scripting%20to%20capture%20passwords.md#lab-exploiting-cross-site-scripting-to-capture-passwords)
+  
   + [Lab: DOM XSS in document.write sink using source location.search](11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
   
   + [Lab: DOM XSS in innerHTML sink using source location.search](11.XSS/DOM_XSS_in_innerHTML_sink_using_source_location.search.md) 
