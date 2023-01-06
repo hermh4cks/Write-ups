@@ -48,3 +48,10 @@ Using portswigger's [XSS Cheat Sheet](https://portswigger.net/web-security/cross
 And paste them as payloads for my intruder attack
 
 ![image](https://user-images.githubusercontent.com/83407557/211087017-f967a133-8fd9-4c49-82f0-39c6736242e7.png)
+
+ And I find that several tags are allowed:
+ 
+ ![image](https://user-images.githubusercontent.com/83407557/211087233-e330eaa2-a3c5-4ee1-90b1-13adb4f33936.png)
+
+ 
+ 
