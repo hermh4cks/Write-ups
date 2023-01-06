@@ -327,6 +327,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: CSRF where token is not tied to user session](12.CSRF/CSRF%20where%20token%20is%20not%20tied%20to%20user%20session.md#lab-csrf-where-token-is-not-tied-to-user-session)
     
     + [Lab: CSRF where token is tied to non-session cookie](12.CSRF/CSRF%20where%20token%20is%20tied%20to%20non-session%20cookie.md#lab-csrf-where-token-is-tied-to-non-session-cookie)
+    
+    + [Lab: CSRF where token is duplicated in cookie](12.CSRF/CSRF%20where%20token%20is%20duplicated%20in%20cookie.md#lab-csrf-where-token-is-duplicated-in-cookie)
   
   + 12.3 Bypassing CSRF SameSite Cookie 
   
