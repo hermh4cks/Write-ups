@@ -332,6 +332,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   
   + 12.3 Bypassing CSRF SameSite Cookie 
   
+    + [Lab: SameSite Strict bypass via client-side redirect](12.CSRF/SameSite%20Strict%20bypass%20via%20client-side%20redirect.md#lab-samesite-strict-bypass-via-client-side-redirect)
+  
   + 12.4 Bypassing CSRF Referer-based defenses
 
 ## 13. Cross-origin resource sharing(CORS)
