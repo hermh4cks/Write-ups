@@ -73,3 +73,6 @@ I need to add a #x to the payloads to get them to focus on that element with the
 I am going to try each payload in-turn on myself using the attack server:
 
 ![image](https://user-images.githubusercontent.com/83407557/211062177-07568575-4baf-4ce1-99ab-3b90fc824302.png)
+
+
+Took a break, payloads work if you click on the example links of cheatsheet
