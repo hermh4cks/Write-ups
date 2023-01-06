@@ -299,21 +299,27 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 [Portswigger XSS Cheat sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 
-  + [Lab: Reflected XSS into HTML context with nothing encoded](11.XSS/Reflected_XSS_no_encoding.md)
+  + ### 11.1 Reflected XSS
+  
+    + [Lab: Reflected XSS into HTML context with nothing encoded](11.XSS/Reflected_XSS_no_encoding.md)
 
-  + [Lab: Stored XSS into HTML context with nothing encoded](11.XSS/Stored_XSS_into_html_no_encoding.md)
+  + ### 11.2 Stored XSS
+  
+    + [Lab: Stored XSS into HTML context with nothing encoded](11.XSS/Stored_XSS_into_html_no_encoding.md)
 
-  + [Lab: Exploiting cross-site scripting to steal cookies](11.XSS/Exploiting%20cross-site%20scripting%20to%20steal%20cookies.md#lab-exploiting-cross-site-scripting-to-steal-cookies)
+    + [Lab: Exploiting cross-site scripting to steal cookies](11.XSS/Exploiting%20cross-site%20scripting%20to%20steal%20cookies.md#lab-exploiting-cross-site-scripting-to-steal-cookies)
   
-  + [Lab: Exploiting cross-site scripting to capture passwords](11.XSS/Exploiting%20cross-site%20scripting%20to%20capture%20passwords.md#lab-exploiting-cross-site-scripting-to-capture-passwords)
+    + [Lab: Exploiting cross-site scripting to capture passwords](11.XSS/Exploiting%20cross-site%20scripting%20to%20capture%20passwords.md#lab-exploiting-cross-site-scripting-to-capture-passwords)
   
-  + [Lab: Exploiting XSS to perform CSRF](11.XSS/Lab:%20Exploiting%20XSS%20to%20perform%20CSRF.md#lab-exploiting-xss-to-perform-csrf)
+    + [Lab: Exploiting XSS to perform CSRF](11.XSS/Lab:%20Exploiting%20XSS%20to%20perform%20CSRF.md#lab-exploiting-xss-to-perform-csrf)
   
-  + [Lab: DOM XSS in document.write sink using source location.search](11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
+  + ### 11.3 DOM Based XSS
   
-  + [Lab: DOM XSS in innerHTML sink using source location.search](11.XSS/DOM_XSS_in_innerHTML_sink_using_source_location.search.md) 
+    + [Lab: DOM XSS in document.write sink using source location.search](11.XSS/DOM_XSS_in_document.write_SINK_using_SOURCE_location.search.md)
+  
+    + [Lab: DOM XSS in innerHTML sink using source location.search](11.XSS/DOM_XSS_in_innerHTML_sink_using_source_location.search.md) 
 
-  + [Lab: DOM XSS in jQuery anchor href attribute sink using location.search source](11.XSS/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
+    + [Lab: DOM XSS in jQuery anchor href attribute sink using location.search source](11.XSS/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
 
 ## 12. Cross-site request forgery(CSRF)
 [Back to Index](#index)
