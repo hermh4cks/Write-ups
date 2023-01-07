@@ -38,7 +38,7 @@ Which solves the lab:
 
 ![image](https://user-images.githubusercontent.com/83407557/211165356-14035377-500f-4648-b35f-2421149b69a5.png)
 
-Going back to blog, I can see test it myself:
+Going back to blog, I can test it myself:
 
 ![image](https://user-images.githubusercontent.com/83407557/211165397-65054d2b-7223-4630-a7ca-1eb2b36e52c8.png)
 
