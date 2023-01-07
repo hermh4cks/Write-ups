@@ -4,7 +4,7 @@ These are based off of the [XSS Cheat Sheet](https://portswigger.net/web-securit
 
 # Step 1 Fuzz for allowed tags
 
-This can be done using [this file](/tags), where you send a payload such as:
+This can be done using [this file](tags), where you send a payload such as:
 
 ```html
 <FUZZ>
@@ -19,7 +19,7 @@ Lets say for example the following returned a 200 response and wasn't blocked:
 ```html
 <svg><animatetransform>
 ```
-To test for events use [this file](/events) containing all events and build a second fuzzing payload with the following format, recplacing FUZZ with the payloads from the events list:
+To test for events use [this file](events) containing all events and build a second fuzzing payload with the following format, recplacing FUZZ with the payloads from the events list:
 
 ```html
 <svg><animatetransform%20FUZZ=1>
