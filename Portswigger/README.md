@@ -322,6 +322,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: Exploiting cross-site scripting to capture passwords](11.XSS/Exploiting%20cross-site%20scripting%20to%20capture%20passwords.md#lab-exploiting-cross-site-scripting-to-capture-passwords)
   
     + [Lab: Exploiting XSS to perform CSRF](11.XSS/Lab:%20Exploiting%20XSS%20to%20perform%20CSRF.md#lab-exploiting-xss-to-perform-csrf)
+    
+    [Lab: Stored XSS into anchor href attribute with double quotes HTML-encoded](11.XSS/Stored%20XSS%20into%20anchor%20href%20attribute%20with%20double%20quotes%20HTML-encoded.md#lab-stored-xss-into-anchor-href-attribute-with-double-quotes-html-encoded)
   
   + ### 11.3 DOM Based XSS
   
