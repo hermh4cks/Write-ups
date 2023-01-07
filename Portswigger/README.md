@@ -312,6 +312,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: Reflected XSS with some SVG markup allowed](11.XSS/Reflected%20XSS%20with%20some%20SVG%20markup%20allowed.md#lab-reflected-xss-with-some-svg-markup-allowed)
     
     + [Lab: Reflected XSS into attribute with angle brackets HTML-encoded](11.XSS/Reflected%20XSS%20into%20attribute%20with%20angle%20brackets%20HTML-encoded.md#lab-reflected-xss-into-attribute-with-angle-brackets-html-encoded)
+    
+    + [Lab: Reflected XSS in canonical link tag](11.XSS/Reflected%20XSS%20in%20canonical%20link%20tag.md#lab-reflected-xss-in-canonical-link-tag)
 
   + ### 11.2 Stored XSS
   
