@@ -315,6 +315,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     
     + [Lab: Reflected XSS in canonical link tag](11.XSS/Reflected%20XSS%20in%20canonical%20link%20tag.md#lab-reflected-xss-in-canonical-link-tag)
     
+    + [Lab: Reflected XSS into a JavaScript string with single quote and backslash escaped](11.XSS/Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20single%20quote%20and%20backslash%20escaped.md#lab-reflected-xss-into-a-javascript-string-with-single-quote-and-backslash-escaped)
+    
     + [Lab: Reflected XSS into a JavaScript string with angle brackets HTML encoded](11.XSS/Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20HTML%20encoded.md#lab-reflected-xss-into-a-javascript-string-with-angle-brackets-html-encoded)
     
     + [Lab: Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped](11.XSS/Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20and%20single%20quotes%20escaped.md#lab-reflected-xss-into-a-javascript-string-with-angle-brackets-and-double-quotes-html-encoded-and-single-quotes-escaped)
