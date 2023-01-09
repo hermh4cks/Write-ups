@@ -320,6 +320,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: Reflected XSS into a JavaScript string with angle brackets HTML encoded](11.XSS/Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20HTML%20encoded.md#lab-reflected-xss-into-a-javascript-string-with-angle-brackets-html-encoded)
     
     + [Lab: Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped](11.XSS/Reflected%20XSS%20into%20a%20JavaScript%20string%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded%20and%20single%20quotes%20escaped.md#lab-reflected-xss-into-a-javascript-string-with-angle-brackets-and-double-quotes-html-encoded-and-single-quotes-escaped)
+    
+    + [Lab: Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks Unicode-escaped](11.XSS/Reflected%20XSS%20into%20a%20template%20literal%20with%20angle%20brackets%2C%20single%2C%20double%20quotes%2C%20backslash%20and%20backticks%20Unicode-escaped.md#lab-reflected-xss-into-a-template-literal-with-angle-brackets-single-double-quotes-backslash-and-backticks-unicode-escaped)
 
   + ### 11.2 Stored XSS
   
