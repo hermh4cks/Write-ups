@@ -346,6 +346,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: DOM XSS in jQuery selector sink using a hashchange event](11.XSS/DOM%20XSS%20in%20jQuery%20selector%20sink%20using%20a%20hashchange%20event.md#lab-dom-xss-in-jquery-selector-sink-using-a-hashchange-event)
     
     + [Lab: DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded](11.XSS/DOM%20XSS%20in%20AngularJS%20expression%20with%20angle%20brackets%20and%20double%20quotes%20HTML-encoded.md#lab-dom-xss-in-angularjs-expression-with-angle-brackets-and-double-quotes-html-encoded)
+    
+    + [Lab: Reflected DOM XSS](https://github.com/hermh4cks/Write-ups/blob/main/Portswigger/11.XSS/Reflected%20DOM%20XSS.md#lab-reflected-dom-xss)
 
 ## 12. Cross-site request forgery(CSRF)
 [Back to Index](#index)
