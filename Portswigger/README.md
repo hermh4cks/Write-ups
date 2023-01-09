@@ -340,6 +340,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
     + [Lab: DOM XSS in innerHTML sink using source location.search](11.XSS/DOM_XSS_in_innerHTML_sink_using_source_location.search.md) 
 
     + [Lab: DOM XSS in jQuery anchor href attribute sink using location.search source](11.XSS/DOM_XSS_in_jQuery_anchor_href_attribute_sink_using_location.search_source.md)
+    
+    + [Lab: DOM XSS in document.write sink using source location.search inside a select element](11.XSS/DOM%20XSS%20in%20document.write%20sink%20using%20source%20location.search%20inside%20a%20select%20element.md#lab-dom-xss-in-documentwrite-sink-using-source-locationsearch-inside-a-select-element)
 
 ## 12. Cross-site request forgery(CSRF)
 [Back to Index](#index)
