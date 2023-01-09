@@ -17,19 +17,19 @@ Looking at the javascript:
 
 ```javascript
 
-                                var stores = ["London","Paris","Milan"];
-                                var store = (new URLSearchParams(window.location.search)).get('storeId');
-                                document.write('<select name="storeId">');
-                                if(store) {
-                                    document.write('<option selected>'+store+'</option>');
-                                }
-                                for(var i=0;i<stores.length;i++) {
-                                    if(stores[i] === store) {
-                                        continue;
-                                    }
-                                    document.write('<option>'+stores[i]+'</option>');
-                                }
-                                document.write('</select>');
+var stores = ["London","Paris","Milan"];
+var store = (new URLSearchParams(window.location.search)).get('storeId');
+document.write('<select name="storeId">');
+if(store) {
+  document.write('<option selected>'+store+'</option>');
+  }
+  for(var i=0;i<stores.length;i++) {
+  if(stores[i] === store) {
+  continue;
+  }
+    document.write('<option>'+stores[i]+'</option>');
+    }
+    document.write('</select>');
 ```
 
 I am going want to break out of this select element using the StoreId source:
