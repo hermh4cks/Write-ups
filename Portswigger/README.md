@@ -386,6 +386,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 [Back to Index](#index)
 ## 15. DOM-based vulnerabilities
 [Back to Index](#index)
+
+  + [Lab: DOM XSS using web messages](15.DOM-Based_Vulnerabilities/Lab:%20DOM%20XSS%20using%20web%20messages.md#lab-dom-xss-using-web-messages)
+
 ## 16. WebSockets
 [Back to Index](#index)
 # Advanced Topics
