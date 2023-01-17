@@ -1,3 +1,3 @@
 # Katas
 
-- [Counting Duplicates]()
+- [Counting Duplicates](counting%20duplicates.md#counting-duplicates)
