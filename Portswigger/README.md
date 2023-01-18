@@ -393,6 +393,10 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 
 ## 16. WebSockets
 [Back to Index](#index)
+
+  + [Lab: Manipulating WebSocket messages to exploit vulnerabilities](16.WebSockets/Manipulating%20WebSocket%20messages%20to%20exploit%20vulnerabilities.md#lab-manipulating-websocket-messages-to-exploit-vulnerabilities)
+
+
 # Advanced Topics
 ---
 ## 17. Insecure deserialization
