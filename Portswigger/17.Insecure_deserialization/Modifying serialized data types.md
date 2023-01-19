@@ -46,6 +46,65 @@ When I login, I get a session cookie that decodes to a serialized object:
 
 ![image](https://user-images.githubusercontent.com/83407557/213519933-a59862d1-e3e4-4d2e-9bca-8b95a2e96009.png)
 
+
+# Step 2 breakdown the decoded cookie:
+
+Taking a look at the decoded cookie, lets break-down what each part means
+
 ```php
 O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";s:32:"yl39nsun020qly1w1uy03cxalj4i0pii";}
 ```
+
+`O:4:"User":2` - An object with a 4-character class name of "User" with 2 attributes
+
+`s:8:"username"` - The first attribute's key is an 8-character long string "username"
+
+`s:6:"wiener"` - The first attribute's value is a 6-character long string "wiener"
+
+`s:12:"access_token"` - The second attribute's key is a 12-character long string "access_token"
+
+`s:32:"yl39nsun020qly1w1uy03cxalj4i0pii"` - The second attribute's value is a 32-character string "yl39nsun020qly1w1uy03cxalj4i0pii"
+
+# Step 3 Change the data-type of second attribute's value
+
+From the notes, I see that if the PHP code is comparing strings to see if I have a valid access_token, if I change the value of my access_token to the integer `0` it could be compared to a string that has no integers; therefore the result should be true. To do this I want to change:
+
+```php
+O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";s:32:"yl39nsun020qly1w1uy03cxalj4i0pii";}
+```
+to this ( the string becomes a single character long integer (0))
+
+```php
+O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";i:0;}
+```
+
+I then also need to change my username to administrator:
+
+```bash
+└─$ python -c 'print(len("administrator"))'     
+13                    
+```
+
+
+```php
+O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";i:0;}
+```
+I also want to change the name of the request parameter "id"
+
+![image](https://user-images.githubusercontent.com/83407557/213525933-97cfb498-8c92-4948-a1c0-26fa49498641.png)
+
+Doing so gets me into the admin pannel:
+
+![image](https://user-images.githubusercontent.com/83407557/213526022-e12f7f44-7ac4-47a5-905c-fd9319fbfd76.png)
+
+I do this again on the admin panel:
+
+![image](https://user-images.githubusercontent.com/83407557/213526505-5a816a97-ea91-4d95-8da3-8c9a15808654.png)
+
+And then again to delete carlos:
+
+![image](https://user-images.githubusercontent.com/83407557/213526762-46e0ab37-d4de-49a8-92d6-2cdf283db458.png)
+
+And in doing so the lab is solved:
+
+![image](https://user-images.githubusercontent.com/83407557/213526846-66588249-cc7b-423d-ad76-45ecbfa6c826.png)
