@@ -72,7 +72,7 @@ From the notes, I see that if the PHP code is comparing strings to see if I have
 ```php
 O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";s:32:"yl39nsun020qly1w1uy03cxalj4i0pii";}
 ```
-to this ( the string becomes a single character long integer (0))
+to this ( the string becomes an integer, 0)
 
 ```php
 O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";i:0;}
