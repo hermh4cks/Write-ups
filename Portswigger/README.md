@@ -407,6 +407,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 [Back to Index](#index)
 
   + [Lab: Modifying serialized objects](17.Insecure_deserialization/Modifying%20serialized%20objects.md#lab-modifying-serialized-objects)
+  
+  + [Lab: Modifying serialized data types](17.Insecure_deserialization/Modifying%20serialized%20data%20types.md#lab-modifying-serialized-data-types)
 
 ## 18. Server-side template injection
 [Back to Index](#index)
