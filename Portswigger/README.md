@@ -405,6 +405,9 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
 ---
 ## 17. Insecure deserialization
 [Back to Index](#index)
+
+  + [Lab: Modifying serialized objects](17.Insecure_deserialization/Modifying%20serialized%20objects.md#lab-modifying-serialized-objects)
+
 ## 18. Server-side template injection
 [Back to Index](#index)
 ## 19. Web cache poisoning
