@@ -415,6 +415,8 @@ Portswigger Academy is split into three sections. Server side attacks, Client si
   + [Lab: Exploiting Java deserialization with Apache Commons](17.Insecure_deserialization/Exploiting%20Java%20deserialization%20with%20Apache%20Commons.md#lab-exploiting-java-deserialization-with-apache-commons)
   
   + [Lab: Exploiting PHP deserialization with a pre-built gadget chain](17.Insecure_deserialization/Exploiting%20PHP%20deserialization%20with%20a%20pre-built%20gadget%20chain.md#lab-exploiting-php-deserialization-with-a-pre-built-gadget-chain)
+  
+  + [Lab: Exploiting Ruby deserialization using a documented gadget chain](17.Insecure_deserialization/Exploiting%20Ruby%20deserialization%20using%20a%20documented%20gadget%20chain.md#lab-exploiting-ruby-deserialization-using-a-documented-gadget-chain)
 
 ## 18. Server-side template injection
 [Back to Index](#index)
