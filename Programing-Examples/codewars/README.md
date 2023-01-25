@@ -8,3 +8,4 @@
 - [Keep Hydrated!](Keep%20Hydrated.md#keep-hydrated)
 - [Find the smallest integer in the array](Find%20the%20smallest%20integer%20in%20the%20array.md#find-the-smallest-integer-in-the-array)
 - [Summation](Summation.md#summation)
+- [Abbreviate a Two Word Name](Abbreviate%20a%20Two%20Word%20Name.md#abbreviate-a-two-word-name)
